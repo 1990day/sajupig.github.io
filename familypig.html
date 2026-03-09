@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>사주돼지 - 프리미엄 가족 궁합</title>
+<script src="https://unpkg.com/lunar-javascript/lunar.js"></script>
+<style>
+    html { background-color: #fce4ec; }
+    body {
+        margin: 0 auto; max-width: 480px; min-height: 100vh;
+        font-family: 'Pretendard', -apple-system, sans-serif;
+        background-color: #fff0f5; color: #4a3333;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.08); position: relative;
+    }
+
+    header { 
+        background-color: #ffb6c1; position: sticky; top: 0; z-index: 100; 
+        box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4); 
+        border-bottom: 4px solid #ff85a2; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
+    }
+    
+    .header-top { display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 15px 20px; }
+    .main-link { text-decoration: none; color: inherit; }
+    h1 { margin: 0; color: #ffffff; font-size: 1.8rem; letter-spacing: 1px; text-shadow: 2px 2px 0px rgba(255, 133, 162, 0.8); font-weight: 900; }
+    .login-btn-header {
+        background: #ffffff; border: 3px solid #ff85a2; color: #ff85a2;
+        padding: 8px 18px; border-radius: 25px; font-size: 0.9rem; font-weight: 900; cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.2s;
+    }
+    
+    nav { display: flex; justify-content: space-between; padding: 10px 15px 20px 15px; gap: 10px; overflow-x: auto; white-space: nowrap; }
+    nav button { 
+        flex: 1; background-color: #ffffff; border: 3px solid #ffe4e8; font-size: 0.85rem; color: #ff85a2; 
+        cursor: pointer; font-weight: 900; transition: all 0.2s; border-radius: 20px; aspect-ratio: 1 / 1; 
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
+    }
+    nav button.active { color: #ffffff; background-color: #ff85a2; border-color: #ff85a2; transform: translateY(-4px); box-shadow: 0 8px 15px rgba(255, 133, 162, 0.4); }
+    nav button span.icon { font-size: 1.6rem; }
+    nav::-webkit-scrollbar { display: none; }
+    
+    main { padding: 15px; text-align: center; }
+    .section { display: none; min-height: 60vh; animation: fadeIn 0.4s ease-in-out; }
+    .section.active { display: block; }
+    
+    .card { background: #ffffff; padding: 30px 20px; border-radius: 30px; box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3); margin-top: 10px; border: 4px solid #ffe4e8; }
+    .card h2 { color: #ff85a2; margin-top: 0; font-size: 1.6rem; font-weight: 900; text-shadow: 1px 1px 0px #fff0f5;}
+
+    .saju-form { text-align: left; margin-top: 20px; background-color: #fff0f5; padding: 25px 20px; border-radius: 25px; border: 3px dashed #ffb6c1; position: relative;}
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 1.05rem; color: #ff85a2; margin-bottom: 10px; font-weight: 900; }
+    
+    .date-select-group { display: flex; gap: 8px; }
+    .date-select-group select { flex: 1; padding: 14px 5px; font-size: 1rem; color: #4a3333; outline: none; border-radius: 15px; border: 2px solid #ffc4d0; background: #ffffff; font-weight: bold; }
+    .form-group input[type="text"], .form-group input[type="date"], select { 
+        width: 100%; padding: 16px; border: 2px solid #ffc4d0; border-radius: 15px; box-sizing: border-box; 
+        font-size: 1rem; color: #4a3333; outline: none; background-color: #ffffff; transition: all 0.3s; font-weight: bold;
+    }
+    .form-group input:focus, select:focus { border-color: #ff85a2; box-shadow: 0 0 10px rgba(255, 133, 162, 0.3); }
+    
+    .radio-group { display: flex; gap: 8px; margin-bottom: 10px; }
+    .radio-group label { flex: 1; background-color: #ffffff; padding: 16px 5px; text-align: center; border-radius: 15px; cursor: pointer; margin-bottom: 0; border: 2px solid #ffc4d0; font-size: 1.05rem; color: #ffb6c1; transition: all 0.2s; font-weight: 900; }
+    .radio-group input[type="radio"] { display: none; }
+    .radio-group input[type="radio"]:checked + span { color: #ff85a2; font-weight: 900; }
+    .radio-group input[type="radio"]:checked ~ label, .radio-group label:has(input[type="radio"]:checked) { background-color: #ffe4e8; border-color: #ff85a2; }
+    
+    .submit-btn { width: 100%; background: #ff85a2; color: white; border: none; padding: 22px; border-radius: 20px; font-size: 1.25rem; font-weight: 900; cursor: pointer; box-shadow: 0 8px 20px rgba(255, 133, 162, 0.4); transition: transform 0.1s; letter-spacing: 1px; margin-top: 10px;}
+    .submit-btn:active { transform: scale(0.96); }
+    .reset-btn { width: 100%; background-color: #ffffff; color: #ff85a2; border: 3px solid #ff85a2; padding: 20px; border-radius: 20px; font-size: 1.15rem; font-weight: 900; cursor: pointer; margin-top: 25px; transition: all 0.2s;}
+    
+    .fortune-result-box { background: transparent; margin-top: 10px; text-align: left; }
+    
+    .dashboard-card { background: #ffffff; padding: 25px 20px; border-radius: 25px; margin-bottom: 30px; border: 4px solid #ffb6c1; box-shadow: 0 6px 15px rgba(255, 182, 193, 0.3); text-align: center; }
+    .vs-badge { display: inline-block; background: #ff5277; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin: 15px 0; font-size: 1.2rem; box-shadow: 0 4px 8px rgba(255, 82, 119, 0.3); }
+    .bazi-flex { display: flex; justify-content: space-around; align-items: center; }
+    .person-col { flex: 1; }
+    .person-name { font-size: 1.1rem; color: #ff85a2; font-weight: 900; margin-bottom: 10px; }
+    .ilju-box { font-size: 2rem; font-weight: 900; background: #fff0f5; padding: 15px; border-radius: 20px; border: 2px dashed #ffc4d0; display: inline-block; line-height: 1.2; }
+
+    .family-score-card {
+        background: linear-gradient(135deg, #fff0f5 0%, #ffe4e8 100%);
+        border: 3px solid #ffb6c1;
+        border-radius: 25px;
+        padding: 40px 20px;
+        text-align: center;
+        box-shadow: 0 12px 25px rgba(255, 182, 193, 0.25);
+        margin-bottom: 35px;
+        position: relative;
+    }
+    .family-score-badge {
+        position: absolute;
+        top: -18px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #ff5277;
+        color: #ffffff;
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        font-weight: 900;
+        box-shadow: 0 6px 12px rgba(255, 82, 119, 0.3);
+        border: 3px solid #ffffff;
+        white-space: nowrap;
+    }
+    .family-score-circle {
+        font-size: 4.5rem;
+        font-weight: 900;
+        color: #ff85a2;
+        margin: 20px 0;
+        text-shadow: 3px 3px 0px #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+    }
+    .family-score-circle span {
+        font-size: 2rem;
+        margin-left: 5px;
+        color: #ffb6c1;
+    }
+    .family-score-text {
+        background: #ffffff;
+        color: #4a3333;
+        padding: 20px;
+        border-radius: 15px;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        font-weight: 900;
+        border: 2px dashed #ffc4d0;
+        word-break: keep-all;
+    }
+
+    .fortune-section-card { background: #ffffff; border: 4px solid #ffe4e8; border-radius: 30px; padding: 30px 20px 20px 20px; margin-bottom: 35px; box-shadow: 0 8px 20px rgba(255, 182, 193, 0.2); position: relative; }
+    .fortune-section-title { color: #ffffff; background: #ff85a2; padding: 12px 25px; border-radius: 30px; font-size: 1.25rem; font-weight: 900; display: inline-block; box-shadow: 0 6px 12px rgba(255, 133, 162, 0.4); margin-bottom: 20px; transform: translateY(-50px); margin-top: 10px; border: 3px solid #ffffff; }
+    .fortune-content-text { color: #4a3333; font-size: 1.05rem; line-height: 1.9; text-align: justify; margin-top: -30px; letter-spacing: -0.3px; }
+    .fortune-content-text p { margin-bottom: 20px; padding: 18px; background: #fff0f5; border-radius: 20px; font-weight: 500; }
+    
+    .sub-title { display: block; font-weight: 900; color: #ff5277; font-size: 1.15rem; margin-bottom: 10px; border-bottom: 2px dashed #ffc4d0; padding-bottom: 5px; margin-top: 15px; }
+
+    .stat-compare-wrap { margin-bottom: 25px; }
+    .stat-title { text-align: center; font-weight: 900; color: #4a3333; margin-bottom: 8px; font-size: 1.05rem; }
+    .stat-bar-container { position: relative; height: 34px; border-radius: 17px; overflow: hidden; border: 3px solid #ffe4e8; background: #ffc4d0; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); }
+    .stat-bar-fill { position: absolute; top: 0; left: 0; height: 100%; background: #ff5277; transition: width 1s ease-in-out; }
+    .stat-text-me { position: absolute; left: 15px; top: 0; line-height: 34px; font-weight: 900; font-size: 0.95rem; color: #ffffff; z-index: 2; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); white-space: nowrap; }
+    .stat-text-you { position: absolute; right: 15px; top: 0; line-height: 34px; font-weight: 900; font-size: 0.95rem; color: #4a3333; z-index: 2; white-space: nowrap; }
+
+    .login-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(74, 51, 51, 0.8); z-index: 1000; justify-content: center; align-items: center; animation: fadeIn 0.2s; }
+    .login-box { background-color: #ffffff; width: 85%; max-width: 360px; border-radius: 30px; padding: 40px 25px; text-align: center; position: relative; border: 5px solid #ffb6c1; }
+    .close-login { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 2.2rem; color: #ff85a2; cursor: pointer; font-weight: bold;}
+    .login-box h2 { margin-top: 0; color: #ff85a2; margin-bottom: 15px; font-weight: 900; }
+    .social-btn { display: block; width: 100%; padding: 18px; margin-bottom: 12px; border-radius: 20px; font-size: 1.1rem; font-weight: 900; text-align: center; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+    .btn-kakao { background-color: #FEE500; color: #4a3333; }
+    .btn-naver { background-color: #03C75A; color: #FFFFFF; }
+    .btn-google { background-color: #f1f1f1; color: #4a3333; border: 2px solid #ffe4e8;}
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .hl { background-color: #ffe4e8; padding: 2px 6px; border-radius: 4px; font-weight: 900; color: #ff5277;}
+    .divider { height: 4px; background: #ffe4e8; margin: 30px 0; border-radius: 2px; }
+    
+    .c-wood { color: #4CAF50; } .c-fire { color: #F44336; } .c-earth { color: #FF9800; } .c-metal { color: #78909C; } .c-water { color: #2196F3; }
+</style>
+</head>
+<body>
+
+<div id="loginOverlay" class="login-overlay">
+    <div class="login-box">
+        <button class="close-login" onclick="closeLogin()">×</button>
+        <h2>🐷 꿀꿀! 사주돼지</h2>
+        <p style="font-weight: bold; margin-bottom: 30px;">3초만에 가입하고<br>우리 가족의 찐궁합을 확인하세요!</p>
+        <button class="social-btn btn-kakao" onclick="dummyLogin()">카카오로 시작하기</button>
+        <button class="social-btn btn-naver" onclick="dummyLogin()">네이버로 시작하기</button>
+        <button class="social-btn btn-google" onclick="dummyLogin()">구글로 시작하기</button>
+    </div>
+</div>
+
+<header>
+<div class="header-top">
+<a href="index.html" class="main-link">
+<h1>🐷 사주돼지</h1>
+</a>
+<button class="login-btn-header" onclick="openLogin()">로그인 / 가입</button>
+</div>
+  <nav id="menu-bar">
+<button onclick="location.href='index.html?tab=manseryeok'"><span class="icon">🐷</span><span>돼지 만세력</span></button>
+<button onclick="location.href='index.html?tab=saju770'"><span class="icon">🪙</span><span>770사주</span></button>
+<button class="active" onclick="location.href='index.html?tab=love'"><span class="icon">💕</span><span>돼지궁합</span></button>
+<button onclick="location.href='index.html?tab=fact'"><span class="icon">👊</span><span>돼지팩폭</span></button>
+</nav>
+</header>
+
+<main>
+    <div id="family-fortune" class="section active">
+        <div class="card">
+            <h2 id="family-title">🏡 돼지 가족 궁합</h2>
+            
+            <form id="family-form" class="saju-form">
+                <p style="color: #ff85a2; font-size: 1.05rem; margin-top: 0; font-weight: 900; text-align: center; margin-bottom: 20px;">하늘이 맺어준 인연일까, 전생의 웬수일까?<br>가족이라서 더 뼈 때리는 핏줄 궁합을 확인하세요.</p>
+                
+                <div class="sub-title">😎 나의 정보</div>
+                <div class="form-group">
+                    <label>성별</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="me-gender" value="M" checked><span>남성</span></label>
+                        <label><input type="radio" name="me-gender" value="F"><span>여성</span></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>양력 / 음력</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="me-calendar" value="solar" checked><span>양력</span></label>
+                        <label><input type="radio" name="me-calendar" value="lunar"><span>음력 평달</span></label>
+                        <label><input type="radio" name="me-calendar" value="lunar-leap"><span>음력 윤달</span></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>생년월일</label>
+                    <div class="date-select-group">
+                        <select id="me-year"></select>
+                        <select id="me-month"></select>
+                        <select id="me-day"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>태어난 시간</label>
+                    <select id="me-time">
+                        <option value="unknown">모름 (시간 미적용)</option>
+                        <option value="자시">자시 (23:30 ~ 01:29)</option>
+                        <option value="축시">축시 (01:30 ~ 03:29)</option>
+                        <option value="인시">인시 (03:30 ~ 05:29)</option>
+                        <option value="묘시">묘시 (05:30 ~ 07:29)</option>
+                        <option value="진시">진시 (07:30 ~ 09:29)</option>
+                        <option value="사시">사시 (09:30 ~ 11:29)</option>
+                        <option value="오시">오시 (11:30 ~ 13:29)</option>
+                        <option value="미시">미시 (13:30 ~ 15:29)</option>
+                        <option value="신시">신시 (15:30 ~ 17:29)</option>
+                        <option value="유시">유시 (17:30 ~ 19:29)</option>
+                        <option value="술시">술시 (19:30 ~ 21:29)</option>
+                        <option value="해시">해시 (21:30 ~ 23:29)</option>
+                    </select>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="sub-title">👨‍👩‍👧‍👦 가족 정보</div>
+                <div class="form-group">
+                    <label>성별</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="you-gender" value="M" checked><span>남성</span></label>
+                        <label><input type="radio" name="you-gender" value="F"><span>여성</span></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>양력 / 음력</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="you-calendar" value="solar" checked><span>양력</span></label>
+                        <label><input type="radio" name="you-calendar" value="lunar"><span>음력 평달</span></label>
+                        <label><input type="radio" name="you-calendar" value="lunar-leap"><span>음력 윤달</span></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>생년월일</label>
+                    <div class="date-select-group">
+                        <select id="you-year"></select>
+                        <select id="you-month"></select>
+                        <select id="you-day"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>태어난 시간</label>
+                    <select id="you-time">
+                        <option value="unknown">모름 (시간 미적용)</option>
+                        <option value="자시">자시 (23:30 ~ 01:29)</option>
+                        <option value="축시">축시 (01:30 ~ 03:29)</option>
+                        <option value="인시">인시 (03:30 ~ 05:29)</option>
+                        <option value="묘시">묘시 (05:30 ~ 07:29)</option>
+                        <option value="진시">진시 (07:30 ~ 09:29)</option>
+                        <option value="사시">사시 (09:30 ~ 11:29)</option>
+                        <option value="오시">오시 (11:30 ~ 13:29)</option>
+                        <option value="미시">미시 (13:30 ~ 15:29)</option>
+                        <option value="신시">신시 (15:30 ~ 17:29)</option>
+                        <option value="유시">유시 (17:30 ~ 19:29)</option>
+                        <option value="술시">술시 (19:30 ~ 21:29)</option>
+                        <option value="해시">해시 (21:30 ~ 23:29)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">복채 770원 결제하고 궁합 보기 🐽</button>
+            </form>
+
+            <div id="family-result-area" style="display: none;">
+                <div class="fortune-result-box" id="dynamic-family-content"></div>
+                <button class="reset-btn" onclick="resetFamilyForm()">사주 정보 다시 입력하기 🔄</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    function openLogin() { document.getElementById('loginOverlay').style.display = 'flex'; }
+    function closeLogin() { document.getElementById('loginOverlay').style.display = 'none'; }
+    function dummyLogin() {
+        alert("꿀꿀! 사주돼지 로그인이 완료되었습니다.");
+        closeLogin();
+        document.querySelector('.login-btn-header').innerText = '내 돼지정보';
+    }
+
+    (function initDropdowns() {
+        const selects = [
+            {y: 'me-year', m: 'me-month', d: 'me-day'},
+            {y: 'you-year', m: 'you-month', d: 'you-day'}
+        ];
+        
+        const curYear = new Date().getFullYear();
+        
+        selects.forEach(group => {
+            const yearSel = document.getElementById(group.y);
+            const monthSel = document.getElementById(group.m);
+            const daySel = document.getElementById(group.d);
+            
+            if (!yearSel || yearSel.options.length > 0) return;
+
+            for(let i = curYear; i >= 1900; i--) yearSel.add(new Option(i + "년", i));
+            for(let i = 1; i <= 12; i++) monthSel.add(new Option(i + "월", i));
+            for(let i = 1; i <= 31; i++) daySel.add(new Option(i + "일", i));
+            
+            yearSel.value = "1990";
+        });
+    })();
+
+    const elementMap = {
+        '甲': '木', '乙': '木', '寅': '木', '卯': '木',
+        '丙': '火', '丁': '火', '巳': '火', '午': '火',
+        '戊': '土', '己': '土', '辰': '土', '戌': '土', '丑': '土', '未': '土',
+        '庚': '金', '辛': '金', '申': '金', '酉': '金',
+        '壬': '水', '癸': '水', '亥': '水', '子': '水'
+    };
+
+    const colorClasses = {
+        '木': 'c-wood', '火': 'c-fire', '土': 'c-earth', '金': 'c-metal', '水': 'c-water'
+    };
+
+    function getCharHtml(char) {
+        if (!char || char === 'unknown') return "?";
+        const el = elementMap[char];
+        return `<span class="${colorClasses[el]}">${char}</span>`;
+    }
+
+    const iljuPersonality = {
+        '甲子': "가족 관계에서 겉으로는 한없이 침착하고 이성적이며 듬직한 어른의 모습을 유지하려 애씁니다. 하지만 속내를 들여다보면 부모님의 편애 기류, 형제들의 재산 욕심, 사소한 말들의 이면까지 전부 꿰뚫어 보고 계산기를 두드리는 무서운 지략가입니다. 자존심이 워낙 강해 집안 내부의 서열 싸움에서 절대 먼저 굽히지 않으며, 누군가 자신을 가르치려 들면 겉으로 웃으며 속으로 아주 두꺼운 장벽을 칩니다. 피를 나눈 핏줄이라도 온전히 신뢰하기까지 수많은 테스트를 거치지만, 한 번 내 가족을 책임지기로 마음먹으면 뼈를 깎아서라도 식구를 위기에서 건져냅니다. 치명적인 단점은 자기가 생각하는 정답을 부모 형제에게 강요하며 은근히 통제하려는 숨 막히는 꼰대 기질입니다. 헌신하고도 잔소리 때문에 원망을 듣기 딱 좋습니다.",
+        '乙丑': "가족에게 간 쓸개 다 빼줄 것처럼 헌신하고 챙기는 전형적인 맏이 콤플렉스 스타일입니다. 명절이나 제사 등 집안 행사가 있으면 가장 고된 궂은일을 도맡아 하고, 식구들의 빚 문제나 하소연도 자기 일처럼 끌어안고 끙끙댑니다. 하지만 그 깊은 속에는 내가 집안을 위해 이렇게 피땀 흘려 희생하는데 다들 이 정도는 알아서 기어야지 하는 강렬한 보상 심리가 똬리를 틀고 있습니다. 부모 형제가 내 기대만큼 고마워하지 않고 이기적으로 자기 밥그릇만 챙기면, 억울함이 눈덩이처럼 커져 어느 날 밥상을 엎어버립니다. 한 번 호구 잡혀 배신감을 느끼면 그동안 참았던 10년 치 서운함이 폭발하며 뒤끝이 어마어마합니다. 핏줄을 칼같이 끊어내지 못해 상처를 계속 곱씹으며 끌어안고 가는 피곤하고 짠한 헌신형입니다.",
+        '丙寅': "명절에 친척들이 모이면 가장 먼저 다가와 분위기를 띄우고 호들갑을 떠는 집안의 핵인싸이자 분위기 메이커입니다. 자기 바운더리 안에 있는 식구에게는 비싼 선물과 용돈을 아끼지 않고 화끈하게 지갑을 여는 대인배 성격입니다. 하지만 그만큼 감정이 쉽게 끓어오르고 금방 식어버리는 치명적인 냄비 기질이 있습니다. 가족들이 내 호의를 당연하게 여기거나 조금이라도 서운하게 하면 갑자기 입을 꾹 닫고 자기 방으로 들어가 버립니다. 기분이 좋을 때는 집안의 빛과 소금 같지만, 욱하는 순간 부모 형제 가리지 않고 필터링 없는 독설을 날려 명절 분위기를 초상집으로 만듭니다. 화를 내고 돌아서서 혼자 뼈저리게 이불킥하며 후회하는 타입이니 적당히 비위를 맞춰주면 집안에서 가장 유쾌하고 돈 잘 쓰는 가족입니다.",
+        '丁卯': "식구들의 미세한 감정 변화를 기가 막히게 캐치해내는 집안의 걸어 다니는 눈치 탐지기입니다. 부모님의 미세한 한숨 소리, 형제의 건조한 카톡 단답형만 보고도 집에 무슨 우환이 있나, 나한테 화난 게 있나 밤새 전전긍긍하는 극강의 예민 보스입니다. 가족 안에서 소외당하거나 인정받지 못하는 것을 극도로 두려워하여 내가 희생해서라도 집안의 평화를 유지하려 눈물겹게 애씁니다. 부모님이 가장 편하게 기대고 하소연하는 감정 쓰레기통 역할을 자처하지만, 정작 본인의 멘탈은 서서히 갉아먹히고 있습니다. 식구들의 기분을 맞추려다 스스로를 잃어버리고 혼자 우울증에 빠질 수 있으니, 가족의 문제와 내 인생을 철저하게 분리하는 차가운 이기심이 시급히 필요한 여리고 피곤한 영혼입니다.",
+        '戊辰': "가족이라는 울타리 안에서 흔들림 없는 안정감과 묵직한 책임감을 최우선으로 치는 돌직구 바위 같은 존재입니다. 낯간지러운 애정 표현이나 살가운 위로는 절대 못 하지만, 집안이 기울거나 큰 빚이 생겼을 때 아무 말 없이 자기 전 재산을 털어 막아주는 듬직한 기둥 역할을 합니다. 입이 무거워 식구들의 치부를 밖으로 절대 발설하지 않습니다. 하지만 내 울타리 안에 있는 가족들에 대한 소유욕과 집착이 엄청나서, 내 방식대로 식구들이 통제되지 않거나 형제가 엇나가면 속으로 불같이 화를 내며 가부장적인 태도를 보입니다. 가족 간의 거짓말이나 신뢰를 깨는 짓은 피를 나눴어도 절대 용서하지 않는 서늘한 단호함이 있습니다. 한 번 고집을 부리면 소 열 마리가 끌어도 안 움직이는 똥고집 탓에 대화가 꽉 막히기도 합니다.",
+        '己巳': "집안에서 큰소리 한 번 안 내고 절대 적을 만들지 않으며 요리조리 잘 빠져나가는 처세술의 달인입니다. 눈치가 구미호 뺨치게 빨라서 명절에 재산 문제로 싸움이 날 것 같거나 부모님 간병 등 힘든 책임이 넘어올 것 같으면 교묘하게 핑계를 대고 스무스하게 증발해버리는 기술이 일품입니다. 겉보기엔 부모님 말씀에 네네 하며 다 맞춰주는 순둥이 같지만, 머릿속엔 철저한 손익 계산기가 분주하게 돌아가고 있습니다. 형제들 사이에서 갈등이 터지면 직접 피를 묻히지 않고 뒤에서 은근슬쩍 여론을 조작해 자기가 제일 이득을 보는 쪽으로 판을 세팅합니다. 가족 간의 진흙탕 싸움은 기가 막히게 피하면서 챙길 유산이나 물질적 혜택은 다 받아먹는 얄미울 정도로 똑똑하고 얍삽한 실속파 캥거루족입니다.",
+        '庚午': "피를 나눈 가족일지라도 지킬 선은 확실하게 지켜야 한다는 강박에 가까운 칼 같은 원칙주의자입니다. 부모 자식 간이라도 예고 없이 자기 집에 찾아오거나 선을 넘는 무리한 금전 부탁을 하는 것을 극도로 혐오합니다. 오글거리는 가족애 타령, 눈물 콧물 짜는 하소연을 질색해서 부모님이 보시기엔 정내미 뚝 떨어질 정도로 무뚝뚝하고 건조한 자식으로 보입니다. 가족 단톡방에서도 늘 읽씹이나 냉정한 단답형을 유지합니다. 하지만 내 식구가 밖에서 억울한 일을 당하거나 사기를 당해 오면 눈이 뒤집혀서 끝까지 복수해 주고 변호사를 선임해 주는 앞뒤가 똑같은 상남자 상여자 식 의리파입니다. 징징대는 걸 안 받아줘서 상처를 주지만 가족이 위기에 처했을 땐 가장 이성적이고 현실적인 구명줄을 던져줍니다.",
+        '辛未': "가족을 대할 때도 묘하게 깐깐한 심사위원 같은 태도를 유지하며 속으로 끊임없이 채점표를 작성하는 예민함의 끝판왕입니다. 형제나 친척의 떨어지는 경제 관념, 촌스러운 식사 매너, 지저분한 본가 환경까지 스캔하며 수준이 안 맞는다고 판단되면 가족 행사라도 교묘하게 핑계를 대고 철저히 거리를 둡니다. 상처받는 것에 대한 방어 기제가 우주 최고 수준이라 부모님에게조차 자기 진짜 속마음과 통장 잔고는 죽어도 공개하지 않습니다. 서운한 일이 생겨도 그 자리에서 화를 내기보단 마일리지처럼 차곡차곡 적립해 뒀다가, 나중에 재산 분할이나 큰 싸움이 났을 때 한 방에 터뜨려 상대방의 숨통을 끊어버립니다. 완벽하고 우아한 집안을 꿈꾸지만 현실 가족이 구질구질하면 일찍 짐 싸서 독립해버리고 안 보고 살 확률이 높습니다.",
+        '壬申': "꼰대력 가득한 친척 모임에 던져놔도 5분 만에 호형호제하며 분위기를 주도하는 친화력 만렙의 스펀지입니다. 다양한 성향의 가족들과 두루 잘 어울리며 집안의 낡은 관습이나 제사 스트레스 등을 가장 혐오합니다. 겉보기엔 성격 좋은 긍정 예스맨 같지만, 사실 가족의 부양 의무나 집안 대소사보다 본인의 자유와 밖에서의 인맥을 백만 배 더 소중하게 여깁니다. 시도 때도 없이 효도를 강요하거나 명절 참석을 닦달하는 부모님을 극도로 피곤해하며, 집안에 갈등이 생기면 정면 돌파하기보단 해외 출장이나 바쁜 업무를 핑계로 쏙 빠져나가는 미꾸라지 능력이 탁월합니다. 밖에선 다들 효자라고 칭찬하지만 정작 집안 식구들과는 딥한 속얘기를 기피하며 적당히 겉도는 바람 같은 영혼입니다.",
+        '癸酉': "부모 형제의 가식이나 허세, 숨겨진 꿍꿍이를 엑스레이처럼 훤히 들여다보는 소름 돋는 직관력을 가졌습니다. 식구 중 누군가 말도 안 되는 논리로 떼를 쓰거나 감정적으로 눈물을 쥐어짜며 호소하면, 눈 하나 깜짝 안 하고 차가운 팩트로 명치를 찔러 말문을 완벽하게 막아버리는 냉혈한 파이터입니다. 시끌벅적하고 가식적인 명절 대가족 모임을 극도로 혐오하며, 나랑 가치관이 통하는 소수의 가족하고만 조용히 밥 먹는 것을 선호합니다. 가족이라도 상식이 안 통하고 무례하게 굴면 그날부로 번호를 차단하고 1초도 섞이지 않으려는 지독한 자존심과 고상함을 지녔습니다. 피도 눈물도 없이 매정해 보이지만, 집안에 사기꾼이 꼬이거나 법적 문제가 터졌을 땐 사태를 제일 정확히 해결해 주는 차가운 브레인입니다.",
+        '甲戌': "의리와 책임감 하나로 똘똘 뭉친 실질적인 집안의 가장이자 기둥 같은 존재입니다. 평소엔 살가운 애정 표현이나 호들갑을 떨지 않아서 무뚝뚝하고 화난 사람처럼 보이지만, 형제나 부모님이 금전적으로 힘들 땐 가장 먼저 현실적인 대안을 찾아주고 뼈 때리는 쓴소리도 마다하지 않는 진국 중의 진국입니다. 가족의 취업을 돕거나 노후를 챙기는 것을 진짜 핏줄의 도리라고 보며 행동으로 증명합니다. 반대로 목표 없이 허송세월하거나 도박, 빚 등 찌질한 사고를 치는 형제에겐 가차 없이 쌍욕을 섞어 잔소리를 폭격합니다. 내가 보호해야 할 바운더리 안에 들어온 내 식구에겐 한없이 관대하지만, 가족의 신뢰를 저버리고 뒤통수를 치는 순간 호적을 파버릴 듯 뒤도 안 돌아보는 무서운 단호박입니다.",
+        '乙亥': "시끌벅적하고 말 많은 가족들 사이에서 묘하게 거리를 두며 적당한 개인주의를 실천하는 조용한 평화주의자입니다. 명절에 형제들끼리 유산이나 부모님 모시는 문제로 핏대를 세우고 싸우면 누구 편도 들지 않고 스위스 같은 중립국 역할을 자처하며 구석에서 전만 부칩니다. 부모님의 깊은 감정 쓰레기통 역할을 하거나 형제들의 사생활에 지나치게 간섭하는 피곤하고 질척거리는 가족 관계를 극도로 꺼립니다. 스트레스가 극에 달하면 갑자기 본가 연락을 다 무시하고 잠수를 타거나 자기만의 동굴로 들어가 버리는 기행을 벌여 식구들의 복장을 터지게 만듭니다. 다정하고 말도 잘 들어주지만 진짜 속마음은 꽁꽁 숨겨두어 가족조차도 무슨 생각을 하는지 모르는 고양이 같은 성향입니다.",
+        '丙子': "밖에서는 텐션 높고 쿨하게 잘 어울리는 인싸처럼 보이지만, 집안에 들어오면 부모 형제에게 꽤나 지독한 집착과 소유욕을 보이는 이중적인 면모가 있습니다. 내 형제가 나 말고 다른 친척이랑 더 친하게 지내거나 부모님이 동생만 편애하는 꼴을 보면 겉으론 쿨한 척 폰만 만지작거려도 속은 활활 타들어 갑니다. 은근슬쩍 집안의 사랑을 독차지하고 싶어 서운함을 티 내거나 밥을 안 먹고 방문을 걸어 잠그는 등 묘하게 유치한 질투를 시전합니다. 집안의 대소사에서 은근히 자기가 주도권을 쥐고 여론을 이끌고 싶어 하는 보스 기질도 다분합니다. 식구들을 툭툭 건드려보고 애정을 지속적으로 확인받으려는 버릇 탓에 피곤하지만, 그만큼 가족을 끔찍이 아끼고 명절 분위기를 띄우는 데는 일등 공신입니다.",
+        '丁丑': "부모 형제의 작은 고민과 빚 문제 하나도 내 일처럼 끌어안고 끙끙대는 헌신과 눈물겨운 인내의 아이콘입니다. 동생이 사고를 쳐 합의금이 필요하다면 몰래 대출을 받아서라도 쥐어주고, 부모님의 신세 한탄도 새벽까지 무릎 꿇고 들어주는 보살급 멘탈을 가졌습니다. 하지만 본인은 정작 심한 상처를 받고 서운해도 꾹꾹 참으며 속병을 앓는 짠하고 답답한 캐릭터입니다. 가족 간의 불화를 피하려고 무조건 내가 죄인이라고 머리를 숙이지만, 그 억울함이 계속 쌓이다가 어느 날 갑자기 눈이 돌아가 폭발하며 가출해 버리거나 연을 뚝 끊어 주변을 경악하게 만듭니다. 이기적이고 뻔뻔한 핏줄들에게 엮여서 평생 호구 잡히기 딱 좋은 샌드백 성향이니, 제발 가끔은 철저하게 이기적으로 살아갈 필요가 있습니다.",
+        '戊寅': "내가 이 구역의 대장이 되어 식구들을 진두지휘하고 총대를 메야 직성이 풀리는 상남자 상여자 대장부 스타일입니다. 명절 식당 예약부터 부모님 칠순 잔치 플랜, 심지어 형제의 이사 방향까지 본인이 주도해야 마음이 편하고 식구들이 토를 달면 짜증이 확 올라옵니다. 의리가 넘쳐서 내 가족이 밖에서 억울한 일을 당하면 불도저처럼 밀고 들어가 다 뒤집어엎을 정도로 든든합니다. 하지만 자기 주장이 너무 강해서 집안에서는 대화가 안 통하는 통제광이나 군사 독재자처럼 느껴지기도 합니다. 남의 말을 듣기보단 내 말이 무조건 법이니까 잔말 말고 따라 라는 식의 꼰대 마인드가 발동할 때가 많아 기가 약한 가족들은 슬금슬금 피하게 됩니다. 강압적인 명령조만 버리면 집안을 일으켜 세울 장군감입니다.",
+        '己卯': "어떤 험악한 집안 분위기든 카멜레온처럼 보호색을 띠며 스며드는 눈치 백단 생존 전문가입니다. 부모님과 형제 사이에서 상속 문제로 피 터지는 싸움이 나도 기가 막히게 양쪽을 오가며 박쥐처럼 줄을 타고 절대 욕을 먹지 않는 신들린 처세술을 자랑합니다. 식구들 비위를 아주 잘 맞춰주고 쓴소리를 안 해서 싹싹하다는 소리를 듣지만, 속으로는 누구보다 철저하게 부양의 책임을 피할 손절 각과 이득을 챙길 계산기를 두드리는 중입니다. 나한테 조금이라도 금전적 피해가 올 것 같은 사고뭉치 식구는 대놓고 싸우지 않고 서서히 연락 빈도를 줄이며 흔적도 없이 거리를 둬버립니다. 앞에서는 웃으며 다 들어주는 척하지만 실속은 거머리처럼 다 챙겨 먹는 제일 얍삽하고 무서운 실용주의자입니다.",
+        '庚辰': "맺고 끊음이 식칼처럼 확실하고 한 번 결정하면 불도저처럼 밀어붙이는 박력 터지는 가족입니다. 핏줄 사이라도 빙빙 돌려 말하는 꼴을 극혐해서 부모님에게도 팩트로 명치를 세게 때리는 잔인한 직언 제조기입니다. 하지만 뒤끝은 1도 없어서 한바탕 시원하게 쌍욕을 섞어가며 대판 싸우고 나면 언제 그랬냐는 듯 훌훌 털어버리고 밥을 비벼 먹습니다. 돈 문제로 쪼잔하게 굴거나 구차하게 변명하며 책임 회피하는 형제를 가장 경멸하며 집안의 체면과 가오를 목숨처럼 중요시합니다. 가족이라도 내 믿음을 한 번이라도 크게 저버리고 사기를 치면 그 자리에서 호적을 파버릴 기세로 영구 제명시켜 버리는 무자비함이 있습니다. 필터링 없는 말로 상처를 주지만 위기 상황엔 전 재산을 내놓는 진짜배기 핏줄입니다.",
+        '辛巳': "자신의 라이프스타일과 삶의 퀄리티를 지독하게 중요시하여 가족의 촌스러움이나 구질구질함을 은근히 부끄러워하고 혐오하는 우아한 속물주의자입니다. 거지근성으로 똘똘 뭉쳐 돈 꿔달라는 형제나, 매너 없이 지저분한 생활 습관을 가진 식구와는 한집에 사는 것조차 지옥불처럼 고통스러워합니다. 겉으로는 생글생글 웃으며 교양 있게 굴지만 속으로는 가족들의 경제 관념, 직업군, 패션 센스를 스캔하며 계속해서 마이너스 점수를 줍니다. 내 기준에 미달하는 막장 가족이라고 느끼면 스트레스를 견디지 못하고 서서히 거리를 두며 우아하게 독립을 선언해 남보다 못한 사이로 지냅니다. 남들에게 보여지는 가풍을 중요시해 부모님 용돈도 화끈하게 쏘지만 그만큼 대접받길 바라는 예민한 귀족병 환자입니다.",
+        '壬午': "말 한마디로 천 냥 빚도 갚고 깐깐한 부모님 혼을 쏙 빼놓아 용돈을 타내는 마성의 입담을 가진 집안의 재간둥이입니다. 넉살이 엄청나게 좋고 유머 감각이 뛰어나서 명절에 싸해진 친척들 분위기도 5분 만에 배꼽 잡고 웃게 만드는 초능력이 있습니다. 가족들을 자기 페이스로 교묘하게 끌어들이며 은근슬쩍 불리한 잔소리 상황을 모면하는 혓바닥 기술이 탁월합니다. 밖으로 발이 넓어서 여기저기 술자리 부르는 곳이 많다 보니 정작 명절 당일이나 집안 대소사엔 코빼기도 안 보여 부모님 입장에서는 천불이 나는 철부지 자식이기도 합니다. 호기심이 많고 진지하고 무거운 제사나 부양 문제는 질색하며, 늘 즐겁고 가벼운 핑곗거리를 만들어 밖으로 나도는 자유분방한 피터팬 핏줄입니다.",
+        '癸未': "가족의 불행과 아픔을 자기 일처럼 뼛속까지 안타까워하고 어떻게든 자기 살을 깎아서라도 도와주려고 오지랖을 부리는 짠내 폭발 마더 테레사입니다. 형제가 사업에 망해 고민을 털어놓으면 새벽까지 같이 오열해주고 해결책을 찾아 이리저리 뛰어다니는 따뜻한 심성의 소유자입니다. 하지만 정작 본인은 자기 속마음을 잘 드러내지 않고 외로움을 심하게 타서 가족 내 애정 결핍 기질이 다분합니다. 내가 희생한 만큼 부모 형제도 나를 가장 특별하고 1순위로 생각해 주길 바라는 갈구가 커서, 사소한 편애나 명절의 서운함에도 크게 삐지고 멘탈이 바사삭 부서집니다. 상대방에게 지나치게 의존하고 희생을 강요하며 서로의 숨통을 조일 수 있으니, 제발 가족으로부터의 정서적 독립이 시급한 분입니다.",
+        '甲申': "가족 사이에서도 묘하게 경쟁심을 불태우며 형제자매보다 무조건 자기가 더 돈을 많이 벌고 잘나가야 직성이 풀리는 피곤한 승부사입니다. 명절에 친척들이 모이면 은근슬쩍 자기 새 차, 연봉, 자식 성적 자랑을 교묘하게 섞어가며 기를 죽이고 우위를 점하려 하는 얄미운 구석이 있습니다. 행동력과 추진력이 폭발적이라 집안 행사를 이끌고 가는 걸 좋아하지만, 타협을 전혀 모르고 부모님 의견도 개무시한 채 자기 고집대로 밀어붙이는 불도저 기질 탓에 명절마다 잦은 고성을 빚습니다. 식구들이 내 의견에 태클을 걸거나 반대하면 눈이 뒤집혀 불같이 화를 내며 밥상을 엎을 기세를 보입니다. 살가운 애정 표현은 죽어도 못 하지만 내 가족이 밖에서 욕먹고 들어오면 당장 뛰쳐나가는 행동파 핏줄입니다.",
+        '乙酉': "가족을 자기 입맛과 기준대로 완벽하게 통제하고 개조하려는 숨 막히는 완벽주의자이자 지적질 대마왕입니다. 부모님의 생활 습관부터 형제의 옷차림, 재테크 방식, 애인 고르는 눈까지 시시콜콜 잔소리를 늘어놓으며 메스를 들이댑니다. 겉으로는 다 피가 되고 살이 되라고 하는 소리라고 포장하지만 사실은 내 눈에 거슬리고 답답한 꼴을 1초도 못 보는 지독한 깐깐함 때문입니다. 눈물 콧물 빼는 감정적인 위로나 공감보다는 차가운 얼음장 같은 팩트 폭행을 날려 가족의 명치를 두 번 박살 내는 잔인한 재주가 있습니다. 계산이 기가 막히게 빠르고 억울하게 손해 보는 짓은 절대 안 해서, 형제간의 부양비나 유산 문제도 철저하게 기브 앤 테이크를 따집니다. 피도 눈물도 없어 보이지만 위기 해결 능력은 1등입니다.",
+        '丙戌': "호탕하고 짐승 같은 의리가 넘쳐서 가족들을 위해 지갑을 활짝 열고 호구 노릇을 자처하는 집안의 든든한 물주이자 행동 대장입니다. 겉보기엔 근심 걱정 하나 없이 해맑은 대인배 같지만, 혼자 방에 있을 땐 극도의 외로움과 우울감에 빠지는 반전 조울증 멘탈의 소유자입니다. 형제들이 나를 빼놓고 모이거나 부모님이 대놓고 다른 자식을 편애하면 하늘이 무너지는 듯한 끔찍한 배신감을 느끼고 그 자리에서 눈이 돌아 이성의 끈을 놓아버릴 정도로 욱하는 다혈질입니다. 촉이 무서울 정도로 발달해서 가족 누군가 나에게 돈을 숨기려 하거나 거짓말을 하면 귀신같이 알아채고 쌍욕을 날립니다. 정이 많아 내 식구에겐 간장게장 다리까지 발라주지만 한 번 돌아서면 가장 무서운 원수가 됩니다.",
+        '丁亥': "가족들의 너덜너덜해진 멘탈을 조용히 어루만져 주고 상처를 보듬어 주는 집안의 따뜻하고 포근한 심리 상담가 같은 존재입니다. 웬만하면 큰소리를 내며 부딪히지 않고 둥글둥글하게 잘 지내며, 부모님과 형제 사이에서 고성이 오가는 트러블이 생기면 스무스하게 말로 중재하는 외교관 역할을 맡습니다. 겉보기엔 한없이 순둥순둥하고 만만해 보이지만, 속으로는 가족들의 능력치, 재산 상황, 인성까지 철저하고 냉혹하게 분석하며 은근히 포지션을 나누는 무서운 이성도 숨어있습니다. 대놓고 싸우며 핏대를 세우기보다는 부드러운 화법으로 식구들을 가스라이팅하여 결국 내가 원하는 방향으로 이끄는 지능적인 처세술이 뛰어납니다. 진짜 내 밥그릇은 절대 안 뺏기면서도 효자 소리는 다 듣는 영악한 실속파입니다.",
+        '戊子': "명절에 모여도 리액션이 고장 나고 평소 본가에 연락도 드문드문해서 도대체 집구석에 관심이 있긴 한 건지 알 수 없는 무뚝뚝의 끝판왕이자 돌하르방입니다. 부모님이 서운함을 토로하며 눈물을 흘려도 로봇처럼 영혼 없는 대답만 늘어놓아 복장을 터뜨려 명에 살게 만듭니다. 하지만 속으로는 집안의 대소사와 가족들의 밥줄을 끊임없이 계산하고 걱정하며 밤잠을 설치는 보이지 않는 그림자 가장입니다. 말로 사랑한다고 오글거리게 표현하기보다는 부모님 낡은 냉장고를 조용히 최고급으로 바꿔주거나, 집안에 급전이 필요할 때 묻지도 따지지도 않고 목돈을 입금해 버리는 식의 츤데레 짓으로 핏줄의 애정을 증명합니다. 요란한 화목함은 질색하지만 한 번 내 가족은 굶어 죽는 꼴을 절대 못 보는 책임감의 화신입니다.",
+        '己丑': "집안에서 누가 사업을 말아먹거나 속을 썩여도 묵묵히 다 뒤집어쓰고 참아내는 미련할 정도의 인내심과 황소고집을 가진 짠한 가족입니다. 형제가 큰 사고를 치거나 부모님이 대놓고 헌신을 무시하며 차별 대우를 해도 당장 연을 끊지 못하고 혼자 속으로 삭히며 무던하게 호구처럼 버텨줍니다. 남들이 보면 왜 저런 개차반 취급을 받고도 집에 붙어있나 싶을 정도로 답답해 보입니다. 하지만 이 참을성도 마일리지가 있어서 인내의 둑이 무너지는 순간 눈이 핑 돌며 지난 20년 치 서운했던 일화까지 날짜별로 끄집어내 화산 폭발하듯 쏟아내 주변을 초토화시킵니다. 변화를 병적으로 싫어하고 보수적이라 늘 먹던 명절 음식, 고루한 제사 방식만 박박 고집해서 답답한 꼰대 소리를 듣기도 하지만 집안을 지키는 듬직한 소입니다.",
+        '庚寅': "성질머리가 활활 타오르는 불같고 생각한 건 바로 행동으로 질러버려야 직성이 풀리는 집안의 통제 불능 무법자입니다. 뒤끝이 1도 없고 투명해서 음흉하게 재산 문제나 유산으로 속을 꿍꿍 앓으며 머리 쓰는 짓은 뇌 구조상 절대 못 합니다. 식구들에게 불만이 생기면 다짜고짜 방문을 열고 쳐들어가 샤우팅을 지르고 밥상을 뒤집어엎은 뒤, 10분 뒤에 쿨하게 화해하자고 피자를 사 오는 단세포적인 매력이자 환장할 포인트가 있습니다. 가오와 체면을 목숨처럼 여겨서 친척들 앞에서 돈 낼 때 눈치 보며 쪼잔하게 구는 걸 극혐하고 가장 먼저 화끈하게 카드를 긁습니다. 하지만 너무 직진만 하는 성격 탓에 필터링 없는 말로 부모님 마음에 대못을 박고 혼자 방구석에서 엉엉 우는 일도 잦은 쌈닭입니다.",
+        '辛卯': "분위기와 감각을 목숨보다 중요시하여 집안 꼴이 조금이라도 지저분하거나 촌스러운 것을 1초도 견디지 못하는 극강의 까탈스런 예민 보스입니다. 부모님의 옥장판 구식 인테리어나 형제의 목 늘어난 츄리닝 패션을 볼 때마다 한숨을 푹푹 쉬며 은근히 꼽을 주고 가르치려 듭니다. 눈이 너무 높고 결벽증에 가까워 명절에 친척이 밥 먹을 때 쩝쩝거리는 소리 하나에도 얼굴을 찌푸리며 속으로 무식하다고 맹렬히 무시하기도 합니다. 성격이 미친 듯이 변덕스럽고 가시 돋친 팩폭을 툭툭 내뱉어서 온 가족이 이 사람 눈치를 보게 만드는 묘하고 불편한 권력을 쥐고 있습니다. 내 비위에 조금이라도 거슬리면 피를 나눈 가족이라도 가차 없이 철벽을 치고 카톡을 차단해버리는 도도하고 싸가지 없는 고양이 성향입니다.",
+        '壬辰': "집안 구석에서도 무조건 자기가 무리를 이끌고 명령을 내리는 대장 노릇을 해야 성에 차는 무서운 야망캐이자 골목대장입니다. 부모님의 낡은 간섭이나 꼰대 같은 통제를 죽기보다 싫어해서, 은근슬쩍 집안 여론을 교묘하게 자기 쪽으로 주도하고 명절 스케줄도 내 맘대로 기획해야 직성이 풀립니다. 승부욕과 질투심이 미친 듯이 강해서 형제자매가 나보다 돈을 더 잘 벌거나 부모님의 유산을 더 받으면 속으로 시퍼런 칼을 갈며 극악의 질투의 화신으로 변해 난리를 칩니다. 재산 분쟁이나 서열 싸움이 생기면 핏줄이고 뭐고 물러서기는커녕 수단과 방법을 가리지 않고 쟁취해 내는 소름 돋는 전투력을 자랑합니다. 스케일이 커서 화끈하게 쏘기도 하지만 내가 1인자가 아니면 다 엎어버리는 독선적인 폭군입니다.",
+        '癸巳': "어떤 험악하고 살얼음판 같은 집안 분위기라도 애교 한 번, 능청스러운 조크 한마디로 스르르 녹여버리는 인간 소화기이자 요물입니다. 부모님과의 갈등을 정면으로 핏대 세워 돌파하기보다는 빙글빙글 돌려서 부드럽게 넘어가거나 상대방이 스스로 잔소리를 멈추게 포기하게 만드는 고단수 심리전과 가스라이팅의 달인입니다. 화를 내는 법이 거의 없고 워낙 싹싹해서 어른들에게 늘 최고로 예쁨을 받지만, 그 선한 천사 얼굴 뒤에는 이 상황이 나한테 물질적으로 이득이 되는지 철저하게 따지는 차가운 주판알이 미친 듯이 굴러가고 있습니다. 부양 문제 등 절대 자기가 손해 보는 짓은 안 하며, 집안에 빚이 생기거나 멸망의 위기가 닥치면 제일 먼저 발을 빼고 해외로 도망가 버릴 영악함을 갖춘 실리주의자입니다.",
+        '甲午': "어딜 가나 시선을 한 몸에 받고 명절마다 화려하고 시끄러운 입담으로 친척들의 혼을 쏙 빼놓는 미친 존재감의 관종 소유자입니다. 오지랖이 태평양보다 넓고 텐션이 대기권을 찌르지만 그만큼 감정의 롤러코스터도 미친 수준이라 도무지 종잡을 수 없는 집안의 걸어 다니는 시한폭탄이기도 합니다. 부모님이 조금이라도 비교하거나 잔소리를 하면 단 1초도 참지 못하고 그 자리에서 쌍욕을 섞어가며 필터링 없이 쏟아부어 명절 분위기를 초상집으로 만들고는, 며칠 뒤 폭풍 오열하며 한우 세트를 보내는 정신 나간 패턴을 반복합니다. 참을성이 생후 3개월 아기 수준이라 지루하고 고루한 가족 제사나 훈화 말씀을 못 버티고 튀어버립니다. 늘 옆에서 사고 칠까 멘탈을 잡아줘야 하는 통제 불능 비글 같은 핏줄입니다.",
+        '乙未': "겉으로는 네네, 엄마 아빠 뜻대로 다 할게요 하면서 다 맞춰주고 져주는 순하고 불쌍한 양 같지만, 속에는 구렁이 백 마리가 똬리를 틀고 들어앉은 무서운 집념의 소유자입니다. 가족들 의견에 순순히 따르고 희생하는 척하면서도 결국 돌고 돌아 몇 년 뒤 자기가 원하는 목적(알짜 유산, 전폭적 지원금 등)으로 교묘하게 상황을 이끄는 소름 돋는 조종술을 가졌습니다. 끈질긴 인내심 하나는 우주 최강이라, 아무리 억울하게 차별받고 욕을 먹는 상황이라도 입술을 깨물고 효도하며 버티다가 최후의 승리자가 되는 독한 타입입니다. 소유욕과 질투가 은근히 강해서 부모님이 다른 형제를 편애하면 겉으론 웃어넘기지만 속으론 저주를 퍼부으며 블랙박스에 다 녹화해 둡니다. 한 번 원한을 품으면 죽을 때까지 복수하는 외유내강형 독사입니다.",
+        '丙申': "가족의 진지하고 무거운 책임감, 부양 의무 같은 단어는 딱 질색이고 늘 새롭고 재밌는 도파민만 쫓아다니는 구제 불능 자유로운 영혼입니다. 유머 감각과 밈 활용 센스가 터져서 우울한 집안 분위기를 순식간에 예능으로 환기시키는 재간둥이 역할을 톡톡히 하지만, 장남 장녀로서의 진득함이나 인내심과는 거리가 안드로메다만큼 멉니다. 부모님이 심각한 노후 고민이나 빚 문제를 털어놔도 농담으로 회피하거나 분위기 파악 못 하고 장난을 쳐서 식구들 속을 확 뒤집어 놓습니다. 명절에 오기로 약속을 잡아놔도 그날 기분에 따라 갑자기 취소하거나 친구들과 해외여행을 가버리는 충동적인 기행을 밥 먹듯이 벌입니다. 무거운 책임감을 기대하면 상처만 받는, 그냥 가끔 만나서 맛있는 거나 먹는 쿨한 파티원 느낌의 철부지입니다.",
+        '丁酉': "명절에 본가에 방문할 때도 음식의 퀄리티와 플레이팅, 집안의 위생 상태, 잠자리의 쾌적함을 병적으로 고집하는 극강의 피곤한 까탈쟁이입니다. 식구들끼리 대충 남은 전이나 찌개를 비벼 먹자고 하면 동공 지진이 오며 은근히 불쾌해하고 숟가락을 내려놓습니다. 자신이 가족에게 받는 대우와 서열 포지션에 굉장히 예민해서, 형제가 매너 없이 굴거나 부모님이 내 헌신을 무시하면 속으로 분노하며 바로 마음의 철창을 닫아버립니다. 눈치가 무서울 정도로 빠르고 예리해서 식구들의 사소한 돈 거짓말이나 편애는 0.1초 만에 꿰뚫어 보고 코웃음을 치며 경멸합니다. 피곤할 정도로 잣대가 높아서 가족들과도 부딪히지만, 내 맘에 드는 대우를 해주면 백화점 VIP 대접을 해주는 우아한 호구병 환자이기도 합니다.",
+        '戊戌': "타협이란 단어는 사전에서 찢어버린 아집과 독선으로 똘똘 뭉친 집안의 브레이크 고장 난 고집불통 대마왕입니다. 부모나 형제가 내 인생 방식이나 정치 성향에 태클을 걸면 그 자리에서 끝장 논리 배틀을 신청해 피를 봐야 직성이 풀립니다. 남의 말은 귓등으로도 안 듣고 자기가 무조건 100퍼센트 맞다고 박박 우기는 통에 주변 가족들이 기가 다 빨려서 결국 포기하고 맙니다. 내 방에 마음대로 들어오거나 폰을 보는 선을 넘는 간섭을 극도로 혐오해서, 핏줄이라도 지켜야 할 철조망에 고압 전류가 흐르고 있습니다. 욱하는 성질을 주체 못 하고 집안 살림을 다 엎어버리는 파괴적인 다혈질 폭군이지만, 역설적이게도 자기 식구 하나만큼은 굶어 죽어도 책임지고 지켜내는 상남자 상여자의 가장 무거운 어깨를 가졌습니다.",
+        '己亥': "겉보기엔 착하고 무던해서 부모님 말씀 잘 듣고 형제에게 다 양보하는 짠한 호구처럼 보이지만, 실상은 머릿속에 가계부와 재산 분할 비율, 증여세를 슈퍼컴퓨터처럼 돌리고 있는 소름 돋는 실리주의자입니다. 형제들 사이에서 부양 문제나 병원비로 피 터지는 충돌이 나면 절대 대놓고 앞에 나서지 않고 관망하다가, 결국 나에게 제일 이득이 되는 쪽에 은근슬쩍 들러붙는 기회주의적 성향이 농후합니다. 억울한 일이 있어도 대놓고 싸우지 않고 눈물을 무기로 분위기와 상황을 교묘하게 조작해서 부모님이 스스로 내 편을 들게 만드는 음흉하고 완벽한 전술의 달인입니다. 진짜 속마음과 숨겨둔 비자금은 죽어도 꺼내 보여주지 않으면서 집안의 알짜배기 혜택은 알뜰살뜰 다 챙겨 먹는 가장 무서운 실속파입니다.",
+        '庚子': "부모 형제의 감정적인 헛소리나 모순을 귀신같이 잡아내서 자비 없는 뼈 때리는 논리로 압살해 버리는 집안의 팩트 폭행 전차입니다. 가족이 밖에서 상처받아 위로나 공감을 바라고 하소연했다간 그건 니가 멍청하게 굴어서 그런 건데? 라며 차가운 얼음장 팩트로 명치를 찌르고 눈물 콧물 빼게 만듭니다. 감정에 휩쓸려 오열하거나 신세 한탄하는 막장 드라마 꼴을 극도로 혐오하고 언제나 냉철한 이성 충을 유지하려 애씁니다. 형제가 도박으로 빚을 지고 보증을 서달라거나 거짓말을 치는 순간 혈연이라도 버러지 취급하며 미련 없이 인연을 끊어버리는 서늘한 결단력이 있습니다. 너무 차갑고 기계 같아서 정떨어지지만, 집안에 법적 소송이나 금전 문제가 터졌을 땐 이 가족만한 완벽한 알파고 해결사가 없습니다.",
+        '辛丑': "아무리 집안이 돈 문제로 뒤집어지고 빡치는 상황에서도 안면 근육 하나 안 떨리고 꾹꾹 눌러 참는 극강의 징그러운 포커페이스입니다. 부모님이 아무리 노골적으로 편애하고 비수를 꽂아도 그 자리에서 절대 티를 안 내고 조용히 밥만 넘기기 때문에 남들은 이 자식이 뇌가 맑은 보살인 줄 압니다. 하지만 사실은 똥고집이 황소 뺨치게 쎄고, 속으로는 받은 상처와 원한을 사골 곰탕처럼 푹푹 끓이며 복수의 칼을 갈고 있는 중입니다. 이미 썩어 문드러진 집안 문제나 빚쟁이 형제도 쉽게 끊어내지 못하고 미련하게 혼자 끌어안고 가는 고구마 1,000개 먹은 답답함이 있습니다. 평생을 호구처럼 참다가 어느 날 명절에 한계치가 터지면 밥상을 다 엎어버리고 쌍욕을 시전하는 조용한 화산 같은 무서운 성질입니다.",
+        '壬寅': "집구석에 가만히 앉아있는 꼴을 1초도 못 견디고 늘 새로운 밖의 자극과 사람들을 찾아 쏘다니는 통제 불능 자유의 영혼입니다. 지적 호기심이 뛰어나서 명절에 어른들과 정치나 경제 토론하는 걸 즐기고, 입담이 워낙 좋아서 지루한 제사 분위기를 화기애애한 예능으로 리드합니다. 오지랖이 태평양 같아서 온갖 친척들의 민원과 연애 상담을 도맡아 하고 위기에 빠진 가족을 지나치지 못하는 홍반장 기질이 낭낭합니다. 하지만 워낙 밖으로 발이 넓고 역마살이 심하게 끼어서 본가에 진득하게 붙어서 부모님을 케어하거나 깊고 끈끈한 소속감을 가지진 못합니다. 꼰대 같은 간섭과 구속을 질색해서 명절에 언제 오냐고 잔소리하면 폰 끄고 혼자 치앙마이로 여행 가버리는 잡힐 듯 잡히지 않는 바람 같은 자식입니다.",
+        '癸卯': "집안의 공기 흐름과 식구들의 멘탈 상태를 1초 만에 스캔해서 그에 맞춰 완벽하게 연기하고 행동하는 극강의 눈치와 센스를 장착했습니다. 엄마가 우울증 기미가 보이면 말없이 명품 립스틱을 사다 주고, 아빠가 극대노해 보이면 납작 엎드려서 비위를 맞춰주는 등 거의 전문 감정 노동자 수준의 눈물겨운 헌신을 보여줍니다. 가족 간의 고성방가나 갈등 상황을 극도로 회피해서, 자기가 1도 잘못하지 않았어도 집안 평화를 위해 일단 싹싹 빌고 상황을 무마시키려는 유약하고 짠한 면이 있습니다. 자존감이 다소 낮고 결정 장애가 심해서 이사 방향이나 이직 문제도 부모님이나 언니 오빠에게 끊임없이 묻고 의존하는 피곤한 껌딱지 기질이 셉니다. 둥글둥글 착하지만 가족 가스라이팅에서 벗어나 독립하는 법을 시급히 배워야 할 온실 속 화초입니다.",
+        '甲辰': "집안 어른들이 꼰대 마인드로 이래라저래라 훈수를 두거나 가풍을 들이밀며 가르치려 드는 걸 극도로 혐오하는 반항아 기질의 1인자입니다. 집안에서도 무조건 자기가 주도권을 쥐고 목소리를 높여 통제해야 직성이 풀리며, 다른 형제가 나대거나 대장 노릇을 하려 들면 은근히 기강을 잡고 밟으려 듭니다. 자존심은 대기권을 찌르고 타협이란 걸 몰라서, 가족끼리 유산이나 제사 문제로 싸움이 나면 자기가 100퍼센트 잘못했어도 절대 먼저 미안하다는 소리를 안 하고 방에 틀어박혀 굶어 죽을 각오로 버티는 똥고집입니다. 쓸데없는 오지랖이 넓어서 형제들 부부 싸움에 훈수를 두다가 오히려 이혼 직전까지 판을 키우기도 합니다. 제멋대로에 성질머리도 괴팍하지만 역설적이게도 부모가 중병에 누우면 가장 앞장서서 병원비를 대출받아 내는 폼생폼사 행동파 효자 효녀입니다.",
+        '乙巳': "집안에서 숨만 쉬어도 식구들을 홀리고 끌어당기는 묘한 뱀 같은 매력과 미친 애교로 어른들의 사랑과 유산을 독차지하는 요물 같은 존재입니다. 썰렁한 집안의 분위기 메이커 역할을 자처하며 깐깐한 부모님의 속마음을 귀신같이 읽어내서 가려운 곳을 긁어주는 싹싹하고 완벽한 처세술을 자랑합니다. 하지만 감정 기복이 조울증 널뛰기 수준이라 아까까지 박장대소하며 화투를 치다가도, 자기 심기나 콤플렉스를 건드리면 갑자기 표정이 썩어 들어가며 집안 분위기를 북극 살얼음판으로 얼려버립니다. 참을성이 생후 1개월 수준이고 욱하는 성질에 필터링 없는 독설을 내뿜어 형제들 가슴에 대못을 박고는, 다음 날 아무 일 없었다는 듯 배스킨라빈스 사 들고 들어오는 도저히 뇌 구조를 종잡을 수 없는 매력적인 도른자입니다.",
+        '丙午': "자존심과 자아 비대가 태양계를 뚫고 나가는 집안의 브레이크 고장 난 유아독존 폭군 스타일입니다. 명절 모임에서 스포트라이트는 무조건 내가 다 받아야 직성이 풀리고, 부모님이 다른 형제를 칭찬하며 비교하거나 내 의견을 묵살하면 불같이 화를 내며 끓는 제사 국을 엎어버릴 기세의 파괴왕입니다. 기가 너무 쎄고 전투력이 높아서 웬만한 형제자매들은 기가 쪽쪽 빨려 알아서 눈치를 보고 비위를 맞추며 피해 다닙니다. 가족에게 서운한 일이 생기면 뒤에서 꿍꿍 앓거나 정치질을 하지 않고, 그 자리에서 어른이고 뭐고 쌍욕 섞인 사이다 팩폭을 날려버리는 미친 다혈질입니다. 하지만 다음 날이면 뇌세포가 리셋이 되어 엄마 밥 줘 하고 태연하게 기어 나오는 붕어 기억력의 소유자입니다. 맞추긴 더럽게 힘들지만 뒤끝 하나는 세계 최고로 깔끔한 화끈한 골목대장입니다.",
+        '丁未': "겉으로 보기엔 부모님 말씀에 다 순종하고 배려심 넘치는 천사표 효자 효녀 같지만, 속을 까보면 꼬장꼬장한 늙은이 아집과 맹독으로 무장한 외유내강형 꼰대입니다. 부모님의 신세 한탄을 세상 진지하게 다 들어주고 맞춰주는 척 훌륭한 리액션을 보이지만, 정작 자기 진로나 결혼 문제 등 중대사에 있어서는 절대 가족 뜻대로 안 하고 기어이 자기 똥고집대로 밀고 나가는 벽창호입니다. 식구들에게 상처받고 서운한 일이 생기면 그 자리에서 뒤집어엎지 않고 가슴 속 데스노트에 꼼꼼히 날짜별로 적어뒀다가, 나중에 재산 분할이나 제사 문제로 크게 싸울 때 15년 전 서운했던 일화까지 토씨 하나 안 틀리고 끄집어내 상대방의 멘탈을 털어버리는 뒤끝 작렬의 달인입니다. 평소엔 한없이 헌신적이지만 핀트가 나가면 지옥의 독설을 쏟아내는 지킬 앤 하이드입니다.",
+        '戊申': "부모님이 말 한마디를 시키면 입에서 대답이 돌아오기까지 세월아 네월아 속이 터져나가는 무뚝뚝함과 단답형의 결정체입니다. 엄마가 옆에서 갱년기로 오열하고 감정 호소를 해도 바위처럼 눈 하나 깜짝 안 하는 무반응이어서 상대를 미쳐버리게 만듭니다. 따뜻한 위로나 오글거리는 가족애 따위는 개나 줘버렸고 오로지 효율성, 돈, 현실적 이득만 따지는 지독한 알파고 계산기입니다. 어버이날 카네이션이나 롤링페이퍼를 주면 돈 아깝게 쓰레기를 왜 사냐며 차라리 그 돈을 통장에 입금해 달라고 정색할 정도로 감성 지수가 처참합니다. 겉치레 문안 인사나 안부 전화는 극혐하여 1년에 두어 번 연락할까 말까 하지만, 부모님이 중병에 걸렸을 때 말없이 수술비 수천만 원을 일시불로 긁어버리는 식의 상남자 상여자 식 팩트 폭행 효도의 표본입니다.",
+        '己酉': "명절 가족 모임 구석에 조용히 앉아 배나 깎고 있는 것 같지만, 눈알은 쉴 새 없이 돌아가며 부모님의 통장 잔고 기류와 형제들의 찌질한 약점을 데이터베이스화하고 있는 소름 돋는 관찰자입니다. 눈치가 미치도록 빠르고 손익 계산이 칼날 같아서, 집안에서 나한테 돈이 되는 일과 뒤집어쓸 독박 짐(부모님 모시기, 빚 갚기)을 기가 막히게 분리수거하여 요리조리 피합니다. 장남 장녀라 할지라도 억울하게 부양 부담을 지고 호구 잡히는 걸 죽기보다 싫어해서, 증여세나 상속 문제는 1원 단위까지 형제들과 칼같이 공평하게 나눠야 직성이 풀립니다. 형제끼리 싸움이 나면 흥분해서 소리치지 않고, 아주 차분한 목소리로 상대방의 가장 아픈 콤플렉스와 치부만 정밀 타격하여 오열하게 만들어버리는 잔인한 언변술의 달인입니다.",
+        '庚戌': "세상을 극단적인 흑백 논리로만 바라보며 내 가풍과 융통성 없는 원칙을 따르지 않는 가족은 무식하고 덜떨어졌다고 속으로 맹렬히 무시하는 살벌한 꼰대입니다. 가족이면 무조건 피를 나누고 헌신해야지 라는 맹목적인 장남 장녀 콤플렉스와 폼생폼사에 죽고 사는 진짜베기 의리파 쌈닭이기도 합니다. 한 번 내 바운더리에 들어온 내 새끼, 내 동생은 사채 빚을 내서라도 끝까지 책임지고 보호하는 수호신 든든함이 있습니다. 하지만 그만큼 형제나 부모가 내 기대를 처참히 꺾고 부끄러운 범죄나 사기를 치면, 그 자리에서 경찰에 신고해 버리고 호적을 파버릴 무자비한 결단력이 있습니다. 타협이나 유도리라곤 1도 없고 잔소리가 숨 막힐 정도로 꽉 막혀 대화가 안 통하지만, 융통성 하나 빼면 쓰러져가는 집안을 다시 일으켜 세울 가장 듬직한 기둥입니다.",
+        '辛亥': "우아하고 세련된 인스타 감성의 라이프스타일에 미쳐서 조금이라도 지저분한 본가 화장실 환경이나 촌스러운 부모님의 억척스러운 행동을 1초도 견디지 못하는 극강의 결벽주의자입니다. 거지근성으로 똘똘 뭉쳐 돈 꿔달라고 징징대는 형제나, 매너 없이 밥그릇 긁는 소리를 내는 식구를 보면 벌레 보듯 극도로 혐오하며 명절 참석을 일방적으로 보이콧해버립니다. 가족 사이에서도 프라이버시를 지키고 호텔급의 품격 있는 대우를 원하며, 자기가 비싼 한우 세트를 보낸 만큼 부모님도 센스 있게 용돈으로 보답해 주길 바라는 철저하게 계산적인 면이 다분합니다. 말솜씨가 화려하고 밖에서는 돈 많은 부잣집 자식 행세를 완벽히 해내는 소름 돋는 연기파입니다. 잣대가 너무 까다롭고 높아서 정작 핏줄들과 진짜 마음을 터놓고 지내진 못하는 고독하고 피곤한 완벽주의자입니다.",
+        '壬子': "얼굴엔 사람 좋은 둥글둥글한 효자의 미소를 띠고 있지만, 속에는 시커먼 흑막과 아무도 모르는 엄청난 비밀을 가득 품고 있는 깊이를 알 수 없는 심해 같은 성격입니다. 부모님 앞에서는 다 양보하는 척하고 형제들과도 갈등 없이 둥글게 지내지만, 결국 유산 분배 문제나 집안의 중대사는 교묘한 가스라이팅으로 자기가 원하는 대로 쥐고 흔들어야 직성이 풀립니다. 겉으론 한없이 여유롭고 부처님처럼 화를 안 내는 척하지만 속으로는 자존심이 미친 듯이 오만하게 강하고, 형제에게 한 번 앙심을 품으면 죽을 때까지 복수의 칼날을 갈고 잊지 않습니다. 선 넘는 간섭이나 사생활 침해를 극도로 혐오해서 부모님이 연봉이나 결혼을 캐물으면 눈빛이 살인마처럼 서늘하게 돌변합니다. 평생을 허허실실 참다가 한 번 꼭지가 돌면 쌍욕을 섞어가며 제사상을 엎고 집안을 쑥대밭으로 만드는 흉폭성이 숨어있습니다.",
+        '癸丑': "부모 형제에게 내 거 다 양보하고 헌신하며 궂은일 다 하는 짠내 폭발 호구 찐따 같아 보이지만, 사실은 이 집안의 모든 권력 구조와 동정 여론을 뒤에서 완벽하게 조종하고 있는 지독하고 무서운 전략가입니다. 일방적으로 차별받고 독박 간병 등 희생당하는 불쌍한 가족 포지션 속에서도 꿋꿋하게 버티는 기괴할 정도의 징그러운 인내심을 보여줍니다. 하지만 절대 뇌가 순수하고 멍청해서 참는 게 아니라, 부모님의 죄책감을 극도로 자극하여 결국 숨겨둔 알짜배기 땅이나 가장 큰 심리적 유산을 다 빼먹을 때까지 찰거머리처럼 붙어있는 소름 돋는 집념입니다. 속을 알 수 없는 음침함이 깔려있어 끊임없이 부모님의 사랑을 다른 형제와 비교하며 피해 의식을 느끼고 시험하려 듭니다. 한 번 엮이면 평생 부양과 눈물 콧물 짜는 헌신의 가스라이팅에서 빠져나올 수 없는 피곤한 애증의 늪입니다.",
+        '甲寅': "누가 시키는 건 죽어도 반대로 안 하고 자기가 이 집안의 머리가 되고 대장이 되어야만 밥이 넘어가는 자존심과 고집의 끝판왕입니다. 부모님이 조언이랍시고 진로에 잔소리를 하거나 선을 넘으려 하면 불같이 화를 내며 그날로 짐 싸서 가출을 선언하거나 핏줄 관계를 그 자리에서 박살 내버리는 핵불닭 멘탈입니다. 타협이라고는 사전에서 찢어버린 직진형이라 명절 가족 여행을 갈 때도 내 동선이 무조건 100퍼센트 맞아 라며 불도저처럼 밀어붙여 온 식구들의 피로도를 극에 달하게 만듭니다. 형제와 재산이나 의견 문제로 쌍욕 하며 싸움이 나면 하늘이 두 쪽 나도 절대 먼저 고개 숙여 사과하는 법이 없고 10년이고 20년이고 말 안 하고 버티며 자존심을 세웁니다. 고집불통에 천하의 불효자 소리도 듣지만, 사기꾼이나 외부의 위협이 생기면 내 식구만큼은 짐승처럼 물어뜯어 지켜내는 상남자 의리파입니다.",
+        '乙卯': "형제자매 사이에서도 은근히 지기 싫어하는 피 말리는 승부욕과 애정 결핍, 관심 종자의 화신입니다. 부모님이 나보다 동생이나 오빠를 더 챙기는 꼴을 보면 속에서 천불이 나고 극악의 찌질한 질투심에 휩싸여 명절 밥상머리에서 궁상맞게 투정을 부리거나 분위기를 다 망쳐놓기 일쑤입니다. 사소한 일상 말싸움에서도 기어이 꼬투리를 잡고 논리로 상대를 짓밟아 무조건 자기가 이겼다는 항복을 받아내야 직성이 풀리는 피곤한 쌈닭입니다. 내 방, 내 물건, 내 부모님에 대한 소유욕이 병적으로 소름 돋게 강해서 식구들의 폰 비번이나 일거수일투족을 다 꿰뚫고 있어야 마음이 편해지는 숨 막히는 집구석 CCTV 역할을 자처합니다. 집착과 의심을 눈물겨운 가족애라 착각하는 정신 나간 성향 탓에 주변 식구들의 멘탈을 서서히 말라 죽게 갉아먹기 딱 좋은 피곤한 찰거머리 스타일입니다.",
+        '丙辰': "입만 열면 청산유수 사기꾼 뺨치는 화려한 언변으로 온갖 친척들의 혼을 쏙 빼놓고 홀려버리는 마성의 구강 액션 종결자입니다. 씀씀이가 부자집 회장님 급으로 크고 오지랖이 태평양 같아서 밖에서 남들 밥도 잘 사주고 베풀기 좋아해 밖의 남들 눈엔 훌륭한 사람, 성공한 자식처럼 보입니다. 하지만 집안에서 형제와 빚 문제나 부양으로 다툼이 생기면 특유의 기가 막힌 혓바닥 드리블로 내 잘못조차 상대방이 오해한 탓으로 둔갑시켜 버리는 소름 돋는 가스라이팅 능력을 시전합니다. 부모님 통장을 거덜 내고 속을 뒤집어 놓고도 뻔뻔하게 말로 구워삶아 결국 웃으면서 용서하게 만드는 얄밉고도 무서운 재주가 있습니다. 밖에서 얕고 넓은 남들 챙기느라 정작 집에 생활비는 땡전 한 푼 안 주거나 찐 가족 행사에 소홀하여 원성을 사는 전형적인 밖에서만 젠틀한 쇼윈도 인싸입니다.",
+        '丁巳': "가족 안에서도 텐션의 고저차가 에베레스트 정상과 태평양 심해를 미친 듯이 오가는 초특급 조울증 감정 기복의 소유자입니다. 기분이 째질 때는 세상에 다시없을 효자 효녀가 되어 온갖 호들갑을 떨며 명품 선물과 용돈 봉투를 뿌려대지만, 부모님이 심기를 조금이라도 건드리면 그 즉시 눈을 까뒤집고 폭언을 쏟아붓고 문을 부서져라 쾅 닫고 들어가는 분노조절장애급 흑화 텐션을 보여줍니다. 형제에게 미친 듯이 집착하고 내 간까지 빼줄 듯 다 퍼주다가도, 명절 카톡 답장이 늦거나 약간 서운하게 하면 돌연 의심의 눈초리를 번뜩이며 5년 전 서운함까지 다 캐묻고 사람 피를 말리는 미저리 짓을 합니다. 성격이 브레이크 터진 불도저 같아서 싸우면 앞뒤 안 가리고 TV고 뭐고 다 부수지만, 그만큼 집에 불이 나거나 위기엔 목숨 걸고 불길에 뛰어들어 가족을 구하는 맵고 뜨거운 또라이입니다.",
+        '戊午': "집안에서 무조건 내가 세상의 중심이어야 하고 통제권을 독재자처럼 쥐어야만 밥맛이 도는 무자비한 꼰대 대마왕 스타일입니다. 가족 외식 메뉴, 명절 도착 시간, 심지어 동생의 대학 진로까지 전부 자기 입맛대로 통제하고 검열해야 마음이 편하며 식구들이 반기라도 들면 그 자리에서 쌍욕 하며 밥상을 엎어버립니다. 부모님마저도 내가 돈 번다는 유세로 내가 부양하고 가르쳐야 할 아랫사람 정도로 생각하는 오만한 경향이 있어, 선을 쎄게 넘는 과도한 간섭과 꼰대력을 발산해 식구들 숨통을 턱턱 조입니다. 애정 표현 방식조차 너무 군대식으로 강압적이고 거칠어서 돈을 수백 쓰고도 욕을 처먹는 미련한 불상사가 잦습니다. 남의 말을 귓등으로도 안 듣고 자기가 신인 줄 아는 이 똥고집을 꺾지 않으면 늙어서 자식들에게 버림받고 독거노인이 될 확률이 99퍼센트인 꽉 막힌 대장부입니다.",
+        '己未': "겉으로는 묵언 수행하는 바위 스님처럼 얌전해 보이지만 속에는 독 품은 킹코브라 한 마리가 살고 있는 징그럽고 질긴 집념의 고집불통 가족입니다. 부모님에게 따뜻한 애정 표현이나 살가운 짓은 더럽게 안 하면서 본가 냉장고 파먹으며 찰싹 붙어 기생하는 생존력 강한 거머리 캥거루족 기질이 있습니다. 가족이 아무리 나를 호구 취급하고 막말을 퍼부으며 선을 넘어 빡치게 해도 바로 집을 나가지 못하고 방문 닫고 혼자 꾹꾹 눈물 삼키며 미련하게 버티는 고구마 10,000개 멘탈을 가졌습니다. 가장 큰 문제는 그 서운함을 그냥 잊는 게 아니라 뇌 속 블랙박스에 풀HD로 전부 녹화해 뒀다가 먼 훗날 유산 문제나 큰 다툼이 터질 때 25년 전 죄상까지 날짜와 시간까지 하나하나 읊으며 사람 피를 말려 죽인다는 겁니다. 노잼의 끝판왕이지만 한 번 맡은 빚 갚기나 부양 의무는 끝까지 책임지는 듬직한 소입니다.",
+        '庚申': "빙빙 돌려 말하며 눈치 보고 굽신거리는 꼴은 죽어도 못 견디는 집안의 무자비한 팩트 폭행 장갑차입니다. 가벼운 칭찬이나 빈말 위로 따위는 인생 사전에 존재하지 않으며, 형제가 주식이나 코인에 손대어 말아먹고 하소연하면 위로는커녕 멍청해서 당한 거지 뭐 라며 명치에 블랙홀이 생길 정도의 직설적인 팩트로 꽂아버려 순식간에 분위기를 숨 막히는 초상집으로 만듭니다. 가족 간의 신뢰를 밥 먹듯이 깨거나 보증을 서달라며 질척대는 핏줄은 단 1초의 망설임 없이 등본에서 파버릴 각오로 손절 치고 사람 취급도 안 하는 피도 눈물도 없는 사이코패스급 결단력을 가졌습니다. 나 잘난 맛에 살아서 남한테 죽어도 지기 싫어하고 가족 앞에서도 절대 먼저 미안하다고 사과 안 하는 오만함의 끝판왕이지만, 앞뒤가 투명할 정도로 똑같아서 유산으로 통수 치는 정치질은 절대 안 하는 제일 확실하고 든든한 가장입니다.",
+        '辛酉': "가족들의 머리끝부터 발끝까지 엑스레이 스캐너처럼 훑으며 급을 매기고 찌질한 단점만 후벼 파내는 인간 현미경이자 밉상입니다. 아빠의 맞춤법 파괴된 카톡, 엄마의 촌스럽고 시끄러운 아줌마 행동, 형제의 쩝쩝거리는 극혐 밥버릇 등 아주 사소하고 인간적인 하자를 기가 막히게 잡아내서 밥상머리에서 은근히 꼽을 주고 깎아내려 기분을 잡치게 만듭니다. 본인 기준에 미달하는 저급한 행동을 보면 속으로 정나미가 뚝 떨어져 명절에도 코빼기를 안 비치고 카톡 읽씹하며 무시하는 오만하고 차가운 얼음장 성격을 지녔습니다. 부양비나 조카 축의금도 100원 단위까지 더치페이와 엑셀을 외치며, 핏줄 상대로도 절대 손해 보는 짓은 안 하는 영악한 계산기입니다. 숨 막힐 정도로 깐깐해서 온 식구를 병들게 하지만, 집안의 대출이나 부동산 대소사를 결정할 땐 안목 하나 기가 막히게 탁월한 피도 눈물도 없는 냉혈한 브레인입니다.",
+        '壬戌': "내 식구가 밖에서 누구한테 처맞고 들어오거나 사기를 당하면 사채 빚을 내서라도 변호사 사고 깡패 동원해 복수해 주고 무덤까지 같이 들어갈 각오를 하는 징글징글하고 소름 돋는 의리파입니다. 평소엔 밖으로 돌며 허허실실 동네 바보 형처럼 사람 좋아 보이지만, 사실은 집안 내에서 끊임없는 의심과 질투로 점철된 미저리 같은 무서운 구석이 똬리를 틀고 있습니다. 직관력이 신내림 받은 무당 수준이라 형제가 치는 얕은 돈 거짓말이나 엄마의 장롱 속 숨겨진 비자금은 1초 만에 꿰뚫어 보고 코웃음을 치며 비웃습니다. 부모님의 통화 내용이나 말투 하나하나에 과대망상급 의미를 부여하고 집착하며 조금만 틈이 보이면 바로 캐묻고 폰을 털려 드는 피곤한 성향 탓에 상대를 숨 막혀 죽게 만듭니다. 빡쳐서 감정이 터지면 가전제품을 다 부수며 파괴적으로 변하지만 가족 의리 하나만큼은 조선 시대 장군 뺨치는 진국입니다.",
+        '癸亥': "눈치 100단에 두뇌 회전은 멘사급 아이큐 200이라 집안에 빚더미 등 무슨 엄청난 풍파가 닥쳐도 절대 자기가 피 보거나 희생하는 일은 안 만드는 신들린 회피 기동과 생존의 달인입니다. 겉보기엔 성질 둥글둥글 좋게 형제들에게 다 양보하고 져주는 착해 빠진 자식 같아 보이지만, 실상은 그 불리해 보이는 상황조차 자기가 다 설계하고 통제하며 가장 큰 이득을 노리는 중인 소름 돋는 제갈량급 지략가입니다. 형제들끼리 부모님 유산이나 부양 문제로 칼부림 날 듯 피 터지게 싸울 때, 절대 총대 안 매고 뒤에서 팝콘 먹으며 구경하다가 결국 이긴 편에 쓱 붙거나 가장 실속 있는 알짜배기 부동산만 챙겨서 홀연히 떠나는 얍삽함이 돋보입니다. 가족들의 더러운 속마음을 훤히 들여다보면서도 절대 자기 속은 1도 안 보여주는 음침하고 시커먼 심연이 있습니다. 징그럽게 똑똑하고 팩트에 기반한 계산만 돌려 자기 밥그릇은 절대 안 놓치는, 제일 무섭고도 안전한 정치 9단 핏줄입니다."
+    };
+
+    function getCompatibilityResult(meGan, meZhi, youGan, youZhi, meEls, youEls, meBaziObj, youBaziObj) {
+        
+        let ganScore = 50, zhiScore = 10;
+        let ganText = "", zhiText = "", synergyText = "", simText = "", solutionText = "";
+        let ganRel = "무난", zhiRel = "무난"; 
+
+        // 1. 천간 십성 정밀 분석 (본질적 가치관과 권력 구조)
+        const ganHap = [['甲', '己'], ['乙', '庚'], ['丙', '辛'], ['丁', '壬'], ['戊', '癸']];
+        const generateMap = {'木':'火', '火':'土', '土':'金', '金':'水', '水':'木'};
+        const overcomeMap = {'木':'土', '土':'水', '水':'火', '火':'金', '金':'木'};
+        const ganPolarity = {'甲': 1, '乙': -1, '丙': 1, '丁': -1, '戊': 1, '己': -1, '庚': 1, '辛': -1, '壬': 1, '癸': -1};
+
+        let isHap = false;
+        ganHap.forEach(p => { if ((p[0] === meGan && p[1] === youGan) || (p[0] === youGan && p[1] === meGan)) isHap = true; });
+
+        const meGanEl = elementMap[meGan];
+        const youGanEl = elementMap[youGan];
+        const mePol = ganPolarity[meGan];
+        const youPol = ganPolarity[youGan];
+        const isSamePol = (mePol === youPol);
+
+        if (isHap) {
+            ganRel = "합"; ganScore = 95;
+            ganText = "<span class='hl'>[천간합 - 벗어날 수 없는 영혼의 족쇄]</span> 명리학에서 두 글자가 자석처럼 들러붙어 아예 새로운 기운으로 변해버리는 강력한 합의 관계입니다. 이 가족과는 이성적인 판단이 잘 서지 않습니다. 서로가 서로의 일상을 너무 당연하게 침범하고, 내 문제와 상대의 문제를 분리하지 못해 감정이 하나로 엉켜버립니다. 상대가 우울하면 나도 이유 없이 끝없이 가라앉고, 상대가 기쁘면 내 일처럼 흥분되는 소름 돋는 텔레파시가 통합니다. 다른 형제자매나 친척들은 두 사람 사이에 흐르는 이 은밀하고 견고한 결속력을 뚫고 들어오지 못해 소외감을 느낄 정도입니다. 떨어져 있으면 몹시 불안하고 그립지만, 막상 너무 오래 붙어있으면 내 자아가 사라지는 듯한 숨 막힘을 겪는 지독한 카르마의 인연입니다.";
+        } else if (meGanEl === youGanEl) {
+            if (isSamePol) {
+                ganRel = "비견"; ganScore = 60;
+                ganText = "<span class='hl'>[비견 - 거울 치료와 무언의 평행선]</span> 본질적인 오행과 음양이 소름 돋게 일치하는 완벽한 평행 관계입니다. 상대방을 보고 있으면 내가 절대 남에게 들키고 싶지 않았던 나의 고집, 나의 은밀한 단점, 나의 방어기제가 고스란히 반사되어 보여 묘한 불쾌감과 동질감을 동시에 느낍니다. 척하면 척 통하는 순간에는 이 세상 최고의 동지지만, 한 번 의견이 엇갈리면 절망적일 정도로 타협이 안 됩니다. 내가 굽히기 싫은 정확히 그 포인트에서 상대방도 죽어도 굽히지 않고 버티기 때문입니다. 소리 질러 싸우기보다는 서로 한 치의 양보 없이 투명 인간 취급하며 냉전을 벌이는 경우가 많습니다. 서로가 서로의 거울임을 인정하는 순간 놀라운 평화가 찾아옵니다.";
+            } else {
+                ganRel = "겁재"; ganScore = 40;
+                ganText = "<span class='hl'>[겁재 - 미소 뒤에 감춰진 보이지 않는 저울]</span> 피를 나눈 가족임에도 불구하고, 기저에 가장 치열한 생존 경쟁과 비교 심리가 깔려 있는 관계입니다. 겉으로는 생일도 챙겨주고 다정한 척하지만, 무의식적으로 부모님의 애정, 유산의 크기, 서로의 사회적 위치와 연봉을 끊임없이 저울질하며 나의 파이가 뺏기지 않을까 예민하게 촉각을 곤두세웁니다. 내 형제가 너무 잘 나가면 머리로는 축하하면서도 속으로는 알 수 없는 박탈감에 시달리고, 반대로 상대가 무너지면 가장 먼저 뛰어가 구제해 주는 아이러니한 애증을 보입니다. 동업을 하거나 돈을 합치는 순간 집안의 재물이 흩어지는 흉한 작용이 일어나니 철저한 더치페이와 재산 분리가 생명줄입니다.";
+            }
+        } else if (generateMap[meGanEl] === youGanEl) { 
+            if (isSamePol) {
+                ganRel = "식신"; ganScore = 80;
+                ganText = "<span class='hl'>[식신 - 본능적인 보호 본능과 짝사랑]</span> 이상하게 이 식구만 보면 뭐라도 하나 더 챙겨 먹이고 싶고, 입고 다니는 옷이 허술해 보여 내 지갑을 열게 되는 자발적 헌신의 포지션입니다. 상대방이 딱히 예쁜 짓을 하지 않아도 당신의 뇌 구조는 이 사람을 내가 돌봐야 할 영역으로 인식합니다. 상대방은 당신의 이런 희생을 마치 햇빛이나 공기처럼 너무나 자연스럽고 편안하게 받아들입니다. 하지만 이 내리사랑이 길어지면 당신의 에너지는 서서히 고갈되며, 어느 순간 나는 이렇게 퍼주는데 쟤는 왜 나한테 이것밖에 안 하지?라는 근원적인 서운함이 파도처럼 밀려옵니다. 헌신하고도 혼자 상처받지 않으려면, 베푸는 것 자체에서 만족을 찾는 해탈이 필요합니다.";
+            } else {
+                ganRel = "상관"; ganScore = 70;
+                ganText = "<span class='hl'>[상관 - 완벽을 강요하는 차가운 조각가]</span> 당신이 상대방을 진심으로 아끼고 사랑하지만, 그 표현 방식이 지독할 정도로 날카롭고 분석적입니다. 상대의 부족한 점, 고쳐야 할 태도, 잘못된 경제 관념이 당신의 눈에는 엑스레이처럼 꿰뚫어 보입니다. 그래서 다 너 잘되라고 하는 소리라며 가차 없는 팩트 폭행과 교정을 시도합니다. 당신은 상대방의 인생을 완벽하게 세팅해 주려 하지만, 정작 상대방은 당신의 쏟아지는 지적질과 잔소리에 숨이 턱턱 막히고 자존감이 깎여 나간다고 느낍니다. 최고의 선물을 사주고도 말 한마디로 상대의 마음에 비수를 꽂아 좋은 소리를 못 듣는 함정에 빠지기 쉽습니다.";
+            }
+        } else if (generateMap[youGanEl] === meGanEl) { 
+            if (isSamePol) {
+                ganRel = "편인"; ganScore = 65;
+                ganText = "<span class='hl'>[편인 - 끊임없이 눈치를 보는 불안한 수혜자]</span> 당신이 상대방 가족의 지원과 혜택을 받고 있음에도 불구하고, 묘하게 심리적인 긴장감을 늦출 수 없는 관계입니다. 상대방은 당신에게 사랑과 물질을 내어주지만, 은연중에 내가 이만큼 해주니 너도 내 기대를 충족시켜야 한다는 무언의 압박을 보냅니다. 당신은 상대방의 미세한 표정 변화나 한숨 소리 하나에도 내가 뭘 잘못했나? 하며 눈치를 보게 되고, 상대의 기분을 맞추기 위해 내 진짜 감정을 숨기고 연기하게 됩니다. 물질적으로는 풍요로울지 몰라도 정신적으로는 늘 한구석이 허기지고 기가 빨리는 패턴이 반복되니, 정서적인 독립을 이루는 것이 평생의 숙제입니다.";
+            } else {
+                ganRel = "정인"; ganScore = 85;
+                ganText = "<span class='hl'>[정인 - 맹목적인 안식처와 캥거루의 꿈]</span> 상대방 가족이 당신에게 조건 없는 방패막이가 되어주는 가장 편안하고 수용적인 관계입니다. 당신은 이 식구 앞에서는 유독 긴장이 풀리고, 밖에서 묻혀온 세상의 때와 피로를 아무 여과 없이 투정 부리듯 쏟아내게 됩니다. 상대방은 당신의 이런 어리광을 바다처럼 품어주며 묵묵히 뒤치다꺼리를 감당합니다. 하지만 당신이 이 절대적인 보호막에 너무 익숙해진 나머지, 가족의 희생을 권리로 착각하여 무례하게 굴거나 독립심을 잃어버리는 치명적인 부작용이 생길 수 있습니다. 상대방이 지쳐서 쓰러지기 전에, 당신이 먼저 감사함을 표현하고 성인으로서의 책임을 덜어주어야 합니다.";
+            }
+        } else if (overcomeMap[meGanEl] === youGanEl) { 
+            if (isSamePol) {
+                ganRel = "편재"; ganScore = 55;
+                ganText = "<span class='hl'>[편재 - 무대 위의 체스판과 통제권]</span> 당신의 무의식 속에서 이 가족 구성원은 동등한 인격체라기보다는 내 관리하에 두어야 안심이 되는 체스말 같은 존재입니다. 당신은 스케일이 크고 상황을 주도하려는 욕구가 강해서, 상대방의 직업, 결혼, 심지어 일상적인 소비 패턴까지 당신의 통제와 큰 그림 안에 두려고 합니다. 상대방이 당신의 조언을 무시하고 독단적으로 행동하면 극심한 짜증과 답답함을 느낍니다. 하지만 상대방은 당신의 이런 넓은 오지랖을 숨 막히는 독재로 느끼며 은밀하게 반항할 기회를 엿보고 있습니다. 상대를 내 맘대로 개조할 수 없다는 현실을 인정해야 당신의 화병을 막을 수 있습니다.";
+            } else {
+                ganRel = "정재"; ganScore = 60;
+                ganText = "<span class='hl'>[정재 - 마이크로 매니징과 1원 단위의 채무]</span> 당신이 상대방의 행동거지 하나하나에 아주 깐깐한 기준표를 들이미는 집안의 감사관 포지션입니다. 당신은 가족 사이에도 지켜야 할 명확한 선, 비용의 분담, 주고받는 혜택의 밸런스가 한 치의 오차 없이 맞아야 마음이 편안합니다. 상대방이 시간 약속을 어기거나, 허투루 돈을 쓰거나, 매너 없이 행동할 때마다 당신의 머릿속 장부에는 마이너스 점수가 차곡차곡 기록됩니다. 이런 당신의 소름 돋는 계산력과 철저함 덕분에 집안의 재정이 지켜지기도 하지만, 상대방은 당신과 대화할 때마다 마치 은행 창구 직원에게 대출 심사를 받는 듯한 피로감과 건조함을 느낍니다.";
+            }
+        } else if (overcomeMap[youGanEl] === meGanEl) { 
+            if (isSamePol) {
+                ganRel = "편관"; ganScore = 30;
+                ganText = "<span class='hl'>[편관/칠살 - 숨통을 조이는 카르마의 천적]</span> 명리학에서 나를 무자비하게 극(剋)하는 칠살의 관계로, 이 가족과는 같은 공간에서 숨소리만 들려도 원인 모를 중압감과 스트레스가 몰려옵니다. 상대방이 악의 없이 던진 일상적인 질문조차 당신에게는 심문이나 치명적인 공격으로 느껴집니다. 상대방의 강렬한 기운 앞에 서면 평소 논리적이던 당신도 묘하게 꿀 먹은 벙어리가 되거나, 반대로 극도의 방어 기제가 작동해 날 선 반응을 보이며 폭발하게 됩니다. 상대방은 내가 뭘 어쨌다고 저러냐며 억울해하지만, 당신의 영혼은 본능적으로 상대를 피해야 할 포식자로 인식하고 있습니다. 가급적 물리적인 동선을 겹치지 않게 하는 것이 최선입니다.";
+            } else {
+                ganRel = "정관"; ganScore = 50;
+                ganText = "<span class='hl'>[정관 - 벗어날 수 없는 잣대와 십자가]</span> 상대방 가족이 당신에게 있어 무언의 도덕 교과서이자 집안의 엄격한 판사 같은 역할을 합니다. 당신은 이상하게 이 가족 앞에서는 내 자유분방한 본성이나 일탈을 철저히 숨기고, 가장 반듯하고 정상적인 가족 구성원인 척 연기를 해야 한다는 강박에 시달립니다. 상대방이 대놓고 화를 내지 않아도, 그들의 존재 자체가 당신에게는 가족으로서 마땅히 해야 할 도리를 강요하는 무거운 십자가처럼 느껴집니다. 숨 막히는 잣대에 질려 도망치고 싶다가도, 집안이 큰 위기에 처했을 때는 이 사람의 냉철하고 이성적인 판단력에 절대적으로 기대게 되는 모순적인 관계입니다.";
+            }
+        }
+
+        // 2. 월지 합/충/원진 (부모궁/가족 환경 교차 검증) 및 십성 정밀 분석
+        const zhiHap = [['子', '丑'], ['寅', '亥'], ['卯', '戌'], ['辰', '酉'], ['巳', '申'], ['午', '未'], ['申', '子'], ['子', '辰'], ['亥', '卯'], ['卯', '未'], ['寅', '午'], ['午', '戌'], ['巳', '酉'], ['酉', '丑']];
+        const zhiChung = [['子', '午'], ['丑', '未'], ['寅', '申'], ['卯', '酉'], ['辰', '戌'], ['巳', '亥']];
+        const zhiWonjin = [['子', '未'], ['丑', '午'], ['寅', '酉'], ['卯', '申'], ['辰', '亥'], ['巳', '戌']];
+        const zhiHyung = [['寅','巳'], ['巳','申'], ['申','寅'], ['丑','戌'], ['戌','未'], ['未','丑'], ['子','卯'], ['辰','辰'], ['午','午'], ['酉','酉'], ['亥','亥']];
+
+        let isZhiHap = false, isZhiChung = false, isZhiWonjin = false, isZhiHyung = false;
+        zhiHap.forEach(p => { if ((p[0] === meZhi && p[1] === youZhi) || (p[0] === youZhi && p[1] === meZhi)) isZhiHap = true; });
+        zhiChung.forEach(p => { if ((p[0] === meZhi && p[1] === youZhi) || (p[0] === youZhi && p[1] === meZhi)) isZhiChung = true; });
+        zhiWonjin.forEach(p => { if ((p[0] === meZhi && p[1] === youZhi) || (p[0] === youZhi && p[1] === meZhi)) isZhiWonjin = true; });
+        zhiHyung.forEach(p => { if ((p[0] === meZhi && p[1] === youZhi) || (p[0] === youZhi && p[1] === meZhi)) isZhiHyung = true; });
+
+        function getTenGod(gan, zhiChar) {
+            const ganElement = elementMap[gan];
+            const zhiElement = elementMap[zhiChar];
+            if (ganElement === zhiElement) return '비겁';
+            if (generateMap[ganElement] === zhiElement) return '식상';
+            if (overcomeMap[ganElement] === zhiElement) return '재성';
+            if (overcomeMap[zhiElement] === ganElement) return '관성';
+            if (generateMap[zhiElement] === ganElement) return '인성';
+            return '비겁';
+        }
+
+        const meMonthTenGod = getTenGod(meGan, meZhi);
+        const youMonthTenGod = getTenGod(youGan, youZhi);
+        
+        const meZhiEl = elementMap[meZhi];
+        const youZhiEl = elementMap[youZhi];
+
+        const familyEnvText = {
+            '비겁': "자립심과 치열한 경쟁을 통해 내 밥그릇은 내가 챙겨야 했던 주도적이고 개인주의적인 가풍",
+            '식상': "감정 표현이 비교적 자유롭고 각자의 개성과 활동성을 우선으로 존중해 주는 개방적인 환경",
+            '재성': "눈에 보이는 결과물, 돈, 그리고 현실적인 이득을 최우선으로 치는 철저한 경제 관념의 환경",
+            '관성': "남들의 시선과 체면, 집안의 엄격한 규칙을 중요시하며 보수적인 잣대가 강했던 깐깐한 가풍",
+            '인성': "부모님의 든든한 지원과 관심 아래서 기대치에 부응해야 한다는 정신적 부채감을 안고 자란 환경"
+        };
+
+        // 십성 환경 상호작용 분석
+        let tenGodInteraction = "";
+        if (meMonthTenGod === youMonthTenGod) {
+            tenGodInteraction = `두 사람 모두 <span class='hl'>[${meMonthTenGod}]</span>의 환경에서 자라나 무의식적인 결핍과 욕망의 결이 소름 돋게 똑같습니다. 눈빛만 봐도 집안의 눈치를 어떻게 봐야 할지 통하는 동지이자, 서로의 이기적인 속마음까지 너무 투명하게 들여다보여서 가끔은 징그럽고 짜증이 나는 거울 같은 관계입니다. 똥고집을 부리는 스위치도 같아서 한 번 싸우면 끝장을 봅니다.`;
+        } else if (
+            (meMonthTenGod === '비겁' && youMonthTenGod === '재성') || (meMonthTenGod === '재성' && youMonthTenGod === '비겁') ||
+            (meMonthTenGod === '식상' && youMonthTenGod === '관성') || (meMonthTenGod === '관성' && youMonthTenGod === '식상') ||
+            (meMonthTenGod === '재성' && youMonthTenGod === '인성') || (meMonthTenGod === '인성' && youMonthTenGod === '재성') ||
+            (meMonthTenGod === '관성' && youMonthTenGod === '비겁') || (meMonthTenGod === '비겁' && youMonthTenGod === '관성') ||
+            (meMonthTenGod === '인성' && youMonthTenGod === '식상') || (meMonthTenGod === '식상' && youMonthTenGod === '인성')
+        ) {
+            tenGodInteraction = `한쪽은 <span class='hl'>[${meMonthTenGod}]</span>, 다른 한쪽은 <span class='hl'>[${youMonthTenGod}]</span>의 가풍을 가져서 서로의 가치관이 창과 방패처럼 팽팽하게 맞붙는 상극의 환경입니다. 한쪽이 자유를 외치면 다른 한쪽은 규율로 억압하려 드는 식이라, 명절에 한집에 모이면 각자의 잣대를 들이밀며 숨 막히는 가치관 전쟁이 벌어집니다. 상대를 고치려다간 가족 해체 수순을 밟게 됩니다.`;
+        } else {
+            tenGodInteraction = `한쪽의 <span class='hl'>[${meMonthTenGod}]</span> 성향과 다른 한쪽의 <span class='hl'>[${youMonthTenGod}]</span> 성향이 만나, 톱니바퀴가 맞물리듯 서로의 부족한 가족애를 자연스럽게 채워주는 상생의 구조입니다. 각자 자라온 방식은 달라도, 은근히 상대방의 룰을 존중하고 수용할 수 있는 부드러운 여유가 존재합니다. 핏줄의 단점을 장점으로 덮어주는 꽤나 이상적인 밸런스입니다.`;
+        }
+
+        let interactionText = "";
+        if (isZhiWonjin) {
+            zhiRel = "원진"; zhiScore -= 20;
+            interactionText = "명리학에서 가장 까다롭고 피를 말리는 원진살이 부모궁에 끼어 있습니다. 명절에 각자의 가풍이나 일상 습관을 무의식적으로 드러낼 때마다, 논리적으로 설명할 수 없는 깊은 혐오감과 알 수 없는 짜증이 머리끝까지 솟구칩니다. 상대방 가족이 숨 쉬는 타이밍이나 밥 먹는 속도마저 꼴 보기 싫어질 수 있는 무서운 기운입니다. 저 집안은 도대체 왜 저렇게 유난일까 속으로 수천 번 욕을 삼키게 되니, 라이프스타일에 대한 참견을 완벽하게 차단하고 철저히 남처럼 예의를 갖추는 것만이 유일한 생명줄입니다.";
+        } else if (isZhiChung) {
+            zhiRel = "충"; zhiScore -= 10;
+            interactionText = "두 사람의 근본적인 자라온 환경이 시속 200km로 정면충돌하는 파괴적인 월지충 구조입니다. 돈을 쓰는 경제 관념, 제사를 지내는 방식, 냉장고 정리 정돈 상태 등 아주 사소한 생활 밀착형 문제에서 태생적으로 물과 기름처럼 섞이지 않습니다. 상대를 내 잣대로 계몽시키려 드는 순간 명절 밥상은 전쟁터로 변하고 돌아올 수 없는 강을 건너게 됩니다. 저 인간의 뇌 구조는 나와 아예 종족이 다르다 라고 체념하고 다름을 쿨하게 인정해야만 가정이 유지됩니다.";
+        } else if (isZhiHap) {
+            zhiRel = "합"; zhiScore += 20;
+            interactionText = "두 사람의 가족관과 자라온 배경은 서로의 결핍을 기적처럼 포근하게 감싸주는 완벽한 지지합의 환경입니다. 각자 본가에서 겪었던 상처나 부모님에 대한 남모를 애증을 누구보다 깊이 공감하고 위로해 줄 수 있습니다. 시댁이나 처가, 혹은 친척들에게 받은 스트레스를 이 식구 앞에서는 무장해제하고 시원하게 뒷담화하며 털어버릴 수 있는 최고의 영혼 안식처입니다. 다만 둘이서만 너무 똘똘 뭉쳐 다른 식구들을 왕따시키는 폐쇄적인 패거리가 되지 않도록 주의해야 합니다.";
+        } else if (isZhiHyung) {
+            zhiRel = "형"; zhiScore -= 5;
+            interactionText = "두 사람 사이에는 핏줄 사이에서도 은근하게 서로의 권리와 의무를 법정 공방처럼 깐깐하게 따지고 드는 피곤한 형살의 기운이 맴돕니다. 대놓고 소리를 지르며 싸우진 않지만, 부모님 용돈 비율, 명절 식대 정산, 제사 준비 노동량 등 지극히 현실적이고 예민한 문제에서 단 1원도 손해 보지 않으려는 숨 막히는 기싸움이 발생합니다. 어설픈 희생이나 가족애로 뭉뚱그리려다가는 나중에 고소장 날아오기 딱 좋으니, 처음부터 모든 분담을 엑셀로 명확하게 기록해 두는 것이 분란을 막는 현명한 방법입니다.";
+        } else if (generateMap[meZhiEl] === youZhiEl || generateMap[youZhiEl] === meZhiEl) {
+            zhiRel = "상생"; zhiScore += 10;
+            interactionText = "두 사람의 가풍은 한쪽이 다른 한쪽을 자연스럽게 밀어주고 채워주는 부드러운 상생의 흐름을 타고 있습니다. 굳이 핏대를 세워가며 내 방식을 고집하지 않아도, 상대방의 가족 문화나 일상 습관이 크게 거슬리지 않고 물 흐르듯 스며듭니다. 억지로 희생한다는 억울함 없이 서로의 부족한 점을 둥글둥글하게 커버해 주며, 큰 충돌 없이 평온하고 안정적인 명절을 보낼 수 있는 무난하고 훈훈한 결합입니다.";
+        } else if (overcomeMap[meZhiEl] === youZhiEl || overcomeMap[youZhiEl] === meZhiEl) {
+            zhiRel = "상극"; zhiScore -= 5;
+            interactionText = "두 사람의 근본적인 기운은 서로를 은근히 견제하고 통제하려는 상극의 형태를 띠고 있습니다. 대판 싸우고 등본을 파버릴 정도의 원수 지간은 아니지만, 삶의 우선순위나 돈을 쓰는 가치관이 묘하게 엇갈려 대화를 나눌수록 고구마 백 개를 먹은 듯한 턱턱 막히는 답답함을 느낍니다. 내 훌륭한 기준과 가풍을 상대방에게 은근슬쩍 강요하지 말고, 저런 식으로도 세상을 살 수 있구나 하며 한 귀로 듣고 한 귀로 흘려버리는 무소의 뿔 같은 지혜가 필요합니다.";
+        } else if (meZhiEl === youZhiEl) {
+            zhiRel = "비화"; zhiScore += 5;
+            interactionText = "두 사람은 본질적으로 매우 비슷한 환경의 주파수를 공유하는 도플갱어 같은 비화의 환경입니다. 자라온 방식이나 가족을 대하는 꼰대력까지 묘하게 닮아있어, 말이 잘 통할 때는 소름 돋게 합이 잘 맞으며 쿵짝을 자랑합니다. 하지만 서로의 똥고집 스위치가 똑같은 곳에 달려있어, 한 번 의견이 틀어지면 하늘이 두 쪽 나도 절대 양보하지 않는 숨 막히는 치킨 게임을 벌이게 되니 한 발짝 물러서는 연습이 필수입니다.";
+        } else {
+            interactionText = "두 사람의 라이프스타일은 상대의 선을 절대 넘지 않고 철저하게 각자도생하는 가장 현대적이고 젠틀한 평행선을 그립니다. 서로의 생활 반경이나 통장 잔고에 털끝만큼도 간섭하지 않아 명절에 얼굴 붉힐 일은 없지만, 가족 특유의 끈끈하고 질척거리는 정은 찾아보기 힘듭니다. 서로 너무 쿨한 척하다가 진짜 남보다 못한 쇼윈도 가족으로 전락할 수 있으니, 아주 가끔은 억지로라도 비싼 밥을 사주며 자본주의적 애정을 표현해야 합니다.";
+        }
+
+        zhiText = `<p>명리학에서 부모궁과 가정 환경을 뜻하는 월지와 십성을 정밀하게 교차 검증한 팩폭 결과입니다.</p>`;
+        zhiText += `<p>😎 나의 무의식 환경: 나는 <span class='hl'>[${meMonthTenGod}]</span>의 기운을 받아, ${familyEnvText[meMonthTenGod]}에서 자라온 영향을 크게 받았습니다.</p>`;
+        zhiText += `<p>👨‍👩‍👧‍👦 상대 가족의 환경: 상대방은 <span class='hl'>[${youMonthTenGod}]</span>의 기운을 받아, ${familyEnvText[youMonthTenGod]}에서 자랐다고 무의식에 각인되어 있습니다.</p>`;
+        zhiText += `<div class='divider' style='margin: 15px 0;'></div>`;
+        zhiText += `<p style='color:#ff5277; font-weight:900;'>[십성 가치관 궁합]</p>`;
+        zhiText += `<p>${tenGodInteraction}</p>`;
+        zhiText += `<p style='color:#ff5277; font-weight:900; margin-top:15px;'>[월지 속궁합 및 현실 트러블]</p>`;
+        zhiText += `<p>${interactionText}</p>`;
+
+        // 3. 사주 8글자 십성 계산 로직 (동적 스탯)
+        function calc10GodsFull(baziObj) {
+            const dm = baziObj.getDay().charAt(0);
+            const dmEl = elementMap[dm];
+            let counts = { '비겁': 0, '식상': 0, '재성': 0, '관성': 0, '인성': 0 };
+            const chars = [
+                baziObj.getYear().charAt(0), baziObj.getYear().charAt(1),
+                baziObj.getMonth().charAt(0), baziObj.getMonth().charAt(1),
+                baziObj.getDay().charAt(1),
+                baziObj.getTime().charAt(0), baziObj.getTime().charAt(1)
+            ];
+
+            chars.forEach(c => {
+                if (c && c !== 'unknown') {
+                    const el = elementMap[c];
+                    if (el === dmEl) counts['비겁']++;
+                    else if (generateMap[dmEl] === el) counts['식상']++;
+                    else if (overcomeMap[dmEl] === el) counts['재성']++;
+                    else if (overcomeMap[el] === dmEl) counts['관성']++;
+                    else if (generateMap[el] === dmEl) counts['인성']++;
+                }
+            });
+            return counts;
+        }
+
+        const me10g = calc10GodsFull(meBaziObj);
+        const you10g = calc10GodsFull(youBaziObj);
+
+        let meYield = Math.max(10, Math.min(100, (me10g['인성']*25) + (me10g['식상']*20) + (me10g['관성']*15) - (me10g['비겁']*15) + 30));
+        let youYield = Math.max(10, Math.min(100, (you10g['인성']*25) + (you10g['식상']*20) + (you10g['관성']*15) - (you10g['비겁']*15) + 30));
+
+        let meFamily = Math.max(10, Math.min(100, (me10g['식상']*30) + (me10g['인성']*20) - (me10g['재성']*10) + 40));
+        let youFamily = Math.max(10, Math.min(100, (you10g['식상']*30) + (you10g['인성']*20) - (you10g['재성']*10) + 40));
+
+        let meCold = Math.max(10, Math.min(100, (me10g['재성']*25) + (me10g['관성']*20) + (meEls['金']*10) + (meEls['水']*10) + 20));
+        let youCold = Math.max(10, Math.min(100, (you10g['재성']*25) + (you10g['관성']*20) + (youEls['金']*10) + (youEls['水']*10) + 20));
+
+        let yRatio = Math.round((meYield / (meYield + youYield)) * 100) || 50;
+        let fRatio = Math.round((meFamily / (meFamily + youFamily)) * 100) || 50;
+        let cRatio = Math.round((meCold / (meCold + youCold)) * 100) || 50;
+
+        // 4. 사주 전체 오행 시너지 분석 (일간과 8글자 팩트 기반 생극제화)
+        const getTopElements = (els) => {
+            let maxCount = Math.max(...Object.values(els));
+            return Object.keys(els).filter(k => els[k] === maxCount);
+        };
+
+        let youTopEls = getTopElements(youEls);
+        let meTopEls = getTopElements(meEls);
+        let youMaxEl = youTopEls[0]; 
+        let meMaxEl = meTopEls[0]; 
+
+        const elTraits = {
+            '木': '앞뒤 재지 않고 밀어붙이는 불도저 추진력과 뻗어나가는 기운',
+            '火': '감정을 숨기지 못하고 주변을 홀리는 폭발적이고 뜨거운 확산력',
+            '土': '모든 것을 빨아들이고 묶어버리는 흔들리지 않는 묵직한 아집',
+            '金': '피도 눈물도 없이 끊어내고 계산하는 얼음장 같은 냉혹한 결단력',
+            '水': '속을 알 수 없고 위기를 스무스하게 빠져나가는 징그러운 유연성'
+        };
+
+        const getRelation = (targetEl, sourceEl) => {
+            if (targetEl === sourceEl) return '비화'; 
+            if (generateMap[sourceEl] === targetEl) return '생조'; 
+            if (generateMap[targetEl] === sourceEl) return '설기'; 
+            if (overcomeMap[sourceEl] === targetEl) return '극제'; 
+            if (overcomeMap[targetEl] === sourceEl) return '재성'; 
+            return '무난';
+        };
+
+        const youToMeRel = getRelation(meGanEl, youMaxEl); 
+        const meToYouRel = getRelation(youGanEl, meMaxEl);
+
+        synergyText = `<p>동업과 금전 거래의 성패는 내 본질(일간)이 상대방의 가장 거대한 에너지에 어떻게 반응하느냐에 달려있습니다.</p>`;
+        synergyText += `<p>상대방 사주를 장악한 가장 거대한 기운은 <span class='hl'>[${elTraits[youMaxEl]}]</span>입니다. 이 무시무시한 기운이 당신의 본질을 덮쳤을 때의 결과는 다음과 같습니다.</p>`;
+
+        let synergyToMe = false;
+        let synergyToYou = false;
+        let clash = false;
+
+        if (youToMeRel === '생조') {
+            synergyText += `<p style='color:#ff5277; font-weight:900;'>[내가 꿀 빠는 로또 조합]</p><p>상대방의 뿜어져 나오는 거대한 에너지가 내 본질을 무조건적으로 먹여 살리고 살찌웁니다. 이 가족과 함께 사업을 하거나 일을 도모하면, 상대방이 궂은일을 다 하고 뼈를 깎아 희생하며 당신은 편하게 이득만 취할 수 있습니다. 가만히 있어도 떡이 떨어지는 완벽한 꿀통 파트너입니다.</p>`;
+            synergyToMe = true;
+        } else if (youToMeRel === '설기') {
+            synergyText += `<p style='color:#ff5277; font-weight:900;'>[내 뼈를 깎아 바치는 헌신]</p><p>당신의 본질적인 기운이 상대방의 거대한 블랙홀 같은 기운에 무참히 빨려 들어갑니다. 같이 동업을 시작하면 상대는 가만히 있고 당신 혼자 피땀 흘려 모든 짐을 떠안게 됩니다. 밑 빠진 독에 물 붓듯 희생하다가 당신의 멘탈과 통장이 동시에 거덜 날 수 있으니 철저히 선을 그어야 합니다.</p>`;
+            synergyToYou = true;
+        } else if (youToMeRel === '극제') {
+            synergyText += `<p style='color:#ff5277; font-weight:900;'>[내 숨통을 조이는 천적]</p><p>상대방의 강한 기운이 칼날이 되어 내 숨통을 턱턱 막히게 공격합니다. 무슨 아이디어를 내든 사사건건 태클이 들어오고 억압당해 당신의 자존감이 바닥을 칩니다. 이 가족과 무언가를 같이 기획하는 것은 당신의 수명을 깎아 먹는 자살행위와 같으니 경제적으로 완벽히 격리하십시오.</p>`;
+            clash = true;
+        } else if (youToMeRel === '재성') {
+            synergyText += `<p style='color:#ff5277; font-weight:900;'>[내가 주무르는 돈줄]</p><p>당신이 상대방의 거대한 기운을 내 마음대로 주무르고 통제하며 완벽한 내 재물로 삼을 수 있습니다. 상대를 내 수족처럼 부려 먹기 아주 좋으며, 동업 시 당신이 철저한 갑의 위치에서 지휘봉을 잡게 됩니다. 다만 쥐어짜다 상대가 도망가기 전에 적당한 보너스로 달래주십시오.</p>`;
+            synergyToMe = true;
+        } else {
+            synergyText += `<p style='color:#ff5277; font-weight:900;'>[피 튀기는 동족 혐오]</p><p>당신의 본질과 상대방의 거대한 무기가 똑같은 주파수를 가졌습니다. 코드가 맞을 땐 미친 듯이 시너지가 나지만, 한 번 돈 문제나 자존심 싸움이 시작되면 절대 양보 없이 끝장을 보는 치킨게임을 벌입니다. 파이를 나누는 동업은 결국 진흙탕 소송전으로 끝날 확률이 농후합니다.</p>`;
+            clash = true;
+        }
+
+        // 5. 사주 8글자 전체 기반 초정밀 점수 산출 및 시뮬레이션
+        let detailGanScore = 0;
+        if (ganRel === "합") detailGanScore = 30;
+        else if (ganRel === "정인" || ganRel === "식신") detailGanScore = 27;
+        else if (ganRel === "편인" || ganRel === "상관") detailGanScore = 24;
+        else if (ganRel === "비견" || ganRel === "정재") detailGanScore = 21;
+        else if (ganRel === "편재" || ganRel === "정관") detailGanScore = 18;
+        else if (ganRel === "겁재") detailGanScore = 14;
+        else if (ganRel === "편관") detailGanScore = 10;
+        else detailGanScore = 20;
+
+        let detailZhiScore = 0;
+        if (zhiRel === "합") detailZhiScore = 30;
+        else if (zhiRel === "상생") detailZhiScore = 26;
+        else if (zhiRel === "비화") detailZhiScore = 22;
+        else if (zhiRel === "형") detailZhiScore = 16;
+        else if (zhiRel === "상극") detailZhiScore = 14;
+        else if (zhiRel === "충") detailZhiScore = 10;
+        else if (zhiRel === "원진") detailZhiScore = 5;
+        else detailZhiScore = 20;
+
+        let detailOhaengScore = 10; 
+        if (synergyToMe && synergyToYou) detailOhaengScore = 20;
+        else if (synergyToMe || synergyToYou) detailOhaengScore = 16;
+        else if (clash) detailOhaengScore = 5;
+        else detailOhaengScore = 10;
+
+        let detailSibseongScore = 10; 
+        // 십성 8글자 극단적 충돌 및 보완 팩트 체크
+        if (me10g['비겁'] >= 3 && you10g['비겁'] >= 3) detailSibseongScore -= 5;
+        if (me10g['관성'] >= 3 && you10g['식상'] >= 3) detailSibseongScore -= 4;
+        if (you10g['관성'] >= 3 && me10g['식상'] >= 3) detailSibseongScore -= 4;
+        if (me10g['재성'] >= 3 && you10g['비겁'] >= 3) detailSibseongScore -= 4;
+        if (you10g['재성'] >= 3 && me10g['비겁'] >= 3) detailSibseongScore -= 4;
+        
+        if (me10g['식상'] >= 2 && you10g['인성'] >= 2) detailSibseongScore += 5;
+        if (you10g['식상'] >= 2 && me10g['인성'] >= 2) detailSibseongScore += 5;
+        if (me10g['인성'] >= 2 && you10g['관성'] >= 2) detailSibseongScore += 4;
+        if (you10g['인성'] >= 2 && me10g['관성'] >= 2) detailSibseongScore += 4;
+        
+        detailSibseongScore = Math.max(2, Math.min(20, detailSibseongScore));
+
+        let finalScore = detailGanScore + detailZhiScore + detailOhaengScore + detailSibseongScore;
+
+  if (finalScore >= 80) {
+            simText = "떨어져 있으면 서로의 안위를 끊임없이 걱정하고, 만나면 시간 가는 줄 모르고 속 깊은 대화를 나누는 깊은 영혼의 단짝입니다. 단순한 혈연을 넘어, 전생부터 이어져 온 단단하고 특별한 카르마로 묶여 있는 핏줄입니다.<br><br>이 관계의 가장 큰 특징은 계산기가 작동하지 않는다는 점입니다. 부모님의 건강 문제나 집안에 갑작스러운 금전적 위기가 닥쳤을 때, 서로의 이해득실을 따지기 전에 본능적으로 자신의 시간과 자원을 기꺼이 내어주며 눈물겨운 전우애를 보여줍니다. 외부인의 시선에서는 저 가족은 유난히 결속력이 강하고 자기들만의 세계가 확고하다 고 느낄 만큼 서로에 대한 애착과 보호 본능이 남다릅니다.<br><br>하지만 빛이 강하면 그림자도 짙은 법입니다. 이 깊은 유대감은 자칫하면 서로의 심리적 경계선을 완전히 지워버리는 결과를 낳습니다. 이직, 이사, 연애, 투자 등 내 인생의 지극히 개인적이고 중대한 결정마저도 반드시 이 가족의 깊은 동의와 컨펌을 구해야만 마음이 놓이는 묘한 상호 의존성을 띠게 될 확률이 매우 높습니다.";
+            
+            solutionText = "이러한 끈끈한 애정과 헌신은 험난한 세상을 살아가는 데 있어 최고의 축복이지만, 자칫하면 무의식적인 집착으로 변질될 위험을 항상 내포하고 있습니다.<br><br>이 관계에 찾아올 수 있는 가장 치명적인 위기는, 어느 한쪽이 배우자를 맞이하여 새로운 가정을 꾸리거나 물리적, 경제적으로 완전한 독립을 선언하는 시점에 발생합니다. 나의 분신 같던 가족의 관심이 다른 곳으로 향한다는 무의식적인 상실감과 박탈감이, 새로운 구성원(며느리, 사위 등)에 대한 묘한 서운함이나 과도한 간섭으로 번져 집안의 큰 분란을 초래할 수 있습니다.<br><br>평생토록 가장 든든하고 완벽한 내 편으로 남기 위해서는, 아이러니하게도 지금부터 의식적인 '건강한 심리적 거리 두기'를 연습해야 합니다. 상대방의 삶은 내 통제 밖의 고유한 우주임을 인정하고, 사랑이라는 이름으로 상대의 사생활에 선을 넘지 않도록 브레이크를 거는 지혜가 이 관계를 영원히 지키는 마스터키입니다.";
+            
+        } else if (finalScore >= 60) {
+            simText = "평소에는 서로의 일상에 크게 간섭하지 않고 각자의 삶의 궤도를 묵묵히 살아가는, 아주 독립적이고 현대적인 서구형 가족 형태를 띠고 있습니다.<br><br>상대방이 어떤 소비 패턴을 가졌는지, 어떤 삶의 방식을 택하든 각자의 선택을 온전히 존중합니다. 가족 사이일지라도 지켜야 할 경제적 선이 명확하며, 맹목적인 희생을 강요하지 않는 깔끔한 문화가 바탕에 깔려 있습니다. 감정적으로 크게 부딪히며 언성을 높일 일도 드물고, 서로의 프라이버시를 완벽하게 지켜주는 평화로운 관계입니다.<br><br>하지만 이 쿨함이 때로는 깊은 외로움을 동반하기도 합니다. 내가 세상 밖에서 깊은 상처를 받아 따뜻한 맹목적 위로가 필요할 때, 기대와 달리 다소 건조하고 이성적인 팩트 위주의 조언만 돌아와 서운함을 삼키게 될 수도 있습니다. 그럼에도 불구하고 집안에 장례나 대소사 같은 굵직한 위기가 닥치면, 언제 그랬냐는 듯 모여서 완벽한 분업화로 감정의 동요 없이 문제를 척척 해결해 내는 가장 실용적이고 듬직한 비즈니스 파트너형 아군입니다.";
+            
+            solutionText = "서로에게 부담과 짐을 주지 않으려는 훌륭하고 성숙한 배려심이 관계의 기저에 깔려 있습니다. 하지만 이토록 이성적이고 건조한 태도가 수십 년간 지속되면, 가족임에도 불구하고 진짜 여린 속마음을 나눌 타이밍을 영영 잃어버리게 됩니다.<br><br>아주 사소한 서운함이 대화로 풀리지 않은 채 마음속에 차곡차곡 쌓일 수 있으며, 훗날 부모님의 부양 문제나 유산 상속 같은 예민하고 현실적인 금전 문제가 수면 위로 떠 올랐을 때가 가장 큰 고비입니다. 평소 쌓아둔 감정적 완충 지대가 없다 보니, 서로의 진심을 오해하여 철저하게 서류와 계산, 법적인 잣대로만 핏대를 세워 따지게 되는 가장 삭막한 결말을 맞이할 위험이 도사리고 있습니다.<br><br>피를 나눈 가족으로서의 온기와 연결고리를 잃지 않기 위해서는, 아무런 목적이나 용건이 없는 날에도 의도적으로 연락을 취해야 합니다. 가끔씩은 이유 없이 식사를 대접하거나 작은 선물을 건네며, 자본주의적이고 형태가 있는 방식으로라도 애정과 관심의 교류를 꾸준히 적립해 두는 것이 훗날의 파국을 막는 최고의 보험입니다.";
+            
+        } else if (finalScore >= 40) {
+            simText = "서로를 아끼고 걱정하는 마음의 뿌리는 분명하지만, 한 공간에 30분 이상 머물다 보면 묘하게 서로의 긁지 말아야 할 버튼을 정확히 찾아 누르게 되는 롤러코스터 같은 역동적인 관계입니다.<br><br>명절에 현관문을 열고 들어올 때는 세상 누구보다 반갑게 웃으며 인사하지만, 식탁에 앉아 대화가 조금만 깊어지면 상황은 급변합니다. 세상을 살아가는 우선순위와 가치관이 너무 다르다 보니, 상대방의 결정이 답답해 보이고 결국 다 너 잘되라고 하는 소리 라는 명분 아래 날 선 훈수와 팩트 폭행이 오가게 됩니다. 밥을 먹다 말고 과거의 서운했던 일화까지 소환하며 분위기를 싸늘하게 얼려버리는 패턴을 반복합니다.<br><br>그러나 이 관계의 가장 큰 반전이자 아이러니는 바로 외부의 위협이 닥쳤을 때 나타납니다. 집 안에서는 서로 못 잡아먹어 안달인 앙숙 같지만, 집 밖에서 남이 내 가족을 부당하게 대우하거나 피해를 주면 눈이 뒤집혀 가장 먼저 달려가 앞장서서 싸워주는 맹렬한 보호 본능과 짐승 같은 의리를 발휘합니다. 다름에서 오는 극심한 피로감과 혈연의 끈끈함 사이에서 평생 줄다리기를 하며 늙어가는, 미워할 수 없는 뜨거운 가족입니다.";
+            
+            solutionText = "이 치열한 애증의 관계에서 평화를 지키기 위한 절대적인 제1원칙은 '내 훌륭한 잣대로 상대방을 계몽시키고 개조하겠다는 오만함을 버리는 것'입니다.<br><br>당신의 눈에는 상대방의 결정, 씀씀이, 삶의 태도가 한없이 미숙하고 멍청해 보일지라도, 그것을 입 밖으로 꺼내어 지적하는 순간 대화가 아닌 끝없는 가치관 전쟁과 감정 소모가 시작됩니다. 잔소리가 목구멍까지 차올라 견디기 힘들다면, 차라리 심호흡을 크게 한 번 하고 물리적으로 자리를 피하거나 산책을 다녀오십시오.<br><br>특히 온 가족이 모인 명절이나 제사 자리에서 취업, 연봉, 부동산, 주식, 결혼, 자녀 교육 등 서로의 콤플렉스와 자존심을 건드리는 뇌관 같은 주제는 철저하게 봉인해야 합니다. 상대방의 삶의 방식은 틀린 것이 아니라 이미 완성된 다른 우주의 생태계임을 쿨하게 인정하십시오. 두 사람의 대화 주제는 오로지 날씨, 연예인 가십, 맛집 등 가장 피상적이고 가벼운 일상으로 제한하는 것이 서로의 멘탈을 지키고 명절 밥상을 엎지 않는 유일한 생명줄입니다.";
+            
+        } else {
+            simText = "명리학적으로 두 사람의 사주팔자 기운이 태생부터 완전히 어긋난 궤도를 돌고 있어, 억지로 맞추려 노력할수록 오히려 파열음만 겉잡을 수 없이 커지는 살얼음판 같은 아슬아슬한 조합입니다.<br><br>서로가 세상을 바라보고 해석하는 렌즈 자체가 근본적으로 다르기 때문에, 아주 일상적이고 선의에서 비롯된 가벼운 대화조차 상대방에게는 나를 향한 공격, 통제, 혹은 심문으로 곡해되기 십상입니다. 가족이라는 끈끈한 굴레 때문에 서로를 내 방식대로 이해시키려 다가가면 다가갈수록, 마치 거대한 콘크리트 벽에 대고 소리치는 듯한 뼈저린 좌절감과 엄청난 에너지가 고갈되는 것을 경험하게 됩니다.<br><br>명절이나 집안 행사에 억지로 장시간 함께 머무는 것만으로도 보이지 않는 팽팽한 긴장감이 흘러 수명이 단축되는 듯한 극심한 스트레스를 느낍니다. 아주 사소한 의견 충돌이나 말실수가 기폭제가 되어 십수 년 전의 묵은 상처와 원한까지 모조리 끌어올리며, 결국 서로의 마음에 돌이킬 수 없는 칼을 꽂는 걷잡을 수 없는 갈등으로 번질 위험을 일상적으로 안고 살아가는 평행선과도 같은 관계입니다.";
+            
+            solutionText = "이토록 치열하게 부딪히는 관계에서 가장 시급하고 유일한 처방전은, 무리한 융합이나 화해의 시도를 당장 멈추고 '상호 존중을 완벽하게 바탕으로 한 철저한 물리적, 정신적 경계선 설정'입니다.<br><br>'그래도 피를 나눈 가족이니까 무조건 다 이해하고 둥글게 맞춰가야 한다'는 낡고 폭력적인 전통적 강박관념에서 스스로를 완전히 해방시키십시오. 서로의 주파수가 영원히 맞을 수 없음을 차분하고 이성적으로 인정하고, 가족애라는 그럴싸한 명분으로 상대의 고유한 삶의 영역을 단 1mm도 침범하지 않아야 합니다.<br><br>특히 주의해야 할 것은 경제적인 얽힘입니다. 가족 사업을 도모하거나 동업, 보증, 얽히고설킨 금전 거래는 이 관계를 회복 불능의 지옥으로 몰고 갈 수 있는 뇌관이므로 하늘이 두 쪽 나도 절대적으로 피하셔야 합니다. 일 년에 한두 번, 사전에 합의된 정해진 시간에만 짧게 만나 최대한 예의를 갖추고 담담하게 안부만 나누십시오. 기대감을 버리고 적당하고 서늘한 거리를 유지하는 것만이, 훗날 서로를 가슴 깊이 원망하지 않고 평화롭게 가족의 연을 이어가는 가장 성숙하고 지혜로운 생존법입니다.";
+        }
+        
+        let conclusion = "";
+
+        if (finalScore >= 90) {
+            conclusion = "전생에 한 몸이었을 기적의 핏줄! 눈빛만 봐도 서로의 속내를 꿰뚫어 보는 완벽한 천생연분 영혼의 가족입니다 🏡";
+        } else if (finalScore >= 75) {
+            conclusion = "서로의 사주 결핍과 재물운을 완벽히 채워주며 무너진 집안을 일으켜 세울 든든한 귀인급 궁합이네요 🐷";
+        } else if (finalScore >= 60) {
+            conclusion = "적당한 거리에서 서로의 지갑과 프라이버시를 철저히 존중하는 젠틀하고 쿨한 비즈니스 파트너형 가족입니다 🐽";
+        } else if (finalScore >= 45) {
+            conclusion = "다름에 묘하게 끌리지만 만나면 잔소리 팩폭 배틀을 벌이는 피곤한 라이벌입니다. 간섭을 줄여야 평화가 옵니다 🏡";
+        } else if (finalScore >= 30) {
+            conclusion = "명절에 모이면 첫날부터 대판 싸우고 등본 파버릴 각 나오는 롤러코스터 궁합입니다. 지독한 해탈이 필요합니다 🐽";
+        } else {
+            conclusion = "사주 8글자가 철저하게 어긋난 하늘이 맺어준 애증의 웬수입니다. 돈거래 절대 금지, 물리적 거리두기가 시급합니다! 🐷";
+        }
+        
+        return {
+            score: finalScore, conclusion,
+            meYield, youYield, yRatio,
+            meFamily, youFamily, fRatio,
+            meCold, youCold, cRatio,
+            ganText, zhiText, synergyText, simText, solutionText,
+            detailGanScore, detailZhiScore, detailOhaengScore, detailSibseongScore
+        };
+    }
+
+    document.getElementById('family-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const getBaziAndElements = (prefix) => {
+            const year = parseInt(document.getElementById(prefix + '-year').value);
+            const month = parseInt(document.getElementById(prefix + '-month').value);
+            const day = parseInt(document.getElementById(prefix + '-day').value);
+            const timeStr = document.getElementById(prefix + '-time').value;
+            const calendarType = document.querySelector(`input[name="${prefix}-calendar"]:checked`).value;
+            
+            const timeMap = { 'unknown': 12, '자시': 0, '축시': 2, '인시': 4, '묘시': 6, '진시': 8, '사시': 10, '오시': 12, '미시': 14, '신시': 16, '유시': 18, '술시': 20, '해시': 22 };
+            const hour = timeMap[timeStr] !== undefined ? timeMap[timeStr] : 12;
+
+            let lunarObj;
+            if (calendarType === 'solar') {
+                lunarObj = Solar.fromYmdHms(year, month, day, hour, 0, 0).getLunar();
+            } else if (calendarType === 'lunar') {
+                lunarObj = Lunar.fromYmdHms(year, month, day, hour, 0, 0);
+            } else if (calendarType === 'lunar-leap') {
+                let leapMonth = 0;
+                try { leapMonth = LunarYear.fromYear(year).getLeapMonth(); } catch (err) {}
+                if (leapMonth !== month) {
+                    throw new Error(`꿀꿀! 선택하신 ${year}년에는 윤${month}월이 없습니다.`);
+                }
+                lunarObj = Lunar.fromYmdHms(year, -month, day, hour, 0, 0);
+            }
+
+            const bazi = lunarObj.getEightChar();
+            let els = { '木':0, '火':0, '土':0, '金':0, '水':0 };
+            
+            let chars = [
+                bazi.getYear().charAt(0), bazi.getYear().charAt(1), 
+                bazi.getMonth().charAt(0), bazi.getMonth().charAt(1), 
+                bazi.getDay().charAt(0), bazi.getDay().charAt(1)
+            ];
+            
+            if (timeStr !== 'unknown') {
+                chars.push(bazi.getTime().charAt(0), bazi.getTime().charAt(1));
+            } else {
+                chars.push('', ''); 
+            }
+
+            chars.forEach(c => {
+                if(!c) return;
+                if(['甲','乙','寅','卯'].includes(c)) els['木']++;
+                if(['丙','丁','巳','午'].includes(c)) els['火']++;
+                if(['戊','己','辰','戌','丑','未'].includes(c)) els['土']++;
+                if(['庚','辛','申','酉'].includes(c)) els['金']++;
+                if(['壬','癸','亥','子'].includes(c)) els['水']++;
+            });
+
+            return { bazi, els };
+        };
+
+        try {
+            const meData = getBaziAndElements('me');
+            const youData = getBaziAndElements('you');
+
+            const meGan = meData.bazi.getDay().charAt(0);
+            const meZhi = meData.bazi.getMonth().charAt(1); 
+            const youGan = youData.bazi.getDay().charAt(0);
+            const youZhi = youData.bazi.getMonth().charAt(1); 
+
+            const result = getCompatibilityResult(meGan, meZhi, youGan, youZhi, meData.els, youData.els, meData.bazi, youData.bazi);
+
+            let html = "";
+            
+            html += `<div class='dashboard-card'>`;
+            html += `<div class='bazi-flex'>`;
+            html += `<div class='person-col'><div class='person-name'>😎 나</div><div class='ilju-box'>${getCharHtml(meData.bazi.getDay().charAt(0))}<br>${getCharHtml(meData.bazi.getDay().charAt(1))}</div></div>`;
+            html += `<div class='vs-badge'>VS</div>`;
+            html += `<div class='person-col'><div class='person-name'>👨‍👩‍👧‍👦 가족</div><div class='ilju-box'>${getCharHtml(youData.bazi.getDay().charAt(0))}<br>${getCharHtml(youData.bazi.getDay().charAt(1))}</div></div>`;
+            html += `</div>`;
+            html += `</div>`;
+
+            html += `<div class='family-score-card'>`;
+            html += `<div class='family-score-badge'>👑 사주돼지 초정밀 가족 궁합</div>`;
+            html += `<div class='family-score-circle'>${result.score}<span>점</span></div>`;
+            
+            html += `<div style="background: #ffffff; padding: 18px 15px; border-radius: 15px; margin-bottom: 20px; text-align: left; border: 2px dashed #ffc4d0; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);">`;
+            html += `<div style="font-size: 1rem; color: #ff5277; font-weight: 900; margin-bottom: 10px; text-align: center;">📊 100점 만점 팩트 체크 기준표</div>`;
+            html += `<div style="font-size: 0.95rem; color: #4a3333; line-height: 1.8; font-weight: bold;">`;
+            html += `① 본질적 자아 조화 (일간): <span style="float: right; color:#ff85a2">${result.detailGanScore} / 30점</span><br>`;
+            html += `② 무의식 가풍 조화 (월지): <span style="float: right; color:#ff85a2">${result.detailZhiScore} / 30점</span><br>`;
+            html += `③ 8글자 오행 시너지 (목화토금수): <span style="float: right; color:#ff85a2">${result.detailOhaengScore} / 20점</span><br>`;
+            html += `④ 8글자 십성 밸런스 (비식재관인): <span style="float: right; color:#ff85a2">${result.detailSibseongScore} / 20점</span>`;
+            html += `</div></div>`;
+
+            html += `<div class='family-score-text'>${result.conclusion}</div>`;
+            html += `</div>`;
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>📊 사주 8글자 십성 반영 스탯</div>";
+            html += "<div class='fortune-content-text' style='margin-top: -15px;'>";
+            
+            html += `<div class='stat-compare-wrap'>`;
+            html += `<div class='stat-title'>🏳️ 둘 중에 누가 더 양보하는가? (수용력)</div>`;
+            html += `<div class='stat-bar-container'>`;
+            html += `<div class='stat-bar-fill' style='width: ${result.yRatio}%;'></div>`;
+            html += `<div class='stat-text-me'>나 ${result.yRatio}%</div>`;
+            html += `<div class='stat-text-you'>가족 ${100 - result.yRatio}%</div>`;
+            html += `</div></div>`;
+
+            html += `<div class='stat-compare-wrap'>`;
+            html += `<div class='stat-title'>💖 둘 중에 누가 희생을 더 하는가? (헌신성)</div>`;
+            html += `<div class='stat-bar-container'>`;
+            html += `<div class='stat-bar-fill' style='width: ${result.fRatio}%;'></div>`;
+            html += `<div class='stat-text-me'>나 ${result.fRatio}%</div>`;
+            html += `<div class='stat-text-you'>가족 ${100 - result.fRatio}%</div>`;
+            html += `</div></div>`;
+
+            html += `<div class='stat-compare-wrap' style='margin-bottom:0;'>`;
+            html += `<div class='stat-title'>❄️ 둘 중에 누가 더 피도 눈물도 없는가? (냉철함)</div>`;
+            html += `<div class='stat-bar-container'>`;
+            html += `<div class='stat-bar-fill' style='width: ${result.cRatio}%;'></div>`;
+            html += `<div class='stat-text-me'>나 ${result.cRatio}%</div>`;
+            html += `<div class='stat-text-you'>가족 ${100 - result.cRatio}%</div>`;
+            html += `</div></div>`;
+            
+            html += "</div></div>";
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>😎 나의 진짜 가족 내 팩폭 포지션</div>";
+            html += "<div class='fortune-content-text'>";
+            html += `<p>${iljuPersonality[meData.bazi.getDay().charAt(0)+meData.bazi.getDay().charAt(1)] || "독특하고 뚜렷한 기질을 지녔습니다."}</p>`;
+            html += "</div></div>";
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>👨‍👩‍👧‍👦 애증의 가족, 진짜 속마음 팩폭</div>";
+            html += "<div class='fortune-content-text'>";
+            html += `<p>${iljuPersonality[youData.bazi.getDay().charAt(0)+youData.bazi.getDay().charAt(1)] || "알 수 없는 묘한 매력을 숨긴 기질입니다."}</p>`;
+            html += "</div></div>";
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>🧠 꿀꿀! 본질적 권력 구조 (십성 분석)</div>";
+            html += "<div class='fortune-content-text'>";
+            html += result.ganText;
+            html += "</div></div>";
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>🔥 월주(부모궁)가 파헤친 가족 환경 궁합</div>";
+            html += "<div class='fortune-content-text'>";
+            html += result.zhiText;
+            html += "</div></div>";
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>💧 동업해도 될까? 사주 전체 시너지 분석</div>";
+            html += "<div class='fortune-content-text'>";
+            html += result.synergyText;
+            html += "</div></div>";
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>🔮 평생 웬수일까? 미래 시뮬레이션</div>";
+            html += "<div class='fortune-content-text'>";
+            html += `<p>${result.simText}</p>`;
+            html += "</div></div>";
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>🚨 집안의 평화를 지키는 처방전</div>";
+            html += "<div class='fortune-content-text'>";
+            html += `<p>${result.solutionText}</p>`;
+            html += "</div></div>";
+
+            document.getElementById('dynamic-family-content').innerHTML = html;
+            document.getElementById('family-form').style.display = 'none';
+            document.getElementById('family-title').style.display = 'none';
+            document.getElementById('family-result-area').style.display = 'block';
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        } catch (error) {
+            alert(error.message || '꿀꿀! 궁합 계산 중 오류가 발생했습니다. 생년월일을 확인해주세요.');
+        }
+    });
+
+    function resetFamilyForm() {
+        document.getElementById('family-result-area').style.display = 'none';
+        document.getElementById('family-form').style.display = 'block';
+        document.getElementById('family-title').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+</body>
+</html>

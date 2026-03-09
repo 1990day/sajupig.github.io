@@ -328,16 +328,16 @@
             </a>
             <button class="login-btn-header" onclick="openLogin()">로그인 / 가입</button>
         </div>
-        <nav id="menu-bar">
-            <button onclick="showSection('manseryeok', this)"><span class="icon">🐷</span><span>돼지 만세력</span></button>
-            <button onclick="showSection('saju770', this)"><span class="icon">🪙</span><span>770사주</span></button>
-            <button onclick="showSection('love', this)"><span class="icon">💕</span><span>돼지연애</span></button>
-            <button onclick="showSection('fact', this)"><span class="icon">👊</span><span>돼지팩폭</span></button>
-        </nav>
-    </header>
+      <nav id="menu-bar">
+        <button onclick="location.href='index.html?tab=manseryeok'"><span class="icon">🐷</span><span>돼지 만세력</span></button>
+        <button onclick="location.href='index.html?tab=saju770'"><span class="icon">🪙</span><span>770사주</span></button>
+        <button onclick="location.href='index.html?tab=love'"><span class="icon">💕</span><span>돼지궁합</span></button>
+        <button onclick="location.href='index.html?tab=fact'"><span class="icon">👊</span><span>돼지팩폭</span></button>
+    </nav>
+</header>
 
     <main>
-        <div id="main-screen" class="section active">
+        <div id="main-screen" class="section">
             <div class="card">
                 <img src="main_saju_pig_image.png" alt="SajuPig Main Image" class="main-image" style="background-color: #fff0f5; min-height: 200px; display: flex; align-items: center; justify-content: center; color: #ffb6c1;">
                 <h2>당신의 운명을 점쳐보세요!</h2>
@@ -426,16 +426,16 @@
             </div>
         </div>
         
-        <div id="saju770" class="section">
+    <div id="saju770" class="section">
             <div class="card">
                 <h2>🪙 770사주</h2>
                 <p style="color: #666; font-weight: bold;">원하시는 사주를 선택해주세요.</p>
                 <div class="saju770-menu">
-                    <button class="saju770-btn" onclick="alert('돼지 신년 사주 준비중입니다!')">
+                    <button class="saju770-btn" onclick="location.href='pig2026.html'">
                         <div class="saju770-title">🧧 돼지 신년 사주</div>
                         <div class="saju770-price">770원</div>
                     </button>
-                    <button class="saju770-btn" onclick="alert('돼지 정통 사주 준비중입니다!')">
+                    <button class="saju770-btn" onclick="location.href='pigsaju.html'">
                         <div class="saju770-title">📜 돼지 정통 사주</div>
                         <div class="saju770-price">770원</div>
                     </button>
@@ -443,23 +443,46 @@
             </div>
         </div>
 
-        <div id="love" class="section">
+ <div id="love" class="section">
             <div class="card">
                 <h2>💕 돼지연애</h2>
-                <p>나의 연애 스타일과 앞으로의 애정운을 확인해보세요.</p>
+                <p style="color: #666; font-weight: bold;">어떤 관계의 궁합이 궁금하신가요?</p>
+                <div class="saju770-menu">
+                    <button class="saju770-btn" onclick="location.href='lovepig.html'">
+                        <div class="saju770-title">💑 돼지 연애 궁합</div>
+                    </button>
+                    <button class="saju770-btn" onclick="location.href='friendspig.html'">
+                        <div class="saju770-title">👯 돼지 친구 궁합</div>
+                    </button>
+                    <button class="saju770-btn" onclick="location.href='familypig.html'">
+                        <div class="saju770-title">👨‍👩‍👧‍👦 돼지 가족 궁합</div>
+                    </button>
+                    <button class="saju770-btn" onclick="location.href='reunionpig.html'">
+                        <div class="saju770-title">💔 돼지 재회 사주</div>
+                    </button>
+                </div>
             </div>
         </div>
 
         <div id="fact" class="section">
             <div class="card">
                 <h2>👊 돼지팩폭</h2>
-                <p>돌려 말하지 않습니다. 뼈 때리는 조언이 필요하다면!</p>
+                <p style="color: #666; font-weight: bold;">돌려 말하지 않습니다. 어떤 팩폭이 필요하신가요?</p>
+                <div class="saju770-menu">
+                    <button class="saju770-btn" onclick="location.href='goodpig.html'">
+                        <div class="saju770-title">👼 좋은말만 가득 사주</div>
+                    </button>
+                    <button class="saju770-btn" onclick="location.href='badpig.html'">
+                        <div class="saju770-title">😈 나쁜말만 가득 사주</div>
+                    </button>
+                </div>
             </div>
         </div>
     </main>
 
     <script>
-        window.onload = function() {
+ window.onload = function() {
+            // 1. 생년월일 드롭다운 채우기 (기존 코드)
             const yearSel = document.getElementById('man-year');
             const monthSel = document.getElementById('man-month');
             const daySel = document.getElementById('man-day');
@@ -469,6 +492,37 @@
             for(let i = 1; i <= 12; i++) { monthSel.add(new Option(i + "월", i)); }
             for(let i = 1; i <= 31; i++) { daySel.add(new Option(i + "일", i)); }
             yearSel.value = 1990; 
+
+            // 2. 주소창의 꼬리표(?tab=xxx)를 읽어서 해당 화면 바로 열어주기 (수정된 코드)
+            const urlParams = new URLSearchParams(window.location.search);
+            let tab = urlParams.get('tab');
+            
+            // 만약 주소창에 파라미터가 아예 없으면 메인 화면을 보여줌
+            if (!tab) {
+                document.getElementById('main-screen').classList.add('active');
+                return;
+            }
+            
+            if (tab) {
+                // 열어야 할 탭(section)과 버튼 찾기
+                const targetSection = document.getElementById(tab);
+                const buttons = document.querySelectorAll('#menu-bar button');
+                let targetBtn = null;
+                
+                if (tab === 'manseryeok') targetBtn = buttons[0];
+                if (tab === 'saju770') targetBtn = buttons[1];
+                if (tab === 'love') targetBtn = buttons[2];
+                if (tab === 'fact') targetBtn = buttons[3];
+                
+                // 찾았으면 모든 화면(메인 포함) 다 끄고 해당 탭만 켜기
+                if (targetSection && targetBtn) {
+                    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    
+                    targetSection.classList.add('active');
+                    targetBtn.classList.add('active');
+                }
+            }
         };
 
         const fullNames = {
