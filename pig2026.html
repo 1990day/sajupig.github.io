@@ -925,7 +925,7 @@
         }
 
     </script>
-   <script type="module">
+ <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
     import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
@@ -1012,13 +1012,13 @@
     const tossPayments = TossPayments(clientKey);
 
     window.requestPay = function() {
-        // 1. 유저가 입력한 정보들을 화면에서 가져오기
-        const gender = document.querySelector('input[name="man-gender"]:checked').value;
-        const calendar = document.querySelector('input[name="man-calendar"]:checked').value;
-        const year = document.getElementById('man-year').value;
-        const month = document.getElementById('man-month').value;
-        const day = document.getElementById('man-day').value;
-        const time = document.getElementById('man-time').value;
+        // 1. 유저가 입력한 정보들을 화면에서 가져오기 (ny- 로 수정 완료!)
+        const gender = document.querySelector('input[name="ny-gender"]:checked').value;
+        const calendar = document.querySelector('input[name="ny-calendar"]:checked').value;
+        const year = document.getElementById('ny-year').value;
+        const month = document.getElementById('ny-month').value;
+        const day = document.getElementById('ny-day').value;
+        const time = document.getElementById('ny-time').value;
 
         // 2. 다음 결과 페이지로 가져가기 위해 브라우저 임시 금고에 저장!
         sessionStorage.setItem('saju_gender', gender);
