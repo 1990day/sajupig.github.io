@@ -1,1460 +1,1461 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="naver-site-verification" content="5483298295bcedbc3650151e3308917c2423a59e" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="naver-site-verification" content="5483298295bcedbc3650151e3308917c2423a59e" />
+<title>사주돼지</title>
+<script src="[https://unpkg.com/lunar-javascript/lunar.js](https://unpkg.com/lunar-javascript/lunar.js)"></script>
+<script src="[https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js](https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js)"></script>
+<script async src="[https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321](https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321)" crossorigin="anonymous"></script>
+<link rel="icon" type="image/png" href="/favicon.png">
+ 
+<style>
+    html {
+        background: #f7dfe6;
+    }
 
-    <title>사주돼지</title>
-    <script src="https://unpkg.com/lunar-javascript/lunar.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/png" href="/favicon.png">
-     
-    <style>
-        html {
-            background: #f7dfe6;
-        }
+    body { 
+        margin: 0 auto; 
+        max-width: 480px;
+        min-height: 100vh;
+        font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; 
+        background: linear-gradient(180deg, #fff4f7 0%, #ffeef3 100%);
+        color: #222;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+        position: relative;
+    }
+    
+    header { 
+        background-color: #ffc4d0;
+        position: sticky; 
+        top: 0; 
+        z-index: 100; 
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08); 
+        backdrop-filter: blur(8px);
+    }
+    
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+    }
 
-        body { 
-            margin: 0 auto; 
-            max-width: 480px;
-            min-height: 100vh;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; 
-            background: linear-gradient(180deg, #fff4f7 0%, #ffeef3 100%);
-            color: #222;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
-            position: relative;
-        }
-        
-        header { 
-            background-color: #ffc4d0;
-            position: sticky; 
-            top: 0; 
-            z-index: 100; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08); 
-            backdrop-filter: blur(8px);
-        }
-        
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
+    .main-link {
+        text-decoration: none;
+        color: inherit;
+    }
 
-        .main-link {
-            text-decoration: none;
-            color: inherit;
-        }
+    h1 { 
+        margin: 0; 
+        color: #ffffff; 
+        font-size: 1.6rem; 
+        letter-spacing: 0.5px;
+        text-shadow: 1px 1px 2px rgba(255, 130, 160, 0.35);
+    }
 
-        h1 { 
-            margin: 0; 
-            color: #ffffff; 
-            font-size: 1.6rem; 
-            letter-spacing: 0.5px;
-            text-shadow: 1px 1px 2px rgba(255, 130, 160, 0.35);
-        }
+    .login-btn-header {
+        background: rgba(255,255,255,0.95);
+        border: none;
+        color: #d11534;
+        padding: 9px 16px;
+        border-radius: 999px;
+        font-size: 0.84rem;
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        transition: all 0.2s;
+    }
 
-        .login-btn-header {
-            background: rgba(255,255,255,0.95);
-            border: none;
-            color: #d11534;
-            padding: 9px 16px;
-            border-radius: 999px;
-            font-size: 0.84rem;
-            font-weight: 900;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            transition: all 0.2s;
-        }
+    .login-btn-header:hover {
+        transform: translateY(-1px);
+    }
+    
+    nav { 
+        display: flex;
+        justify-content: space-between; 
+        padding: 10px 15px 15px 15px;
+        gap: 8px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    nav button { 
+        flex: 1;
+        background: rgba(255,255,255,0.92);
+        border: 1px solid #ffe3ea;
+        font-size: 0.82rem;
+        color: #ff6f94;
+        cursor: pointer; 
+        font-weight: 900;
+        transition: all 0.2s;
+        border-radius: 16px;
+        aspect-ratio: 1 / 1; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        box-shadow: 0 4px 10px rgba(255,255,255,0.45), 0 6px 14px rgba(209, 21, 52, 0.05);
+    }
+    
+    nav button.active { 
+        color: #ffffff;
+        background: linear-gradient(180deg, #ff7da0 0%, #d11534 100%);
+        border-color: #d11534;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(209, 21, 52, 0.22);
+    }
+    
+    nav button span.icon {
+        font-size: 1.25rem;
+    }
 
-        .login-btn-header:hover {
-            transform: translateY(-1px);
-        }
-        
-        nav { 
-            display: flex;
-            justify-content: space-between; 
-            padding: 10px 15px 15px 15px;
-            gap: 8px;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-        
-        nav button { 
-            flex: 1;
-            background: rgba(255,255,255,0.92);
-            border: 1px solid #ffe3ea;
-            font-size: 0.82rem;
-            color: #ff6f94;
-            cursor: pointer; 
-            font-weight: 900;
-            transition: all 0.2s;
-            border-radius: 16px;
-            aspect-ratio: 1 / 1; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            box-shadow: 0 4px 10px rgba(255,255,255,0.45), 0 6px 14px rgba(209, 21, 52, 0.05);
-        }
-        
-        nav button.active { 
-            color: #ffffff;
-            background: linear-gradient(180deg, #ff7da0 0%, #d11534 100%);
-            border-color: #d11534;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(209, 21, 52, 0.22);
-        }
-        
-        nav button span.icon {
-            font-size: 1.25rem;
-        }
+    nav::-webkit-scrollbar {
+        display: none;
+    }
+    
+    main {
+        padding: 15px;
+        text-align: center;
+    }
+    
+    .header-logo {
+        display: block;
+        height: 30px;
+        width: auto;
+    }
 
-        nav::-webkit-scrollbar {
-            display: none;
-        }
-        
-        main {
-            padding: 15px;
-            text-align: center;
-        }
-        
-        .header-logo {
-            display: block;
-            height: 30px;
-            width: auto;
-        }
+    .section {
+        display: none;
+        min-height: 60vh;
+    }
 
-        .section {
-            display: none;
-            min-height: 60vh;
-        }
+    .section.active {
+        display: block;
+        animation: fadeIn 0.28s ease-in-out;
+    }
+    
+    .main-image {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        display: block;
+    }
 
-        .section.active {
-            display: block;
-            animation: fadeIn 0.28s ease-in-out;
-        }
-        
-        .main-image {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-            display: block;
-        }
+    .card { 
+        background: rgba(255,255,255,0.9);
+        padding: 30px 15px;
+        border-radius: 22px; 
+        box-shadow: 0 10px 24px rgba(255, 171, 192, 0.14);
+        margin-top: 10px;
+        border: 1px solid rgba(255,255,255,0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
 
-        .card { 
-            background: rgba(255,255,255,0.9);
-            padding: 30px 15px;
-            border-radius: 22px; 
-            box-shadow: 0 10px 24px rgba(255, 171, 192, 0.14);
-            margin-top: 10px;
-            border: 1px solid rgba(255,255,255,0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
+    .card h2 {
+        color: #d11534;
+        margin-top: 0;
+        font-size: 1.4rem;
+        font-weight: 900;
+    }
 
-        .card h2 {
-            color: #d11534;
-            margin-top: 0;
-            font-size: 1.4rem;
-            font-weight: 900;
-        }
+    .main-folder-wrap {
+        padding-top: 2px;
+    }
 
-        .main-folder-wrap {
-            padding-top: 2px;
-        }
+    .main-folder-card {
+        background: linear-gradient(180deg, #ffd9e5 0%, #ffc8d5 100%);
+        border-radius: 28px;
+        padding: 10px;
+        box-shadow: 0 18px 40px rgba(216, 95, 130, 0.18);
+        border: 1px solid rgba(255,255,255,0.75);
+    }
 
-        .main-folder-card {
-            background: linear-gradient(180deg, #ffd9e5 0%, #ffc8d5 100%);
-            border-radius: 28px;
-            padding: 10px;
-            box-shadow: 0 18px 40px rgba(216, 95, 130, 0.18);
-            border: 1px solid rgba(255,255,255,0.75);
-        }
+    .folder-tab-row {
+        display: flex;
+        gap: 8px;
+        padding: 2px 4px 10px;
+        overflow-x: auto;
+    }
 
-        .folder-tab-row {
-            display: flex;
-            gap: 8px;
-            padding: 2px 4px 10px;
-            overflow-x: auto;
-        }
+    .folder-tab-row::-webkit-scrollbar {
+        display: none;
+    }
 
-        .folder-tab-row::-webkit-scrollbar {
-            display: none;
-        }
+    .folder-tab {
+        flex: 0 0 auto;
+        padding: 10px 16px;
+        border-radius: 14px 14px 0 0;
+        background: rgba(255,255,255,0.4);
+        color: #b15470;
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+    }
 
-        .folder-tab {
-            flex: 0 0 auto;
-            padding: 10px 16px;
-            border-radius: 14px 14px 0 0;
-            background: rgba(255,255,255,0.4);
-            color: #b15470;
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 0.2px;
-        }
+    .folder-tab.active {
+        background: #fff8fb;
+        color: #d11534;
+    }
 
-        .folder-tab.active {
-            background: #fff8fb;
-            color: #d11534;
-        }
+    .folder-window {
+        background: rgba(255,255,255,0.7);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-radius: 24px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.85);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
+    }
 
-        .folder-window {
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.85);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
-        }
+    .folder-toolbar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 16px;
+        background: rgba(255,255,255,0.62);
+        border-bottom: 1px solid #ffe4eb;
+    }
 
-        .folder-toolbar {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 16px;
-            background: rgba(255,255,255,0.62);
-            border-bottom: 1px solid #ffe4eb;
-        }
+    .folder-dots {
+        display: flex;
+        gap: 6px;
+        flex-shrink: 0;
+    }
 
-        .folder-dots {
-            display: flex;
-            gap: 6px;
-            flex-shrink: 0;
-        }
+    .folder-dots span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #ff9bb2;
+        display: block;
+    }
 
-        .folder-dots span {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ff9bb2;
-            display: block;
-        }
+    .folder-dots span:nth-child(2) {
+        background: #ffd36e;
+    }
 
-        .folder-dots span:nth-child(2) {
-            background: #ffd36e;
-        }
+    .folder-dots span:nth-child(3) {
+        background: #89d6a3;
+    }
 
-        .folder-dots span:nth-child(3) {
-            background: #89d6a3;
-        }
+    .folder-path {
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: #9f6b79;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-        .folder-path {
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: #9f6b79;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+    .folder-image-box {
+        padding: 14px 14px 0;
+    }
 
-        .folder-image-box {
-            padding: 14px 14px 0;
-        }
+    .folder-main-image {
+        width: 100%;
+        border-radius: 18px;
+        border: 1px solid #ffdbe5;
+        margin-bottom: 0;
+        background: #fff0f5;
+    }
 
-        .folder-main-image {
-            width: 100%;
-            border-radius: 18px;
-            border: 1px solid #ffdbe5;
-            margin-bottom: 0;
-            background: #fff0f5;
-        }
+    .folder-content-box {
+        padding: 18px 14px 16px;
+        text-align: left;
+    }
 
-        .folder-content-box {
-            padding: 18px 14px 16px;
-            text-align: left;
-        }
+    .folder-label {
+        display: inline-block;
+        margin-bottom: 10px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: #fff1f6;
+        color: #d11534;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.8px;
+        border: 1px solid #ffd8e3;
+    }
 
-        .folder-label {
-            display: inline-block;
-            margin-bottom: 10px;
-            padding: 7px 12px;
-            border-radius: 999px;
-            background: #fff1f6;
-            color: #d11534;
-            font-size: 0.72rem;
-            font-weight: 900;
-            letter-spacing: 0.8px;
-            border: 1px solid #ffd8e3;
-        }
+    .folder-main-title {
+        margin: 0;
+        font-size: 1.68rem;
+        line-height: 1.3;
+        color: #2f1e25;
+        font-weight: 900;
+        word-break: keep-all;
+    }
 
+    .folder-main-desc {
+        margin: 10px 0 0;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #6b4d57;
+        font-weight: 700;
+        word-break: keep-all;
+    }
+
+    .folder-chip-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+    }
+
+    .folder-chip {
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.88);
+        border: 1px solid #ffd7e3;
+        color: #b45570;
+        font-size: 0.78rem;
+        font-weight: 800;
+    }
+
+    .folder-grid-shortcut {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 18px;
+    }
+
+    .folder-shortcut {
+        border: 1px solid #ffe2ea;
+        background: rgba(255,255,255,0.88);
+        border-radius: 20px;
+        padding: 14px 12px;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 118px;
+        box-shadow: 0 10px 18px rgba(255, 182, 193, 0.12);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .folder-shortcut:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 22px rgba(255, 182, 193, 0.18);
+    }
+
+    .folder-shortcut.primary {
+        background: linear-gradient(180deg, #fff3f8 0%, #fffafb 100%);
+        border: 1px solid #ffcdd9;
+    }
+
+    .shortcut-emoji {
+        font-size: 1.5rem;
+        line-height: 1;
+    }
+
+    .shortcut-text {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .shortcut-text strong {
+        font-size: 0.98rem;
+        color: #2f1e25;
+        font-weight: 900;
+    }
+
+    .shortcut-text small {
+        font-size: 0.78rem;
+        color: #8d6672;
+        font-weight: 700;
+        line-height: 1.45;
+    }
+
+    .saju-form { 
+        text-align: left; 
+        margin-top: 15px; 
+        background-color: #fff7fa; 
+        padding: 20px; 
+        border-radius: 18px; 
+        border: 1px solid #ffe2ea;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 0.95rem;
+        color: #d11534;
+        margin-bottom: 8px;
+        font-weight: 800;
+    }
+    
+    .date-select-group {
+        display: flex;
+        gap: 6px;
+    }
+
+    .date-select-group select {
+        flex: 1;
+        padding: 12px 5px;
+        font-size: 1rem;
+        color: #333;
+        outline: none;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="date"],
+    select { 
+        width: 100%;
+        padding: 14px;
+        border: 1.5px solid #ffd4df;
+        border-radius: 14px;
+        box-sizing: border-box; 
+        font-size: 1rem;
+        color: #333;
+        outline: none;
+        background-color: rgba(255,255,255,0.95);
+        transition: all 0.2s;
+    }
+
+    .form-group input:focus,
+    select:focus {
+        border-color: #ff7b9b;
+        background-color: #fff7fa;
+        box-shadow: 0 0 0 4px rgba(255, 182, 193, 0.14);
+    }
+    
+    .radio-group {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+
+    .radio-group label { 
+        flex: 1;
+        background-color: rgba(255,255,255,0.92);
+        padding: 12px 5px;
+        text-align: center; 
+        border-radius: 14px;
+        cursor: pointer;
+        margin-bottom: 0;
+        border: 1.5px solid #ffd4df; 
+        font-size: 0.9rem;
+        color: #666;
+        transition: all 0.2s;
+    }
+
+    .radio-group input[type="radio"] {
+        display: none;
+    }
+
+    .radio-group input[type="radio"]:checked + span {
+        color: #d11534;
+        font-weight: 900;
+    }
+
+    .radio-group input[type="radio"]:checked ~ label,
+    .radio-group label:has(input[type="radio"]:checked) { 
+        background-color: #fff1f5;
+        border-color: #ff7b9b; 
+        box-shadow: 0 4px 10px rgba(255, 182, 193, 0.12);
+    }
+    
+    .submit-btn {
+        width: 100%;
+        background: linear-gradient(180deg, #ff7da0 0%, #d11534 100%);
+        color: white;
+        border: none;
+        padding: 18px;
+        border-radius: 16px;
+        font-size: 1.05rem;
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 10px 18px rgba(209, 21, 52, 0.22);
+        transition: transform 0.1s;
+    }
+
+    .submit-btn:active {
+        transform: scale(0.98);
+    }
+
+    .reset-btn {
+        width: 100%;
+        background-color: rgba(255,255,255,0.92);
+        color: #333;
+        border: 1px solid #e0d5d9;
+        padding: 18px;
+        border-radius: 16px;
+        font-size: 1.05rem;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .action-btns {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    .capture-wrapper { 
+        padding: 0; 
+        background-color: #fcdde5; 
+        border-radius: 22px; 
+        margin-bottom: 10px; 
+        color: #5a3a41;
+        overflow: hidden;
+        border: 1px solid #ffd1dc;
+        box-shadow: 0 12px 24px rgba(255, 182, 193, 0.16);
+    }
+
+    #man-result-area {
+        text-align: center;
+        position: relative;
+    }
+    
+    .window-bar {
+        background-color: #ffc4d0;
+        padding: 12px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ffb6c1;
+    }
+
+    .window-title {
+        font-size: 1.05rem;
+        font-weight: 900;
+        color: #5a3a41;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .window-controls {
+        display: flex;
+        gap: 15px;
+        color: #5a3a41;
+        font-size: 1.05rem;
+        font-weight: bold;
+        cursor: default;
+    }
+
+    .bazi-grid { 
+        display: flex;
+        flex-direction: row-reverse; 
+        width: 100%;
+        box-sizing: border-box;
+        background: #ffffff;
+    }
+    
+    .pillar { 
+        flex: 1 1 25%;
+        max-width: 25%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column; 
+        border-right: 1px solid #f6c5d0;
+        position: relative;
+        z-index: 1;
+        height: auto;
+    }
+
+    .pillar:first-child {
+        border-right: none;
+    }
+    
+    .pillar > div {
+        border-bottom: 1px solid #f6c5d0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pillar-head { 
+        background: #fdf0f3;
+        padding: 15px 0;
+        font-size: 1rem; 
+        color: #5a3a41;
+        font-weight: 900; 
+    }
+    
+    .sibseong { 
+        font-size: 0.9rem;
+        color: #5a3a41;
+        font-weight: 900;
+        padding: 12px 0; 
+        background: #ffffff; 
+    }
+    
+    .bazi-box-wrap {
+        background: #ffffff;
+        padding: 20px 5px;
+        height: 85px;
+        box-sizing: border-box;
+    }
+
+    .bazi-box { 
+        width: 55px;
+        height: 55px;
+        font-size: 1.5rem;
+        font-weight: 900; 
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        position: relative;
+        z-index: 1;
+        background: transparent;
+    }
+    
+    .bazi-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 45% 55% 65% 35% / 55% 45% 60% 40%;
+        filter: blur(4px);
+        opacity: 0.85;
+        transform: scale(1.3) rotate(-5deg);
+    }
+
+    .color-wood::before {
+        background: radial-gradient(circle, #bde36e, #d7f09b);
+    }
+
+    .color-wood {
+        color: #3b2a1a;
+    }
+    
+    .color-fire::before {
+        background: radial-gradient(circle, #eb5e74, #fcaebc);
+    }
+
+    .color-fire {
+        color: #ffffff;
+    }
+    
+    .color-earth::before {
+        background: radial-gradient(circle, #f5d462, #fcecae);
+    }
+
+    .color-earth {
+        color: #3b2a1a;
+    }
+    
+    .color-metal::before {
+        background: radial-gradient(circle, #e6ce9e, #f9f0df);
+    }
+
+    .color-metal {
+        color: #3b2a1a;
+    }
+    
+    .color-water::before {
+        background: radial-gradient(circle, #91afc9, #c5d6e6);
+    }
+
+    .color-water {
+        color: #3b2a1a;
+    }
+    
+    .color-unknown::before {
+        background: radial-gradient(circle, #e0e0e0, #f5f5f5);
+    }
+
+    .color-unknown {
+        color: #616161;
+    }
+
+    .shinsal-area { 
+        padding: 15px 4px;
+        background: #fcdde5;
+        min-height: 120px; 
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        align-items: center;
+        border-bottom: none !important;
+        flex-grow: 1;
+        justify-content: flex-start;
+    }
+    
+    .shinsal-tag {
+        font-size: 0.8rem;
+        font-weight: 800;
+        padding: 6px 0; 
+        color: #c95f72;
+        background: #ffffff;
+        border: none; 
+        width: 85%;
+        text-align: center;
+        border-radius: 8px; 
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .element-summary {
+        display: flex;
+        justify-content: space-around;
+        padding: 12px 20px;
+        margin: 15px 15px 0 15px;
+        background: #ffffff;
+        border: none;
+        border-radius: 30px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .el-item {
+        font-size: 1.05rem;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #333;
+    }
+
+    .el-dot { 
+        width: 26px;
+        height: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        border-radius: 50%;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 900;
+    }
+
+    .dot-wood {
+        background-color: #5d9e5f;
+    }
+
+    .dot-fire {
+        background-color: #d15656;
+    }
+
+    .dot-earth {
+        background-color: #f1b942;
+    }
+
+    .dot-metal {
+        background-color: #ffffff;
+        color: #333;
+        border: 1px solid #ccc;
+    }
+
+    .dot-water {
+        background-color: #8fa6ba;
+    }
+
+    .capture-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0;
+        color: #5a3a41;
+        background-color: #fcdde5;
+    }
+
+    .footer-watermark {
+        font-size: 1.1rem;
+        opacity: 0.6;
+        font-weight: 900;
+    }
+
+    .saju770-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .saju770-btn { 
+        background: rgba(255,255,255,0.9);
+        border: 1px solid #ffd5e0;
+        color: #d11534; 
+        padding: 25px;
+        border-radius: 18px;
+        cursor: pointer;
+        text-align: center; 
+        box-shadow: 0 10px 18px rgba(255, 182, 193, 0.11);
+        transition: all 0.2s;
+    }
+
+    .saju770-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 22px rgba(255, 182, 193, 0.18);
+    }
+
+    .saju770-title {
+        font-size: 1.35rem;
+        font-weight: 900;
+        margin-bottom: 8px;
+    }
+
+    .saju770-price {
+        font-size: 1.05rem;
+        color: #5a464c;
+        font-weight: 800;
+    }
+
+    .login-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(40, 20, 25, 0.5);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.2s;
+        backdrop-filter: blur(4px);
+    }
+
+    .login-box {
+        background-color: rgba(255,255,255,0.96);
+        width: 85%;
+        max-width: 360px;
+        border-radius: 24px;
+        padding: 40px 25px;
+        text-align: center;
+        position: relative;
+        border: 1px solid #ffdbe5;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    .close-login {
+        position: absolute;
+        top: 14px;
+        right: 18px;
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        color: #333;
+        cursor: pointer;
+    }
+
+    .login-box h2 {
+        margin-top: 0;
+        color: #222;
+        margin-bottom: 10px;
+        font-weight: 900;
+    }
+
+    .login-box p {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+        font-weight: 700;
+    }
+
+    .social-btn {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 12px;
+        border-radius: 14px;
+        font-size: 1rem;
+        font-weight: 900;
+        text-align: center;
+        text-decoration: none;
+        border: 1px solid #eadde1;
+        cursor: pointer;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+    }
+
+    .btn-kakao {
+        background-color: #FEE500;
+        color: #222;
+    }
+
+    .btn-naver {
+        background-color: #03C75A;
+        color: #FFFFFF;
+    }
+
+    .btn-google {
+        background-color: #FFFFFF;
+        color: #222;
+    }
+
+    @media (max-width: 420px) {
         .folder-main-title {
-            margin: 0;
-            font-size: 1.68rem;
-            line-height: 1.3;
-            color: #2f1e25;
-            font-weight: 900;
-            word-break: keep-all;
-        }
-
-        .folder-main-desc {
-            margin: 10px 0 0;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: #6b4d57;
-            font-weight: 700;
-            word-break: keep-all;
-        }
-
-        .folder-chip-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 16px;
-        }
-
-        .folder-chip {
-            padding: 8px 12px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.88);
-            border: 1px solid #ffd7e3;
-            color: #b45570;
-            font-size: 0.78rem;
-            font-weight: 800;
+            font-size: 1.46rem;
         }
 
         .folder-grid-shortcut {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 18px;
+            grid-template-columns: 1fr;
         }
 
         .folder-shortcut {
-            border: 1px solid #ffe2ea;
-            background: rgba(255,255,255,0.88);
-            border-radius: 20px;
-            padding: 14px 12px;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            min-height: 118px;
-            box-shadow: 0 10px 18px rgba(255, 182, 193, 0.12);
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            min-height: auto;
         }
+    }
 
-        .folder-shortcut:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 22px rgba(255, 182, 193, 0.18);
-        }
-
-        .folder-shortcut.primary {
-            background: linear-gradient(180deg, #fff3f8 0%, #fffafb 100%);
-            border: 1px solid #ffcdd9;
-        }
-
-        .shortcut-emoji {
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
-        .shortcut-text {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .shortcut-text strong {
-            font-size: 0.98rem;
-            color: #2f1e25;
-            font-weight: 900;
-        }
-
-        .shortcut-text small {
-            font-size: 0.78rem;
-            color: #8d6672;
-            font-weight: 700;
-            line-height: 1.45;
-        }
-
-        .saju-form { 
-            text-align: left; 
-            margin-top: 15px; 
-            background-color: #fff7fa; 
-            padding: 20px; 
-            border-radius: 18px; 
-            border: 1px solid #ffe2ea;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.95rem;
-            color: #d11534;
-            margin-bottom: 8px;
-            font-weight: 800;
-        }
-        
-        .date-select-group {
-            display: flex;
-            gap: 6px;
-        }
-
-        .date-select-group select {
-            flex: 1;
-            padding: 12px 5px;
-            font-size: 1rem;
-            color: #333;
-            outline: none;
-        }
-        
-        .form-group input[type="text"],
-        .form-group input[type="date"],
-        select { 
-            width: 100%;
-            padding: 14px;
-            border: 1.5px solid #ffd4df;
-            border-radius: 14px;
-            box-sizing: border-box; 
-            font-size: 1rem;
-            color: #333;
-            outline: none;
-            background-color: rgba(255,255,255,0.95);
-            transition: all 0.2s;
-        }
-
-        .form-group input:focus,
-        select:focus {
-            border-color: #ff7b9b;
-            background-color: #fff7fa;
-            box-shadow: 0 0 0 4px rgba(255, 182, 193, 0.14);
-        }
-        
-        .radio-group {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 10px;
-        }
-
-        .radio-group label { 
-            flex: 1;
-            background-color: rgba(255,255,255,0.92);
-            padding: 12px 5px;
-            text-align: center; 
-            border-radius: 14px;
-            cursor: pointer;
-            margin-bottom: 0;
-            border: 1.5px solid #ffd4df; 
-            font-size: 0.9rem;
-            color: #666;
-            transition: all 0.2s;
-        }
-
-        .radio-group input[type="radio"] {
-            display: none;
-        }
-
-        .radio-group input[type="radio"]:checked + span {
-            color: #d11534;
-            font-weight: 900;
-        }
-
-        .radio-group input[type="radio"]:checked ~ label,
-        .radio-group label:has(input[type="radio"]:checked) { 
-            background-color: #fff1f5;
-            border-color: #ff7b9b; 
-            box-shadow: 0 4px 10px rgba(255, 182, 193, 0.12);
-        }
-        
-        .submit-btn {
-            width: 100%;
-            background: linear-gradient(180deg, #ff7da0 0%, #d11534 100%);
-            color: white;
-            border: none;
-            padding: 18px;
-            border-radius: 16px;
-            font-size: 1.05rem;
-            font-weight: 900;
-            cursor: pointer;
-            box-shadow: 0 10px 18px rgba(209, 21, 52, 0.22);
-            transition: transform 0.1s;
-        }
-
-        .submit-btn:active {
-            transform: scale(0.98);
-        }
-
-        .reset-btn {
-            width: 100%;
-            background-color: rgba(255,255,255,0.92);
-            color: #333;
-            border: 1px solid #e0d5d9;
-            padding: 18px;
-            border-radius: 16px;
-            font-size: 1.05rem;
-            font-weight: 800;
-            cursor: pointer;
-        }
-
-        .action-btns {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 25px;
-        }
-
-        .capture-wrapper { 
-            padding: 0; 
-            background-color: #fcdde5; 
-            border-radius: 22px; 
-            margin-bottom: 10px; 
-            color: #5a3a41;
-            overflow: hidden;
-            border: 1px solid #ffd1dc;
-            box-shadow: 0 12px 24px rgba(255, 182, 193, 0.16);
-        }
-
-        #man-result-area {
-            text-align: center;
-            position: relative;
-        }
-        
-        .window-bar {
-            background-color: #ffc4d0;
-            padding: 12px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ffb6c1;
-        }
-
-        .window-title {
-            font-size: 1.05rem;
-            font-weight: 900;
-            color: #5a3a41;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .window-controls {
-            display: flex;
-            gap: 15px;
-            color: #5a3a41;
-            font-size: 1.05rem;
-            font-weight: bold;
-            cursor: default;
-        }
-
-        .bazi-grid { 
-            display: flex;
-            flex-direction: row-reverse; 
-            width: 100%;
-            box-sizing: border-box;
-            background: #ffffff;
-        }
-        
-        .pillar { 
-            flex: 1 1 25%;
-            max-width: 25%;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column; 
-            border-right: 1px solid #f6c5d0;
-            position: relative;
-            z-index: 1;
-            height: auto;
-        }
-
-        .pillar:first-child {
-            border-right: none;
-        }
-        
-        .pillar > div {
-            border-bottom: 1px solid #f6c5d0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .pillar-head { 
-            background: #fdf0f3;
-            padding: 15px 0;
-            font-size: 1rem; 
-            color: #5a3a41;
-            font-weight: 900; 
-        }
-        
-        .sibseong { 
-            font-size: 0.9rem;
-            color: #5a3a41;
-            font-weight: 900;
-            padding: 12px 0; 
-            background: #ffffff; 
-        }
-        
-        .bazi-box-wrap {
-            background: #ffffff;
-            padding: 20px 5px;
-            height: 85px;
-            box-sizing: border-box;
-        }
-
-        .bazi-box { 
-            width: 55px;
-            height: 55px;
-            font-size: 1.5rem;
-            font-weight: 900; 
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            position: relative;
-            z-index: 1;
-            background: transparent;
-        }
-        
-        .bazi-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            border-radius: 45% 55% 65% 35% / 55% 45% 60% 40%;
-            filter: blur(4px);
-            opacity: 0.85;
-            transform: scale(1.3) rotate(-5deg);
-        }
-
-        .color-wood::before {
-            background: radial-gradient(circle, #bde36e, #d7f09b);
-        }
-
-        .color-wood {
-            color: #3b2a1a;
-        }
-        
-        .color-fire::before {
-            background: radial-gradient(circle, #eb5e74, #fcaebc);
-        }
-
-        .color-fire {
-            color: #ffffff;
-        }
-        
-        .color-earth::before {
-            background: radial-gradient(circle, #f5d462, #fcecae);
-        }
-
-        .color-earth {
-            color: #3b2a1a;
-        }
-        
-        .color-metal::before {
-            background: radial-gradient(circle, #e6ce9e, #f9f0df);
-        }
-
-        .color-metal {
-            color: #3b2a1a;
-        }
-        
-        .color-water::before {
-            background: radial-gradient(circle, #91afc9, #c5d6e6);
-        }
-
-        .color-water {
-            color: #3b2a1a;
-        }
-        
-        .color-unknown::before {
-            background: radial-gradient(circle, #e0e0e0, #f5f5f5);
-        }
-
-        .color-unknown {
-            color: #616161;
-        }
-
-        .shinsal-area { 
-            padding: 15px 4px;
-            background: #fcdde5;
-            min-height: 120px; 
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            align-items: center;
-            border-bottom: none !important;
-            flex-grow: 1;
-            justify-content: flex-start;
-        }
-        
-        .shinsal-tag {
-            font-size: 0.8rem;
-            font-weight: 800;
-            padding: 6px 0; 
-            color: #c95f72;
-            background: #ffffff;
-            border: none; 
-            width: 85%;
-            text-align: center;
-            border-radius: 8px; 
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        .element-summary {
-            display: flex;
-            justify-content: space-around;
-            padding: 12px 20px;
-            margin: 15px 15px 0 15px;
-            background: #ffffff;
-            border: none;
-            border-radius: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .el-item {
-            font-size: 1.05rem;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #333;
-        }
-
-        .el-dot { 
-            width: 26px;
-            height: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: center; 
-            border-radius: 50%;
-            color: white;
-            font-size: 0.9rem;
-            font-weight: 900;
-        }
-
-        .dot-wood {
-            background-color: #5d9e5f;
-        }
-
-        .dot-fire {
-            background-color: #d15656;
-        }
-
-        .dot-earth {
-            background-color: #f1b942;
-        }
-
-        .dot-metal {
-            background-color: #ffffff;
-            color: #333;
-            border: 1px solid #ccc;
-        }
-
-        .dot-water {
-            background-color: #8fa6ba;
-        }
-
-        .capture-footer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px 0;
-            color: #5a3a41;
-            background-color: #fcdde5;
-        }
-
-        .footer-watermark {
-            font-size: 1.1rem;
-            opacity: 0.6;
-            font-weight: 900;
-        }
-
-        .saju770-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .saju770-btn { 
-            background: rgba(255,255,255,0.9);
-            border: 1px solid #ffd5e0;
-            color: #d11534; 
-            padding: 25px;
-            border-radius: 18px;
-            cursor: pointer;
-            text-align: center; 
-            box-shadow: 0 10px 18px rgba(255, 182, 193, 0.11);
-            transition: all 0.2s;
-        }
-
-        .saju770-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 22px rgba(255, 182, 193, 0.16);
-        }
-
-        .saju770-title {
-            font-size: 1.35rem;
-            font-weight: 900;
-            margin-bottom: 8px;
-        }
-
-        .saju770-price {
-            font-size: 1.05rem;
-            color: #5a464c;
-            font-weight: 800;
-        }
-
-        .login-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(40, 20, 25, 0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.2s;
-            backdrop-filter: blur(4px);
-        }
-
-        .login-box {
-            background-color: rgba(255,255,255,0.96);
-            width: 85%;
-            max-width: 360px;
-            border-radius: 24px;
-            padding: 40px 25px;
-            text-align: center;
-            position: relative;
-            border: 1px solid #ffdbe5;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-        }
-
-        .close-login {
-            position: absolute;
-            top: 14px;
-            right: 18px;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: #333;
-            cursor: pointer;
-        }
-
-        .login-box h2 {
-            margin-top: 0;
-            color: #222;
-            margin-bottom: 10px;
-            font-weight: 900;
-        }
-
-        .login-box p {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-
-        .social-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 12px;
-            border-radius: 14px;
-            font-size: 1rem;
-            font-weight: 900;
-            text-align: center;
-            text-decoration: none;
-            border: 1px solid #eadde1;
-            cursor: pointer;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
-        }
-
-        .btn-kakao {
-            background-color: #FEE500;
-            color: #222;
-        }
-
-        .btn-naver {
-            background-color: #03C75A;
-            color: #FFFFFF;
-        }
-
-        .btn-google {
-            background-color: #FFFFFF;
-            color: #222;
-        }
-
-        @media (max-width: 420px) {
-            .folder-main-title {
-                font-size: 1.46rem;
-            }
-
-            .folder-grid-shortcut {
-                grid-template-columns: 1fr;
-            }
-
-            .folder-shortcut {
-                min-height: auto;
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
 </head>
 <body>
 
-    <div id="loginOverlay" class="login-overlay">
-        <div class="login-box">
-            <button class="close-login" onclick="closeLogin()">×</button>
-            <h2>🐷 사주돼지 시작하기</h2>
-            <p>3초만에 가입하고 나의 운명을 확인하세요</p>
-            <button class="social-btn btn-kakao" onclick="realKakaoLogin()">카카오로 시작하기</button>
-            <button class="social-btn btn-naver" onclick="alert('준비중입니다!')">네이버로 시작하기</button>
-            <button class="social-btn btn-google" onclick="realGoogleLogin()">구글로 시작하기</button>
+<div id="loginOverlay" class="login-overlay">
+    <div class="login-box">
+        <button class="close-login" onclick="closeLogin()">×</button>
+        <h2>🐷 사주돼지 시작하기</h2>
+        <p>3초만에 가입하고 나의 운명을 확인하세요</p>
+        <button class="social-btn btn-kakao" onclick="realKakaoLogin()">카카오로 시작하기</button>
+        <button class="social-btn btn-naver" onclick="alert('준비중입니다!')">네이버로 시작하기</button>
+        <button class="social-btn btn-google" onclick="realGoogleLogin()">구글로 시작하기</button>
+    </div>
+</div>
+
+<header>
+    <div class="header-top">
+        <a href="/index.html" class="main-link">
+            <img src="/logo.png" alt="사주돼지" class="header-logo">
+        </a>
+        <button id="header-user-btn" class="login-btn-header" onclick="openLogin()">로그인 / 가입</button>
+    </div>
+    <nav id="menu-bar">
+        <button onclick="location.href='index.html?tab=manseryeok'"><span class="icon">🐷</span><span>돼지 만세력</span></button>
+        <button onclick="location.href='index.html?tab=saju770'"><span class="icon">🪙</span><span>770사주</span></button>
+        <button onclick="location.href='index.html?tab=love'"><span class="icon">💕</span><span>돼지궁합</span></button>
+        <button onclick="location.href='index.html?tab=fact'"><span class="icon">👊</span><span>돼지팩폭</span></button>
+    </nav>
+</header>
+
+<main>
+    <div id="main-screen" class="section">
+        <div class="main-folder-wrap">
+            <div class="main-folder-card">
+                <div class="folder-tab-row">
+                    <div class="folder-tab active">main</div>
+                    <div class="folder-tab">fortune</div>
+                    <div class="folder-tab">today</div>
+                </div>
+
+                <div class="folder-window">
+                    <div class="folder-toolbar">
+                        <div class="folder-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="folder-path">🐷 사주돼지 / home</div>
+                    </div>
+
+                    <div class="folder-image-box">
+                        <img src="main_saju_pig_image.png" alt="SajuPig Main Image" class="main-image folder-main-image">
+                    </div>
+
+                    <div class="folder-content-box">
+                        <div class="folder-label">TODAY FORTUNE FILE</div>
+                        <h2 class="folder-main-title">당신의 운명을 점쳐보세요</h2>
+                        <p class="folder-main-desc">
+                            오늘의 흐름부터 타고난 기운까지,
+                            사주돼지에서 쉽고 자세하게 확인해보세요.
+                        </p>
+
+                        <div class="folder-chip-list">
+                            <div class="folder-chip">만세력</div>
+                            <div class="folder-chip">정통사주</div>
+                            <div class="folder-chip">궁합</div>
+                            <div class="folder-chip">팩폭사주</div>
+                        </div>
+
+                        <div class="folder-grid-shortcut">
+                            <button class="folder-shortcut primary" onclick="location.href='index.html?tab=manseryeok'">
+                                <span class="shortcut-emoji">🐷</span>
+                                <span class="shortcut-text">
+                                    <strong>돼지 만세력</strong>
+                                    <small>내 사주팔자 확인하기</small>
+                                </span>
+                            </button>
+
+                            <button class="folder-shortcut" onclick="location.href='index.html?tab=saju770'">
+                                <span class="shortcut-emoji">🪙</span>
+                                <span class="shortcut-text">
+                                    <strong>770사주</strong>
+                                    <small>770원에 파헤치는 사주</small>
+                                </span>
+                            </button>
+
+                            <button class="folder-shortcut" onclick="location.href='index.html?tab=love'">
+                                <span class="shortcut-emoji">💕</span>
+                                <span class="shortcut-text">
+                                    <strong>돼지궁합</strong>
+                                    <small>관계 운과 궁합 보기</small>
+                                </span>
+                            </button>
+
+                            <button class="folder-shortcut" onclick="location.href='index.html?tab=fact'">
+                                <span class="shortcut-emoji">👊</span>
+                                <span class="shortcut-text">
+                                    <strong>돼지팩폭</strong>
+                                    <small>좋은말 사주와 팩폭 사주</small>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <header>
-        <div class="header-top">
-            <a href="/index.html" class="main-link">
-                <img src="/logo.png" alt="사주돼지" class="header-logo">
-            </a>
-            <button id="header-user-btn" class="login-btn-header" onclick="openLogin()">로그인 / 가입</button>
-        </div>
-        <nav id="menu-bar">
-            <button onclick="location.href='index.html?tab=manseryeok'"><span class="icon">🐷</span><span>돼지 만세력</span></button>
-            <button onclick="location.href='index.html?tab=saju770'"><span class="icon">🪙</span><span>770사주</span></button>
-            <button onclick="location.href='index.html?tab=love'"><span class="icon">💕</span><span>돼지궁합</span></button>
-            <button onclick="location.href='index.html?tab=fact'"><span class="icon">👊</span><span>돼지팩폭</span></button>
-        </nav>
-    </header>
-
-    <main>
-        <div id="main-screen" class="section">
-            <div class="main-folder-wrap">
-                <div class="main-folder-card">
-                    <div class="folder-tab-row">
-                        <div class="folder-tab active">main</div>
-                        <div class="folder-tab">fortune</div>
-                        <div class="folder-tab">today</div>
+    <div id="manseryeok" class="section">
+        <div class="card">
+            <h2 id="manseryeok-title">🐷 돼지 만세력</h2>
+            
+            <form id="man-form" class="saju-form">
+                <p style="color: #666; font-size: 0.95rem; margin-top: 0; font-weight: bold;">생년월일을 입력하고 나의 사주팔자를 확인해 보세요.</p>
+                
+                <div class="form-group">
+                    <label>성별</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="man-gender" value="M" checked><span>남성</span></label>
+                        <label><input type="radio" name="man-gender" value="F"><span>여성</span></label>
                     </div>
+                </div>
 
-                    <div class="folder-window">
-                        <div class="folder-toolbar">
-                            <div class="folder-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <div class="folder-path">🐷 사주돼지 / home</div>
-                        </div>
+                <div class="form-group">
+                    <label>양력 / 음력</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="man-calendar" value="solar" checked><span>양력</span></label>
+                        <label><input type="radio" name="man-calendar" value="lunar"><span>음력 평달</span></label>
+                        <label><input type="radio" name="man-calendar" value="lunar-leap"><span>음력 윤달</span></label>
+                    </div>
+                </div>
 
-                        <div class="folder-image-box">
-                            <img src="main_saju_pig_image.png" alt="SajuPig Main Image" class="main-image folder-main-image">
-                        </div>
+                <div class="form-group">
+                    <label>생년월일</label>
+                    <div class="date-select-group">
+                        <select id="man-year"></select>
+                        <select id="man-month"></select>
+                        <select id="man-day"></select>
+                    </div>
+                </div>
 
-                        <div class="folder-content-box">
-                            <div class="folder-label">TODAY FORTUNE FILE</div>
-                            <h2 class="folder-main-title">당신의 운명을 점쳐보세요</h2>
-                            <p class="folder-main-desc">
-                                오늘의 흐름부터 타고난 기운까지,
-                                사주돼지에서 쉽고 자세하게 확인해보세요.
-                            </p>
+                <div class="form-group">
+                    <label>태어난 시간</label>
+                    <select id="man-time">
+                        <option value="unknown">모름 (시간 미적용)</option>
+                        <option value="자시">자시 (23:30 ~ 01:29)</option>
+                        <option value="축시">축시 (01:30 ~ 03:29)</option>
+                        <option value="인시">인시 (03:30 ~ 05:29)</option>
+                        <option value="묘시">묘시 (05:30 ~ 07:29)</option>
+                        <option value="진시">진시 (07:30 ~ 09:29)</option>
+                        <option value="사시">사시 (09:30 ~ 11:29)</option>
+                        <option value="오시">오시 (11:30 ~ 13:29)</option>
+                        <option value="미시">미시 (13:30 ~ 15:29)</option>
+                        <option value="신시">신시 (15:30 ~ 17:29)</option>
+                        <option value="유시">유시 (17:30 ~ 19:29)</option>
+                        <option value="술시">술시 (19:30 ~ 21:29)</option>
+                        <option value="해시">해시 (21:30 ~ 23:29)</option>
+                    </select>
+                </div>
 
-                            <div class="folder-chip-list">
-                                <div class="folder-chip">만세력</div>
-                                <div class="folder-chip">정통사주</div>
-                                <div class="folder-chip">궁합</div>
-                                <div class="folder-chip">팩폭사주</div>
-                            </div>
+                <button type="submit" class="submit-btn">만세력 뽑기</button>
+            </form>
 
-                            <div class="folder-grid-shortcut">
-                                <button class="folder-shortcut primary" onclick="location.href='index.html?tab=manseryeok'">
-                                    <span class="shortcut-emoji">🐷</span>
-                                    <span class="shortcut-text">
-                                        <strong>돼지 만세력</strong>
-                                        <small>내 사주팔자 확인하기</small>
-                                    </span>
-                                </button>
-
-                                <button class="folder-shortcut" onclick="location.href='index.html?tab=saju770'">
-                                    <span class="shortcut-emoji">🪙</span>
-                                    <span class="shortcut-text">
-                                        <strong>770사주</strong>
-                                        <small>770원에 파헤치는 사주</small>
-                                    </span>
-                                </button>
-
-                                <button class="folder-shortcut" onclick="location.href='index.html?tab=love'">
-                                    <span class="shortcut-emoji">💕</span>
-                                    <span class="shortcut-text">
-                                        <strong>돼지궁합</strong>
-                                        <small>관계 운과 궁합 보기</small>
-                                    </span>
-                                </button>
-
-                                <button class="folder-shortcut" onclick="location.href='index.html?tab=fact'">
-                                    <span class="shortcut-emoji">👊</span>
-                                    <span class="shortcut-text">
-                                        <strong>돼지팩폭</strong>
-                                        <small>좋은말 사주와 팩폭 사주</small>
-                                    </span>
-                                </button>
-                            </div>
+            <div id="man-result-area" style="display: none;">
+                <div id="capture-area" class="capture-wrapper">
+                    <div class="window-bar">
+                        <div class="window-title">🐷 돼지 만세력</div>
+                        <div class="window-controls">
+                            <span>─</span>
+                            <span>□</span>
+                            <span>✕</span>
                         </div>
                     </div>
+                    <div class="bazi-grid" id="man-result-grid"></div>
+                    <div id="element-summary" class="element-summary"></div>
+                    <div class="capture-footer">
+                        <div class="footer-watermark">@사주돼지</div>
+                    </div>
+                </div>
+
+                <div class="action-btns">
+                    <button class="submit-btn" onclick="saveManseryeok()">내 만세력 저장하기</button>
+                    <button class="reset-btn" onclick="resetForm()">다시 입력하기</button>
                 </div>
             </div>
         </div>
+    </div>
+    
+    <div id="saju770" class="section">
+        <div class="card">
+            <h2>🪙 770사주</h2>
+            <p style="color: #666; font-weight: bold;">원하시는 사주를 선택해주세요.</p>
+            <div class="saju770-menu">
+                <button class="saju770-btn" onclick="location.href='pig2026.html'">
+                    <div class="saju770-title">🧧 돼지 신년 사주</div>
+                    <div class="saju770-price">770원</div>
+                </button>
+                <button class="saju770-btn" onclick="location.href='pigsaju.html'">
+                    <div class="saju770-title">📜 돼지 정통 사주</div>
+                    <div class="saju770-price">770원</div>
+                </button>
+            </div>
+        </div>
+    </div>
 
-        <div id="manseryeok" class="section">
-            <div class="card">
-                <h2 id="manseryeok-title">🐷 돼지 만세력</h2>
+    <div id="love" class="section">
+        <div class="card">
+            <h2>💕 돼지연애</h2>
+            <p style="color: #666; font-weight: bold;">어떤 관계의 궁합이 궁금하신가요?</p>
+            <div class="saju770-menu">
+                <button class="saju770-btn" onclick="location.href='lovepig.html'">
+                    <div class="saju770-title">💑 돼지 연애 궁합</div>
+                </button>
+                <button class="saju770-btn" onclick="location.href='friendspig.html'">
+                    <div class="saju770-title">👯 돼지 친구 궁합</div>
+                </button>
+                <button class="saju770-btn" onclick="location.href='familypig.html'">
+                    <div class="saju770-title">👨‍👩‍👧‍👦 돼지 가족 궁합</div>
+                </button>
+                <button class="saju770-btn" onclick="location.href='reunionpig.html'">
+                    <div class="saju770-title">💔 돼지 재회 사주</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="fact" class="section">
+        <div class="card">
+            <h2>👊 돼지팩폭</h2>
+            <p style="color: #666; font-weight: bold;">돌려 말하지 않습니다. 어떤 팩폭이 필요하신가요?</p>
+            <div class="saju770-menu">
+                <button class="saju770-btn" onclick="location.href='goodpig.html'">
+                    <div class="saju770-title">👼 좋은말만 가득 사주</div>
+                </button>
+                <button class="saju770-btn" onclick="location.href='badpig.html'">
+                    <div class="saju770-title">😈 나쁜말만 가득 사주</div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="myinfo" class="section">
+        <div class="card">
+            <h2>👤 내 정보</h2>
+            <p id="user-name-display" style="color: #d11534; font-weight: bold; margin-bottom: 20px;">로그인이 필요합니다.</p>
+            
+            <div class="saju-form" style="margin-bottom: 20px;">
+                <h3 style="font-size: 1.1rem; margin-top: 0; color: #5a3a41;">내 기본 사주 정보</h3>
+                <p style="font-size: 0.85rem; color: #666;">저장해두면 사주를 볼 때 자동으로 입력됩니다.</p>
                 
-                <form id="man-form" class="saju-form">
-                    <p style="color: #666; font-size: 0.95rem; margin-top: 0; font-weight: bold;">생년월일을 입력하고 나의 사주팔자를 확인해 보세요.</p>
+                <div style="display:flex; flex-direction:column; gap: 10px; margin-bottom: 15px;">
                     
-                    <div class="form-group">
-                        <label>성별</label>
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <label style="font-size: 0.85rem;">성별</label>
                         <div class="radio-group">
-                            <label><input type="radio" name="man-gender" value="M" checked><span>남성</span></label>
-                            <label><input type="radio" name="man-gender" value="F"><span>여성</span></label>
+                            <label><input type="radio" name="my-saved-gender" value="M" checked><span>남성</span></label>
+                            <label><input type="radio" name="my-saved-gender" value="F"><span>여성</span></label>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>양력 / 음력</label>
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <label style="font-size: 0.85rem;">양력 / 음력</label>
                         <div class="radio-group">
-                            <label><input type="radio" name="man-calendar" value="solar" checked><span>양력</span></label>
-                            <label><input type="radio" name="man-calendar" value="lunar"><span>음력 평달</span></label>
-                            <label><input type="radio" name="man-calendar" value="lunar-leap"><span>음력 윤달</span></label>
+                            <label><input type="radio" name="my-saved-calendar" value="solar" checked><span>양력</span></label>
+                            <label><input type="radio" name="my-saved-calendar" value="lunar"><span>음력 평달</span></label>
+                            <label><input type="radio" name="my-saved-calendar" value="lunar-leap"><span>음력 윤달</span></label>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>생년월일</label>
-                        <div class="date-select-group">
-                            <select id="man-year"></select>
-                            <select id="man-month"></select>
-                            <select id="man-day"></select>
-                        </div>
+                    <label style="font-size: 0.85rem; color: #d11534; font-weight: 800;">생년월일</label>
+                    <div class="date-select-group">
+                        <select id="my-saved-year" style="padding: 12px 5px; border: 1.5px solid #ffd4df; border-radius: 12px;"></select>
+                        <select id="my-saved-month" style="padding: 12px 5px; border: 1.5px solid #ffd4df; border-radius: 12px;"></select>
+                        <select id="my-saved-day" style="padding: 12px 5px; border: 1.5px solid #ffd4df; border-radius: 12px;"></select>
                     </div>
-
-                    <div class="form-group">
-                        <label>태어난 시간</label>
-                        <select id="man-time">
-                            <option value="unknown">모름 (시간 미적용)</option>
-                            <option value="자시">자시 (23:30 ~ 01:29)</option>
-                            <option value="축시">축시 (01:30 ~ 03:29)</option>
-                            <option value="인시">인시 (03:30 ~ 05:29)</option>
-                            <option value="묘시">묘시 (05:30 ~ 07:29)</option>
-                            <option value="진시">진시 (07:30 ~ 09:29)</option>
-                            <option value="사시">사시 (09:30 ~ 11:29)</option>
-                            <option value="오시">오시 (11:30 ~ 13:29)</option>
-                            <option value="미시">미시 (13:30 ~ 15:29)</option>
-                            <option value="신시">신시 (15:30 ~ 17:29)</option>
-                            <option value="유시">유시 (17:30 ~ 19:29)</option>
-                            <option value="술시">술시 (19:30 ~ 21:29)</option>
-                            <option value="해시">해시 (21:30 ~ 23:29)</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="submit-btn">만세력 뽑기</button>
-                </form>
-
-                <div id="man-result-area" style="display: none;">
-                    <div id="capture-area" class="capture-wrapper">
-                        <div class="window-bar">
-                            <div class="window-title">🐷 돼지 만세력</div>
-                            <div class="window-controls">
-                                <span>─</span>
-                                <span>□</span>
-                                <span>✕</span>
-                            </div>
-                        </div>
-                        <div class="bazi-grid" id="man-result-grid"></div>
-                        <div id="element-summary" class="element-summary"></div>
-                        <div class="capture-footer">
-                            <div class="footer-watermark">@사주돼지</div>
-                        </div>
-                    </div>
-
-                    <div class="action-btns">
-                        <button class="submit-btn" onclick="saveManseryeok()">내 만세력 저장하기</button>
-                        <button class="reset-btn" onclick="resetForm()">다시 입력하기</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="saju770" class="section">
-            <div class="card">
-                <h2>🪙 770사주</h2>
-                <p style="color: #666; font-weight: bold;">원하시는 사주를 선택해주세요.</p>
-                <div class="saju770-menu">
-                    <button class="saju770-btn" onclick="location.href='pig2026.html'">
-                        <div class="saju770-title">🧧 돼지 신년 사주</div>
-                        <div class="saju770-price">770원</div>
-                    </button>
-                    <button class="saju770-btn" onclick="location.href='pigsaju.html'">
-                        <div class="saju770-title">📜 돼지 정통 사주</div>
-                        <div class="saju770-price">770원</div>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="love" class="section">
-            <div class="card">
-                <h2>💕 돼지연애</h2>
-                <p style="color: #666; font-weight: bold;">어떤 관계의 궁합이 궁금하신가요?</p>
-                <div class="saju770-menu">
-                    <button class="saju770-btn" onclick="location.href='lovepig.html'">
-                        <div class="saju770-title">💑 돼지 연애 궁합</div>
-                    </button>
-                    <button class="saju770-btn" onclick="location.href='friendspig.html'">
-                        <div class="saju770-title">👯 돼지 친구 궁합</div>
-                    </button>
-                    <button class="saju770-btn" onclick="location.href='familypig.html'">
-                        <div class="saju770-title">👨‍👩‍👧‍👦 돼지 가족 궁합</div>
-                    </button>
-                    <button class="saju770-btn" onclick="location.href='reunionpig.html'">
-                        <div class="saju770-title">💔 돼지 재회 사주</div>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="fact" class="section">
-            <div class="card">
-                <h2>👊 돼지팩폭</h2>
-                <p style="color: #666; font-weight: bold;">돌려 말하지 않습니다. 어떤 팩폭이 필요하신가요?</p>
-                <div class="saju770-menu">
-                    <button class="saju770-btn" onclick="location.href='goodpig.html'">
-                        <div class="saju770-title">👼 좋은말만 가득 사주</div>
-                    </button>
-                    <button class="saju770-btn" onclick="location.href='badpig.html'">
-                        <div class="saju770-title">😈 나쁜말만 가득 사주</div>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="myinfo" class="section">
-            <div class="card">
-                <h2>👤 내 정보</h2>
-                <p id="user-name-display" style="color: #d11534; font-weight: bold; margin-bottom: 20px;">로그인이 필요합니다.</p>
-                
-                <div class="saju-form" style="margin-bottom: 20px;">
-                    <h3 style="font-size: 1.1rem; margin-top: 0; color: #5a3a41;">내 기본 사주 정보</h3>
-                    <p style="font-size: 0.85rem; color: #666;">저장해두면 사주를 볼 때 자동으로 입력됩니다.</p>
                     
-                    <div style="display:flex; flex-direction:column; gap: 10px; margin-bottom: 15px;">
-                        
-                        <div class="form-group" style="margin-bottom: 10px;">
-                            <label style="font-size: 0.85rem;">성별</label>
-                            <div class="radio-group">
-                                <label><input type="radio" name="my-saved-gender" value="M" checked><span>남성</span></label>
-                                <label><input type="radio" name="my-saved-gender" value="F"><span>여성</span></label>
-                            </div>
-                        </div>
-
-                        <div class="form-group" style="margin-bottom: 10px;">
-                            <label style="font-size: 0.85rem;">양력 / 음력</label>
-                            <div class="radio-group">
-                                <label><input type="radio" name="my-saved-calendar" value="solar" checked><span>양력</span></label>
-                                <label><input type="radio" name="my-saved-calendar" value="lunar"><span>음력 평달</span></label>
-                                <label><input type="radio" name="my-saved-calendar" value="lunar-leap"><span>음력 윤달</span></label>
-                            </div>
-                        </div>
-
-                        <label style="font-size: 0.85rem; color: #d11534; font-weight: 800;">생년월일</label>
-                        <div class="date-select-group">
-                            <select id="my-saved-year" style="padding: 12px 5px; border: 1.5px solid #ffd4df; border-radius: 12px;"></select>
-                            <select id="my-saved-month" style="padding: 12px 5px; border: 1.5px solid #ffd4df; border-radius: 12px;"></select>
-                            <select id="my-saved-day" style="padding: 12px 5px; border: 1.5px solid #ffd4df; border-radius: 12px;"></select>
-                        </div>
-                        
-                        <label style="font-size: 0.85rem; color: #d11534; font-weight: 800;">태어난 시간</label>
-                        <select id="my-saved-time" style="padding: 12px; border: 1.5px solid #ffd4df; border-radius: 12px;">
-                            <option value="unknown">태어난 시간 모름</option>
-                            <option value="자시">자시 (23:30 ~ 01:29)</option>
-                            <option value="축시">축시 (01:30 ~ 03:29)</option>
-                            <option value="인시">인시 (03:30 ~ 05:29)</option>
-                            <option value="묘시">묘시 (05:30 ~ 07:29)</option>
-                            <option value="진시">진시 (07:30 ~ 09:29)</option>
-                            <option value="사시">사시 (09:30 ~ 11:29)</option>
-                            <option value="오시">오시 (11:30 ~ 13:29)</option>
-                            <option value="미시">미시 (13:30 ~ 15:29)</option>
-                            <option value="신시">신시 (15:30 ~ 17:29)</option>
-                            <option value="유시">유시 (17:30 ~ 19:29)</option>
-                            <option value="술시">술시 (19:30 ~ 21:29)</option>
-                            <option value="해시">해시 (21:30 ~ 23:29)</option>
-                        </select>
-                    </div>
-                    <button class="submit-btn" style="padding: 14px; font-size: 1rem;" onclick="saveMyInfo()">내 정보 저장하기</button>
+                    <label style="font-size: 0.85rem; color: #d11534; font-weight: 800;">태어난 시간</label>
+                    <select id="my-saved-time" style="padding: 12px; border: 1.5px solid #ffd4df; border-radius: 12px;">
+                        <option value="unknown">태어난 시간 모름</option>
+                        <option value="자시">자시 (23:30 ~ 01:29)</option>
+                        <option value="축시">축시 (01:30 ~ 03:29)</option>
+                        <option value="인시">인시 (03:30 ~ 05:29)</option>
+                        <option value="묘시">묘시 (05:30 ~ 07:29)</option>
+                        <option value="진시">진시 (07:30 ~ 09:29)</option>
+                        <option value="사시">사시 (09:30 ~ 11:29)</option>
+                        <option value="오시">오시 (11:30 ~ 13:29)</option>
+                        <option value="미시">미시 (13:30 ~ 15:29)</option>
+                        <option value="신시">신시 (15:30 ~ 17:29)</option>
+                        <option value="유시">유시 (17:30 ~ 19:29)</option>
+                        <option value="술시">술시 (19:30 ~ 21:29)</option>
+                        <option value="해시">해시 (21:30 ~ 23:29)</option>
+                    </select>
                 </div>
+                <button class="submit-btn" style="padding: 14px; font-size: 1rem;" onclick="saveMyInfo()">내 정보 저장하기</button>
+            </div>
 
-                <div class="saju770-menu" style="margin-top: 0;">
-                    <button class="saju770-btn" style="padding: 18px;" onclick="location.href='https://open.kakao.com/o/여기에주소넣기'">
-                        <div class="saju770-title" style="font-size: 1.15rem; margin: 0;">💬 1:1 카톡 문의하기</div>
-                    </button>
-                    <button class="reset-btn" onclick="realLogout()">로그아웃</button>
-                </div>
+            <div class="saju770-menu" style="margin-top: 0;">
+                <button class="saju770-btn" style="padding: 18px;" onclick="location.href='[https://open.kakao.com/o/여기에주소넣기](https://open.kakao.com/o/여기에주소넣기)'">
+                    <div class="saju770-title" style="font-size: 1.15rem; margin: 0;">💬 1:1 카톡 문의하기</div>
+                </button>
+                <button class="reset-btn" onclick="realLogout()">로그아웃</button>
             </div>
         </div>
+    </div>
 
-    </main>
+</main>
 
-    <footer style="padding: 20px; text-align: center; font-size: 0.75rem; color: #999; background: #fdf5f7; margin-top: 30px; border-top: 1px solid #ffe4eb;">
-        <div style="display: flex; justify-content: center; gap: 12px; font-weight: 800; margin-bottom: 15px;">
-            <a href="terms.html" style="color: #888; text-decoration: none;">이용약관</a>
-            <span style="color: #ddd;">|</span>
-            <a href="privacy.html" style="color: #888; text-decoration: none;">개인정보처리방침</a>
-            <span style="color: #ddd;">|</span>
-            <a href="refund.html" style="color: #d11534; text-decoration: none;">환불규정</a>
-        </div>
+<footer style="padding: 20px; text-align: center; font-size: 0.75rem; color: #999; background: #fdf5f7; margin-top: 30px; border-top: 1px solid #ffe4eb;">
+    <div style="display: flex; justify-content: center; gap: 12px; font-weight: 800; margin-bottom: 15px;">
+        <a href="terms.html" style="color: #888; text-decoration: none;">이용약관</a>
+        <span style="color: #ddd;">|</span>
+        <a href="privacy.html" style="color: #888; text-decoration: none;">개인정보처리방침</a>
+        <span style="color: #ddd;">|</span>
+        <a href="refund.html" style="color: #d11534; text-decoration: none;">환불규정</a>
+    </div>
+    
+    <button onclick="toggleBusinessInfo()" style="background: none; border: none; color: #888; font-size: 0.8rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0 auto; padding: 5px;">
+        <span>사업자 정보 보기</span>
+        <span id="biz-arrow" style="font-size: 0.6rem;">▼</span>
+    </button>
+
+    <div id="business-info" style="display: none; margin-top: 15px; line-height: 1.6; text-align: center; color: #a0a0a0;">
+        <p style="margin: 0;">상호명: 테스트잇 | 대표자: 송다혜</p>
+        <p style="margin: 0;">사업자등록번호: 662-54-00892</p>
+        <p style="margin: 0;">통신판매업신고: 제 2026-경기하남-0331호</p>
+        <p style="margin: 0;">사업장 소재지: 경기도 하남시 미사강변서로 85, 2005동 2003호</p>
+        <p style="margin: 0;">이메일: pigsaju@gmail.com</p>
+    </div>
+</footer>
+
+<script>
+    window.onload = function() {
+        const yearSel = document.getElementById('man-year');
+        const monthSel = document.getElementById('man-month');
+        const daySel = document.getElementById('man-day');
+        const myYearSel = document.getElementById('my-saved-year');
+        const myMonthSel = document.getElementById('my-saved-month');
+        const myDaySel = document.getElementById('my-saved-day');
         
-        <button onclick="toggleBusinessInfo()" style="background: none; border: none; color: #888; font-size: 0.8rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0 auto; padding: 5px;">
-            <span>사업자 정보 보기</span>
-            <span id="biz-arrow" style="font-size: 0.6rem;">▼</span>
-        </button>
-
-        <div id="business-info" style="display: none; margin-top: 15px; line-height: 1.6; text-align: center; color: #a0a0a0;">
-            <p style="margin: 0;">상호명: 테스트잇 | 대표자: 송다혜</p>
-            <p style="margin: 0;">사업자등록번호: 662-54-00892</p>
-            <p style="margin: 0;">통신판매업신고: 제 2026-경기하남-0331호</p>
-            <p style="margin: 0;">사업장 소재지: 경기도 하남시 미사강변서로 85, 2005동 2003호</p>
-            <p style="margin: 0;">이메일: pigsaju@gmail.com</p>
-        </div>
-    </footer>
-
-    <script>
-        window.onload = function() {
-            const yearSel = document.getElementById('man-year');
-            const monthSel = document.getElementById('man-month');
-            const daySel = document.getElementById('man-day');
-            const myYearSel = document.getElementById('my-saved-year');
-            const myMonthSel = document.getElementById('my-saved-month');
-            const myDaySel = document.getElementById('my-saved-day');
-            
-            const curYear = new Date().getFullYear();
-            
-            for (let i = curYear; i >= 1900; i--) {
-                if(yearSel) yearSel.add(new Option(i + "년", i));
-                if(myYearSel) myYearSel.add(new Option(i + "년", i));
-            }
-            for (let i = 1; i <= 12; i++) {
-                if(monthSel) monthSel.add(new Option(i + "월", i));
-                if(myMonthSel) myMonthSel.add(new Option(i + "월", i));
-            }
-            for (let i = 1; i <= 31; i++) {
-                if(daySel) daySel.add(new Option(i + "일", i));
-                if(myDaySel) myDaySel.add(new Option(i + "일", i));
-            }
-            
-            if(yearSel) yearSel.value = 1990;
-            if(myYearSel) myYearSel.value = 1990;
-
-            const urlParams = new URLSearchParams(window.location.search);
-            let tab = urlParams.get('tab');
-            
-            if (!tab) {
-                document.getElementById('main-screen').classList.add('active');
-                return;
-            }
-            
-            const targetSection = document.getElementById(tab);
-            const buttons = document.querySelectorAll('#menu-bar button');
-            let targetBtn = null;
-            
-            if (tab === 'manseryeok') targetBtn = buttons[0];
-            if (tab === 'saju770') targetBtn = buttons[1];
-            if (tab === 'love') targetBtn = buttons[2];
-            if (tab === 'fact') targetBtn = buttons[3];
-            
-            if (targetSection) {
-                document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-                buttons.forEach(btn => btn.classList.remove('active'));
-                targetSection.classList.add('active');
-                if(targetBtn) targetBtn.classList.add('active');
-            } else {
-                document.getElementById('main-screen').classList.add('active');
-            }
-        };
-
-        const fullNames = {
-            '甲':'갑목', '乙':'을목', '丙':'병화', '丁':'정화', '戊':'무토', '己':'기토', '庚':'경금', '辛':'신금', '壬':'임수', '癸':'계수',
-            '子':'자수', '丑':'축토', '寅':'인목', '卯':'묘목', '辰':'진토', '巳':'사화', '午':'오화', '未':'미토', '申':'신금', '酉':'유금', '戌':'술토', '亥':'해수'
-        };
-
-        function transFull(char) { return fullNames[char] || char; }
+        const curYear = new Date().getFullYear();
         
-        function transSib(char) {
-            if (!char) return '-';
-            if (Array.isArray(char)) char = char[0];
-            const map = { '比肩':'비견', '劫财':'겁재', '劫財':'겁재', '食神':'식신', '伤官':'상관', '傷官':'상관', '偏财':'편재', '偏財':'편재', '正财':'정재', '正財':'정재', '七杀':'편관', '七殺':'편관', '正官':'정관', '偏印':'편인', '正印':'정인', '日主':'일간' };
-            return map[char] || String(char).replace(/[\u4e00-\u9fa5]/g, '').trim() || '-';
+        for (let i = curYear; i >= 1900; i--) {
+            if(yearSel) yearSel.add(new Option(i + "년", i));
+            if(myYearSel) myYearSel.add(new Option(i + "년", i));
         }
-
-        function getElementClass(char) {
-            if (['甲','乙','寅','卯'].includes(char)) return 'color-wood';
-            if (['丙','丁','巳','午'].includes(char)) return 'color-fire';
-            if (['戊','己','辰','戌','丑','未'].includes(char)) return 'color-earth';
-            if (['庚','辛','申','酉'].includes(char)) return 'color-metal';
-            if (['壬','癸','亥','子'].includes(char)) return 'color-water';
-            return 'color-unknown';
+        for (let i = 1; i <= 12; i++) {
+            if(monthSel) monthSel.add(new Option(i + "월", i));
+            if(myMonthSel) myMonthSel.add(new Option(i + "월", i));
         }
-
-        function getShinsalPerfect(title, gan, zhi, yGan, yZhi, mGan, mZhi, dGan, dZhi) {
-            let list = []; const pillar = gan + zhi;
-            if (['甲','戊','庚'].includes(dGan) && ['丑','未'].includes(zhi)) list.push('천을귀인');
-            if (['乙','己'].includes(dGan) && ['子','申'].includes(zhi)) list.push('천을귀인');
-            if (['丙','丁'].includes(dGan) && ['亥','酉'].includes(zhi)) list.push('천을귀인');
-            if (['辛'].includes(dGan) && ['午','寅'].includes(zhi)) list.push('천을귀인');
-            if (['壬','癸'].includes(dGan) && ['卯','巳'].includes(zhi)) list.push('천을귀인');
-
-            if (['亥','卯','未'].includes(mZhi) && gan === '甲') list.push('월덕귀인');
-            if (['寅','午','戌'].includes(mZhi) && gan === '丙') list.push('월덕귀인');
-            if (['巳','酉','丑'].includes(mZhi) && gan === '庚') list.push('월덕귀인');
-            if (['申','子','辰'].includes(mZhi) && gan === '壬') list.push('월덕귀인');
-
-            const cheondeok = {'子':'巳', '丑':'庚', '寅':'丁', '卯':'申', '辰':'壬', '巳':'辛', '午':'亥', '未':'甲', '申':'癸', '酉':'寅', '戌':'丙', '亥':'乙'};
-            if (cheondeok[mZhi] === gan || cheondeok[mZhi] === zhi) list.push('천덕귀인');
-
-            const munchang = {'甲':'巳', '乙':'午', '丙':'申', '戊':'申', '丁':'酉', '己':'酉', '庚':'亥', '辛':'子', '壬':'寅', '癸':'卯'};
-            const hakdang = {'甲':'亥', '乙':'午', '丙':'寅', '丁':'酉', '戊':'寅', '己':'酉', '庚':'巳', '辛':'子', '壬':'申', '癸':'卯'};
-            const hongyeom = {'甲':'午', '乙':'午', '丙':'寅', '丁':'미', '戊':'辰', '己':'辰', '庚':'戌', '辛':'酉', '壬':'子', '癸':'申'};
-            const geumyeo = {'甲':'辰', '乙':'巳', '丙':'未', '丁':'申', '戊':'未', '己':'申', '庚':'戌', '辛':'亥', '壬':'丑', '癸':'寅'};
-            if (munchang[dGan] === zhi) list.push('문창성');
-            if (hakdang[dGan] === zhi) list.push('학당귀인');
-            if (hongyeom[dGan] === zhi || (dGan === '壬' && zhi === '申')) list.push('홍염살');
-            if (geumyeo[dGan] === zhi) list.push('금여성');
-
-            if (title === '일주') { if (['甲寅', '乙巳', '丁巳', '戊申', '辛亥'].includes(pillar)) list.push('고란살'); }
-            if (['甲辰', '乙未', '丙戌', '丁丑', '戊辰', '壬戌', '癸丑'].includes(pillar)) list.push('백호대살');
-            if (['庚辰', '庚戌', '壬辰', '戊戌'].includes(pillar)) list.push('괴강살');
-            
-            const yangin = {'甲':'卯', '丙':'오', '戊':'오', '庚':'酉', '壬':'자', '乙':'진', '丁':'미', '己':'미', '辛':'술', '癸':'축'};
-            if (yangin[dGan] === zhi) list.push('양인살');
-
-            if (['甲','辛','卯','午','申'].includes(gan)) list.push('현침살');
-            if (['甲','辛','卯','午','申'].includes(zhi) && !list.includes('현침살')) list.push('현침살');
-
-            function getSamhap(z) { if (['申','子','辰'].includes(z)) return '水'; if (['寅','午','戌'].includes(z)) return '火'; if (['亥','卯','未'].includes(z)) return '木'; if (['巳','酉','丑'].includes(z)) return '金'; return ''; }
-            const dSamhap = getSamhap(dZhi); const ySamhap = getSamhap(yZhi);
-
-            if ((dSamhap === '水' && zhi === '寅') || (dSamhap === '火' && zhi === '申') || (dSamhap === '木' && zhi === '巳') || (dSamhap === '金' && zhi === '亥') || (ySamhap === '水' && zhi === '寅') || (ySamhap === '火' && zhi === '申') || (ySamhap === '木' && zhi === '巳') || (ySamhap === '金' && zhi === '亥')) list.push('역마살');
-            if ((dSamhap === '水' && zhi === '酉') || (dSamhap === '火' && zhi === '卯') || (dSamhap === '木' && zhi === '子') || (dSamhap === '金' && zhi === '午') || (ySamhap === '水' && zhi === '酉') || (ySamhap === '火' && zhi === '卯') || (ySamhap === '木' && zhi === '子') || (ySamhap === '금' && zhi === '오')) list.push('도화살');
-            if ((dSamhap === '水' && zhi === '辰') || (dSamhap === '火' && zhi === '戌') || (dSamhap === '목' && zhi === '미') || (dSamhap === '금' && zhi === '축') || (ySamhap === '수' && zhi === '진') || (ySamhap === '화' && zhi === '술') || (ySamhap === '목' && zhi === '미') || (ySamhap === '금' && zhi === '축')) list.push('화개살');
-            if ((dSamhap === '水' && zhi === '巳') || (dSamhap === '火' && zhi === '亥') || (dSamhap === '木' && zhi === '申') || (dSamhap === '金' && zhi === '寅')) list.push('겁살');
-            if ((dSamhap === '水' && zhi === '亥') || (dSamhap === '火' && zhi === '巳') || (dSamhap === '木' && zhi === '寅') || (dSamhap === '金' && zhi === '申')) list.push('망신살');
-
-            const gwasuk = {'寅':'축','卯':'축','辰':'축', '巳':'진','午':'진','未':'진', '申':'미','酉':'미','戌':'미', '亥':'술','子':'술','丑':'술'};
-            const gosin = {'寅':'사','卯':'사','辰':'사', '巳':'신','午':'신','未':'신', '申':'해','酉':'해','戌':'해', '亥':'인','子':'인','丑':'인'};
-            if (gwasuk[yZhi] === zhi) list.push('과숙살');
-            if (gosin[yZhi] === zhi) list.push('고신살');
-
-            const wonjin = { '子':'未', '丑':'午', '寅':'酉', '卯':'申', '辰':'亥', '巳':'戌', '午':'丑', '未':'子', '申':'卯', '酉':'寅', '戌':'巳', '亥':'辰' };
-            const gwimun = { '子':'酉', '丑':'午', '寅':'未', '卯':'申', '辰':'亥', '巳':'戌', '午':'丑', '未':'寅', '申':'卯', '酉':'子', '戌':'巳', '亥':'辰' };
-            if (wonjin[dZhi] === zhi && title !== '일주') list.push('원진살');
-            if (gwimun[dZhi] === zhi && title !== '일주') list.push('귀문관살');
-
-            return [...new Set(list)];
+        for (let i = 1; i <= 31; i++) {
+            if(daySel) daySel.add(new Option(i + "일", i));
+            if(myDaySel) myDaySel.add(new Option(i + "일", i));
         }
+        
+        if(yearSel) yearSel.value = 1990;
+        if(myYearSel) myYearSel.value = 1990;
 
-        document.getElementById('man-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const year = parseInt(document.getElementById('man-year').value);
-            const month = parseInt(document.getElementById('man-month').value);
-            const day = parseInt(document.getElementById('man-day').value);
-            const timeStr = document.getElementById('man-time').value;
-            const calendarType = document.querySelector('input[name="man-calendar"]:checked').value;
-            
-            const timeMap = { 'unknown': 12, '자시': 0, '축시': 2, '인시': 4, '묘시': 6, '진시': 8, '사시': 10, '오시': 12, '미시': 14, '신시': 16, '유시': 18, '술시': 20, '해시': 22 };
-            const hour = timeMap[timeStr] !== undefined ? timeMap[timeStr] : 12;
-
-            try {
-                let lunarObj;
-                if (calendarType === 'solar') { lunarObj = Solar.fromYmdHms(year, month, day, hour, 0, 0).getLunar(); } 
-                else if (calendarType === 'lunar') { lunarObj = Lunar.fromYmdHms(year, month, day, hour, 0, 0); } 
-                else if (calendarType === 'lunar-leap') {
-                    let leapMonth = 0; try { leapMonth = LunarYear.fromYear(year).getLeapMonth(); } catch (e) { leapMonth = 0; }
-                    if (leapMonth !== month) { alert(`선택한 ${year}년에는 윤${month}월이 없습니다.\n윤달이 맞는지 확인해 주세요.`); return; }
-                    lunarObj = Lunar.fromYmdHms(year, -month, day, hour, 0, 0);
-                }
-
-                const bazi = lunarObj.getEightChar();
-                const y = bazi.getYear(); const m = bazi.getMonth(); const d = bazi.getDay(); const t = bazi.getTime();
-                const yGan = y.charAt(0); const yZhi = y.charAt(1); const mGan = m.charAt(0); const mZhi = m.charAt(1);
-                const dGan = d.charAt(0); const dZhi = d.charAt(1); const tGan = t.charAt(0); const tZhi = t.charAt(1);
-                const isTimeUnknown = timeStr === 'unknown';
-                
-                const getSafeShiShen = (method) => { try { let raw = bazi[method](); return Array.isArray(raw) ? raw[0] : raw; } catch(e) { return '-'; } };
-
-                const renderPillar = (title, gan, zhi, sibGanMethod, sibZhiMethod, isUnknown) => {
-                    if (isUnknown) return `<div class="pillar"><div class="pillar-head">${title}</div><div class="sibseong">-</div><div class="bazi-box-wrap"><div class="bazi-box color-unknown">?</div></div><div class="bazi-box-wrap"><div class="bazi-box color-unknown">?</div></div><div class="sibseong">-</div><div class="shinsal-area"></div></div>`;
-                    const sibGan = getSafeShiShen(sibGanMethod); const sibZhi = getSafeShiShen(sibZhiMethod); const finalShinsal = getShinsalPerfect(title, gan, zhi, yGan, yZhi, mGan, mZhi, dGan, dZhi);
-                    let shinsalHtml = ''; finalShinsal.forEach(s => { shinsalHtml += `<div class="shinsal-tag">${s}</div>`; });
-                    return `<div class="pillar"><div class="pillar-head">${title}</div><div class="sibseong">${title === '일주' ? '일간(나)' : transSib(sibGan)}</div><div class="bazi-box-wrap"><div class="bazi-box ${getElementClass(gan)}">${transFull(gan)}</div></div><div class="bazi-box-wrap"><div class="bazi-box ${getElementClass(zhi)}">${transFull(zhi)}</div></div><div class="sibseong">${transSib(sibZhi)}</div><div class="shinsal-area">${shinsalHtml}</div></div>`;
-                };
-
-                const resultHtml = `${renderPillar('연주', yGan, yZhi, 'getYearShiShenGan', 'getYearShiShenZhi', false)}${renderPillar('월주', mGan, mZhi, 'getMonthShiShenGan', 'getMonthShiShenZhi', false)}${renderPillar('일주', dGan, dZhi, 'getDayShiShenGan', 'getDayShiShenZhi', false)}${renderPillar('시주', tGan, tZhi, 'getTimeShiShenGan', 'getTimeShiShenZhi', isTimeUnknown)}`;
-                document.getElementById('man-result-grid').innerHTML = resultHtml;
-
-                let wood = 0; let fire = 0; let earth = 0; let metal = 0; let water = 0;
-                const charsToCount = isTimeUnknown ? [yGan, yZhi, mGan, mZhi, dGan, dZhi] : [yGan, yZhi, mGan, mZhi, dGan, dZhi, tGan, tZhi];
-                charsToCount.forEach(char => {
-                    if (['甲','乙','寅','卯'].includes(char)) wood++; else if (['丙','丁','巳','午'].includes(char)) fire++;
-                    else if (['戊','己','辰','戌','丑','未'].includes(char)) earth++; else if (['庚','辛','申','酉'].includes(char)) metal++;
-                    else if (['壬','癸','亥','子'].includes(char)) water++;
-                });
-
-                document.getElementById('element-summary').innerHTML = `<div class="el-item"><div class="el-dot dot-wood">목</div> ${wood}</div><div class="el-item"><div class="el-dot dot-fire">화</div> ${fire}</div><div class="el-item"><div class="el-dot dot-earth">토</div> ${earth}</div><div class="el-item"><div class="el-dot dot-metal">금</div> ${metal}</div><div class="el-item"><div class="el-dot dot-water">수</div> ${water}</div>`;
-                document.getElementById('man-form').style.display = 'none';
-                document.getElementById('manseryeok-title').style.display = 'none';
-                document.getElementById('man-result-area').style.display = 'block';
-            } catch (error) { alert('만세력 계산 중 오류가 발생했습니다. 생년월일을 다시 확인해주세요.'); console.error(error); }
-        });
-
-        function saveManseryeok() {
-            const targetElement = document.getElementById('capture-area');
-            html2canvas(targetElement, { scale: 2, backgroundColor: '#fff0f5' }).then(canvas => {
-                const link = document.createElement('a'); link.download = '돼지만세력_결과.png'; link.href = canvas.toDataURL('image/png'); link.click();
-            }).catch(err => { alert('저장 중 오류가 발생했습니다.'); console.error(err); });
+        const urlParams = new URLSearchParams(window.location.search);
+        let tab = urlParams.get('tab');
+        
+        if (!tab) {
+            document.getElementById('main-screen').classList.add('active');
+            return;
         }
-
-        function resetForm() { document.getElementById('man-result-area').style.display = 'none'; document.getElementById('man-form').style.display = 'block'; document.getElementById('manseryeok-title').style.display = 'block'; }
-        function openLogin() { document.getElementById('loginOverlay').style.display = 'flex'; }
-        function closeLogin() { document.getElementById('loginOverlay').style.display = 'none'; }
-        function toggleBusinessInfo() {
-            const info = document.getElementById('business-info');
-            const arrow = document.getElementById('biz-arrow');
-            if (info.style.display === 'none') { info.style.display = 'block'; arrow.innerText = '▲'; } 
-            else { info.style.display = 'none'; arrow.innerText = '▼'; }
-        }
-        function goToMain(event) {
-            event.preventDefault();
+        
+        const targetSection = document.getElementById(tab);
+        const buttons = document.querySelectorAll('#menu-bar button');
+        let targetBtn = null;
+        
+        if (tab === 'manseryeok') targetBtn = buttons[0];
+        if (tab === 'saju770') targetBtn = buttons[1];
+        if (tab === 'love') targetBtn = buttons[2];
+        if (tab === 'fact') targetBtn = buttons[3];
+        
+        if (targetSection) {
             document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-            document.querySelectorAll('#menu-bar button').forEach(btn => btn.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active'));
+            targetSection.classList.add('active');
+            if(targetBtn) targetBtn.classList.add('active');
+        } else {
             document.getElementById('main-screen').classList.add('active');
         }
-    </script>
-    <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-  import { getAuth, signInWithRedirect, GoogleAuthProvider, OAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
-  import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+    };
+
+    const fullNames = {
+        '甲':'갑목', '乙':'을목', '丙':'병화', '丁':'정화', '戊':'무토', '己':'기토', '庚':'경금', '辛':'신금', '壬':'임수', '癸':'계수',
+        '子':'자수', '丑':'축토', '寅':'인목', '卯':'묘목', '辰':'진토', '巳':'사화', '午':'오화', '未':'미토', '申':'신금', '酉':'유금', '戌':'술토', '亥':'해수'
+    };
+
+    function transFull(char) { return fullNames[char] || char; }
+    
+    function transSib(char) {
+        if (!char) return '-';
+        if (Array.isArray(char)) char = char[0];
+        const map = { '比肩':'비견', '劫财':'겁재', '劫財':'겁재', '食神':'식신', '伤官':'상관', '傷官':'상관', '偏财':'편재', '偏財':'편재', '正财':'정재', '正財':'정재', '七杀':'편관', '七殺':'편관', '正官':'정관', '偏印':'편인', '正印':'정인', '日主':'일간' };
+        return map[char] || String(char).replace(/[\u4e00-\u9fa5]/g, '').trim() || '-';
+    }
+
+    function getElementClass(char) {
+        if (['甲','乙','寅','卯'].includes(char)) return 'color-wood';
+        if (['丙','丁','巳','午'].includes(char)) return 'color-fire';
+        if (['戊','己','辰','戌','丑','未'].includes(char)) return 'color-earth';
+        if (['庚','辛','申','酉'].includes(char)) return 'color-metal';
+        if (['壬','癸','亥','子'].includes(char)) return 'color-water';
+        return 'color-unknown';
+    }
+
+    function getShinsalPerfect(title, gan, zhi, yGan, yZhi, mGan, mZhi, dGan, dZhi) {
+        let list = []; const pillar = gan + zhi;
+        if (['甲','戊','庚'].includes(dGan) && ['丑','未'].includes(zhi)) list.push('천을귀인');
+        if (['乙','己'].includes(dGan) && ['子','申'].includes(zhi)) list.push('천을귀인');
+        if (['丙','丁'].includes(dGan) && ['亥','酉'].includes(zhi)) list.push('천을귀인');
+        if (['辛'].includes(dGan) && ['午','寅'].includes(zhi)) list.push('천을귀인');
+        if (['壬','癸'].includes(dGan) && ['卯','巳'].includes(zhi)) list.push('천을귀인');
+
+        if (['亥','卯','未'].includes(mZhi) && gan === '甲') list.push('월덕귀인');
+        if (['寅','午','戌'].includes(mZhi) && gan === '丙') list.push('월덕귀인');
+        if (['巳','酉','丑'].includes(mZhi) && gan === '庚') list.push('월덕귀인');
+        if (['申','子','辰'].includes(mZhi) && gan === '壬') list.push('월덕귀인');
+
+        const cheondeok = {'子':'巳', '丑':'庚', '寅':'丁', '卯':'申', '辰':'壬', '巳':'辛', '午':'亥', '未':'甲', '申':'癸', '酉':'寅', '戌':'丙', '亥':'乙'};
+        if (cheondeok[mZhi] === gan || cheondeok[mZhi] === zhi) list.push('천덕귀인');
+
+        const munchang = {'甲':'巳', '乙':'午', '丙':'申', '戊':'申', '丁':'酉', '己':'酉', '庚':'亥', '辛':'子', '壬':'寅', '癸':'卯'};
+        const hakdang = {'甲':'亥', '乙':'午', '丙':'寅', '丁':'酉', '戊':'寅', '己':'酉', '庚':'巳', '辛':'子', '壬':'申', '癸':'卯'};
+        const hongyeom = {'甲':'午', '乙':'午', '丙':'寅', '丁':'미', '戊':'辰', '己':'辰', '庚':'戌', '辛':'酉', '壬':'子', '癸':'申'};
+        const geumyeo = {'甲':'辰', '乙':'巳', '丙':'未', '丁':'申', '戊':'未', '己':'申', '庚':'戌', '辛':'亥', '壬':'丑', '癸':'寅'};
+        if (munchang[dGan] === zhi) list.push('문창성');
+        if (hakdang[dGan] === zhi) list.push('학당귀인');
+        if (hongyeom[dGan] === zhi || (dGan === '壬' && zhi === '申')) list.push('홍염살');
+        if (geumyeo[dGan] === zhi) list.push('금여성');
+
+        if (title === '일주') { if (['甲寅', '乙巳', '丁巳', '戊申', '辛亥'].includes(pillar)) list.push('고란살'); }
+        if (['甲辰', '乙未', '丙戌', '丁丑', '戊辰', '壬戌', '癸丑'].includes(pillar)) list.push('백호대살');
+        if (['庚辰', '庚戌', '壬辰', '戊戌'].includes(pillar)) list.push('괴강살');
+        
+        const yangin = {'甲':'卯', '丙':'오', '戊':'오', '庚':'酉', '壬':'자', '乙':'진', '丁':'미', '己':'미', '辛':'술', '癸':'축'};
+        if (yangin[dGan] === zhi) list.push('양인살');
+
+        if (['甲','辛','卯','午','申'].includes(gan)) list.push('현침살');
+        if (['甲','辛','卯','午','申'].includes(zhi) && !list.includes('현침살')) list.push('현침살');
+
+        function getSamhap(z) { if (['申','子','辰'].includes(z)) return '水'; if (['寅','午','戌'].includes(z)) return '火'; if (['亥','卯','未'].includes(z)) return '木'; if (['巳','酉','丑'].includes(z)) return '金'; return ''; }
+        const dSamhap = getSamhap(dZhi); const ySamhap = getSamhap(yZhi);
+
+        if ((dSamhap === '水' && zhi === '寅') || (dSamhap === '火' && zhi === '申') || (dSamhap === '木' && zhi === '巳') || (dSamhap === '金' && zhi === '亥') || (ySamhap === '水' && zhi === '寅') || (ySamhap === '火' && zhi === '申') || (ySamhap === '木' && zhi === '巳') || (ySamhap === '金' && zhi === '亥')) list.push('역마살');
+        if ((dSamhap === '水' && zhi === '酉') || (dSamhap === '火' && zhi === '卯') || (dSamhap === '木' && zhi === '子') || (dSamhap === '金' && zhi === '午') || (ySamhap === '水' && zhi === '酉') || (ySamhap === '火' && zhi === '卯') || (ySamhap === '木' && zhi === '子') || (ySamhap === '금' && zhi === '오')) list.push('도화살');
+        if ((dSamhap === '水' && zhi === '辰') || (dSamhap === '火' && zhi === '戌') || (dSamhap === '목' && zhi === '미') || (dSamhap === '금' && zhi === '축') || (ySamhap === '수' && zhi === '진') || (ySamhap === '화' && zhi === '술') || (ySamhap === '목' && zhi === '미') || (ySamhap === '금' && zhi === '축')) list.push('화개살');
+        if ((dSamhap === '水' && zhi === '巳') || (dSamhap === '火' && zhi === '亥') || (dSamhap === '木' && zhi === '申') || (dSamhap === '金' && zhi === '寅')) list.push('겁살');
+        if ((dSamhap === '水' && zhi === '亥') || (dSamhap === '火' && zhi === '巳') || (dSamhap === '木' && zhi === '寅') || (dSamhap === '金' && zhi === '申')) list.push('망신살');
+
+        const gwasuk = {'寅':'축','卯':'축','辰':'축', '巳':'진','午':'진','未':'진', '申':'미','酉':'미','戌':'미', '亥':'술','子':'술','丑':'술'};
+        const gosin = {'寅':'사','卯':'사','辰':'사', '巳':'신','午':'신','未':'신', '申':'해','酉':'해','戌':'해', '亥':'인','子':'인','丑':'인'};
+        if (gwasuk[yZhi] === zhi) list.push('과숙살');
+        if (gosin[yZhi] === zhi) list.push('고신살');
+
+        const wonjin = { '子':'未', '丑':'午', '寅':'酉', '卯':'申', '辰':'亥', '巳':'戌', '午':'丑', '未':'子', '申':'卯', '酉':'寅', '戌':'巳', '亥':'辰' };
+        const gwimun = { '子':'酉', '丑':'午', '寅':'未', '卯':'申', '辰':'亥', '巳':'戌', '午':'丑', '未':'寅', '申':'卯', '酉':'子', '戌':'巳', '亥':'辰' };
+        if (wonjin[dZhi] === zhi && title !== '일주') list.push('원진살');
+        if (gwimun[dZhi] === zhi && title !== '일주') list.push('귀문관살');
+
+        return [...new Set(list)];
+    }
+
+    document.getElementById('man-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const year = parseInt(document.getElementById('man-year').value);
+        const month = parseInt(document.getElementById('man-month').value);
+        const day = parseInt(document.getElementById('man-day').value);
+        const timeStr = document.getElementById('man-time').value;
+        const calendarType = document.querySelector('input[name="man-calendar"]:checked').value;
+        
+        const timeMap = { 'unknown': 12, '자시': 0, '축시': 2, '인시': 4, '묘시': 6, '진시': 8, '사시': 10, '오시': 12, '미시': 14, '신시': 16, '유시': 18, '술시': 20, '해시': 22 };
+        const hour = timeMap[timeStr] !== undefined ? timeMap[timeStr] : 12;
+
+        try {
+            let lunarObj;
+            if (calendarType === 'solar') { lunarObj = Solar.fromYmdHms(year, month, day, hour, 0, 0).getLunar(); } 
+            else if (calendarType === 'lunar') { lunarObj = Lunar.fromYmdHms(year, month, day, hour, 0, 0); } 
+            else if (calendarType === 'lunar-leap') {
+                let leapMonth = 0; try { leapMonth = LunarYear.fromYear(year).getLeapMonth(); } catch (e) { leapMonth = 0; }
+                if (leapMonth !== month) { alert(`선택한 ${year}년에는 윤${month}월이 없습니다.\n윤달이 맞는지 확인해 주세요.`); return; }
+                lunarObj = Lunar.fromYmdHms(year, -month, day, hour, 0, 0);
+            }
+
+            const bazi = lunarObj.getEightChar();
+            const y = bazi.getYear(); const m = bazi.getMonth(); const d = bazi.getDay(); const t = bazi.getTime();
+            const yGan = y.charAt(0); const yZhi = y.charAt(1); const mGan = m.charAt(0); const mZhi = m.charAt(1);
+            const dGan = d.charAt(0); const dZhi = d.charAt(1); const tGan = t.charAt(0); const tZhi = t.charAt(1);
+            const isTimeUnknown = timeStr === 'unknown';
+            
+            const getSafeShiShen = (method) => { try { let raw = bazi[method](); return Array.isArray(raw) ? raw[0] : raw; } catch(e) { return '-'; } };
+
+            const renderPillar = (title, gan, zhi, sibGanMethod, sibZhiMethod, isUnknown) => {
+                if (isUnknown) return `<div class="pillar"><div class="pillar-head">${title}</div><div class="sibseong">-</div><div class="bazi-box-wrap"><div class="bazi-box color-unknown">?</div></div><div class="bazi-box-wrap"><div class="bazi-box color-unknown">?</div></div><div class="sibseong">-</div><div class="shinsal-area"></div></div>`;
+                const sibGan = getSafeShiShen(sibGanMethod); const sibZhi = getSafeShiShen(sibZhiMethod); const finalShinsal = getShinsalPerfect(title, gan, zhi, yGan, yZhi, mGan, mZhi, dGan, dZhi);
+                let shinsalHtml = ''; finalShinsal.forEach(s => { shinsalHtml += `<div class="shinsal-tag">${s}</div>`; });
+                return `<div class="pillar"><div class="pillar-head">${title}</div><div class="sibseong">${title === '일주' ? '일간(나)' : transSib(sibGan)}</div><div class="bazi-box-wrap"><div class="bazi-box ${getElementClass(gan)}">${transFull(gan)}</div></div><div class="bazi-box-wrap"><div class="bazi-box ${getElementClass(zhi)}">${transFull(zhi)}</div></div><div class="sibseong">${transSib(sibZhi)}</div><div class="shinsal-area">${shinsalHtml}</div></div>`;
+            };
+
+            const resultHtml = `${renderPillar('연주', yGan, yZhi, 'getYearShiShenGan', 'getYearShiShenZhi', false)}${renderPillar('월주', mGan, mZhi, 'getMonthShiShenGan', 'getMonthShiShenZhi', false)}${renderPillar('일주', dGan, dZhi, 'getDayShiShenGan', 'getDayShiShenZhi', false)}${renderPillar('시주', tGan, tZhi, 'getTimeShiShenGan', 'getTimeShiShenZhi', isTimeUnknown)}`;
+            document.getElementById('man-result-grid').innerHTML = resultHtml;
+
+            let wood = 0; let fire = 0; let earth = 0; let metal = 0; let water = 0;
+            const charsToCount = isTimeUnknown ? [yGan, yZhi, mGan, mZhi, dGan, dZhi] : [yGan, yZhi, mGan, mZhi, dGan, dZhi, tGan, tZhi];
+            charsToCount.forEach(char => {
+                if (['甲','乙','寅','卯'].includes(char)) wood++; else if (['丙','丁','巳','午'].includes(char)) fire++;
+                else if (['戊','己','辰','戌','丑','未'].includes(char)) earth++; else if (['庚','辛','申','酉'].includes(char)) metal++;
+                else if (['壬','癸','亥','子'].includes(char)) water++;
+            });
+
+            document.getElementById('element-summary').innerHTML = `<div class="el-item"><div class="el-dot dot-wood">목</div> ${wood}</div><div class="el-item"><div class="el-dot dot-fire">화</div> ${fire}</div><div class="el-item"><div class="el-dot dot-earth">토</div> ${earth}</div><div class="el-item"><div class="el-dot dot-metal">금</div> ${metal}</div><div class="el-item"><div class="el-dot dot-water">수</div> ${water}</div>`;
+            document.getElementById('man-form').style.display = 'none';
+            document.getElementById('manseryeok-title').style.display = 'none';
+            document.getElementById('man-result-area').style.display = 'block';
+        } catch (error) { alert('만세력 계산 중 오류가 발생했습니다. 생년월일을 다시 확인해주세요.'); console.error(error); }
+    });
+
+    function saveManseryeok() {
+        const targetElement = document.getElementById('capture-area');
+        html2canvas(targetElement, { scale: 2, backgroundColor: '#fff0f5' }).then(canvas => {
+            const link = document.createElement('a'); link.download = '돼지만세력_결과.png'; link.href = canvas.toDataURL('image/png'); link.click();
+        }).catch(err => { alert('저장 중 오류가 발생했습니다.'); console.error(err); });
+    }
+
+    function resetForm() { document.getElementById('man-result-area').style.display = 'none'; document.getElementById('man-form').style.display = 'block'; document.getElementById('manseryeok-title').style.display = 'block'; }
+    function openLogin() { document.getElementById('loginOverlay').style.display = 'flex'; }
+    function closeLogin() { document.getElementById('loginOverlay').style.display = 'none'; }
+    function toggleBusinessInfo() {
+        const info = document.getElementById('business-info');
+        const arrow = document.getElementById('biz-arrow');
+        if (info.style.display === 'none') { info.style.display = 'block'; arrow.innerText = '▲'; } 
+        else { info.style.display = 'none'; arrow.innerText = '▼'; }
+    }
+    function goToMain(event) {
+        event.preventDefault();
+        document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+        document.querySelectorAll('#menu-bar button').forEach(btn => btn.classList.remove('active'));
+        document.getElementById('main-screen').classList.add('active');
+    }
+</script>
+
+<script type="module">
+  import { initializeApp } from "[https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js](https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js)";
+  import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged, signOut } from "[https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js](https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js)";
+  import { getFirestore, doc, setDoc, getDoc } from "[https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js](https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js)";
 
   const firebaseConfig = {
     apiKey: "AIzaSyAZxy9VsEgOZ-e0FApXqHUT5cTxG3_g8o0",
@@ -1470,7 +1471,7 @@
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
   const db = getFirestore(app);
-
+  
   function applySavedInfoToForm(dateStr, timeStr, gender, calendar) {
       if(!dateStr) return;
       const parts = dateStr.split('-');
@@ -1478,7 +1479,7 @@
           const y = parseInt(parts[0], 10);
           const m = parseInt(parts[1], 10);
           const d = parseInt(parts[2], 10);
-
+          
           if(document.getElementById('man-year')) document.getElementById('man-year').value = y;
           if(document.getElementById('man-month')) document.getElementById('man-month').value = m;
           if(document.getElementById('man-day')) document.getElementById('man-day').value = d;
@@ -1576,12 +1577,21 @@
   });
 
   window.realGoogleLogin = function() {
-    signInWithRedirect(auth, googleProvider);
+    signInWithPopup(auth, googleProvider)
+      .then((result) => { document.getElementById('loginOverlay').style.display = 'none'; })
+      .catch((error) => { console.error(error); alert("로그인 중 문제가 발생했습니다."); });
   }
 
   window.realKakaoLogin = function() {
     const kakaoProvider = new OAuthProvider('oidc.kakao');
-    signInWithRedirect(auth, kakaoProvider);
+    signInWithPopup(auth, kakaoProvider)
+      .then((result) => { 
+          document.getElementById('loginOverlay').style.display = 'none'; 
+      })
+      .catch((error) => { 
+          console.error(error); 
+          alert("카카오 로그인 중 문제가 발생했습니다."); 
+      });
   }
 
   window.realLogout = function() {
@@ -1589,6 +1599,5 @@
       .catch((error) => { console.error("로그아웃 에러:", error); });
   }
 </script>
-  
 </body>
 </html>
