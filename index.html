@@ -1451,163 +1451,144 @@
             document.getElementById('main-screen').classList.add('active');
         }
     </script>
-    
     <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-      // 여기에 OAuthProvider가 새로 추가되었습니다!
-      import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
-      import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
-    
-      const firebaseConfig = {
-        apiKey: "AIzaSyAZxy9VsEgOZ-e0FApXqHUT5cTxG3_g8o0",
-        authDomain: "sajupig.firebaseapp.com",
-        projectId: "sajupig",
-        storageBucket: "sajupig.firebasestorage.app",
-        messagingSenderId: "589751416400",
-        appId: "1:589751416400:web:c7ed36efc6d5f23e020355",
-        measurementId: "G-HGW4HHQ3WR"
-      };
-    
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-      // 구글 프로바이더 이름을 명확하게 지정해줍니다
-      const googleProvider = new GoogleAuthProvider();
-      const db = getFirestore(app);
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+  import { getAuth, signInWithRedirect, GoogleAuthProvider, OAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+  import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAZxy9VsEgOZ-e0FApXqHUT5cTxG3_g8o0",
+    authDomain: "sajupig.firebaseapp.com",
+    projectId: "sajupig",
+    storageBucket: "sajupig.firebasestorage.app",
+    messagingSenderId: "589751416400",
+    appId: "1:589751416400:web:c7ed36efc6d5f23e020355",
+    measurementId: "G-HGW4HHQ3WR"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
+  const db = getFirestore(app);
+
+  function applySavedInfoToForm(dateStr, timeStr, gender, calendar) {
+      if(!dateStr) return;
+      const parts = dateStr.split('-');
+      if(parts.length === 3) {
+          const y = parseInt(parts[0], 10);
+          const m = parseInt(parts[1], 10);
+          const d = parseInt(parts[2], 10);
+
+          if(document.getElementById('man-year')) document.getElementById('man-year').value = y;
+          if(document.getElementById('man-month')) document.getElementById('man-month').value = m;
+          if(document.getElementById('man-day')) document.getElementById('man-day').value = d;
+      }
+      if(timeStr && document.getElementById('man-time')) document.getElementById('man-time').value = timeStr;
       
-      // 만세력 폼 및 다른 폼에 정보 채워주는 함수
-      function applySavedInfoToForm(dateStr, timeStr, gender, calendar) {
-          if(!dateStr) return;
-          const parts = dateStr.split('-');
-          if(parts.length === 3) {
-              const y = parseInt(parts[0], 10);
-              const m = parseInt(parts[1], 10);
-              const d = parseInt(parts[2], 10);
-              
-              if(document.getElementById('man-year')) document.getElementById('man-year').value = y;
-              if(document.getElementById('man-month')) document.getElementById('man-month').value = m;
-              if(document.getElementById('man-day')) document.getElementById('man-day').value = d;
-          }
-          if(timeStr && document.getElementById('man-time')) document.getElementById('man-time').value = timeStr;
-          
-          // 성별 라디오 버튼 자동 체크
-          if(gender) {
-              const genderRadio = document.querySelector(`input[name="man-gender"][value="${gender}"]`);
-              if(genderRadio) genderRadio.checked = true;
-          }
-          
-          // 달력 타입 라디오 버튼 자동 체크
-          if(calendar) {
-              const calRadio = document.querySelector(`input[name="man-calendar"][value="${calendar}"]`);
-              if(calRadio) calRadio.checked = true;
-          }
+      if(gender) {
+          const genderRadio = document.querySelector(`input[name="man-gender"][value="${gender}"]`);
+          if(genderRadio) genderRadio.checked = true;
       }
-
-      // 내 정보 저장하기 함수
-      window.saveMyInfo = async function() {
-          const user = auth.currentUser;
-          if (!user) { alert("로그인이 필요합니다."); return; }
-
-          const yVal = document.getElementById('my-saved-year').value;
-          const mVal = document.getElementById('my-saved-month').value;
-          const dVal = document.getElementById('my-saved-day').value;
-          const timeVal = document.getElementById('my-saved-time').value;
-          
-          // 새로 추가된 성별 및 달력 값 읽기
-          const genderVal = document.querySelector('input[name="my-saved-gender"]:checked').value;
-          const calendarVal = document.querySelector('input[name="my-saved-calendar"]:checked').value;
-
-          if(!yVal || !mVal || !dVal) { alert("생년월일을 모두 선택해주세요."); return; }
-          
-          const mFormatted = mVal.padStart(2, '0');
-          const dFormatted = dVal.padStart(2, '0');
-          const dateVal = `${yVal}-${mFormatted}-${dFormatted}`;
-
-          try {
-              await setDoc(doc(db, "users", user.uid), {
-                  birthDate: dateVal,
-                  birthTime: timeVal,
-                  gender: genderVal,
-                  calendar: calendarVal
-              });
-              alert("성공적으로 저장되었습니다! 🐷");
-              applySavedInfoToForm(dateVal, timeVal, genderVal, calendarVal);
-          } catch (e) {
-              console.error("저장 오류:", e);
-              alert("저장 중 문제가 발생했습니다.");
-          }
+      
+      if(calendar) {
+          const calRadio = document.querySelector(`input[name="man-calendar"][value="${calendar}"]`);
+          if(calRadio) calRadio.checked = true;
       }
+  }
 
-      onAuthStateChanged(auth, async (user) => {
-        const headerBtn = document.getElementById('header-user-btn');
-        const nameDisplay = document.getElementById('user-name-display');
+  window.saveMyInfo = async function() {
+      const user = auth.currentUser;
+      if (!user) { alert("로그인이 필요합니다."); return; }
 
-        if (user) {
-          headerBtn.innerText = "내정보";
-          headerBtn.onclick = function() { location.href = 'index.html?tab=myinfo'; };
-          if (nameDisplay) nameDisplay.innerText = user.displayName + "님, 환영합니다! 🐷";
+      const yVal = document.getElementById('my-saved-year').value;
+      const mVal = document.getElementById('my-saved-month').value;
+      const dVal = document.getElementById('my-saved-day').value;
+      const timeVal = document.getElementById('my-saved-time').value;
+      
+      const genderVal = document.querySelector('input[name="my-saved-gender"]:checked').value;
+      const calendarVal = document.querySelector('input[name="my-saved-calendar"]:checked').value;
 
-          try {
-              const docSnap = await getDoc(doc(db, "users", user.uid));
-              if (docSnap.exists()) {
-                  const data = docSnap.data();
-                  if(data.birthDate) {
-                      const parts = data.birthDate.split('-');
-                      if(parts.length === 3) {
-                          document.getElementById('my-saved-year').value = parseInt(parts[0], 10);
-                          document.getElementById('my-saved-month').value = parseInt(parts[1], 10);
-                          document.getElementById('my-saved-day').value = parseInt(parts[2], 10);
-                      }
-                  }
-                  if(data.birthTime) document.getElementById('my-saved-time').value = data.birthTime;
-                  
-                  // 내 정보 페이지 라디오 버튼 체크
-                  if(data.gender) {
-                      const gRadio = document.querySelector(`input[name="my-saved-gender"][value="${data.gender}"]`);
-                      if(gRadio) gRadio.checked = true;
-                  }
-                  if(data.calendar) {
-                      const cRadio = document.querySelector(`input[name="my-saved-calendar"][value="${data.calendar}"]`);
-                      if(cRadio) cRadio.checked = true;
-                  }
-                  
-                  // 메인 만세력 폼에도 자동 반영
-                  applySavedInfoToForm(data.birthDate, data.birthTime, data.gender, data.calendar);
-              }
-          } catch(e) { console.error("불러오기 오류:", e); }
-        } else {
-          headerBtn.innerText = "로그인 / 가입";
-          headerBtn.onclick = openLogin;
-          if (nameDisplay) nameDisplay.innerText = "로그인이 필요합니다.";
-          document.getElementById('my-saved-year').value = "1990";
-          document.getElementById('my-saved-month').value = "1";
-          document.getElementById('my-saved-day').value = "1";
-          document.getElementById('my-saved-time').value = "unknown";
-        }
-      });
-    
-      window.realGoogleLogin = function() {
-        signInWithPopup(auth, googleProvider)
-          .then((result) => { document.getElementById('loginOverlay').style.display = 'none'; })
-          .catch((error) => { console.error(error); alert("로그인 중 문제가 발생했습니다."); });
-      }
+      if(!yVal || !mVal || !dVal) { alert("생년월일을 모두 선택해주세요."); return; }
+      
+      const mFormatted = mVal.padStart(2, '0');
+      const dFormatted = dVal.padStart(2, '0');
+      const dateVal = `${yVal}-${mFormatted}-${dFormatted}`;
 
-      // 대망의 카카오 로그인 실행 함수가 추가되었습니다!
-      window.realKakaoLogin = function() {
-        const kakaoProvider = new OAuthProvider('oidc.kakao');
-        signInWithPopup(auth, kakaoProvider)
-          .then((result) => { 
-              document.getElementById('loginOverlay').style.display = 'none'; 
-          })
-          .catch((error) => { 
-              console.error(error); 
-              alert("카카오 로그인 중 문제가 발생했습니다. 브라우저의 팝업 차단을 해제해주세요."); 
+      try {
+          await setDoc(doc(db, "users", user.uid), {
+              birthDate: dateVal,
+              birthTime: timeVal,
+              gender: genderVal,
+              calendar: calendarVal
           });
+          alert("성공적으로 저장되었습니다! 🐷");
+          applySavedInfoToForm(dateVal, timeVal, genderVal, calendarVal);
+      } catch (e) {
+          console.error("저장 오류:", e);
+          alert("저장 중 문제가 발생했습니다.");
       }
+  }
 
-      window.realLogout = function() {
-        signOut(auth).then(() => { alert("로그아웃 되었습니다."); location.href = 'index.html'; })
-          .catch((error) => { console.error("로그아웃 에러:", error); });
-      }
-    </script>
+  onAuthStateChanged(auth, async (user) => {
+    const headerBtn = document.getElementById('header-user-btn');
+    const nameDisplay = document.getElementById('user-name-display');
+
+    if (user) {
+      headerBtn.innerText = "내정보";
+      headerBtn.onclick = function() { location.href = 'index.html?tab=myinfo'; };
+      if (nameDisplay) nameDisplay.innerText = user.displayName + "님, 환영합니다! 🐷";
+
+      try {
+          const docSnap = await getDoc(doc(db, "users", user.uid));
+          if (docSnap.exists()) {
+              const data = docSnap.data();
+              if(data.birthDate) {
+                  const parts = data.birthDate.split('-');
+                  if(parts.length === 3) {
+                      document.getElementById('my-saved-year').value = parseInt(parts[0], 10);
+                      document.getElementById('my-saved-month').value = parseInt(parts[1], 10);
+                      document.getElementById('my-saved-day').value = parseInt(parts[2], 10);
+                  }
+              }
+              if(data.birthTime) document.getElementById('my-saved-time').value = data.birthTime;
+              
+              if(data.gender) {
+                  const gRadio = document.querySelector(`input[name="my-saved-gender"][value="${data.gender}"]`);
+                  if(gRadio) gRadio.checked = true;
+              }
+              if(data.calendar) {
+                  const cRadio = document.querySelector(`input[name="my-saved-calendar"][value="${data.calendar}"]`);
+                  if(cRadio) cRadio.checked = true;
+              }
+              
+              applySavedInfoToForm(data.birthDate, data.birthTime, data.gender, data.calendar);
+          }
+      } catch(e) { console.error("불러오기 오류:", e); }
+    } else {
+      headerBtn.innerText = "로그인 / 가입";
+      headerBtn.onclick = openLogin;
+      if (nameDisplay) nameDisplay.innerText = "로그인이 필요합니다.";
+      document.getElementById('my-saved-year').value = "1990";
+      document.getElementById('my-saved-month').value = "1";
+      document.getElementById('my-saved-day').value = "1";
+      document.getElementById('my-saved-time').value = "unknown";
+    }
+  });
+
+  window.realGoogleLogin = function() {
+    signInWithRedirect(auth, googleProvider);
+  }
+
+  window.realKakaoLogin = function() {
+    const kakaoProvider = new OAuthProvider('oidc.kakao');
+    signInWithRedirect(auth, kakaoProvider);
+  }
+
+  window.realLogout = function() {
+    signOut(auth).then(() => { alert("로그아웃 되었습니다."); location.href = 'index.html'; })
+      .catch((error) => { console.error("로그아웃 에러:", error); });
+  }
+</script>
+  
 </body>
 </html>
