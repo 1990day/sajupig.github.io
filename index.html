@@ -1151,18 +1151,59 @@
             </div>
         </div>
 
-        <div id="myinfo" class="section">
+    <div id="myinfo" class="section">
             <div class="card">
                 <h2>👤 내 정보</h2>
                 <p id="user-name-display" style="color: #d11534; font-weight: bold; margin-bottom: 20px;">로그인이 필요합니다.</p>
                 
-                <div class="action-btns">
+                <div class="saju-form" style="margin-bottom: 20px;">
+                    <h3 style="font-size: 1.1rem; margin-top: 0; color: #5a3a41;">내 기본 사주 정보</h3>
+                    <p style="font-size: 0.85rem; color: #666;">저장해두면 사주를 볼 때 자동으로 입력됩니다.</p>
+                    
+                    <div style="display:flex; flex-direction:column; gap: 10px; margin-bottom: 15px;">
+                        <input type="date" id="my-saved-date" style="padding: 12px; border: 1.5px solid #ffd4df; border-radius: 12px;">
+                        <select id="my-saved-time" style="padding: 12px; border: 1.5px solid #ffd4df; border-radius: 12px;">
+                            <option value="unknown">태어난 시간 모름</option>
+                            <option value="자시">자시 (23:30 ~ 01:29)</option>
+                            <option value="오시">오시 (11:30 ~ 13:29)</option>
+                            </select>
+                    </div>
+                    <button class="submit-btn" style="padding: 14px; font-size: 1rem;" onclick="alert('데이터베이스 연결 후 작동합니다!')">내 정보 저장하기</button>
+                </div>
+
+                <div class="saju770-menu" style="margin-top: 0;">
+                    <button class="saju770-btn" style="padding: 18px;" onclick="location.href='https://open.kakao.com/o/여기에주소넣기'">
+                        <div class="saju770-title" style="font-size: 1.15rem; margin: 0;">💬 1:1 카톡 문의하기</div>
+                    </button>
                     <button class="reset-btn" onclick="realLogout()">로그아웃</button>
                 </div>
             </div>
         </div>
 
     </main>
+
+  <footer style="padding: 20px; text-align: center; font-size: 0.75rem; color: #999; background: #fdf5f7; margin-top: 30px; border-top: 1px solid #ffe4eb;">
+        <div style="display: flex; justify-content: center; gap: 12px; font-weight: 800; margin-bottom: 15px;">
+            <a href="terms.html" style="color: #888; text-decoration: none;">이용약관</a>
+            <span style="color: #ddd;">|</span>
+            <a href="privacy.html" style="color: #888; text-decoration: none;">개인정보처리방침</a>
+            <span style="color: #ddd;">|</span>
+            <a href="refund.html" style="color: #d11534; text-decoration: none;">환불규정</a>
+        </div>
+        
+        <button onclick="toggleBusinessInfo()" style="background: none; border: none; color: #888; font-size: 0.8rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0 auto; padding: 5px;">
+            <span>사업자 정보 보기</span>
+            <span id="biz-arrow" style="font-size: 0.6rem;">▼</span>
+        </button>
+
+ <div id="business-info" style="display: none; margin-top: 15px; line-height: 1.6; text-align: center; color: #a0a0a0;">
+<p style="margin: 0;">상호명: 테스트잇 | 대표자: 송다혜</p>
+<p style="margin: 0;">사업자등록번호: 662-54-00892</p>
+<p style="margin: 0;">통신판매업신고: 제 2026-경기하남-0331호</p>
+<p style="margin: 0;">사업장 소재지: 경기도 하남시 미사강변서로 85, 2005동 2003호</p>
+<p style="margin: 0;">이메일: pigsaju@gmail.com</p>
+</div>
+    </footer>
 
     <script>
         window.onload = function() {
@@ -1522,6 +1563,19 @@
             document.querySelectorAll('#menu-bar button').forEach(btn => btn.classList.remove('active'));
             document.getElementById('main-screen').classList.add('active');
         }
+
+        function toggleBusinessInfo() {
+            const info = document.getElementById('business-info');
+            const arrow = document.getElementById('biz-arrow');
+            if (info.style.display === 'none') {
+                info.style.display = 'block';
+                arrow.innerText = '▲';
+            } else {
+                info.style.display = 'none';
+                arrow.innerText = '▼';
+            }
+        }
+
     </script>
     
     <script type="module">
