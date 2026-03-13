@@ -8,6 +8,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321"
      crossorigin="anonymous"></script>
         <link rel="icon" type="image/png" href="/favicon.png">
+        <script src="https://js.tosspayments.com/v1"></script>
     <style>
         /* 연핑크 바탕화면 */
         html {
@@ -368,7 +369,7 @@
                         </select>
                     </div>
 
-                    <button type="submit" class="submit-btn">770원 결제하고 결과 보기</button>
+                   <button class="submit-btn" onclick="requestPay()">770원 결제하고 결과 보기</button>
                 </form>
 
                 <div id="ny-result-area" style="display: none;">
@@ -1006,6 +1007,28 @@
             } catch (e) { console.error(e); }
         }
     });
+   
+    // 방금 토스에서 복사해온 테스트 클라이언트 키를 아래 따옴표 안에 넣어주세요!
+    const clientKey = 'test_ck_vZnjEJeQVxbKpqLQGJMP8PmOoBN0';
+    const tossPayments = TossPayments(clientKey);
+
+    function requestPay() {
+        tossPayments.requestPayment('카드', {
+            amount: 770, // 결제 금액
+            orderId: 'order_' + new Date().getTime(), // 주문번호 (겹치지 않게 시간으로 생성)
+            orderName: '사주돼지 2026 신년사주', // 유저 결제창에 뜰 상품명
+            customerName: '사주돼지 고객', // 고객 이름
+            successUrl: window.location.origin + '/pig2026_result.html', // 결제 성공 시 넘어갈 사주 결과 페이지
+            failUrl: window.location.origin + '/fail.html', // 결제 실패 시 넘어갈 페이지
+        }).catch(function (error) {
+            if (error.code === 'USER_CANCEL') {
+                alert('결제를 취소하셨습니다.');
+            } else {
+                alert(error.message);
+            }
+        });
+    }
+</script>
 </script>
 </body>
 </html>
