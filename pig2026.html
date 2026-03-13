@@ -943,24 +943,44 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    // 값을 찾는 똑똑한 함수
-    function smartFill(ids, value, suffix = "") {
-        for (const id of ids) {
-            const el = document.getElementById(id);
-            if (el) {
-                // 1. 숫자 그대로 넣어보기 (예: 1990)
-                el.value = value;
-                // 2. 안 들어갔다면 '년/월/일' 붙여서 넣어보기 (예: 1990년)
-                if (el.value !== String(value)) {
-                    el.value = value + suffix;
-                }
-                // 3. 그래도 안 됐다면 숫자 앞에 0 붙여서 시도 (예: 01)
-                if (el.value === "" && value < 10) {
-                    el.value = "0" + value + suffix;
-                }
-                break;
+    // [핵심] 어떤 ID든 상관없이 년, 월, 일을 찾아서 값을 꽂아넣는 함수
+    function forceFill(y, m, d, time, gender, calendar) {
+        const selects = document.querySelectorAll('select');
+        const radios = document.querySelectorAll('input[type="radio"]');
+
+        // 1. 드롭다운(select) 채우기
+        selects.forEach(el => {
+            const id = el.id.toLowerCase();
+            const name = el.name.toLowerCase();
+            
+            // 연도 칸 찾기
+            if (id.includes('year') || name.includes('year')) {
+                el.value = y;
+                if (el.value === "") el.value = y + "년";
             }
-        }
+            // 월 칸 찾기
+            if (id.includes('month') || name.includes('month')) {
+                el.value = m;
+                if (el.value === "") el.value = m + "월";
+                if (el.value === "" && m < 10) el.value = "0" + m + "월";
+            }
+            // 일 칸 찾기
+            if (id.includes('day') || name.includes('day')) {
+                el.value = d;
+                if (el.value === "") el.value = d + "일";
+                if (el.value === "" && d < 10) el.value = "0" + d + "일";
+            }
+            // 시간 칸 찾기
+            if (id.includes('time') || name.includes('time')) {
+                el.value = time;
+            }
+        });
+
+        // 2. 라디오 버튼(성별/달력) 채우기
+        radios.forEach(radio => {
+            if (radio.name.toLowerCase().includes('gender') && radio.value === gender) radio.checked = true;
+            if (radio.name.toLowerCase().includes('calendar') && radio.value === calendar) radio.checked = true;
+        });
     }
 
     onAuthStateChanged(auth, async (user) => {
@@ -969,46 +989,21 @@
                 const docSnap = await getDoc(doc(db, "users", user.uid));
                 if (docSnap.exists()) {
                     const data = docSnap.data();
+                    const birth = data.birthDate.split('-');
+                    const y = parseInt(birth[0]);
+                    const m = parseInt(birth[1]);
+                    const d = parseInt(birth[2]);
 
-                    if (data.birthDate) {
-                        const parts = data.birthDate.split('-');
-                        const y = parseInt(parts[0], 10);
-                        const m = parseInt(parts[1], 10);
-                        const d = parseInt(parts[2], 10);
+                    // 즉시 한 번 실행
+                    forceFill(y, m, d, data.birthTime, data.gender, data.calendar);
 
-                        // 서브페이지에서 쓰일 법한 모든 아이디 후보들
-                        smartFill(['year', 'man-year', 's-year', 'birth-year'], y, "년");
-                        smartFill(['month', 'man-month', 's-month', 'birth-month'], m, "월");
-                        smartFill(['day', 'man-day', 's-day', 'birth-day'], d, "일");
-                    }
+                    // 혹시 화면 로딩이 늦을까봐 0.5초 뒤에 한 번 더 확실하게 실행
+                    setTimeout(() => {
+                        forceFill(y, m, d, data.birthTime, data.gender, data.calendar);
+                    }, 500);
 
-                    if (data.birthTime) {
-                        smartFill(['time', 'man-time', 's-time', 'birth-time'], data.birthTime);
-                    }
-
-                    // 성별 자동 체크 (이미 잘 된다고 하셨지만 보강)
-                    if (data.gender) {
-                        const genderRadios = document.querySelectorAll('input[type="radio"]');
-                        genderRadios.forEach(radio => {
-                            if (radio.name.toLowerCase().includes('gender') && radio.value === data.gender) {
-                                radio.checked = true;
-                            }
-                        });
-                    }
-
-                    // 양력/음력 자동 체크
-                    if (data.calendar) {
-                        const calendarRadios = document.querySelectorAll('input[type="radio"]');
-                        calendarRadios.forEach(radio => {
-                            if (radio.name.toLowerCase().includes('calendar') && radio.value === data.calendar) {
-                                radio.checked = true;
-                            }
-                        });
-                    }
                 }
-            } catch (e) {
-                console.error("불러오기 에러:", e);
-            }
+            } catch (e) { console.error(e); }
         }
     });
 </script>
