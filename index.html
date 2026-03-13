@@ -919,7 +919,7 @@
             <button class="close-login" onclick="closeLogin()">×</button>
             <h2>🐷 사주돼지 시작하기</h2>
             <p>3초만에 가입하고 나의 운명을 확인하세요</p>
-            <button class="social-btn btn-kakao" onclick="alert('준비중입니다!')">카카오로 시작하기</button>
+            <button class="social-btn btn-kakao" onclick="realKakaoLogin()">카카오로 시작하기</button>
             <button class="social-btn btn-naver" onclick="alert('준비중입니다!')">네이버로 시작하기</button>
             <button class="social-btn btn-google" onclick="realGoogleLogin()">구글로 시작하기</button>
         </div>
@@ -1454,7 +1454,8 @@
     
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-      import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+      // 여기에 OAuthProvider가 새로 추가되었습니다!
+      import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
       import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
     
       const firebaseConfig = {
@@ -1469,7 +1470,8 @@
     
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
-      const provider = new GoogleAuthProvider();
+      // 구글 프로바이더 이름을 명확하게 지정해줍니다
+      const googleProvider = new GoogleAuthProvider();
       const db = getFirestore(app);
       
       // 만세력 폼 및 다른 폼에 정보 채워주는 함수
@@ -1584,10 +1586,24 @@
       });
     
       window.realGoogleLogin = function() {
-        signInWithPopup(auth, provider)
+        signInWithPopup(auth, googleProvider)
           .then((result) => { document.getElementById('loginOverlay').style.display = 'none'; })
           .catch((error) => { console.error(error); alert("로그인 중 문제가 발생했습니다."); });
       }
+
+      // 대망의 카카오 로그인 실행 함수가 추가되었습니다!
+      window.realKakaoLogin = function() {
+        const kakaoProvider = new OAuthProvider('oidc.kakao');
+        signInWithPopup(auth, kakaoProvider)
+          .then((result) => { 
+              document.getElementById('loginOverlay').style.display = 'none'; 
+          })
+          .catch((error) => { 
+              console.error(error); 
+              alert("카카오 로그인 중 문제가 발생했습니다. 브라우저의 팝업 차단을 해제해주세요."); 
+          });
+      }
+
       window.realLogout = function() {
         signOut(auth).then(() => { alert("로그아웃 되었습니다."); location.href = 'index.html'; })
           .catch((error) => { console.error("로그아웃 에러:", error); });
