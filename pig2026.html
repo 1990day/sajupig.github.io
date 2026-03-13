@@ -1012,7 +1012,8 @@
     const clientKey = 'test_ck_vZnjEJeQVxbKpqLQGJMP8PmOoBN0';
     const tossPayments = TossPayments(clientKey);
 
-    function requestPay() {
+    // 앞에 window. 를 붙여서 버튼이 무조건 찾을 수 있게 만듭니다!
+    window.requestPay = function() {
         tossPayments.requestPayment('카드', {
             amount: 770, // 결제 금액
             orderId: 'order_' + new Date().getTime(), // 주문번호 (겹치지 않게 시간으로 생성)
@@ -1028,7 +1029,6 @@
             }
         });
     }
-</script>
 </script>
 </body>
 </html>
