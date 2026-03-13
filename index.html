@@ -922,7 +922,7 @@
             <p>3초만에 가입하고 나의 운명을 확인하세요</p>
             <button class="social-btn btn-kakao" onclick="dummyLogin()">카카오로 시작하기</button>
             <button class="social-btn btn-naver" onclick="dummyLogin()">네이버로 시작하기</button>
-            <button class="social-btn btn-google" onclick="dummyLogin()">구글로 시작하기</button>
+          <button class="social-btn btn-google" onclick="realGoogleLogin()">구글로 시작하기</button>
         </div>
     </div>
 
@@ -1509,6 +1509,51 @@
             document.querySelectorAll('#menu-bar button').forEach(btn => btn.classList.remove('active'));
             document.getElementById('main-screen').classList.add('active');
         }
+   
+    function goToMain(event) {
+            event.preventDefault();
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('#menu-bar button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('main-screen').classList.add('active');
+        }
+    </script>
+    
+   <script type="module">
+      // 파이어베이스 기본 기능과 '인증(로그인)' 기능 불러오기 (버전 12.10.0)
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+      import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+    
+      // 방금 보여주신 사주돼지의 진짜 열쇠!
+      const firebaseConfig = {
+        apiKey: "AIzaSyAZxy9VsEgOZ-e0FApXqHUT5cTxG3_g8o0",
+        authDomain: "sajupig.firebaseapp.com",
+        projectId: "sajupig",
+        storageBucket: "sajupig.firebasestorage.app",
+        messagingSenderId: "589751416400",
+        appId: "1:589751416400:web:c7ed36efc6d5f23e020355",
+        measurementId: "G-HGW4HHQ3WR"
+      };
+    
+      // 파이어베이스 시작 및 로그인 도구 준비
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const provider = new GoogleAuthProvider();
+    
+      // 구글 로그인 실행 함수 (구글로 시작하기 버튼 누르면 작동!)
+      window.realGoogleLogin = function() {
+        signInWithPopup(auth, provider)
+          .then((result) => {
+            const user = result.user;
+            alert(user.displayName + "님, 사주돼지에 오신 것을 환영합니다!");
+            
+            // 팝업 닫고 오른쪽 위 버튼 이름 바꾸기
+            document.getElementById('loginOverlay').style.display = 'none';
+            document.querySelector('.login-btn-header').innerText = user.displayName + '님';
+          }).catch((error) => {
+            console.error(error);
+            alert("로그인 중 문제가 발생했습니다.");
+          });
+      }
     </script>
 </body>
 </html>
