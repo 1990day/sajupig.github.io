@@ -369,7 +369,7 @@
                         </select>
                     </div>
 
-                   <button class="submit-btn" onclick="requestPay()">770원 결제하고 결과 보기</button>
+             <button type="button" class="submit-btn" onclick="requestPay()">770원 결제하고 결과 보기</button>
                 </form>
 
                 <div id="ny-result-area" style="display: none;">
@@ -1008,19 +1008,34 @@
         }
     });
    
-    // 방금 토스에서 복사해온 테스트 클라이언트 키를 아래 따옴표 안에 넣어주세요!
     const clientKey = 'test_ck_vZnjEJeQVxbKpqLQGJMP8PmOoBN0';
     const tossPayments = TossPayments(clientKey);
 
-    // 앞에 window. 를 붙여서 버튼이 무조건 찾을 수 있게 만듭니다!
     window.requestPay = function() {
+        // 1. 유저가 입력한 정보들을 화면에서 가져오기
+        const gender = document.querySelector('input[name="man-gender"]:checked').value;
+        const calendar = document.querySelector('input[name="man-calendar"]:checked').value;
+        const year = document.getElementById('man-year').value;
+        const month = document.getElementById('man-month').value;
+        const day = document.getElementById('man-day').value;
+        const time = document.getElementById('man-time').value;
+
+        // 2. 다음 결과 페이지로 가져가기 위해 브라우저 임시 금고에 저장!
+        sessionStorage.setItem('saju_gender', gender);
+        sessionStorage.setItem('saju_calendar', calendar);
+        sessionStorage.setItem('saju_year', year);
+        sessionStorage.setItem('saju_month', month);
+        sessionStorage.setItem('saju_day', day);
+        sessionStorage.setItem('saju_time', time);
+
+        // 3. 토스 결제창 띄우기
         tossPayments.requestPayment('카드', {
-            amount: 770, // 결제 금액
-            orderId: 'order_' + new Date().getTime(), // 주문번호 (겹치지 않게 시간으로 생성)
-            orderName: '사주돼지 2026 신년사주', // 유저 결제창에 뜰 상품명
-            customerName: '사주돼지 고객', // 고객 이름
-            successUrl: window.location.origin + '/pig2026_result.html', // 결제 성공 시 넘어갈 사주 결과 페이지
-            failUrl: window.location.origin + '/fail.html', // 결제 실패 시 넘어갈 페이지
+            amount: 770, 
+            orderId: 'order_' + new Date().getTime(), 
+            orderName: '사주돼지 2026 신년사주', 
+            customerName: '사주돼지 고객', 
+            successUrl: window.location.origin + '/pig2026_result.html', // 성공하면 여기로!
+            failUrl: window.location.origin + '/fail.html', 
         }).catch(function (error) {
             if (error.code === 'USER_CANCEL') {
                 alert('결제를 취소하셨습니다.');
