@@ -553,9 +553,8 @@
             return html;
         }
 
-        // 페이지 로딩 시 자동으로 사주 풀이 실행
         window.onload = function() {
-            setTimeout(() => { // 1.5초 동안 로딩 문구 보여주기
+            setTimeout(() => { 
                 const gender = sessionStorage.getItem('saju_gender');
                 const calendarType = sessionStorage.getItem('saju_calendar');
                 const yearStr = sessionStorage.getItem('saju_year');
@@ -584,17 +583,10 @@
 
                 const bazi = lunarObj.getEightChar();
                 
-                // 정보로 마법의 운세 생성!
                 const fortuneHtml = generateFortune2026(bazi, gender, orderId);
 
-                // 일주 이름만 뽑아서 화면 위쪽에 예쁘게 표시
-                const dGan = bazi.getDay().charAt(0); 
-                const dZhi = bazi.getDay().charAt(1);
-                document.getElementById('ilju-name-display').innerText = transFull(dGan) + transFull(dZhi) + " 일주";
-
-                // 로딩 문구 숨기고, 결과창과 버튼 띄우기
                 document.getElementById('result-loading').style.display = 'none';
-                document.getElementById('dynamic-fortune-content').innerHTML += fortuneHtml;
+                document.getElementById('dynamic-fortune-content').innerHTML = fortuneHtml;
                 document.getElementById('dynamic-fortune-content').style.display = 'block';
                 document.getElementById('go-home-btn').style.display = 'block';
 

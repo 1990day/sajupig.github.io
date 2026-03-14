@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사주돼지 - 결제 실패</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <style>
+        /* 기존 디자인 완벽 유지 */
+        html { background: #f7dfe6; }
+        body { 
+            margin: 0 auto; max-width: 480px; min-height: 100vh;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; 
+            background: linear-gradient(180deg, #fff4f7 0%, #ffeef3 100%);
+            color: #222; box-shadow: 0 0 25px rgba(0, 0, 0, 0.08); position: relative; padding: 20px; box-sizing: border-box;
+        }
+
+        header { 
+            background-color: #ffb6c1; position: sticky; top: 0; z-index: 100; 
+            box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4); border-bottom: 4px solid #ff85a2;
+            border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; margin: -20px -20px 20px -20px;
+        }
+        .header-logo { display: block; height: 30px; width: auto; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 15px 20px; }
+        .main-link { text-decoration: none; color: inherit; }
+        .login-btn-header {
+            background: #ffffff; border: 3px solid #ff85a2; color: #ff85a2;
+            padding: 8px 18px; border-radius: 25px; font-size: 0.9rem; font-weight: 900; cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.2s;
+        }
+        nav { display: flex; justify-content: space-between; padding: 10px 15px 20px 15px; gap: 10px; overflow-x: auto; white-space: nowrap; }
+        nav button { 
+            flex: 1; background-color: #ffffff; border: 3px solid #ffe4e8;
+            font-size: 0.85rem; color: #ff85a2; cursor: pointer; font-weight: 900; transition: all 0.2s; border-radius: 20px;
+            aspect-ratio: 1 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 6px; box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
+        }
+        nav button.active { 
+            color: #ffffff; background-color: #ff85a2; border-color: #ff85a2;
+            transform: translateY(-4px); box-shadow: 0 8px 15px rgba(255, 133, 162, 0.4);
+        }
+        nav button span.icon { font-size: 1.6rem; }
+        nav::-webkit-scrollbar { display: none; }
+
+        main { padding: 10px 0; text-align: center; animation: fadeIn 0.4s ease-in-out; }
+
+        .fail-card {
+            background: #ffffff; border: 4px solid #ffe4e8; border-radius: 30px;
+            padding: 40px 20px; margin-top: 20px; box-shadow: 0 8px 20px rgba(255, 182, 193, 0.2);
+        }
+        
+        .fail-icon { font-size: 4rem; margin-bottom: 10px; }
+        .fail-title { color: #d11534; font-size: 1.6rem; font-weight: 900; margin-top: 0; margin-bottom: 10px; }
+        .fail-subtitle { color: #666; font-size: 1.05rem; margin-bottom: 25px; font-weight: 500; word-break: keep-all; line-height: 1.5; }
+
+        .error-box {
+            background: #fff0f5; padding: 20px; border-radius: 20px; margin-bottom: 30px; text-align: left;
+            border: 2px dashed #ffc4d0;
+        }
+        .error-label { color: #ff85a2; font-weight: 900; font-size: 0.9rem; margin-bottom: 8px; }
+        .error-message { color: #4a3333; font-weight: bold; font-size: 1.05rem; line-height: 1.5; margin: 0; word-break: keep-all; }
+
+        .submit-btn { width: 100%; background: linear-gradient(180deg, #ff7da0 0%, #d11534 100%); color: white; border: none; padding: 18px; border-radius: 16px; font-size: 1.1rem; font-weight: 900; cursor: pointer; margin-bottom: 12px; box-shadow: 0 8px 16px rgba(209, 21, 52, 0.2); }
+        .reset-btn { width: 100%; background-color: #ffffff; color: #ff85a2; border: 3px solid #ff85a2; padding: 16px; border-radius: 16px; font-size: 1.05rem; font-weight: 900; cursor: pointer; }
+
+        /* 로그인 오버레이 (헤더 작동용) */
+        .login-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(74, 51, 51, 0.8); z-index: 1000; justify-content: center; align-items: center; animation: fadeIn 0.2s; }
+        .login-box { background-color: #ffffff; width: 85%; max-width: 360px; border-radius: 30px; padding: 40px 25px; text-align: center; position: relative; border: 5px solid #ffb6c1; }
+        .close-login { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 2.2rem; color: #ff85a2; cursor: pointer; font-weight: bold;}
+        .login-box h2 { margin-top: 0; color: #ff85a2; margin-bottom: 15px; font-weight: 900; }
+        .login-box p { color: #4a3333; font-size: 1rem; margin-bottom: 30px; font-weight: bold; line-height: 1.5;}
+        .social-btn { display: block; width: 100%; padding: 18px; margin-bottom: 12px; border-radius: 20px; font-size: 1.1rem; font-weight: 900; text-align: center; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+        .btn-kakao { background-color: #FEE500; color: #4a3333; }
+        .btn-naver { background-color: #03C75A; color: #FFFFFF; }
+        .btn-google { background-color: #f1f1f1; color: #4a3333; border: 2px solid #ffe4e8;}
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-box">
+            <button class="close-login" onclick="closeLogin()">×</button>
+            <h2>🐷 꿀꿀! 사주돼지</h2>
+            <p>3초만에 가입하고<br>나의 황금빛 운명을 확인하세요!</p>
+            <button class="social-btn btn-kakao" onclick="dummyLogin()">카카오로 시작하기</button>
+            <button class="social-btn btn-naver" onclick="dummyLogin()">네이버로 시작하기</button>
+            <button class="social-btn btn-google" onclick="dummyLogin()">구글로 시작하기</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-top">
+            <a href="index.html" class="main-link">
+               <img src="/logo.png" alt="사주돼지" class="header-logo">
+            </a>
+            <button class="login-btn-header" onclick="openLogin()">로그인 / 가입</button>
+        </div>
+        <nav>
+            <button onclick="location.href='index.html?tab=manseryeok'"><span class="icon">🐷</span><span>돼지 만세력</span></button>
+            <button class="active" onclick="location.href='index.html?tab=saju770'"><span class="icon">🪙</span><span>770사주</span></button>
+            <button onclick="location.href='index.html?tab=love'"><span class="icon">💕</span><span>돼지궁합</span></button>
+            <button onclick="location.href='index.html?tab=fact'"><span class="icon">👊</span><span>돼지팩폭</span></button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="fail-card">
+            <div class="fail-icon">🥲</div>
+            <h2 class="fail-title">결제에 실패했습니다</h2>
+            <p class="fail-subtitle">입력하신 정보가 날아가지 않도록<br>안전하게 보관해 두었어요.</p>
+
+            <div class="error-box">
+                <div class="error-label">실패 사유</div>
+                <div class="error-message" id="error-reason">알 수 없는 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.</div>
+            </div>
+
+            <button class="submit-btn" onclick="history.back()">다시 결제 시도하기</button>
+            <button class="reset-btn" onclick="location.href='index.html'">메인 화면으로 가기</button>
+        </div>
+    </main>
+
+    <script>
+        function openLogin() { document.getElementById('loginOverlay').style.display = 'flex'; }
+        function closeLogin() { document.getElementById('loginOverlay').style.display = 'none'; }
+        function dummyLogin() {
+            alert("메인 화면으로 이동하여 로그인해주세요!");
+            closeLogin();
+        }
+
+        // 토스가 주소창에 보내준 에러 메시지를 잡아서 화면에 보여주는 마법
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const message = urlParams.get('message');
+            const code = urlParams.get('code');
+
+            if (message) {
+                // 토스가 보내준 친절한 에러 메시지(예: 잔액 부족, 한도 초과 등)를 그대로 띄워줍니다.
+                let fullMessage = message;
+                if (code) {
+                    fullMessage += " (" + code + ")";
+                }
+                document.getElementById('error-reason').innerText = fullMessage;
+            }
+        };
+    </script>
+</body>
+</html>
