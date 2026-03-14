@@ -930,22 +930,22 @@
     signInWithPopup(auth, googleProvider).then(() => { document.getElementById('loginOverlay').style.display = 'none'; }).catch((error) => { console.error(error); });
   }
 
- // 🌟 [수정된 버전] 네이버 로그인 함수
+// 🌟 [최종 수정 버전] 네이버 로그인 함수
   window.realNaverLogin = function() {
     const naverProvider = new OAuthProvider('oidc.naver');
     
-    // 네이버에게 '이 사람 정보(이메일, 이름)도 같이 보내줘'라고 요청하는 설정
-    naverProvider.addScope('openid');
+    // ⚠️ 중요: 네이버 콘솔에서 '필수'로 체크한 것만 적어야 합니다.
+    // 만약 이름만 체크했다면 name만 적으세요.
     naverProvider.addScope('email');
     naverProvider.addScope('name');
 
     signInWithPopup(auth, naverProvider).then(() => { 
         document.getElementById('loginOverlay').style.display = 'none'; 
-        // 로그인 성공 시 페이지 새로고침하여 내 정보를 불러오게 합니다.
-        location.reload(); 
+        location.reload(); // 로그인 성공 시 새로고침
     }).catch((error) => { 
         console.error("네이버 로그인 에러 상세:", error); 
-        alert("네이버 로그인 연동에 실패했습니다. (에러코드: " + error.code + ")");
+        // 에러 원인을 더 정확히 보기 위해 에러 메시지를 띄웁니다.
+        alert("네이버 연동 실패: " + error.message);
     });
   }
 
