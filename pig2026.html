@@ -155,7 +155,6 @@
         .login-box p { color: #4a3333; font-size: 1rem; margin-bottom: 30px; font-weight: bold; line-height: 1.5;}
         .social-btn { display: block; width: 100%; padding: 18px; margin-bottom: 12px; border-radius: 20px; font-size: 1.1rem; font-weight: 900; text-align: center; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
         .btn-kakao { background-color: #FEE500; color: #4a3333; }
-        .btn-naver { background-color: #03C75A; color: #FFFFFF; }
         .btn-google { background-color: #f1f1f1; color: #4a3333; border: 2px solid #ffe4e8;}
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -168,9 +167,8 @@
             <button class="close-login" onclick="closeLogin()">×</button>
             <h2>🐷 꿀꿀! 사주돼지</h2>
             <p>3초만에 가입하고<br>나의 황금빛 운명을 확인하세요!</p>
-            <button class="social-btn btn-kakao" onclick="dummyLogin()">카카오로 시작하기</button>
-            <button class="social-btn btn-naver" onclick="dummyLogin()">네이버로 시작하기</button>
-            <button class="social-btn btn-google" onclick="dummyLogin()">구글로 시작하기</button>
+            <button class="social-btn btn-kakao" onclick="realKakaoLogin()">카카오로 시작하기</button>
+            <button class="social-btn btn-google" onclick="realGoogleLogin()">구글로 시작하기</button>
         </div>
     </div>
 
@@ -179,7 +177,7 @@
         <a href="index.html" class="main-link">
            <img src="/logo.png" alt="사주돼지" class="header-logo">
         </a>
-        <button class="login-btn-header" onclick="location.href='index.html?tab=myinfo'">로그인 / 내정보</button>
+        <button id="header-user-btn" class="login-btn-header" onclick="openLogin()">로그인 / 가입</button>
        </div>
        <nav id="menu-bar">
             <button onclick="location.href='index.html?tab=manseryeok'"><span class="icon">🐷</span><span>돼지 만세력</span></button>
@@ -274,10 +272,6 @@
     <script>
         function openLogin() { document.getElementById('loginOverlay').style.display = 'flex'; }
         function closeLogin() { document.getElementById('loginOverlay').style.display = 'none'; }
-        function dummyLogin() {
-            alert("꿀꿀! 사주돼지 로그인이 완료되었습니다.");
-            closeLogin();
-        }
 
         function toggleBusinessInfo() {
             const info = document.getElementById('business-info');
@@ -315,7 +309,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
         import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -331,6 +325,7 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
+        const googleProvider = new GoogleAuthProvider();
 
         // 내 정보 폼 자동 채우기
         function forceFill(y, m, d, time, gender, calendar) {
@@ -367,7 +362,9 @@
         }
 
         onAuthStateChanged(auth, async (user) => {
+            const headerBtn = document.getElementById('header-user-btn');
             if (user) {
+                if(headerBtn) { headerBtn.innerText = "내정보"; headerBtn.onclick = function() { location.href = 'index.html?tab=myinfo'; }; }
                 try {
                     const docSnap = await getDoc(doc(db, "users", user.uid));
                     if (docSnap.exists()) {
@@ -381,8 +378,14 @@
                         setTimeout(() => { forceFill(y, m, d, data.birthTime, data.gender, data.calendar); }, 500);
                     }
                 } catch (e) { console.error(e); }
+            } else {
+                if(headerBtn) { headerBtn.innerText = "로그인 / 가입"; headerBtn.onclick = openLogin; }
             }
         });
+
+        // 추가된 구글, 카카오 로그인 함수
+        window.realGoogleLogin = function() { signInWithPopup(auth, googleProvider).then(() => { closeLogin(); }).catch(console.error); }
+        window.realKakaoLogin = function() { const kakaoProvider = new OAuthProvider('oidc.kakao'); signInWithPopup(auth, kakaoProvider).then(() => { closeLogin(); }).catch(console.error); }
        
         // ==========================================
         // 대망의 토스 결제 함수
