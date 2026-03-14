@@ -76,7 +76,6 @@
         .login-box h2 { margin-top: 0; color: #d32f2f; margin-bottom: 15px; font-weight: 900; }
         .social-btn { display: block; width: 100%; padding: 18px; margin-bottom: 12px; border-radius: 20px; font-size: 1.1rem; font-weight: 900; text-align: center; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
         .btn-kakao { background-color: #FEE500; color: #2c1a1a; }
-        .btn-naver { background-color: #03C75A; color: #FFFFFF; }
         .btn-google { background-color: #f1f1f1; color: #2c1a1a; border: 2px solid #ffcdd2;}
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -90,7 +89,6 @@
             <h2>🐷 사주돼지</h2>
             <p style="font-weight: bold; margin-bottom: 30px; color: #c62828;">당신이 외면하고 싶었던<br>불편한 진짜 내 모습을 확인하세요.</p>
             <button class="social-btn btn-kakao" onclick="realKakaoLogin()">카카오로 시작하기</button>
-            <button class="social-btn btn-naver" onclick="alert('준비중입니다!')">네이버로 시작하기</button>
             <button class="social-btn btn-google" onclick="realGoogleLogin()">구글로 시작하기</button>
         </div>
     </div>
@@ -296,7 +294,7 @@
                 orderId: 'order_' + new Date().getTime(), 
                 orderName: '사주돼지 팩폭 사주', 
                 customerName: '사주돼지 고객', 
-                successUrl: window.location.origin + '/badpig_result.html', // 🌟 성공 시 결과 페이지로 이동!
+                successUrl: window.location.origin + '/badpig_result.html', 
                 failUrl: window.location.origin + '/fail.html', 
             }).catch(function (error) {
                 if (error.code === 'USER_CANCEL') { alert('결제를 취소하셨습니다.'); } 
