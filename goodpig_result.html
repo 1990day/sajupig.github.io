@@ -385,7 +385,7 @@
                 if(['壬','癸','亥','子'].includes(char)) elements['水']++;
             });
 
-            let missingEls = Object.keys(elements).filter(e => elements[e] === 0);
+          let missingEls = Object.keys(elements).filter(e => elements[e] === 0);
             let dmElement = '';
             if(['甲','乙'].includes(dGan)) dmElement = '木';
             else if(['丙','丁'].includes(dGan)) dmElement = '火';
@@ -394,7 +394,14 @@
             else if(['壬','癸'].includes(dGan)) dmElement = '水';
 
             let tenGodsCount = { '비겁':0, '식상':0, '재성':0, '관성':0, '인성':0 };
-            const logicMap = tenGodsLogicMap[dmElement];
+            const tenGodsLogicMap = {
+                '木': { '木':'비겁', '火':'식상', '土':'재성', '金':'관성', '水':'인성' },
+                '火': { '火':'비겁', '土':'식상', '金':'재성', '水':'관성', '木':'인성' },
+                '土': { '土':'비겁', '金':'식상', '水':'재성', '木':'관성', '火':'인성' },
+                '金': { '金':'비겁', '水':'식상', '木':'재성', '火':'관성', '土':'인성' },
+                '水': { '水':'비겁', '木':'식상', '火':'재성', '土':'관성', '金':'인성' }
+            };
+           const logicMap = tenGodsLogicMap[dmElement];
             Object.keys(elements).forEach(el => {
                 const count = elements[el];
                 if (count > 0) tenGodsCount[logicMap[el]] += count;
