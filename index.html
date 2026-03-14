@@ -176,7 +176,7 @@
         <h2>🐷 사주돼지 시작하기</h2>
         <p>3초만에 가입하고 나의 운명을 확인하세요</p>
         <button class="social-btn btn-kakao" onclick="realKakaoLogin()">카카오로 시작하기</button>
-        <button class="social-btn btn-naver" onclick="alert('준비중입니다!')">네이버로 시작하기</button>
+        <button class="social-btn btn-naver" onclick="realNaverLogin()">네이버로 시작하기</button>
         <button class="social-btn btn-google" onclick="realGoogleLogin()">구글로 시작하기</button>
     </div>
 </div>
@@ -424,15 +424,7 @@
                 <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">결제하신 사주 내역을 언제든 다시 볼 수 있습니다.</p>
                 
                 <div id="purchase-list-container" style="display: flex; flex-direction: column; gap: 10px;">
-                    <div style="border: 1.5px solid #ffe2ea; border-radius: 14px; padding: 15px; background: #ffffff;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                            <span style="font-size: 0.8rem; color: #999;">2026.03.14 결제</span>
-                            <span style="font-size: 0.75rem; background: #ffc4d0; color: white; padding: 3px 8px; border-radius: 999px; font-weight: bold;">결제완료</span>
-                        </div>
-                        <div style="font-size: 1.05rem; font-weight: 900; color: #5a3a41; margin-bottom: 12px;">🧧 2026 병오년 프리미엄 사주</div>
-                        <button style="width: 100%; background: #fff0f5; color: #d11534; border: 1px solid #ffb6c1; padding: 12px; border-radius: 12px; font-weight: bold; cursor: pointer;" onclick="alert('결제 내역 불러오기 기능은 곧 연동됩니다!')">결과 다시 보기</button>
                     </div>
-                </div>
             </div>
 
             <div class="saju-form" style="margin-bottom: 20px;">
@@ -748,7 +740,6 @@
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
   import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
-  // 결제 목록을 불러오기 위한 도구들 추가
   import { getFirestore, doc, setDoc, getDoc, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 
   const firebaseConfig = {
@@ -766,7 +757,6 @@
   const googleProvider = new GoogleAuthProvider();
   const db = getFirestore(app);
   
-  // 다시 보기를 위해 결제 정보를 임시 저장할 그릇
   window.myPurchaseData = {};
 
   function applySavedInfoToForm(dateStr, timeStr, gender, calendar) {
@@ -777,12 +767,10 @@
           const m = parseInt(parts[1], 10);
           const d = parseInt(parts[2], 10);
           
-          // 내 정보 탭에 세팅
           if(document.getElementById('my-saved-year')) document.getElementById('my-saved-year').value = y;
           if(document.getElementById('my-saved-month')) document.getElementById('my-saved-month').value = m;
           if(document.getElementById('my-saved-day')) document.getElementById('my-saved-day').value = d;
           
-          // 만세력 탭에 세팅 (추가된 부분)
           if(document.getElementById('man-year')) document.getElementById('man-year').value = y;
           if(document.getElementById('man-month')) document.getElementById('man-month').value = m;
           if(document.getElementById('man-day')) document.getElementById('man-day').value = d;
@@ -790,14 +778,14 @@
       
       if(timeStr) {
           if(document.getElementById('my-saved-time')) document.getElementById('my-saved-time').value = timeStr;
-          if(document.getElementById('man-time')) document.getElementById('man-time').value = timeStr; // 추가된 부분
+          if(document.getElementById('man-time')) document.getElementById('man-time').value = timeStr; 
       }
       
       if(gender) {
           const myGenderRadio = document.querySelector(`input[name="my-saved-gender"][value="${gender}"]`);
           if(myGenderRadio) myGenderRadio.checked = true;
           
-          const manGenderRadio = document.querySelector(`input[name="man-gender"][value="${gender}"]`); // 추가된 부분
+          const manGenderRadio = document.querySelector(`input[name="man-gender"][value="${gender}"]`); 
           if(manGenderRadio) manGenderRadio.checked = true;
       }
       
@@ -805,7 +793,7 @@
           const myCalRadio = document.querySelector(`input[name="my-saved-calendar"][value="${calendar}"]`);
           if(myCalRadio) myCalRadio.checked = true;
           
-          const manCalRadio = document.querySelector(`input[name="man-calendar"][value="${calendar}"]`); // 추가된 부분
+          const manCalRadio = document.querySelector(`input[name="man-calendar"][value="${calendar}"]`); 
           if(manCalRadio) manCalRadio.checked = true;
       }
   }
@@ -856,7 +844,6 @@
       headerBtn.onclick = function() { location.href = 'index.html?tab=myinfo'; };
 
       try {
-          // 1. 내 기본 정보 불러오기
           const docSnap = await getDoc(doc(db, "users", user.uid));
           if (docSnap.exists()) {
               const data = docSnap.data();
@@ -869,21 +856,19 @@
               if (nameDisplay) nameDisplay.innerText = displayNick + "님, 환영합니다! 🐷";
           }
 
-          // 2. 내 사주 결제 내역 (보관함) 싹 다 불러오기! 🌟
           if(purchaseContainer) {
               const purchasesRef = collection(db, "users", user.uid, "purchases");
-              // 최신 결제한 순서대로 정렬해서 가져옵니다.
               const q = query(purchasesRef, orderBy("purchaseDate", "desc"));
               const querySnapshot = await getDocs(q);
 
-              purchaseContainer.innerHTML = ""; // 기존 임시 UI 싹 지우기
+              purchaseContainer.innerHTML = "";
 
               if (querySnapshot.empty) {
                   purchaseContainer.innerHTML = "<p style='text-align:center; color:#999; font-size:0.9rem; padding:20px 0;'>아직 결제하신 사주 내역이 없습니다.<br>사주돼지에서 운명을 확인해보세요!</p>";
               } else {
                   querySnapshot.forEach((docItem) => {
                       const data = docItem.data();
-                      window.myPurchaseData[data.orderId] = data; // 결과 보기 버튼을 위해 데이터 보관
+                      window.myPurchaseData[data.orderId] = data; 
                       
                       const dObj = new Date(data.purchaseDate);
                       const dateStr = `${dObj.getFullYear()}.${String(dObj.getMonth()+1).padStart(2,'0')}.${String(dObj.getDate()).padStart(2,'0')}`;
@@ -911,12 +896,10 @@
     }
   });
 
-  // 보관함에서 '결과 다시 보기' 버튼 눌렀을 때 작동하는 함수
   window.revisitFortune = function(orderId) {
       const data = window.myPurchaseData[orderId];
       if(!data) return;
 
-      // 저장해뒀던 유저의 사주 정보를 다시 브라우저 금고에 채워 넣습니다.
       sessionStorage.setItem('saju_year', data.sajuInfo.year);
       sessionStorage.setItem('saju_month', data.sajuInfo.month);
       sessionStorage.setItem('saju_day', data.sajuInfo.day);
@@ -924,16 +907,15 @@
       sessionStorage.setItem('saju_gender', data.sajuInfo.gender);
       sessionStorage.setItem('saju_calendar', data.sajuInfo.calendar);
 
-      // 연애 궁합인 경우 상대방 정보도 추가로 복구해줍니다!
-      if (data.itemType === 'lovepig') {
-          sessionStorage.setItem('me_year', data.sajuInfo.year); // 내 정보
+      if (data.itemType === 'lovepig' || data.itemType === 'friendspig' || data.itemType === 'familypig' || data.itemType === 'reunionpig') {
+          sessionStorage.setItem('me_year', data.sajuInfo.year);
           sessionStorage.setItem('me_month', data.sajuInfo.month);
           sessionStorage.setItem('me_day', data.sajuInfo.day);
           sessionStorage.setItem('me_time', data.sajuInfo.time);
           sessionStorage.setItem('me_gender', data.sajuInfo.gender);
           sessionStorage.setItem('me_calendar', data.sajuInfo.calendar);
 
-          sessionStorage.setItem('you_year', data.sajuInfo.youYear); // 상대방 정보
+          sessionStorage.setItem('you_year', data.sajuInfo.youYear);
           sessionStorage.setItem('you_month', data.sajuInfo.youMonth);
           sessionStorage.setItem('you_day', data.sajuInfo.youDay);
           sessionStorage.setItem('you_time', data.sajuInfo.youTime);
@@ -941,12 +923,21 @@
           sessionStorage.setItem('you_calendar', data.sajuInfo.youCalendar);
       }
 
-      // 토스 결제 키 대신 'revisit'이라는 무적의 마스터키를 달아서 결과창으로 보냅니다!
       location.href = `${data.itemType}_result.html?orderId=${orderId}&paymentKey=revisit`;
   }
 
   window.realGoogleLogin = function() {
     signInWithPopup(auth, googleProvider).then(() => { document.getElementById('loginOverlay').style.display = 'none'; }).catch((error) => { console.error(error); });
+  }
+
+  window.realNaverLogin = function() {
+    const naverProvider = new OAuthProvider('oidc.naver');
+    signInWithPopup(auth, naverProvider).then(() => { 
+        document.getElementById('loginOverlay').style.display = 'none'; 
+    }).catch((error) => { 
+        console.error("네이버 로그인 에러:", error); 
+        alert("네이버 로그인 연동에 실패했습니다.");
+    });
   }
 
   window.realKakaoLogin = function() {
