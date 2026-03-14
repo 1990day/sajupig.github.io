@@ -8,7 +8,6 @@
     <script src="https://unpkg.com/lunar-javascript/lunar.js"></script>
     
     <style>
-        /* 기존의 예쁜 핑크빛 디자인 그대로 가져왔습니다 */
         html { background-color: #fce4ec; }
         body { 
             margin: 0 auto; max-width: 480px; min-height: 100vh;
@@ -102,24 +101,24 @@
             <button class="close-login" onclick="closeLogin()">×</button>
             <h2>🐷 꿀꿀! 사주돼지</h2>
             <p>3초만에 가입하고<br>나의 황금빛 운명을 확인하세요!</p>
-            <button class="social-btn btn-kakao" onclick="dummyLogin()">카카오로 시작하기</button>
-            <button class="social-btn btn-naver" onclick="dummyLogin()">네이버로 시작하기</button>
-            <button class="social-btn btn-google" onclick="dummyLogin()">구글로 시작하기</button>
+            <button class="social-btn btn-kakao" onclick="realKakaoLogin()">카카오로 시작하기</button>
+            <button class="social-btn btn-naver" onclick="alert('준비중입니다!')">네이버로 시작하기</button>
+            <button class="social-btn btn-google" onclick="realGoogleLogin()">구글로 시작하기</button>
         </div>
     </div>
 
     <header>
-        <div class="header-top">
-            <a href="index.html" class="main-link">
-               <img src="/logo.png" alt="사주돼지" class="header-logo">
-            </a>
-            <button class="login-btn-header" onclick="openLogin()">로그인 / 가입</button>
-        </div>
-        <nav id="menu-bar">
-            <button onclick="location.href='index.html?tab=manseryeok'"><span class="icon">🐷</span><span>돼지 만세력</span></button>
-            <button class="active" onclick="location.href='index.html?tab=saju770'"><span class="icon">🪙</span><span>770사주</span></button>
-            <button onclick="location.href='index.html?tab=love'"><span class="icon">💕</span><span>돼지궁합</span></button>
-            <button onclick="location.href='index.html?tab=fact'"><span class="icon">👊</span><span>돼지팩폭</span></button>
+       <div class="header-top">
+        <a href="index.html" class="main-link">
+           <img src="/logo.png" alt="사주돼지" class="header-logo">
+        </a>
+        <button id="header-user-btn" class="login-btn-header" onclick="openLogin()">로그인 / 가입</button>
+       </div>
+       <nav id="menu-bar">
+        <button onclick="location.href='index.html?tab=manseryeok'"><span class="icon">🐷</span><span>돼지 만세력</span></button>
+        <button class="active" onclick="location.href='index.html?tab=saju770'"><span class="icon">🪙</span><span>770사주</span></button>
+        <button onclick="location.href='index.html?tab=love'"><span class="icon">💕</span><span>돼지궁합</span></button>
+        <button onclick="location.href='index.html?tab=fact'"><span class="icon">👊</span><span>돼지팩폭</span></button>
         </nav>
     </header>
 
@@ -136,21 +135,15 @@
     <script>
         function openLogin() { document.getElementById('loginOverlay').style.display = 'flex'; }
         function closeLogin() { document.getElementById('loginOverlay').style.display = 'none'; }
-        function dummyLogin() {
-            alert("이미 사주 결과를 확인 중입니다. 상세 정보는 메인 화면에서 확인해주세요!");
-            closeLogin();
-        }
 
+        // 보안 체크 로직
         const urlParams = new URLSearchParams(window.location.search);
         const paymentKey = urlParams.get('paymentKey'); 
         const sajuYear = sessionStorage.getItem('saju_year'); 
         const orderId = urlParams.get('orderId') || '현장결제';
 
-        if (!paymentKey) {
+        if (!paymentKey || !sajuYear) {
             alert("정상적인 결제 내역이 확인되지 않았습니다! 결제 페이지로 이동합니다.");
-            location.href = "pig2026.html";
-        } else if (!sajuYear) {
-            alert("사주 정보가 만료되었습니다. 결제 페이지에서 다시 입력해주세요!");
             location.href = "pig2026.html";
         }
 
@@ -224,7 +217,7 @@
             '癸亥': '망망대해처럼 속을 가늠할 수 없는 깊고 심오한 철학적 사유와 지혜를 지녔으며, 특유의 통찰력으로 세상의 흐름을 꿰뚫어 보고 유연하게 대처하는 능력이 일품입니다.'
         };
 
-        function generateFortune2026(bazi, gender, orderId) {
+        function generateFortune2026(bazi, gender) {
             const dGan = bazi.getDay().charAt(0); const dZhi = bazi.getDay().charAt(1);
             const yZhi = bazi.getYear().charAt(1); const mZhi = bazi.getMonth().charAt(1); const tZhi = bazi.getTime().charAt(1);
             
@@ -274,7 +267,7 @@
             html += "<div class='fortune-section-card'>";
             html += "<div class='fortune-section-title'>🐽 2026년 병오년 총운</div>";
             html += "<div class='fortune-content-text'>";
-            html += "<p>사주돼지의 정밀한 분석 결과, 당신은 <u>" + iljuText + " 일주</u>로 태어났습니다. " + iljuDesc + " 이러한 당신만의 뚜렷하고 고유한 기질이 2026년 붉은 말의 해인 병오(丙午)년을 맞이하여 거대한 운명의 전환점을 맞이하게 됩니다. 병오년은 천간과 지지가 모두 맹렬한 불꽃(火)으로 이루어진 이른바 간여지동의 해로, 그 에너지가 매우 극단적이고 폭발적으로 작용하여 삶의 모든 영역에 강렬한 파장을 일으키는 굵직한 시기입니다.</p>";
+            html += "<p>사주돼지의 정밀한 분석 결과, 당신은 " + iljuText + " 일주로 태어났습니다. " + iljuDesc + " 이러한 당신만의 뚜렷하고 고유한 기질이 2026년 붉은 말의 해인 병오(丙午)년을 맞이하여 거대한 운명의 전환점을 맞이하게 됩니다. 병오년은 천간과 지지가 모두 맹렬한 불꽃(火)으로 이루어진 이른바 간여지동의 해로, 그 에너지가 매우 극단적이고 폭발적으로 작용하여 삶의 모든 영역에 강렬한 파장을 일으키는 굵직한 시기입니다.</p>";
             
             if (['甲', '乙'].includes(dGan)) {
                 html += "<p>나무(木)의 기운을 띠고 태어난 당신에게 이 거대한 불기운은 명리학적으로 식상(식신과 상관)이라는 극강의 활동력과 표현력으로 작용합니다. 그동안 내면에 조용히 축적해 두었던 지식과 경험, 숨겨진 황금돼지 같은 재능이 세상 밖으로 화려하고 맹렬하게 뻗어나가는 시기입니다. 답답하게 정체되어 있던 지난날들을 완벽하게 털어내고, 무에서 유를 창조하는 창의력이 최고조에 달하며, 어떤 무대에 서든 사람들의 이목과 박수를 휩쓰는 뛰어난 능력을 발휘하게 됩니다. 내가 주도권을 쥐고 세상을 마음껏 요리할 수 있는 막강한 운이 들어왔습니다.</p>";
@@ -585,18 +578,24 @@
                 
                 const fortuneHtml = generateFortune2026(bazi, gender, orderId);
 
+                // 일주 이름만 뽑아서 화면 위쪽에 예쁘게 표시
+                const dGan = bazi.getDay().charAt(0); 
+                const dZhi = bazi.getDay().charAt(1);
+                document.getElementById('ilju-name-display').innerText = transFull(dGan) + transFull(dZhi) + " 일주";
+
+                // 로딩 문구 숨기고, 결과창과 버튼 띄우기
                 document.getElementById('result-loading').style.display = 'none';
-                document.getElementById('dynamic-fortune-content').innerHTML = fortuneHtml;
-                document.getElementById('dynamic-fortune-content').style.display = 'block';
+                document.getElementById('dynamic-fortune-content').innerHTML += fortuneHtml;
+                document.getElementById('fortune-result-content').style.display = 'block';
                 document.getElementById('go-home-btn').style.display = 'block';
 
             }, 1500); 
         };
-        
     </script>
+    
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
         import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -612,37 +611,41 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
+        const googleProvider = new GoogleAuthProvider();
 
         onAuthStateChanged(auth, async (user) => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const orderId = urlParams.get('orderId');
-            const paymentKey = urlParams.get('paymentKey');
-            
-            // 로그인한 유저가 방금 진짜로 결제를 하고 들어왔을 때만 저장! (다시보기로 들어온 경우는 제외)
-            if (user && orderId && paymentKey && paymentKey !== 'revisit') {
-                try {
-                    // 유저 전용 비밀 금고(purchases)에 영수증을 차곡차곡 모아둡니다.
-                    const purchaseRef = doc(db, "users", user.uid, "purchases", orderId);
-                    await setDoc(purchaseRef, {
-                        orderId: orderId,
-                        itemName: "2026 병오년 프리미엄 사주",
-                        itemType: "pig2026", // 어떤 사주인지 구분하는 태그
-                        purchaseDate: new Date().toISOString(),
-                        sajuInfo: {
-                            year: sessionStorage.getItem('saju_year'),
-                            month: sessionStorage.getItem('saju_month'),
-                            day: sessionStorage.getItem('saju_day'),
-                            time: sessionStorage.getItem('saju_time'),
-                            gender: sessionStorage.getItem('saju_gender'),
-                            calendar: sessionStorage.getItem('saju_calendar')
-                        }
-                    }, { merge: true });
-                    console.log("결제 내역이 보관함에 안전하게 저장되었습니다!");
-                } catch (e) {
-                    console.error("영수증 저장 실패:", e);
+            const headerBtn = document.getElementById('header-user-btn');
+            if (user) {
+                if(headerBtn) { headerBtn.innerText = "내정보"; headerBtn.onclick = function() { location.href = 'index.html?tab=myinfo'; }; }
+                
+                // 결제 영수증 저장 로직
+                if (orderId && paymentKey && paymentKey !== 'revisit') {
+                    try {
+                        const purchaseRef = doc(db, "users", user.uid, "purchases", orderId);
+                        await setDoc(purchaseRef, {
+                            orderId: orderId,
+                            itemName: "2026 병오년 프리미엄 사주",
+                            itemType: "pig2026",
+                            purchaseDate: new Date().toISOString(),
+                            sajuInfo: {
+                                year: sessionStorage.getItem('saju_year'),
+                                month: sessionStorage.getItem('saju_month'),
+                                day: sessionStorage.getItem('saju_day'),
+                                time: sessionStorage.getItem('saju_time'),
+                                gender: sessionStorage.getItem('saju_gender'),
+                                calendar: sessionStorage.getItem('saju_calendar')
+                            }
+                        }, { merge: true });
+                        console.log("결제 내역 저장 완료");
+                    } catch (e) { console.error("영수증 저장 실패:", e); }
                 }
+            } else {
+                if(headerBtn) { headerBtn.innerText = "로그인 / 가입"; headerBtn.onclick = openLogin; }
             }
         });
+
+        window.realGoogleLogin = function() { signInWithPopup(auth, googleProvider).then(() => { closeLogin(); }).catch(console.error); }
+        window.realKakaoLogin = function() { const kakaoProvider = new OAuthProvider('oidc.kakao'); signInWithPopup(auth, kakaoProvider).then(() => { closeLogin(); }).catch(console.error); }
     </script>
 </body>
 </html>
