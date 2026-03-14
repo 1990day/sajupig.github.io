@@ -176,7 +176,6 @@
         <h2>🐷 사주돼지 시작하기</h2>
         <p>3초만에 가입하고 나의 운명을 확인하세요</p>
         <button class="social-btn btn-kakao" onclick="realKakaoLogin()">카카오로 시작하기</button>
-        <button class="social-btn btn-naver" onclick="realNaverLogin()">네이버로 시작하기</button>
         <button class="social-btn btn-google" onclick="realGoogleLogin()">구글로 시작하기</button>
     </div>
 </div>
@@ -928,22 +927,6 @@
 
   window.realGoogleLogin = function() {
     signInWithPopup(auth, googleProvider).then(() => { document.getElementById('loginOverlay').style.display = 'none'; }).catch((error) => { console.error(error); });
-  }
-
-// 🌟 [진짜 최종] 네이버 로그인 함수 - 스코프 설정 삭제
-  window.realNaverLogin = function() {
-    const naverProvider = new OAuthProvider('oidc.naver');
-    
-    // ⛔️ 모든 addScope 설정을 지웠습니다. 
-    // 네이버는 코드에서 요청하는 것보다 자체 설정창의 체크박스를 더 중요하게 봅니다.
-
-    signInWithPopup(auth, naverProvider).then(() => { 
-        document.getElementById('loginOverlay').style.display = 'none'; 
-        location.reload(); 
-    }).catch((error) => { 
-        console.error("네이버 로그인 에러 상세:", error); 
-        alert("네이버 로그인 실패: " + error.code);
-    });
   }
 
   window.realKakaoLogin = function() {
