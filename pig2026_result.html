@@ -17,6 +17,35 @@
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.08); position: relative; padding: 20px; box-sizing: border-box;
         }
 
+        header { 
+            background-color: #ffb6c1; position: sticky; top: 0; z-index: 100; 
+            box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4); border-bottom: 4px solid #ff85a2;
+            border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; margin: -20px -20px 20px -20px;
+        }
+        .header-logo { display: block; height: 30px; width: auto; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 15px 20px; }
+        .main-link { text-decoration: none; color: inherit; }
+        .login-btn-header {
+            background: #ffffff; border: 3px solid #ff85a2; color: #ff85a2;
+            padding: 8px 18px; border-radius: 25px; font-size: 0.9rem; font-weight: 900; cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.2s;
+        }
+        nav { display: flex; justify-content: space-between; padding: 10px 15px 20px 15px; gap: 10px; overflow-x: auto; white-space: nowrap; }
+        nav button { 
+            flex: 1; background-color: #ffffff; border: 3px solid #ffe4e8;
+            font-size: 0.85rem; color: #ff85a2; cursor: pointer; font-weight: 900; transition: all 0.2s; border-radius: 20px;
+            aspect-ratio: 1 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 6px; box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
+        }
+        nav button.active { 
+            color: #ffffff; background-color: #ff85a2; border-color: #ff85a2;
+            transform: translateY(-4px); box-shadow: 0 8px 15px rgba(255, 133, 162, 0.4);
+        }
+        nav button span.icon { font-size: 1.6rem; }
+        nav::-webkit-scrollbar { display: none; }
+
+        main { padding: 10px 0; text-align: center; }
+
         .fortune-result-box { background: transparent; margin-top: 10px; text-align: left; animation: fadeIn 0.8s ease-in-out; }
         .fortune-result-title {
             font-size: 1.7rem; color: #ff85a2; font-weight: 900; margin-bottom: 20px; text-align: center;
@@ -52,34 +81,6 @@
             border-radius: 20px; font-size: 1.15rem; font-weight: 900; cursor: pointer; 
             margin-top: 10px; box-shadow: 0 8px 20px rgba(255, 133, 162, 0.4); 
         }
-
-        /* 헤더 메뉴 스타일 */
-        header { 
-            background-color: #ffb6c1; position: sticky; top: 0; z-index: 100; 
-            box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4); border-bottom: 4px solid #ff85a2;
-            border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; margin-bottom: 20px; margin: -20px -20px 20px -20px;
-        }
-        .header-logo { display: block; height: 30px; width: auto; }
-        .header-top { display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 15px 20px; }
-        .main-link { text-decoration: none; color: inherit; }
-        .login-btn-header {
-            background: #ffffff; border: 3px solid #ff85a2; color: #ff85a2;
-            padding: 8px 18px; border-radius: 25px; font-size: 0.9rem; font-weight: 900; cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.2s;
-        }
-        nav { display: flex; justify-content: space-between; padding: 10px 15px 20px 15px; gap: 10px; overflow-x: auto; white-space: nowrap; }
-        nav button { 
-            flex: 1; background-color: #ffffff; border: 3px solid #ffe4e8;
-            font-size: 0.85rem; color: #ff85a2; cursor: pointer; font-weight: 900; transition: all 0.2s; border-radius: 20px;
-            aspect-ratio: 1 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            gap: 6px; box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
-        }
-        nav button.active { 
-            color: #ffffff; background-color: #ff85a2; border-color: #ff85a2;
-            transform: translateY(-4px); box-shadow: 0 8px 15px rgba(255, 133, 162, 0.4);
-        }
-        nav button span.icon { font-size: 1.6rem; }
-        nav::-webkit-scrollbar { display: none; }
 
         .login-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(74, 51, 51, 0.8); z-index: 1000; justify-content: center; align-items: center; animation: fadeIn 0.2s; }
         .login-box { background-color: #ffffff; width: 85%; max-width: 360px; border-radius: 30px; padding: 40px 25px; text-align: center; position: relative; border: 5px solid #ffb6c1; }
@@ -122,16 +123,17 @@
         </nav>
     </header>
 
-    <div id="result-loading" style="text-align: center; padding: 100px 0; font-weight: bold; color: #ff85a2; font-size: 1.2rem;">
-        🐷 결제 확인 완료! 2026년 운명을 뽑아내고 있습니다...
-    </div>
+    <main>
+        <div id="result-loading" style="text-align: center; padding: 100px 0; font-weight: bold; color: #ff85a2; font-size: 1.2rem;">
+            🐷 결제 확인 완료! 2026년 운명을 뽑아내고 있습니다... 잠시만 기다려주세요!
+        </div>
 
-    <div id="dynamic-fortune-content" class="fortune-result-box" style="display: none;"></div>
+        <div id="dynamic-fortune-content" class="fortune-result-box" style="display: none;"></div>
 
-    <button id="go-home-btn" class="go-home-btn" style="display: none;" onclick="location.href='index.html'">다른 사주 더 보기 🏠</button>
+        <button id="go-home-btn" class="go-home-btn" style="display: none;" onclick="location.href='index.html'">다른 사주 더 보기 🏠</button>
+    </main>
 
     <script>
-        // 로그인 창 열고 닫기 함수
         function openLogin() { document.getElementById('loginOverlay').style.display = 'flex'; }
         function closeLogin() { document.getElementById('loginOverlay').style.display = 'none'; }
         function dummyLogin() {
@@ -139,12 +141,10 @@
             closeLogin();
         }
 
-        // ==========================================================
-        // 🚨 [필수] 결제 우회 방지 보안 코드 (주소창 얌체 유저 차단)
-        // ==========================================================
         const urlParams = new URLSearchParams(window.location.search);
-        const paymentKey = urlParams.get('paymentKey'); // 토스 결제 성공 시 주소창에 붙는 열쇠
-        const sajuYear = sessionStorage.getItem('saju_year'); // 결제창에서 저장한 생년월일
+        const paymentKey = urlParams.get('paymentKey'); 
+        const sajuYear = sessionStorage.getItem('saju_year'); 
+        const orderId = urlParams.get('orderId') || '현장결제';
 
         if (!paymentKey) {
             alert("정상적인 결제 내역이 확인되지 않았습니다! 결제 페이지로 이동합니다.");
@@ -153,9 +153,7 @@
             alert("사주 정보가 만료되었습니다. 결제 페이지에서 다시 입력해주세요!");
             location.href = "pig2026.html";
         }
-        // ==========================================================
 
-        // 방대한 사주 풀이 데이터 (그대로 유지!)
         const fullNames = {
             '甲':'갑목', '乙':'을목', '丙':'병화', '丁':'정화', '戊':'무토', '己':'기토', '庚':'경금', '辛':'신금', '壬':'임수', '癸':'계수',
             '子':'자수', '丑':'축토', '寅':'인목', '卯':'묘목', '辰':'진토', '巳':'사화', '午':'오화', '未':'미토', '申':'신금', '酉':'유금', '戌':'술토', '亥':'해수'
@@ -226,7 +224,7 @@
             '癸亥': '망망대해처럼 속을 가늠할 수 없는 깊고 심오한 철학적 사유와 지혜를 지녔으며, 특유의 통찰력으로 세상의 흐름을 꿰뚫어 보고 유연하게 대처하는 능력이 일품입니다.'
         };
 
-        function generateFortune2026(bazi, gender) {
+        function generateFortune2026(bazi, gender, orderId) {
             const dGan = bazi.getDay().charAt(0); const dZhi = bazi.getDay().charAt(1);
             const yZhi = bazi.getYear().charAt(1); const mZhi = bazi.getMonth().charAt(1); const tZhi = bazi.getTime().charAt(1);
             
@@ -267,6 +265,7 @@
             let html = "";
             html += "<div class='fortune-result-title'>🐷 2026 병오년 프리미엄 사주</div>";
             html += "<div class='result-highlight'>";
+            html += "<div style='font-size: 0.8rem; color: #999; margin-bottom: 10px;'>결제 번호: " + orderId + "</div>";
             html += "<div class='bazi-display'>당신의 명식: " + iljuText + " 일주</div>";
             html += "<div class='bazi-detail'>[ 60갑자 본성, 십성 구조, 오행 조후 정밀 분석 완료! 꿀꿀! ]</div>";
             html += "</div>";
@@ -275,7 +274,7 @@
             html += "<div class='fortune-section-card'>";
             html += "<div class='fortune-section-title'>🐽 2026년 병오년 총운</div>";
             html += "<div class='fortune-content-text'>";
-            html += "<p>사주돼지의 정밀한 분석 결과, 당신은 <b>" + iljuText + " 일주</b>로 태어났습니다. " + iljuDesc + " 이러한 당신만의 뚜렷하고 고유한 기질이 2026년 붉은 말의 해인 병오(丙午)년을 맞이하여 거대한 운명의 전환점을 맞이하게 됩니다. 병오년은 천간과 지지가 모두 맹렬한 불꽃(火)으로 이루어진 이른바 간여지동의 해로, 그 에너지가 매우 극단적이고 폭발적으로 작용하여 삶의 모든 영역에 강렬한 파장을 일으키는 굵직한 시기입니다.</p>";
+            html += "<p>사주돼지의 정밀한 분석 결과, 당신은 <u>" + iljuText + " 일주</u>로 태어났습니다. " + iljuDesc + " 이러한 당신만의 뚜렷하고 고유한 기질이 2026년 붉은 말의 해인 병오(丙午)년을 맞이하여 거대한 운명의 전환점을 맞이하게 됩니다. 병오년은 천간과 지지가 모두 맹렬한 불꽃(火)으로 이루어진 이른바 간여지동의 해로, 그 에너지가 매우 극단적이고 폭발적으로 작용하여 삶의 모든 영역에 강렬한 파장을 일으키는 굵직한 시기입니다.</p>";
             
             if (['甲', '乙'].includes(dGan)) {
                 html += "<p>나무(木)의 기운을 띠고 태어난 당신에게 이 거대한 불기운은 명리학적으로 식상(식신과 상관)이라는 극강의 활동력과 표현력으로 작용합니다. 그동안 내면에 조용히 축적해 두었던 지식과 경험, 숨겨진 황금돼지 같은 재능이 세상 밖으로 화려하고 맹렬하게 뻗어나가는 시기입니다. 답답하게 정체되어 있던 지난날들을 완벽하게 털어내고, 무에서 유를 창조하는 창의력이 최고조에 달하며, 어떤 무대에 서든 사람들의 이목과 박수를 휩쓰는 뛰어난 능력을 발휘하게 됩니다. 내가 주도권을 쥐고 세상을 마음껏 요리할 수 있는 막강한 운이 들어왔습니다.</p>";
@@ -554,9 +553,9 @@
             return html;
         }
 
-        // 페이지가 열리자마자 브라우저 금고(sessionStorage)에서 정보를 꺼내옵니다!
+        // 페이지 로딩 시 자동으로 사주 풀이 실행
         window.onload = function() {
-            setTimeout(() => { // 살짝 로딩 느낌 주기
+            setTimeout(() => { // 1.5초 동안 로딩 문구 보여주기
                 const gender = sessionStorage.getItem('saju_gender');
                 const calendarType = sessionStorage.getItem('saju_calendar');
                 const yearStr = sessionStorage.getItem('saju_year');
@@ -580,13 +579,13 @@
                 } else if (calendarType === 'lunar') {
                     lunarObj = Lunar.fromYmdHms(year, month, day, hour, 0, 0);
                 } else if (calendarType === 'lunar-leap') {
-                    lunarObj = Lunar.fromYmdHms(year, -month, day, hour, 0, 0); // 윤달 처리는 생략/간소화
+                    lunarObj = Lunar.fromYmdHms(year, -month, day, hour, 0, 0); 
                 }
 
                 const bazi = lunarObj.getEightChar();
                 
                 // 정보로 마법의 운세 생성!
-                const fortuneHtml = generateFortune2026(bazi, gender);
+                const fortuneHtml = generateFortune2026(bazi, gender, orderId);
 
                 // 일주 이름만 뽑아서 화면 위쪽에 예쁘게 표시
                 const dGan = bazi.getDay().charAt(0); 
@@ -596,10 +595,10 @@
                 // 로딩 문구 숨기고, 결과창과 버튼 띄우기
                 document.getElementById('result-loading').style.display = 'none';
                 document.getElementById('dynamic-fortune-content').innerHTML += fortuneHtml;
-                document.getElementById('fortune-result-content').style.display = 'block';
+                document.getElementById('dynamic-fortune-content').style.display = 'block';
                 document.getElementById('go-home-btn').style.display = 'block';
 
-            }, 1500); // 1.5초 로딩
+            }, 1500); 
         };
     </script>
 </body>
