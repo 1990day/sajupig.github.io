@@ -546,7 +546,7 @@
             return html;
         }
 
-        window.onload = function() {
+      window.onload = function() {
             setTimeout(() => { 
                 const gender = sessionStorage.getItem('saju_gender');
                 const calendarType = sessionStorage.getItem('saju_calendar');
@@ -576,17 +576,16 @@
 
                 const bazi = lunarObj.getEightChar();
                 
-                const fortuneHtml = generateFortune2026(bazi, gender, orderId);
-
-                // 일주 이름만 뽑아서 화면 위쪽에 예쁘게 표시
-                const dGan = bazi.getDay().charAt(0); 
-                const dZhi = bazi.getDay().charAt(1);
-                document.getElementById('ilju-name-display').innerText = transFull(dGan) + transFull(dZhi) + " 일주";
+                const fortuneHtml = generateFortune2026(bazi, gender);
 
                 // 로딩 문구 숨기고, 결과창과 버튼 띄우기
                 document.getElementById('result-loading').style.display = 'none';
-                document.getElementById('dynamic-fortune-content').innerHTML += fortuneHtml;
-                document.getElementById('fortune-result-content').style.display = 'block';
+                
+                // 결과 내용 삽입
+                document.getElementById('dynamic-fortune-content').innerHTML = fortuneHtml; 
+                
+                // 에러가 났던 display 블록 ID를 정확한 태그 이름으로 수정
+                document.getElementById('dynamic-fortune-content').style.display = 'block';
                 document.getElementById('go-home-btn').style.display = 'block';
 
             }, 1500); 
