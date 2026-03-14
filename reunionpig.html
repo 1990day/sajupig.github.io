@@ -85,7 +85,6 @@
     .login-box h2 { margin-top: 0; color: #5c6bc0; margin-bottom: 15px; font-weight: 900; }
     .social-btn { display: block; width: 100%; padding: 18px; margin-bottom: 12px; border-radius: 20px; font-size: 1.1rem; font-weight: 900; text-align: center; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
     .btn-kakao { background-color: #FEE500; color: #222; }
-    .btn-naver { background-color: #03C75A; color: #FFFFFF; }
     .btn-google { background-color: #f1f1f1; color: #222; border: 2px solid #e8eaf6;}
 
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -100,7 +99,6 @@
         <h2>🐷 꿀꿀! 사주돼지</h2>
         <p style="font-weight: bold; margin-bottom: 30px;">3초만에 가입하고<br>그 사람과의 재회 가능성을 확인하세요!</p>
         <button class="social-btn btn-kakao" onclick="realKakaoLogin()">카카오로 시작하기</button>
-        <button class="social-btn btn-naver" onclick="alert('준비중입니다!')">네이버로 시작하기</button>
         <button class="social-btn btn-google" onclick="realGoogleLogin()">구글로 시작하기</button>
     </div>
 </div>
@@ -297,7 +295,6 @@
     const db = getFirestore(app);
     const googleProvider = new GoogleAuthProvider();
 
-    // 내 정보 채우기
     function forceFill(y, m, d, time, gender, calendar) {
         const idMap = { year: 'me-year', month: 'me-month', day: 'me-day', time: 'me-time' };
         if(document.getElementById(idMap.year)) {
