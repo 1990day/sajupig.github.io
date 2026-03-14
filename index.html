@@ -776,18 +776,37 @@
           const y = parseInt(parts[0], 10);
           const m = parseInt(parts[1], 10);
           const d = parseInt(parts[2], 10);
+          
+          // 내 정보 탭에 세팅
           if(document.getElementById('my-saved-year')) document.getElementById('my-saved-year').value = y;
           if(document.getElementById('my-saved-month')) document.getElementById('my-saved-month').value = m;
           if(document.getElementById('my-saved-day')) document.getElementById('my-saved-day').value = d;
+          
+          // 만세력 탭에 세팅 (추가된 부분)
+          if(document.getElementById('man-year')) document.getElementById('man-year').value = y;
+          if(document.getElementById('man-month')) document.getElementById('man-month').value = m;
+          if(document.getElementById('man-day')) document.getElementById('man-day').value = d;
       }
-      if(timeStr && document.getElementById('my-saved-time')) document.getElementById('my-saved-time').value = timeStr;
+      
+      if(timeStr) {
+          if(document.getElementById('my-saved-time')) document.getElementById('my-saved-time').value = timeStr;
+          if(document.getElementById('man-time')) document.getElementById('man-time').value = timeStr; // 추가된 부분
+      }
+      
       if(gender) {
-          const genderRadio = document.querySelector(`input[name="my-saved-gender"][value="${gender}"]`);
-          if(genderRadio) genderRadio.checked = true;
+          const myGenderRadio = document.querySelector(`input[name="my-saved-gender"][value="${gender}"]`);
+          if(myGenderRadio) myGenderRadio.checked = true;
+          
+          const manGenderRadio = document.querySelector(`input[name="man-gender"][value="${gender}"]`); // 추가된 부분
+          if(manGenderRadio) manGenderRadio.checked = true;
       }
+      
       if(calendar) {
-          const calRadio = document.querySelector(`input[name="my-saved-calendar"][value="${calendar}"]`);
-          if(calRadio) calRadio.checked = true;
+          const myCalRadio = document.querySelector(`input[name="my-saved-calendar"][value="${calendar}"]`);
+          if(myCalRadio) myCalRadio.checked = true;
+          
+          const manCalRadio = document.querySelector(`input[name="man-calendar"][value="${calendar}"]`); // 추가된 부분
+          if(manCalRadio) manCalRadio.checked = true;
       }
   }
 
