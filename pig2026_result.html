@@ -592,6 +592,57 @@
 
             }, 1500); 
         };
+        
+    </script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAZxy9VsEgOZ-e0FApXqHUT5cTxG3_g8o0",
+            authDomain: "sajupig.firebaseapp.com",
+            projectId: "sajupig",
+            storageBucket: "sajupig.firebasestorage.app",
+            messagingSenderId: "589751416400",
+            appId: "1:589751416400:web:c7ed36efc6d5f23e020355",
+            measurementId: "G-HGW4HHQ3WR"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        onAuthStateChanged(auth, async (user) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('orderId');
+            const paymentKey = urlParams.get('paymentKey');
+            
+            // 로그인한 유저가 방금 진짜로 결제를 하고 들어왔을 때만 저장! (다시보기로 들어온 경우는 제외)
+            if (user && orderId && paymentKey && paymentKey !== 'revisit') {
+                try {
+                    // 유저 전용 비밀 금고(purchases)에 영수증을 차곡차곡 모아둡니다.
+                    const purchaseRef = doc(db, "users", user.uid, "purchases", orderId);
+                    await setDoc(purchaseRef, {
+                        orderId: orderId,
+                        itemName: "2026 병오년 프리미엄 사주",
+                        itemType: "pig2026", // 어떤 사주인지 구분하는 태그
+                        purchaseDate: new Date().toISOString(),
+                        sajuInfo: {
+                            year: sessionStorage.getItem('saju_year'),
+                            month: sessionStorage.getItem('saju_month'),
+                            day: sessionStorage.getItem('saju_day'),
+                            time: sessionStorage.getItem('saju_time'),
+                            gender: sessionStorage.getItem('saju_gender'),
+                            calendar: sessionStorage.getItem('saju_calendar')
+                        }
+                    }, { merge: true });
+                    console.log("결제 내역이 보관함에 안전하게 저장되었습니다!");
+                } catch (e) {
+                    console.error("영수증 저장 실패:", e);
+                }
+            }
+        });
     </script>
 </body>
 </html>
