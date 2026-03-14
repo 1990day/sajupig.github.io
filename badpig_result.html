@@ -68,7 +68,7 @@
         .fortune-section-title { color: #ffffff; background: #d32f2f; padding: 12px 25px; border-radius: 30px; font-size: 1.25rem; font-weight: 900; display: inline-block; box-shadow: 0 6px 12px rgba(211, 47, 47, 0.3); margin-bottom: 20px; transform: translateY(-50px); margin-top: 10px; border: 3px solid #ffffff; }
         .fortune-content-text { color: #2c1a1a; font-size: 1.05rem; line-height: 1.9; text-align: justify; margin-top: -30px; letter-spacing: -0.3px; }
         
-        /* ⭐️ 핑크 박스 통일! */
+        /* ⭐ 핑크 박스 통일! */
         .fortune-content-text p { margin-bottom: 20px; padding: 22px; background: #fff0f2; border-radius: 20px; font-weight: 500; border: 1px solid #ffcdd2;}
         
         .sub-title { display: block; font-weight: 900; color: #c62828; font-size: 1.15rem; margin-bottom: 10px; border-bottom: 2px dashed #ef9a9a; padding-bottom: 5px; margin-top: 15px; }
@@ -90,7 +90,6 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .hl { background-color: #ffcdd2; padding: 2px 6px; border-radius: 4px; font-weight: 900; color: #c62828;}
-        .section-icon { font-size: 1.2rem; margin-right: 5px; }
     </style>
 </head>
 <body>
@@ -136,12 +135,14 @@
         function closeLogin() { document.getElementById('loginOverlay').style.display = 'none'; }
 
         // ==========================================================
-        // 🚨 [필수] 결제 우회 방지 철통 보안 코드 (Kill Switch)
+        // 🚨 [필수] 전역 변수로 빼서 레퍼런스 에러 완벽 차단!
         // ==========================================================
         const urlParams = new URLSearchParams(window.location.search);
         const paymentKey = urlParams.get('paymentKey'); 
         const sajuYear = sessionStorage.getItem('saju_year'); 
         const orderId = urlParams.get('orderId') || '현장결제';
+        window.globalOrderId = orderId; 
+        window.globalPaymentKey = paymentKey;
 
         if (!paymentKey || paymentKey === '') {
             alert("정상적인 결제 내역이 확인되지 않았습니다! 결제 페이지로 이동합니다.");
@@ -191,7 +192,7 @@
             '丁卯': "섬세함을 넘어선 과도한 예민함으로 주변 사람들을 늘 눈치 보게 하고 살얼음판을 걷게 만드는 은근한 통제 성향이 있습니다. 타인의 무심한 한마디에도 혼자 소설을 쓰며 깊은 상처를 받습니다. 특히 본인의 심기가 뒤틀리면 상대방의 가장 아픈 약점을 예리하게 찔러 방어하려는 기제 탓에, 결국 가까운 사람들을 정서적으로 지치게 만듭니다.",
             '戊辰': "자신이 경험하고 세운 기준만이 유일한 정답이라고 굳게 믿는 융통성 부족이 심각한 수준입니다. 겉으로는 넓은 아량을 가진 대인배인 척하지만, 실상은 타인의 의견을 묵살하고 내 방식대로만 상황을 이끌려는 독단적인 기질이 있습니다. 잘못된 길인 줄 뻔히 알면서도 알량한 자존심 때문에 끝까지 고집을 부리다 상황을 악화시키곤 합니다.",
             '己巳': "상황의 흐름에 따라 유연하게 대처하는 능력이 뛰어나지만, 때로는 그것이 지나치게 계산적이고 기회주의적인 모습으로 비춰집니다. 궂은일과 책임은 교묘하게 피하고 실속만 챙기려는 태도가 반복되어 결국 사람들에게 깊은 불신을 심어줍니다. 인간관계마저 이익을 치밀하게 따지는 성향 탓에 진정으로 마음을 나눌 든든한 내 편을 만들기 어렵습니다.",
-            '庚午': "원칙과 도덕, 반듯함을 내세우지만 그 엄격한 잣대는 철저히 타인에게만 향해 있는 이중적인 면모를 지녔습니다. 타인의 작은 실수조차 너그럽게 안아주지 못하는 냉혹함 때문에 주변 사람들은 늘 긴장하고 눈치를 봅니다. 반면 본인의 자존심이 조금이라도 상하면 불같이 화를 내며 관계를 단절해 버리는 미성숙한 대처 방식을 보입니다.",
+            '庚午': "원칙과 도덕, 반듯함을 내세우지만 그 엄격한 잣대는 철저히 타인에게만 향해 있는 이중적인 면모를 지녔습니다. 타인의 작은 실수조차 너그럽게 안아주지 못하는 냉혹함 때문에 주변 사람들은 늘 긴장하고 눈치를 봅니다. 반면 본인의 자존심이 조금이라도 상하면 불같이 화를 내며 관계 단절을 해버리는 미성숙한 대처 방식을 보입니다.",
             '辛未': "모든 일에 현미경을 들이대고 작은 흠집이라도 찾아내야 직성이 풀리는 피곤하고 예민한 완벽주의를 가졌습니다. 타인이 본인보다 앞서가거나 주목받는 것을 견디지 못하는 은근한 자격지심이 있어, 겉으로는 축하하면서도 속으로는 상대를 깎아내리는 서늘함이 있습니다. 한 번 받은 상처나 서운함은 절대 잊지 않는 긴 뒤끝을 자랑합니다.",
             '壬申': "뛰어난 순발력과 임기응변으로 상황을 모면하는 데는 탁월하지만, 진정성 있게 문제를 정면 돌파하기보다는 말장난으로 요리조리 빠져나가려는 가벼움이 단점입니다. 다방면에 호기심이 많아 이것저것 시도하지만 한 분야에 진득하게 뿌리내리는 끈기가 부족해, 결국 얕은 지식만 넓게 가진 채 '전문성 없는 다재다능'으로 끝날 위험이 큽니다.",
             '癸酉': "극도의 예민함과 까칠함으로 타인과 마음의 벽을 두껍게 치고 방어적으로 살아가는 개인주의자입니다. 자신의 고요한 영역을 침범당하는 것을 극도로 혐오하며, 선을 넘었다 판단되면 매섭게 잘라내는 차가움이 있습니다. 상처받는 것이 두려워 먼저 남을 밀어내고 팩트라는 명분으로 비수를 꽂는 방어기제가 스스로를 철저히 외롭게 만듭니다.",
@@ -245,7 +246,7 @@
             '辰': "실제 본인의 역량보다 과시욕과 인정 욕구가 앞서며 겉치레를 중시하는 무의식을 지녔습니다. 본인이 특별하다는 착각에 빠져 현실 감각을 잃고 허황된 목표에 몰두하다 실속을 잃기 쉽습니다.",
             '巳': "이익 앞에서는 오랜 인연이나 감정도 냉정하게 배제할 수 있는 철저한 계산 능력이 도사리고 있습니다. 겉으로는 웃으면서도 상황의 주도권을 쥐고 상대를 은근히 통제하려는 목적 지향적 심리입니다.",
             '午': "순간의 감정에 쉽게 휩쓸려 충동적으로 결정 내리는 기질과, 타인의 관심을 갈구하는 욕구가 섞여 있어 감정의 기복이 매우 크게 요동치는 불안정함을 보입니다.",
-            '未': "본인만 부당한 대우를 받는다는 피해의식과 자기 연민이 깊게 자리 잡고 있습니다. 불만은 많지만 직접 부딪혀 해결할 용기는 부족하여, 뒤에서 소극적인 불평으로 에너지를 소모하는 편입니다.",
+            '未': "본인만 부당한 대우를 받는다는 피해의식과 자기 연민이 깊게 자리 잡고 있습니다. 불만은 많지만 직접 부딪혀 상황을 개선할 용기는 부족하여, 뒤에서 소극적인 불평으로 에너지를 소모하는 편입니다.",
             '申': "진중하게 상황을 마주하기보다는 순간적인 임기응변과 요령으로 쉽게 넘기려는 기회주의적 성향이 내재되어 있습니다. 깊은 고민 없이 가볍게 대처하다 결국 신뢰를 잃기 쉬운 불안정한 멘탈입니다.",
             '酉': "자신을 향한 비판은 수용하지 못하면서, 타인에게는 날 선 잣대와 엄격한 기준을 들이대는 이중적인 잣대를 가졌습니다. 차갑고 예민한 자기중심적 사고가 멘탈을 지배하고 있습니다.",
             '戌': "타인의 일에 참견하고 개입하려는 강한 간섭 성향과, 상황이 뜻대로 되지 않으면 극단적으로 반응하려는 공격성이 공존합니다. 명분과 의리를 내세우지만 사실은 무리를 통제하려는 권위의식이 짙습니다.",
@@ -366,14 +367,18 @@
             const dGan = bazi.getDay().charAt(0); const dZhi = bazi.getDay().charAt(1);
             const yGan = bazi.getYear().charAt(0); const yZhi = bazi.getYear().charAt(1);
             const mGan = bazi.getMonth().charAt(0); const mZhi = bazi.getMonth().charAt(1);
-            const tGan = bazi.getTime().charAt(0); const tZhi = bazi.getTime().charAt(1);
-
+            const tGan = timeStr === 'unknown' ? '?' : bazi.getTime().charAt(0); 
+            const tZhi = timeStr === 'unknown' ? '?' : bazi.getTime().charAt(1);
+            
             const iljuText = transFull(dGan) + transFull(dZhi);
             const key = dGan + dZhi;
 
             let elements = { '木':0, '火':0, '土':0, '金':0, '水':0 };
             let charsToCount = [yGan, yZhi, mGan, mZhi, dGan, dZhi];
-            if (timeStr !== 'unknown') charsToCount.push(tGan, tZhi);
+            
+            if (timeStr !== 'unknown') {
+                charsToCount.push(tGan, tZhi);
+            }
             let totalChars = timeStr === 'unknown' ? 6 : 8;
 
             charsToCount.forEach(char => {
@@ -438,7 +443,7 @@
             html += "<div class='dashboard-card'>";
             html += "<div class='dashboard-header'><span class='section-icon'>📊</span>나의 사주 4기둥 (노답 명식)</div>";
             html += "<div class='bazi-grid'>";
-            html += "<div class='bazi-col'><div class='bazi-label'>시주(말년)</div><div class='char-box'>" + getHtmlChar(timeStr==='unknown' ? null : tGan) + "<br>" + getHtmlChar(timeStr==='unknown' ? null : tZhi) + "</div></div>";
+            html += "<div class='bazi-col'><div class='bazi-label'>시주(말년)</div><div class='char-box'>" + getHtmlChar(tGan) + "<br>" + getHtmlChar(tZhi) + "</div></div>";
             html += "<div class='bazi-col'><div class='bazi-label'>일주(나)</div><div class='char-box' style='background:#ffcdd2; border-radius:10px; padding:5px 0;'>" + getHtmlChar(dGan) + "<br>" + getHtmlChar(dZhi) + "<span class='me-badge'>기본 결함</span></div></div>";
             html += "<div class='bazi-col'><div class='bazi-label'>월주(청년)</div><div class='char-box'>" + getHtmlChar(mGan) + "<br>" + getHtmlChar(mZhi) + "</div></div>";
             html += "<div class='bazi-col'><div class='bazi-label'>년주(초년)</div><div class='char-box'>" + getHtmlChar(yGan) + "<br>" + getHtmlChar(yZhi) + "</div></div>";
@@ -487,7 +492,7 @@
                 shadowText = "오행이 골고루 섞여 있다고 해서 반드시 좋은 것만은 아닙니다. 뚜렷하게 내세울 만한 강점이나 돌파력이 부족해 다소 평범하고 밋밋한 흐름에 머물기 쉽습니다. 명확한 주관 없이 이리저리 휩쓸리다 보면 타인의 기준에 맞춰 살아가는 수동적인 삶이 될 수 있습니다.";
             }
             
-            // ⭐ p 태그 통박스로 합치기
+            // ⭐ p 태그 통박스로 합치기 완료
             html += "<div class='fortune-section-card'>";
             html += "<div class='fortune-section-title'>🧠 뼈 아픈 성격 해부</div>";
             html += "<div class='fortune-content-text'>";
@@ -616,14 +621,6 @@
             html += `${romanceAdvice[dom1] || romanceAdvice['비겁']}</p>`;
             html += "</div></div>";
 
-            const healthAdvice = {
-                '木': "목(木) 기운이 지나치게 쏠려 <b>잦은 스트레스와 욱하는 성질이 간과 담낭의 기능을 심각하게 해칠 우려</b>가 있습니다. 감정을 통제하지 못하고 속으로 화를 삭이거나 폭발시키는 패턴을 반복하면 만성 피로와 혈압 문제로 훗날 큰 고생을 치르게 되니 감정 관리가 곧 수명 관리입니다.",
-                '火': "화(火) 기운이 극단적으로 치우쳐 <b>심혈관계와 신경계가 매우 예민하고 취약한 상태</b>입니다. 감정 기복으로 인한 잦은 불면증과 심한 두통에 시달리기 쉬우며, 심장에 무리가 가는 자극적인 생활 습관을 방치하면 돌이킬 수 없는 건강의 적신호를 맞이할 수 있으니 철저히 주의하십시오.",
-                '土': "토(土) 기운이 정체되어 <b>위장과 소화기 계통의 기능이 만성적으로 떨어져 있는 체질</b>입니다. 생각만 많고 활동량은 절대적으로 부족한 생활 패턴 탓에 대사 증후군이나 체중 증가로 인한 만성 합병증의 위험이 타인보다 압도적으로 높으니 규칙적인 육체적 활동이 절실합니다.",
-                '金': "금(金) 기운이 예민하게 작용하여 <b>폐와 호흡기, 대장 기능이 쉽게 손상받는 멘탈 취약 체질</b>입니다. 매사 까탈스럽고 긴장 상태를 유지하는 성향 탓에 면역력이 급격히 떨어지며, 알레르기 질환이나 호흡기 문제로 환절기마다 남들보다 깊은 고생을 치를 수 있습니다.",
-                '水': "수(水) 기운의 불균형으로 <b>신장, 방광, 그리고 생식기 계통의 건강이 유독 취약</b>합니다. 신체 내부에 냉기가 잘 쌓여 수족냉증이나 관절 문제에 노출되기 쉬우며, 불규칙한 수면과 피로 누적을 방치할 경우 노년에 골병으로 남들보다 배로 고단한 삶을 살게 될 수 있습니다."
-            };
-
             let hAdvice = maxElements.length > 0 ? healthAdvice[maxElements[0]] : "건강 관리에 지나치게 안일하여 남들보다 일찍 병원 문턱을 넘나들기 쉬운 불안정한 상태입니다.";
             if (maxElements.length > 1) {
                 hAdvice = `사주에 특정 기운이 과도하게 몰려 있어 신체 밸런스가 쉽게 무너질 수 있는 취약한 상태입니다. <b>${maxElements[0]}과 ${maxElements[1]}의 단점이 겹쳐 면역력 저하와 만성 피로에 시달리기 쉬운 체질</b>입니다. 스스로 철저히 관리하지 않으면 잦은 병원 신세로 인해 삶의 질이 크게 떨어질 우려가 있습니다.`;
@@ -674,68 +671,99 @@
             html += `<span class='hl'>${badDir}</span> 방향으로 침대 머리를 두거나 중요한 일정을 위해 무리하게 이동하는 것은 삼가십시오. 잡생각이 많아져 깊은 휴식을 취하기 어렵고, 다음 날의 컨디션 저하로 이어지기 쉽습니다. 굳이 이 방향을 고집한다면 예상치 못한 장애물을 만날 확률이 높습니다.</p>`;
             html += "</div></div>";
 
-            document.getElementById('result-loading').style.display = 'none';
-            document.getElementById('dynamic-fortune-content').innerHTML = html;
-            document.getElementById('dynamic-fortune-content').style.display = 'block';
-            document.getElementById('go-home-btn').style.display = 'block';
-
-        }, 1500); 
-    };
-</script>
-
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-    import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
-    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyAZxy9VsEgOZ-e0FApXqHUT5cTxG3_g8o0",
-        authDomain: "sajupig.firebaseapp.com",
-        projectId: "sajupig",
-        storageBucket: "sajupig.firebasestorage.app",
-        messagingSenderId: "589751416400",
-        appId: "1:589751416400:web:c7ed36efc6d5f23e020355",
-        measurementId: "G-HGW4HHQ3WR"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-    const googleProvider = new GoogleAuthProvider();
-
-    onAuthStateChanged(auth, async (user) => {
-        const headerBtn = document.getElementById('header-user-btn');
-        if (user) {
-            if(headerBtn) { headerBtn.innerText = "내정보"; headerBtn.onclick = function() { location.href = 'index.html?tab=myinfo'; }; }
-            
-            // 내 정보 화면에서 [결과 다시보기]를 위해 영수증 저장! (itemType을 badpig로 지정)
-            if (orderId && paymentKey && paymentKey !== 'revisit') {
-                try {
-                    const purchaseRef = doc(db, "users", user.uid, "purchases", orderId);
-                    await setDoc(purchaseRef, {
-                        orderId: orderId,
-                        itemName: "뼈때리는 팩폭 사주",
-                        itemType: "badpig",
-                        purchaseDate: new Date().toISOString(),
-                        sajuInfo: {
-                            year: sessionStorage.getItem('saju_year'),
-                            month: sessionStorage.getItem('saju_month'),
-                            day: sessionStorage.getItem('saju_day'),
-                            time: sessionStorage.getItem('saju_time'),
-                            gender: sessionStorage.getItem('saju_gender'),
-                            calendar: sessionStorage.getItem('saju_calendar')
-                        }
-                    }, { merge: true });
-                    console.log("결제 내역(팩폭 사주) 저장 완료");
-                } catch (e) { console.error("영수증 저장 실패:", e); }
-            }
-        } else {
-            if(headerBtn) { headerBtn.innerText = "로그인 / 가입"; headerBtn.onclick = openLogin; }
+            return html;
         }
-    });
 
-    window.realGoogleLogin = function() { signInWithPopup(auth, googleProvider).then(() => { closeLogin(); }).catch(console.error); }
-    window.realKakaoLogin = function() { const kakaoProvider = new OAuthProvider('oidc.kakao'); signInWithPopup(auth, kakaoProvider).then(() => { closeLogin(); }).catch(console.error); }
-</script>
+        window.onload = function() {
+            setTimeout(() => {
+                const gender = sessionStorage.getItem('saju_gender');
+                const calendarType = sessionStorage.getItem('saju_calendar');
+                const yearStr = sessionStorage.getItem('saju_year');
+                const monthStr = sessionStorage.getItem('saju_month');
+                const dayStr = sessionStorage.getItem('saju_day');
+                const timeStr = sessionStorage.getItem('saju_time');
+
+                const year = parseInt(yearStr);
+                const month = parseInt(monthStr);
+                const day = parseInt(dayStr);
+                
+                const timeMap = { 'unknown': 12, '자시': 0, '축시': 2, '인시': 4, '묘시': 6, '진시': 8, '사시': 10, '오시': 12, '미시': 14, '신시': 16, '유시': 18, '술시': 20, '해시': 22 };
+                const hour = timeMap[timeStr] !== undefined ? timeMap[timeStr] : 12;
+
+                let lunarObj;
+                if (calendarType === 'solar') lunarObj = Solar.fromYmdHms(year, month, day, hour, 0, 0).getLunar();
+                else if (calendarType === 'lunar') lunarObj = Lunar.fromYmdHms(year, month, day, hour, 0, 0);
+                else lunarObj = Lunar.fromYmdHms(year, -month, day, hour, 0, 0);
+
+                const bazi = lunarObj.getEightChar();
+                
+                const fortuneHtml = generateLifetimeFortune(bazi, gender, timeStr);
+
+                document.getElementById('result-loading').style.display = 'none';
+                document.getElementById('dynamic-fortune-content').innerHTML = fortuneHtml; 
+                document.getElementById('dynamic-fortune-content').style.display = 'block';
+                document.getElementById('go-home-btn').style.display = 'block';
+
+            }, 1500); 
+        };
+    </script>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAZxy9VsEgOZ-e0FApXqHUT5cTxG3_g8o0",
+            authDomain: "sajupig.firebaseapp.com",
+            projectId: "sajupig",
+            storageBucket: "sajupig.firebasestorage.app",
+            messagingSenderId: "589751416400",
+            appId: "1:589751416400:web:c7ed36efc6d5f23e020355",
+            measurementId: "G-HGW4HHQ3WR"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const googleProvider = new GoogleAuthProvider();
+
+        onAuthStateChanged(auth, async (user) => {
+            const headerBtn = document.getElementById('header-user-btn');
+            if (user) {
+                if(headerBtn) { headerBtn.innerText = "내정보"; headerBtn.onclick = function() { location.href = 'index.html?tab=myinfo'; }; }
+                
+                // 모듈 내에서도 전역 윈도우 변수로 접근하여 ReferenceError 완벽 차단!
+                const safeOrderId = window.globalOrderId;
+                const safePaymentKey = window.globalPaymentKey;
+
+                if (safeOrderId && safePaymentKey && safePaymentKey !== 'revisit') {
+                    try {
+                        const purchaseRef = doc(db, "users", user.uid, "purchases", safeOrderId);
+                        await setDoc(purchaseRef, {
+                            orderId: safeOrderId,
+                            itemName: "뼈때리는 팩폭 사주",
+                            itemType: "badpig",
+                            purchaseDate: new Date().toISOString(),
+                            sajuInfo: {
+                                year: sessionStorage.getItem('saju_year'),
+                                month: sessionStorage.getItem('saju_month'),
+                                day: sessionStorage.getItem('saju_day'),
+                                time: sessionStorage.getItem('saju_time'),
+                                gender: sessionStorage.getItem('saju_gender'),
+                                calendar: sessionStorage.getItem('saju_calendar')
+                            }
+                        }, { merge: true });
+                        console.log("결제 내역(팩폭 사주) 저장 완료");
+                    } catch (e) { console.error("영수증 저장 실패:", e); }
+                }
+            } else {
+                if(headerBtn) { headerBtn.innerText = "로그인 / 가입"; headerBtn.onclick = openLogin; }
+            }
+        });
+
+        window.realGoogleLogin = function() { signInWithPopup(auth, googleProvider).then(() => { closeLogin(); }).catch(console.error); }
+        window.realKakaoLogin = function() { const kakaoProvider = new OAuthProvider('oidc.kakao'); signInWithPopup(auth, kakaoProvider).then(() => { closeLogin(); }).catch(console.error); }
+    </script>
 </body>
 </html>
