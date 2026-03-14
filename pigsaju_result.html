@@ -7,7 +7,7 @@
     <script src="https://unpkg.com/lunar-javascript/lunar.js"></script>
     <link rel="icon" type="image/png" href="/favicon.png">
     <style>
-        /* 디자인은 동일하게 유지 */
+        /* 디자인 유지 */
         html { background-color: #fce4ec; }
         body { 
             margin: 0 auto; max-width: 480px; min-height: 100vh;
@@ -125,23 +125,29 @@
         function openLogin() { document.getElementById('loginOverlay').style.display = 'flex'; }
         function closeLogin() { document.getElementById('loginOverlay').style.display = 'none'; }
 
-        // 보안 검사!
+        // ==========================================================
+        // 🚨 [필수] 결제 우회 방지 철통 보안 코드 (Kill Switch 추가)
+        // ==========================================================
         const urlParams = new URLSearchParams(window.location.search);
         const paymentKey = urlParams.get('paymentKey'); 
         const sajuYear = sessionStorage.getItem('saju_year'); 
         const orderId = urlParams.get('orderId') || '현장결제';
 
-        if (!paymentKey) {
+        if (!paymentKey || paymentKey === '') {
             alert("정상적인 결제 내역이 확인되지 않았습니다! 결제 페이지로 이동합니다.");
-            location.href = "pigsaju.html";
+            document.body.style.display = "none"; // ⭐️ 화면 즉시 백지화 (스포일러 방지)
+            window.location.replace("pigsaju.html");
+            throw new Error("결제 미확인 차단"); // ⭐️ 여기서 스크립트 실행을 완전히 죽여버립니다!
         } else if (!sajuYear) {
             alert("사주 정보가 만료되었습니다. 결제 페이지에서 다시 입력해주세요!");
-            location.href = "pigsaju.html";
+            document.body.style.display = "none";
+            window.location.replace("pigsaju.html");
+            throw new Error("정보 만료 차단");
         }
+        // ==========================================================
 
-        // ==========================================
-        // 여기서부터 대표님의 방대한 사주 풀이 로직!
-        // ==========================================
+
+        // 사주 풀이 데이터
         const fullNames = {
             '甲':'갑목', '乙':'을목', '丙':'병화', '丁':'정화', '戊':'무토', '己':'기토', '庚':'경금', '辛':'신금', '壬':'임수', '癸':'계수',
             '子':'자수', '丑':'축토', '寅':'인목', '卯':'묘목', '辰':'진토', '巳':'사화', '午':'오화', '未':'미토', '申':'신금', '酉':'유금', '戌':'술토', '亥':'해수'
@@ -201,10 +207,10 @@
             '壬辰': "거대한 바다의 기운을 잔뜩 머금고 번개를 치며 승천을 앞둔 무시무시한 흑룡의 영혼입니다. 생각하는 스케일과 내면의 깊은 야망이 우주를 덮을 만큼 광활하여, 도저히 남들처럼 얌전하고 평범하게 남 밑에서 월급이나 받으며 살 수가 없는 팔자입니다. 남들이 다 피 흘리며 무너져 내리는 최악의 헬게이트 위기 상황이나 극한의 경쟁 속에서 오히려 본인의 진가를 200% 폭발적으로 발휘해, 천문학적인 권력과 막대한 부를 통째로 틀어쥐어 버리는 난세의 영웅호걸이자 혁명가입니다.",
             '癸巳': "말라가는 만물을 생동감 있게 흠뻑 적셔주는 맑고 따뜻한 이슬비의 영혼입니다. 내가 손에 쥘 수 있는 거대한 재물(정재)과 남들이 나를 우러러보는 명예(정관)가 가장 이상적이고 완벽한 황금비율로 구비되어 있어, 인생의 큰 굴곡이나 뼈아픈 나락 없이 몹시 편안하고 풍요로운 삶을 영위하는 타고난 금수저급 복덩이입니다. 어떤 험악한 꼰대 환경이나 살벌한 무대에 던져져도 능구렁이처럼 100% 완벽히 스며들고 적응해, 내 알짜 실속만 얄밉도록 야무지게 챙기는 천재적인 처세술을 뽐냅니다.",
             '甲午': "한여름 작열하는 태양 아래 수분을 다 뺏기며 타오르는 거대한 장작의 영혼입니다. 두뇌 회전이 비상하고 사람의 혼을 쏙 빼놓는 언변이 60갑자 중 단연 최고봉입니다. 내면에 끓어오르는 아이디어와 주체할 수 없는 끼를 밖으로 화려하게 발산해야만 숨을 쉴 수 있는 타고난 연예인 기질을 가졌습니다. 하지만 감정 기복이 롤러코스터처럼 심하고, 욱하는 성질에 내뱉은 독설로 평생 갈 인연을 한순간에 잿더미로 만들어버리는 치명적인 단점이 있습니다. 조용한 사무실보다는 시끄럽고 역동적인 무대에서 혀와 재주 하나로 대중의 스포트라이트를 받으며 억 단위의 돈을 긁어모으는 화려한 팔자입니다.",
-            '乙未': "수분 한 방울 없는 척박한 모래 사막에 기어이 뿌리를 내리고, 온몸에 날카로운 가시를 품은 채 살아남은 무서운 선인장의 영혼입니다. 겉보기엔 바람에 살랑살랑 흔들리는 야들야들한 잡초 같지만, 그 속엔 어떤 끔찍한 억압과 고통도 뚫고 기어나오는 동물적인 투기 감각과 소름 돋는 생존 본능을 지독하게 탑재했습니다. 아무리 맨땅에 헤딩을 하더라도 기어이 수십억 대 자산가로 자수성가해 내고야 마는, 인간 승리와 독종의 결정체입니다. 다만 돈에 대한 집착이 도를 넘어 주변 사람들을 숨 막히게 할 수 있으니 베푸는 여유를 가져야 고독한 노후를 피할 수 있습니다.",
+          '乙未': "수분 한 방울 없는 척박한 모래 사막에 기어이 뿌리를 내리고, 온몸에 날카로운 가시를 품은 채 살아남은 무서운 선인장의 영혼입니다. 겉보기엔 바람에 살랑살랑 흔들리는 야들야들한 잡초 같지만, 그 속엔 어떤 끔찍한 억압과 고통도 뚫고 기어나오는 동물적인 투기 감각과 소름 돋는 생존 본능을 지독하게 탑재했습니다. 아무리 맨땅에 헤딩을 하더라도 기어이 수십억 대 자산가로 자수성가해 내고야 마는, 인간 승리와 독종의 결정체입니다. 다만 돈에 대한 집착이 도를 넘어 주변 사람들을 숨 막히게 할 수 있으니 베푸는 여유를 가져야 고독한 노후를 피할 수 있습니다.",
             '丙申': "역마살을 단단히 타고나 전 세계를 바쁘게 쏘다니며 온 하늘을 붉게 물들이는 화려한 저녁 태양의 영혼입니다. 다방면에 걸쳐 얕고 넓은 방대한 지식을 스펀지처럼 빨아들이며, 답답한 파티션 안에 갇혀 썩기보다는 넓고 거대한 시장을 거침없이 누벼야 직성이 풀립니다. 무역, 영업, 기획 등 역동적인 무대에서 돈 냄새를 귀신같이 맡으며 타인을 홀려 명예와 부를 능구렁이처럼 싹쓸이하는 호탕한 사업가입니다. 단, 끈기가 부족해 벌려놓은 일의 마무리를 짓지 못하는 용두사미 기질이 있으니 엉덩이를 무겁게 하는 훈련이 필수입니다.",
             '丁酉': "칠흑 같은 어둠 속에서 홀로 영롱하고 찬란하게 반짝이는 가장 정교하고 값비싼 보석의 영혼입니다. 육체적으로 험한 일을 하며 돈에 쪼들리는 구차하고 지저분한 꼴을 극도로 혐오하며, 어딜 가든 귀족적이고 고상한 대접을 받아야 마땅한 팔자입니다. 1원 한 푼 틀리지 않는 정밀하고 날카로운 재무 감각과, 타인을 질리게 할 정도의 결벽증적 완벽주의를 무기 삼아 아무나 만질 수 없는 대단히 안락하고 윤택한 덩치 큰 재물을 양손에 거머쥡니다. 타인의 단점을 현미경으로 파헤치는 버릇만 고치면 평생이 평안합니다.",
-            '戊戌': "생명체 하나 없이 황량하고 끝도 없이 펼쳐진 무시무시한 거대 태산의 영혼입니다. 남의 쩨쩨한 간섭과 훈수를 듣는 것을 죽기보다 혐오하며, 내가 곧 법이고 진리라는 소름 돋는 독선과 앞장서서 들이받는 압도적인 카리스마로 전신을 중무장했습니다. 누군가의 생사여탈권을 쥐고 흔드는 가장 험악하고 거친 무대에서 불도저처럼 무리를 무자비하게 통솔하며, 거대한 권력을 단방에 폭력적으로 쟁취해 내는 난세의 극단적인 영웅 기운입니다. 융통성 없는 똥고집을 꺾지 않으면 스스로 판 무덤에 빠지게 됩니다.",
+            '戊戌': "생명체 하나 없이 황량하고 끝도 없이 펼쳐진 무시무시한 거대 태산의 영혼입니다. 남의 쩨쩨한 간섭과 훈수를 듣는 것을 죽기보다 혐오하며, 내가 곧 법이고 진리라는 소름 돋는 독선과 앞장서서 들이받는 압도적인 카리스마로 전신을 중무장했습니다. 누군가의 생사여탈권을 오가는 가장 험악하고 거친 무대에서 불도저처럼 무리를 무자비하게 통솔하며, 거대한 권력을 단방에 폭력적으로 쟁취해 내는 난세의 극단적인 영웅 기운입니다. 융통성 없는 똥고집을 꺾지 않으면 스스로 판 무덤에 빠지게 됩니다.",
             '己亥': "가장 비옥한 논밭 그 아래로 조용하고 깊게 흐르는 은밀하고 차가운 지하수의 영혼입니다. 겉으론 한없이 얌전하고 착하며 둥글둥글해 보이지만, 속으론 1초도 쉬지 않고 철두철미하게 득실 주판알을 튕기며 내 밥그릇과 이득을 100% 완벽하게 챙겨내는 몹시 무섭고 얄미운 실속파입니다. 물처럼 유연한 뱀 같은 융통성을 십분 발휘해, 남들과 얼굴 한 번 붉히지 않고도 뒤에서 막대한 부와 알짜배기 지위를 아주 조용하고 거대하게 축적해 냅니다. 속을 너무 안 보여주어 음흉하다는 평가를 받을 수 있습니다.",
             '庚子': "한겨울 살얼음 낀 차가운 물속에 푹 담겨 뼛속까지 냉철해진 서슬 퍼런 강철 검의 영혼입니다. 타인의 미세한 헛점과 조직의 썩은 부위를 귀신같이 찾아내, 반박 불가한 팩트 폭격으로 상대의 뼈를 가루로 만들어버리는 예리한 비판 능력이 우주 최강입니다. 맺고 끊음이 섬뜩할 정도로 매정하고 융통성이 제로에 가까워 툭하면 적을 만들지만, 특수 분야에서 남들이 감히 범접하지 못할 독보적인 천재성을 발휘하는 냉혹한 스페셜리스트입니다. 칼날이 너무 예리해 본인 스스로를 베지 않도록 주의해야 합니다.",
             '辛丑': "꽁꽁 언 진흙 속에서 언제 세상에 나갈지 모르는 인고의 세월을 독하게 버티고 있는 날카로운 다이아몬드의 영혼입니다. 바늘로 찔러도 피 한 방울 안 나올 듯 차갑고 매정해 보이지만, 그 속에는 엄청난 뚝심을 품어 어떤 끔찍한 역경과 시련도 입을 꾹 다물고 묵묵히 버텨냅니다. 기어이 한 분야의 아무도 넘보지 못할 최고 장인이자 권위자로 우뚝 서며, 가벼운 현금보다는 묵직한 거대 부동산이나 문서적 성과를 거머쥐는 무서운 대기만성의 끝판왕입니다. 남의 조언을 듣지 않는 아집이 유일한 단점입니다.",
@@ -646,7 +652,7 @@
             return html;
         }
 
-        // 결과 화면 표시 및 파이어베이스 영수증 발급
+        // 결과 화면 표시
         window.onload = function() {
             setTimeout(() => {
                 const gender = sessionStorage.getItem('saju_gender');
@@ -677,9 +683,11 @@
                 document.getElementById('ilju-name-display').innerText = transFull(dGan) + transFull(dZhi) + " 일주";
 
                 document.getElementById('result-loading').style.display = 'none';
-                document.getElementById('dynamic-fortune-content').innerHTML = fortuneHtml;
+                // innerHTML을 교체하는 대신 추가(+=)하도록 수정했습니다!
+                document.getElementById('dynamic-fortune-content').innerHTML += fortuneHtml;
                 document.getElementById('dynamic-fortune-content').style.display = 'block';
                 document.getElementById('go-home-btn').style.display = 'block';
+
             }, 1500); 
         };
     </script>
@@ -704,22 +712,20 @@
         const db = getFirestore(app);
         const googleProvider = new GoogleAuthProvider();
 
-     onAuthStateChanged(auth, async (user) => {
+        onAuthStateChanged(auth, async (user) => {
             const headerBtn = document.getElementById('header-user-btn');
             if (user) {
                 if(headerBtn) { headerBtn.innerText = "내정보"; headerBtn.onclick = function() { location.href = 'index.html?tab=myinfo'; }; }
                 
-                // 결제 영수증 저장 로직
+                // 내 정보 화면에서 [결과 다시보기]를 위해 영수증 저장! (itemType을 pigsaju로 지정)
                 if (orderId && paymentKey && paymentKey !== 'revisit') {
                     try {
-                        // 수정된 부분: 문서 ID를 orderId에서 "pig2026"으로 고정!
-                        const purchaseRef = doc(db, "users", user.uid, "purchases", "pig2026");
-                        
+                        const purchaseRef = doc(db, "users", user.uid, "purchases", orderId);
                         await setDoc(purchaseRef, {
-                            orderId: orderId, // 가장 최근 결제 번호로 덮어씌워짐
-                            itemName: "2026 병오년 프리미엄 사주",
-                            itemType: "pig2026",
-                            purchaseDate: new Date().toISOString(), // 가장 최근 결제일로 갱신
+                            orderId: orderId,
+                            itemName: "평생 사주 분석 리포트",
+                            itemType: "pigsaju",
+                            purchaseDate: new Date().toISOString(),
                             sajuInfo: {
                                 year: sessionStorage.getItem('saju_year'),
                                 month: sessionStorage.getItem('saju_month'),
@@ -729,7 +735,7 @@
                                 calendar: sessionStorage.getItem('saju_calendar')
                             }
                         }, { merge: true });
-                        console.log("결제 내역 저장 완료");
+                        console.log("결제 내역(평생 사주) 저장 완료");
                     } catch (e) { console.error("영수증 저장 실패:", e); }
                 }
             } else {
