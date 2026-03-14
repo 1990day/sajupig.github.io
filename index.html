@@ -930,22 +930,19 @@
     signInWithPopup(auth, googleProvider).then(() => { document.getElementById('loginOverlay').style.display = 'none'; }).catch((error) => { console.error(error); });
   }
 
-// 🌟 [최종 수정 버전] 네이버 로그인 함수
+// 🌟 [진짜 최종] 네이버 로그인 함수 - 스코프 설정 삭제
   window.realNaverLogin = function() {
     const naverProvider = new OAuthProvider('oidc.naver');
     
-    // ⚠️ 중요: 네이버 콘솔에서 '필수'로 체크한 것만 적어야 합니다.
-    // 만약 이름만 체크했다면 name만 적으세요.
-    naverProvider.addScope('email');
-    naverProvider.addScope('name');
+    // ⛔️ 모든 addScope 설정을 지웠습니다. 
+    // 네이버는 코드에서 요청하는 것보다 자체 설정창의 체크박스를 더 중요하게 봅니다.
 
     signInWithPopup(auth, naverProvider).then(() => { 
         document.getElementById('loginOverlay').style.display = 'none'; 
-        location.reload(); // 로그인 성공 시 새로고침
+        location.reload(); 
     }).catch((error) => { 
         console.error("네이버 로그인 에러 상세:", error); 
-        // 에러 원인을 더 정확히 보기 위해 에러 메시지를 띄웁니다.
-        alert("네이버 연동 실패: " + error.message);
+        alert("네이버 로그인 실패: " + error.code);
     });
   }
 
