@@ -1,125 +1,89 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>사주돼지 - 프리미엄 연애 궁합</title>
-<script src="https://unpkg.com/lunar-javascript/lunar.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321"
-     crossorigin="anonymous"></script>
-        <link rel="icon" type="image/png" href="/favicon.png">
-<style>
-html { background-color: #fce4ec; }
-body {
-margin: 0 auto; max-width: 480px; min-height: 100vh;
-font-family: 'Pretendard', -apple-system, sans-serif;
-background-color: #fff0f5; color: #4a3333;
-box-shadow: 0 0 25px rgba(0, 0, 0, 0.08); position: relative;
-}
-
-    header { 
-        background-color: #ffb6c1; position: sticky; top: 0; z-index: 100; 
-        box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4); 
-        border-bottom: 4px solid #ff85a2; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사주돼지 - 프리미엄 연애 궁합</title>
     
-      .header-logo {
-            display: block;
-            height: 30px;
-            width: auto;
+    <script src="https://js.tosspayments.com/v1"></script>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <style>
+        /* 기존 핑크빛 디자인 완벽 유지 */
+        html { background-color: #fce4ec; }
+        body {
+            margin: 0 auto; max-width: 480px; min-height: 100vh;
+            font-family: 'Pretendard', -apple-system, sans-serif;
+            background-color: #fff0f5; color: #4a3333;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08); position: relative;
         }
 
+        header { 
+            background-color: #ffb6c1; position: sticky; top: 0; z-index: 100; 
+            box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4); 
+            border-bottom: 4px solid #ff85a2; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
+        }
+        .header-logo { display: block; height: 30px; width: auto; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 15px 20px; }
+        .main-link { text-decoration: none; color: inherit; }
+        .login-btn-header {
+            background: #ffffff; border: 3px solid #ff85a2; color: #ff85a2;
+            padding: 8px 18px; border-radius: 25px; font-size: 0.9rem; font-weight: 900; cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.2s;
+        }
         
-    .header-top { display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 15px 20px; }
-    .main-link { text-decoration: none; color: inherit; }
-    h1 { margin: 0; color: #ffffff; font-size: 1.8rem; letter-spacing: 1px; text-shadow: 2px 2px 0px rgba(255, 133, 162, 0.8); font-weight: 900; }
-    .login-btn-header {
-        background: #ffffff; border: 3px solid #ff85a2; color: #ff85a2;
-        padding: 8px 18px; border-radius: 25px; font-size: 0.9rem; font-weight: 900; cursor: pointer;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.2s;
-    }
-    
-    nav { display: flex; justify-content: space-between; padding: 10px 15px 20px 15px; gap: 10px; overflow-x: auto; white-space: nowrap; }
-    nav button { 
-        flex: 1; background-color: #ffffff; border: 3px solid #ffe4e8; font-size: 0.85rem; color: #ff85a2; 
-        cursor: pointer; font-weight: 900; transition: all 0.2s; border-radius: 20px; aspect-ratio: 1 / 1; 
-        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
-    }
-    nav button.active { color: #ffffff; background-color: #ff85a2; border-color: #ff85a2; transform: translateY(-4px); box-shadow: 0 8px 15px rgba(255, 133, 162, 0.4); }
-    nav button span.icon { font-size: 1.6rem; }
-    nav::-webkit-scrollbar { display: none; }
-    
-    main { padding: 15px; text-align: center; }
-    .section { display: none; min-height: 60vh; animation: fadeIn 0.4s ease-in-out; }
-    .section.active { display: block; }
-    
-    .card { background: #ffffff; padding: 30px 20px; border-radius: 30px; box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3); margin-top: 10px; border: 4px solid #ffe4e8; }
-    .card h2 { color: #ff85a2; margin-top: 0; font-size: 1.6rem; font-weight: 900; text-shadow: 1px 1px 0px #fff0f5;}
+        nav { display: flex; justify-content: space-between; padding: 10px 15px 20px 15px; gap: 10px; overflow-x: auto; white-space: nowrap; }
+        nav button { 
+            flex: 1; background-color: #ffffff; border: 3px solid #ffe4e8; font-size: 0.85rem; color: #ff85a2; 
+            cursor: pointer; font-weight: 900; transition: all 0.2s; border-radius: 20px; aspect-ratio: 1 / 1; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
+        }
+        nav button.active { color: #ffffff; background-color: #ff85a2; border-color: #ff85a2; transform: translateY(-4px); box-shadow: 0 8px 15px rgba(255, 133, 162, 0.4); }
+        nav button span.icon { font-size: 1.6rem; }
+        nav::-webkit-scrollbar { display: none; }
+        
+        main { padding: 15px; text-align: center; }
+        .section { display: none; min-height: 60vh; animation: fadeIn 0.4s ease-in-out; }
+        .section.active { display: block; }
+        
+        .card { background: #ffffff; padding: 30px 20px; border-radius: 30px; box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3); margin-top: 10px; border: 4px solid #ffe4e8; }
+        .card h2 { color: #ff85a2; margin-top: 0; font-size: 1.6rem; font-weight: 900; text-shadow: 1px 1px 0px #fff0f5;}
 
-    .saju-form { text-align: left; margin-top: 20px; background-color: #fff0f5; padding: 25px 20px; border-radius: 25px; border: 3px dashed #ffb6c1; position: relative;}
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; font-size: 1.05rem; color: #ff85a2; margin-bottom: 10px; font-weight: 900; }
-    
-    .date-select-group { display: flex; gap: 8px; }
-    .date-select-group select { flex: 1; padding: 14px 5px; font-size: 1rem; color: #4a3333; outline: none; border-radius: 15px; border: 2px solid #ffc4d0; background: #ffffff; font-weight: bold; }
-    .form-group input[type="text"], .form-group input[type="date"], select { 
-        width: 100%; padding: 16px; border: 2px solid #ffc4d0; border-radius: 15px; box-sizing: border-box; 
-        font-size: 1rem; color: #4a3333; outline: none; background-color: #ffffff; transition: all 0.3s; font-weight: bold;
-    }
-    .form-group input:focus, select:focus { border-color: #ff85a2; box-shadow: 0 0 10px rgba(255, 133, 162, 0.3); }
-    
-    .radio-group { display: flex; gap: 8px; margin-bottom: 10px; }
-    .radio-group label { flex: 1; background-color: #ffffff; padding: 16px 5px; text-align: center; border-radius: 15px; cursor: pointer; margin-bottom: 0; border: 2px solid #ffc4d0; font-size: 1.05rem; color: #ffb6c1; transition: all 0.2s; font-weight: 900; }
-    .radio-group input[type="radio"] { display: none; }
-    .radio-group input[type="radio"]:checked + span { color: #ff85a2; font-weight: 900; }
-    .radio-group input[type="radio"]:checked ~ label, .radio-group label:has(input[type="radio"]:checked) { background-color: #ffe4e8; border-color: #ff85a2; }
-    
-    .submit-btn { width: 100%; background: #ff85a2; color: white; border: none; padding: 22px; border-radius: 20px; font-size: 1.25rem; font-weight: 900; cursor: pointer; box-shadow: 0 8px 20px rgba(255, 133, 162, 0.4); transition: transform 0.1s; letter-spacing: 1px; margin-top: 10px;}
-    .submit-btn:active { transform: scale(0.96); }
-    .reset-btn { width: 100%; background-color: #ffffff; color: #ff85a2; border: 3px solid #ff85a2; padding: 20px; border-radius: 20px; font-size: 1.15rem; font-weight: 900; cursor: pointer; margin-top: 25px; transition: all 0.2s;}
-    
-    .fortune-result-box { background: transparent; margin-top: 10px; text-align: left; }
-    .fortune-result-title { font-size: 1.7rem; color: #ff85a2; font-weight: 900; margin-bottom: 20px; text-align: center; background: #ffffff; padding: 20px; border-radius: 25px; border: 4px dashed #ffc4d0; box-shadow: 0 4px 10px rgba(255, 182, 193, 0.2); }
-    
-    .dashboard-card { background: #ffffff; padding: 25px 20px; border-radius: 25px; margin-bottom: 30px; border: 4px solid #ffb6c1; box-shadow: 0 6px 15px rgba(255, 182, 193, 0.3); text-align: center; }
-    .vs-badge { display: inline-block; background: #ff5277; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin: 15px 0; font-size: 1.2rem; box-shadow: 0 4px 8px rgba(255, 82, 119, 0.3); }
-    .bazi-flex { display: flex; justify-content: space-around; align-items: center; }
-    .person-col { flex: 1; }
-    .person-name { font-size: 1.1rem; color: #ff85a2; font-weight: 900; margin-bottom: 10px; }
-    .ilju-box { font-size: 2rem; font-weight: 900; background: #fff0f5; padding: 15px; border-radius: 20px; border: 2px dashed #ffc4d0; display: inline-block; line-height: 1.2; }
+        .saju-form { text-align: left; margin-top: 20px; background-color: #fff0f5; padding: 25px 20px; border-radius: 25px; border: 3px dashed #ffb6c1; position: relative;}
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 1.05rem; color: #ff85a2; margin-bottom: 10px; font-weight: 900; }
+        
+        .date-select-group { display: flex; gap: 8px; }
+        .date-select-group select { flex: 1; padding: 14px 5px; font-size: 1rem; color: #4a3333; outline: none; border-radius: 15px; border: 2px solid #ffc4d0; background: #ffffff; font-weight: bold; }
+        .form-group input[type="text"], .form-group input[type="date"], select { 
+            width: 100%; padding: 16px; border: 2px solid #ffc4d0; border-radius: 15px; box-sizing: border-box; 
+            font-size: 1rem; color: #4a3333; outline: none; background-color: #ffffff; transition: all 0.3s; font-weight: bold;
+        }
+        .form-group input:focus, select:focus { border-color: #ff85a2; box-shadow: 0 0 10px rgba(255, 133, 162, 0.3); }
+        
+        .radio-group { display: flex; gap: 8px; margin-bottom: 10px; }
+        .radio-group label { flex: 1; background-color: #ffffff; padding: 16px 5px; text-align: center; border-radius: 15px; cursor: pointer; margin-bottom: 0; border: 2px solid #ffc4d0; font-size: 1.05rem; color: #ffb6c1; transition: all 0.2s; font-weight: 900; }
+        .radio-group input[type="radio"] { display: none; }
+        .radio-group input[type="radio"]:checked + span { color: #ff85a2; font-weight: 900; }
+        .radio-group input[type="radio"]:checked ~ label, .radio-group label:has(input[type="radio"]:checked) { background-color: #ffe4e8; border-color: #ff85a2; }
+        
+        .submit-btn { width: 100%; background: #ff85a2; color: white; border: none; padding: 22px; border-radius: 20px; font-size: 1.25rem; font-weight: 900; cursor: pointer; box-shadow: 0 8px 20px rgba(255, 133, 162, 0.4); transition: transform 0.1s; letter-spacing: 1px; margin-top: 10px;}
+        .submit-btn:active { transform: scale(0.96); }
+        .sub-title { display: block; font-weight: 900; color: #ff5277; font-size: 1.15rem; margin-bottom: 10px; border-bottom: 2px dashed #ffc4d0; padding-bottom: 5px; margin-top: 15px; }
 
-    .fortune-section-card { background: #ffffff; border: 4px solid #ffe4e8; border-radius: 30px; padding: 30px 20px 20px 20px; margin-bottom: 35px; box-shadow: 0 8px 20px rgba(255, 182, 193, 0.2); position: relative; }
-    .fortune-section-title { color: #ffffff; background: #ff85a2; padding: 12px 25px; border-radius: 30px; font-size: 1.25rem; font-weight: 900; display: inline-block; box-shadow: 0 6px 12px rgba(255, 133, 162, 0.4); margin-bottom: 20px; transform: translateY(-50px); margin-top: 10px; border: 3px solid #ffffff; }
-    .fortune-content-text { color: #4a3333; font-size: 1.05rem; line-height: 1.9; text-align: justify; margin-top: -30px; letter-spacing: -0.3px; }
-    .fortune-content-text p { margin-bottom: 20px; padding: 18px; background: #fff0f5; border-radius: 20px; font-weight: 500; }
-    
-    .sub-title { display: block; font-weight: 900; color: #ff5277; font-size: 1.15rem; margin-bottom: 10px; border-bottom: 2px dashed #ffc4d0; padding-bottom: 5px; margin-top: 15px; }
-    .score-box { background: #ff5277; color: white; padding: 15px; border-radius: 20px; text-align: center; font-size: 1.5rem; font-weight: 900; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(255, 82, 119, 0.3); border: 3px solid #fff; }
+        .login-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(74, 51, 51, 0.8); z-index: 1000; justify-content: center; align-items: center; animation: fadeIn 0.2s; }
+        .login-box { background-color: #ffffff; width: 85%; max-width: 360px; border-radius: 30px; padding: 40px 25px; text-align: center; position: relative; border: 5px solid #ffb6c1; }
+        .close-login { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 2.2rem; color: #ff85a2; cursor: pointer; font-weight: bold;}
+        .login-box h2 { margin-top: 0; color: #ff85a2; margin-bottom: 15px; font-weight: 900; }
+        .login-box p { color: #4a3333; font-size: 1rem; margin-bottom: 30px; font-weight: bold; line-height: 1.5;}
+        .social-btn { display: block; width: 100%; padding: 18px; margin-bottom: 12px; border-radius: 20px; font-size: 1.1rem; font-weight: 900; text-align: center; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+        .btn-kakao { background-color: #FEE500; color: #4a3333; }
+        .btn-naver { background-color: #03C75A; color: #FFFFFF; }
+        .btn-google { background-color: #f1f1f1; color: #4a3333; border: 2px solid #ffe4e8;}
 
-    /* 글씨가 잘리지 않는 예쁜 스탯 그래프 스타일 */
-    .stat-compare-wrap { margin-bottom: 25px; }
-    .stat-title { text-align: center; font-weight: 900; color: #4a3333; margin-bottom: 8px; font-size: 1.05rem; }
-    .stat-bar-container { position: relative; height: 34px; border-radius: 17px; overflow: hidden; border: 3px solid #ffe4e8; background: #ffc4d0; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); }
-    .stat-bar-fill { position: absolute; top: 0; left: 0; height: 100%; background: #ff5277; transition: width 1s ease-in-out; }
-    .stat-text-me { position: absolute; left: 15px; top: 0; line-height: 34px; font-weight: 900; font-size: 0.95rem; color: #ffffff; z-index: 2; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); white-space: nowrap; }
-    .stat-text-you { position: absolute; right: 15px; top: 0; line-height: 34px; font-weight: 900; font-size: 0.95rem; color: #4a3333; z-index: 2; white-space: nowrap; }
-
-    .login-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(74, 51, 51, 0.8); z-index: 1000; justify-content: center; align-items: center; animation: fadeIn 0.2s; }
-    .login-box { background-color: #ffffff; width: 85%; max-width: 360px; border-radius: 30px; padding: 40px 25px; text-align: center; position: relative; border: 5px solid #ffb6c1; }
-    .close-login { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 2.2rem; color: #ff85a2; cursor: pointer; font-weight: bold;}
-    .login-box h2 { margin-top: 0; color: #ff85a2; margin-bottom: 15px; font-weight: 900; }
-    .social-btn { display: block; width: 100%; padding: 18px; margin-bottom: 12px; border-radius: 20px; font-size: 1.1rem; font-weight: 900; text-align: center; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
-    .btn-kakao { background-color: #FEE500; color: #4a3333; }
-    .btn-naver { background-color: #03C75A; color: #FFFFFF; }
-    .btn-google { background-color: #f1f1f1; color: #4a3333; border: 2px solid #ffe4e8;}
-
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    .hl { background-color: #ffe4e8; padding: 2px 6px; border-radius: 4px; font-weight: 900; color: #ff5277;}
-    .divider { height: 4px; background: #ffe4e8; margin: 30px 0; border-radius: 2px; }
-    
-    .c-wood { color: #4CAF50; } .c-fire { color: #F44336; } .c-earth { color: #FF9800; } .c-metal { color: #78909C; } .c-water { color: #2196F3; }
-</style>
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .divider { height: 4px; background: #ffe4e8; margin: 30px 0; border-radius: 2px; }
+    </style>
 </head>
 <body>
 
@@ -135,18 +99,18 @@ box-shadow: 0 0 25px rgba(0, 0, 0, 0.08); position: relative;
 </div>
 
 <header>
- <div class="header-top">
-<a href="index.html" class="main-link">
-   <img src="/logo.png" alt="사주돼지" class="header-logo">
-</a>
-<button class="login-btn-header" onclick="openLogin()">로그인 / 가입</button>
-</div>
-<nav id="menu-bar">
-<button onclick="location.href='index.html?tab=manseryeok'"><span class="icon">🐷</span><span>돼지 만세력</span></button>
-<button onclick="location.href='index.html?tab=saju770'"><span class="icon">🪙</span><span>770사주</span></button>
-<button class="active" onclick="location.href='index.html?tab=love'"><span class="icon">💕</span><span>돼지궁합</span></button>
-<button onclick="location.href='index.html?tab=fact'"><span class="icon">👊</span><span>돼지팩폭</span></button>
-</nav>
+    <div class="header-top">
+        <a href="index.html" class="main-link">
+           <img src="/logo.png" alt="사주돼지" class="header-logo">
+        </a>
+        <button id="header-user-btn" class="login-btn-header" onclick="openLogin()">로그인 / 가입</button>
+    </div>
+    <nav id="menu-bar">
+        <button onclick="location.href='index.html?tab=manseryeok'"><span class="icon">🐷</span><span>돼지 만세력</span></button>
+        <button onclick="location.href='index.html?tab=saju770'"><span class="icon">🪙</span><span>770사주</span></button>
+        <button class="active" onclick="location.href='index.html?tab=love'"><span class="icon">💕</span><span>돼지궁합</span></button>
+        <button onclick="location.href='index.html?tab=fact'"><span class="icon">👊</span><span>돼지팩폭</span></button>
+    </nav>
 </header>
 
 <main>
@@ -245,66 +209,43 @@ box-shadow: 0 0 25px rgba(0, 0, 0, 0.08); position: relative;
                     </select>
                 </div>
 
-                <button type="submit" class="submit-btn">복채 770원 결제하고 궁합 보기 🐽</button>
+                <button type="button" class="submit-btn" onclick="requestPay()">복채 770원 결제하고 궁합 보기 🐽</button>
             </form>
-
-            <div id="love-result-area" style="display: none;">
-                <div class="fortune-result-box" id="dynamic-love-content"></div>
-                <button class="reset-btn" onclick="resetLoveForm()">사주 정보 다시 입력하기 🔄</button>
-            </div>
         </div>
     </div>
 </main>
- <footer style="padding: 20px; text-align: center; font-size: 0.75rem; color: #999; background: #fdf5f7; margin-top: 30px; border-top: 1px solid #ffe4eb;">
 
-        <div style="display: flex; justify-content: center; gap: 12px; font-weight: 800; margin-bottom: 15px;">
+<footer style="padding: 20px; text-align: center; font-size: 0.75rem; color: #999; background: #fdf5f7; margin-top: 30px; border-top: 1px solid #ffe4eb;">
+    <div style="display: flex; justify-content: center; gap: 12px; font-weight: 800; margin-bottom: 15px;">
+        <a href="terms.html" style="color: #888; text-decoration: none;">이용약관</a>
+        <span style="color: #ddd;">|</span>
+        <a href="privacy.html" style="color: #888; text-decoration: none;">개인정보처리방침</a>
+        <span style="color: #ddd;">|</span>
+        <a href="refund.html" style="color: #d11534; text-decoration: none;">환불규정</a>
+    </div>
+    
+    <button onclick="toggleBusinessInfo()" style="background: none; border: none; color: #888; font-size: 0.8rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0 auto; padding: 5px;">
+        <span>사업자 정보 보기</span>
+        <span id="biz-arrow" style="font-size: 0.6rem;">▼</span>
+    </button>
 
-            <a href="terms.html" style="color: #888; text-decoration: none;">이용약관</a>
+    <div id="business-info" style="display: none; margin-top: 15px; line-height: 1.6; text-align: center; color: #a0a0a0;">
+        <p style="margin: 0;">상호명: 테스트잇 | 대표자: 송다혜</p>
+        <p style="margin: 0;">사업자등록번호: 662-54-00892</p>
+        <p style="margin: 0;">통신판매업신고: 제 2026-경기하남-0331호</p>
+        <p style="margin: 0;">사업장 소재지: 경기도 하남시 미사강변서로 85, 2005동 2003호</p>
+        <p style="margin: 0;">이메일: pigsaju@gmail.com</p>
+    </div>
+</footer>
 
-            <span style="color: #ddd;">|</span>
-
-            <a href="privacy.html" style="color: #888; text-decoration: none;">개인정보처리방침</a>
-
-            <span style="color: #ddd;">|</span>
-
-            <a href="refund.html" style="color: #d11534; text-decoration: none;">환불규정</a>
-
-        </div>
-
-        
-
-        <button onclick="toggleBusinessInfo()" style="background: none; border: none; color: #888; font-size: 0.8rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0 auto; padding: 5px;">
-
-            <span>사업자 정보 보기</span>
-
-            <span id="biz-arrow" style="font-size: 0.6rem;">▼</span>
-
-        </button>
-
-
-
- <div id="business-info" style="display: none; margin-top: 15px; line-height: 1.6; text-align: center; color: #a0a0a0;">
-
-<p style="margin: 0;">상호명: 테스트잇 | 대표자: 송다혜</p>
-
-<p style="margin: 0;">사업자등록번호: 662-54-00892</p>
-
-<p style="margin: 0;">통신판매업신고: 제 2026-경기하남-0331호</p>
-
-<p style="margin: 0;">사업장 소재지: 경기도 하남시 미사강변서로 85, 2005동 2003호</p>
-
-<p style="margin: 0;">이메일: pigsaju@gmail.com</p>
-
-</div>
-
-    </footer>
 <script>
     function openLogin() { document.getElementById('loginOverlay').style.display = 'flex'; }
     function closeLogin() { document.getElementById('loginOverlay').style.display = 'none'; }
-    function dummyLogin() {
-        alert("꿀꿀! 사주돼지 로그인이 완료되었습니다.");
-        closeLogin();
-        document.querySelector('.login-btn-header').innerText = '내 돼지정보';
+    function toggleBusinessInfo() {
+        const info = document.getElementById('business-info');
+        const arrow = document.getElementById('biz-arrow');
+        if (info.style.display === 'none') { info.style.display = 'block'; arrow.innerText = '▲'; } 
+        else { info.style.display = 'none'; arrow.innerText = '▼'; }
     }
 
     (function initDropdowns() {
@@ -329,393 +270,11 @@ box-shadow: 0 0 25px rgba(0, 0, 0, 0.08); position: relative;
             yearSel.value = "1990";
         });
     })();
-
-    const elementMap = {
-        '甲': '木', '乙': '木', '寅': '木', '卯': '木',
-        '丙': '火', '丁': '火', '巳': '火', '午': '火',
-        '戊': '土', '己': '土', '辰': '土', '戌': '土', '丑': '土', '未': '土',
-        '庚': '金', '辛': '金', '申': '金', '酉': '金',
-        '壬': '水', '癸': '水', '亥': '水', '子': '水'
-    };
-
-    const colorClasses = {
-        '木': 'c-wood', '火': 'c-fire', '土': 'c-earth', '金': 'c-metal', '水': 'c-water'
-    };
-
-    function getCharHtml(char) {
-        if (!char || char === 'unknown') return "?";
-        const el = elementMap[char];
-        return `<span class="${colorClasses[el]}">${char}</span>`;
-    }
-
-    const iljuPersonality = {
-            '甲子': "연애를 시작하면 겉으로는 한없이 침착하고 여유로운 어른처럼 행동하지만, 속에서는 상대의 말투 하나, 행동 하나, 연락 패턴까지 모두 분석하며 계산하는 치밀한 연애 전략가입니다. 연인이 보낸 카톡의 느낌표 개수, 답장 속도, 말투의 미묘한 변화까지 전부 기억해 두었다가 혼자 의미를 해석하는 버릇이 있습니다. 자존심이 굉장히 강해서 연애 중에도 절대 먼저 약한 모습을 보이려 하지 않으며, 상대가 나를 우습게 보거나 무시하는 기색이 느껴지면 그 순간 마음이 빠르게 식어버립니다. 겉으로는 웃고 넘어가도 속에서는 이미 상대에 대한 평가 점수가 크게 깎여 있습니다. 의심이 많아 연애 초반에는 상대를 매우 오래 관찰하고 검증하며, 돌다리도 수십 번 두드려 본 뒤에야 마음을 여는 편입니다. 하지만 한 번 마음을 정하면 그때부터는 관계를 쉽게 포기하지 않고 끝까지 책임지려는 강한 의리가 나타납니다. 다만 연인을 은근히 가르치려 하거나 내 기준에 맞추려는 꼰대 기질이 있어서 상대가 숨이 막힌다고 느낄 수 있습니다. 겉은 쿨하지만 속은 계산적이고 예민한, 겉과 속의 온도 차이가 꽤 큰 연애 스타일입니다.",
-            '乙丑': "연애를 하면 상대에게 헌신하는 정도가 매우 강한 편이며, 스스로도 연인을 위해 무엇이든 해주는 사람이라고 생각합니다. 실제로도 연인의 부탁이나 요구를 대부분 받아주며 희생적인 모습을 보입니다. 하지만 그 깊은 속에는 내가 이렇게까지 해주는데 너도 그만큼 나에게 돌아와야 한다는 강한 보상 심리가 자리 잡고 있습니다. 그래서 연인이 내 기대만큼 애정을 표현하지 않거나 무심하게 굴면 겉으로는 아무 말 안 해도 속에서 서운함과 억울함이 점점 쌓입니다. 한 번 배신이나 실망을 느끼면 그동안 참고 있던 감정이 한꺼번에 터져 나오며 뒤끝이 굉장히 길어질 수 있습니다. 관계가 쉽게 끊어지지는 않지만 마음속에서 오래 기억하고 되새기는 편입니다. 연애를 시작하면 웬만한 갈등이나 권태기에도 쉽게 포기하지 않고 묵묵히 버티며 관계를 유지하려 합니다. 그래서 오래 가는 연애를 하는 경우가 많습니다. 다만 상대에게 지나치게 헌신하다가 스스로 상처받는 상황도 자주 만들 수 있습니다. 사랑을 쉽게 포기하지 않는 대신, 감정이 쌓이면 폭발력도 큰 스타일입니다.",
-            '丙寅': "연애를 시작하면 감정이 굉장히 빠르게 타오르는 스타일입니다. 상대에게 마음이 가는 순간부터 표현을 아끼지 않고 적극적으로 다가가며, 사랑에 빠지는 속도도 매우 빠른 편입니다. 좋아하는 사람에게는 애정 표현도 화끈하게 하고 분위기를 주도하려는 경향이 강합니다. 연애 초반에는 열정이 넘쳐서 상대에게 모든 에너지를 쏟아붓는 스타일입니다. 다만 상대의 반응이 기대만큼 뜨겁지 않거나 내가 원하는 흐름대로 관계가 진행되지 않으면 감정이 급격히 식어버리는 면도 있습니다. 감정의 온도가 높아서 기분이 좋을 때는 세상에서 가장 다정한 연인이 되지만, 화가 나거나 서운함이 쌓이면 말도 직설적으로 나가는 편입니다. 욱하는 성향 때문에 순간적으로 헤어지자는 말을 내뱉고 후회하는 경우도 있습니다. 감정의 진폭이 크기 때문에 연애가 매우 뜨겁고 드라마틱하게 흘러가는 경우가 많습니다. 하지만 진심으로 사랑하면 상대를 위해 크게 노력하는 진솔한 면도 함께 가지고 있습니다.",
-            '丁卯': "연애에서 상대의 감정 변화를 매우 빠르게 감지하는 예민한 감각을 가지고 있습니다. 상대의 표정, 말투, 카톡의 느낌, 심지어 대화의 온도까지도 섬세하게 느끼는 편입니다. 그래서 연인이 조금만 달라 보여도 나에게 마음이 식은 건 아닌지 스스로 고민하며 생각이 깊어집니다. 애정 표현을 중요하게 생각하며 사랑받고 있다는 확신이 있어야 마음이 안정됩니다. 상대가 무심하게 행동하거나 연락이 줄어들면 혼자 상처를 크게 받을 수 있습니다. 겉으로는 괜찮은 척해도 속에서는 감정이 크게 흔들리는 경우가 많습니다. 다만 특유의 부드러운 매력과 섬세한 분위기 때문에 상대가 자연스럽게 빠져들게 만드는 매력도 강합니다. 감정 표현이 풍부하고 상대의 마음을 읽는 능력이 뛰어나 연애 분위기를 잘 만드는 사람입니다. 하지만 지나치게 예민해지면 스스로 마음을 힘들게 만드는 면도 있습니다. 사랑을 받으면 매우 따뜻하게 돌려주는 연애 스타일입니다.",
-            '戊辰': "연애를 하면 기본적으로 관계를 안정적으로 유지하려는 성향이 강합니다. 쉽게 사람을 바꾸기보다는 한 사람과 오래 가는 연애를 선호합니다. 겉으로 보기에는 듬직하고 믿음직한 연인처럼 보이며 실제로도 책임감이 강한 편입니다. 하지만 내 연인을 내 영역 안에 두고 싶어 하는 소유욕도 꽤 강하게 존재합니다. 상대가 다른 사람에게 관심을 보이거나 선을 넘는 행동을 하면 질투심이 크게 올라올 수 있습니다. 평소에는 너그럽고 관대한 모습으로 보이지만, 거짓말이나 배신이 드러나면 태도가 매우 단호하게 바뀔 수 있습니다. 연애에서 신뢰와 예의를 매우 중요하게 생각합니다. 내가 정한 기준을 크게 어기는 순간 관계를 정리하는 결단력도 있습니다. 고집이 있는 편이라 내 생각을 쉽게 바꾸지 않는 면도 있습니다. 하지만 믿음을 지켜주는 연인을 만나면 굉장히 든든하고 안정적인 관계를 만들어가는 사람입니다.",
-            '己巳': "연애에서는 부드럽고 다정한 모습으로 상대를 편하게 만드는 능력이 있습니다. 상대의 기분을 잘 맞춰주고 분위기를 부드럽게 만드는 데 능합니다. 겉으로는 매우 이해심이 많은 연인처럼 보이지만, 속에서는 상황을 꽤 계산적으로 바라보는 면도 있습니다. 연애에서도 손해 보는 상황을 만들지 않으려 하고, 관계의 흐름을 은근히 내가 원하는 방향으로 끌고 가려는 능력이 있습니다. 상대의 심리를 읽고 적절한 타이밍에 행동하는 편이라 연애 감각이 좋은 편입니다. 싸움이 생겨도 정면으로 부딪히기보다는 상황을 조정하면서 넘어가는 경우가 많습니다. 상대에게 죄책감을 느끼게 만들거나 상황을 자연스럽게 내 쪽으로 돌리는 기술도 있습니다. 겉으로는 착하고 다정하지만 속에서는 꽤 영리하게 연애를 운영하는 스타일입니다. 매력적인 분위기와 은근한 유혹력도 강한 편입니다.",
-            '庚午': "연애에서도 자기 기준과 원칙이 매우 분명한 스타일입니다. 관계에서 지켜야 할 선과 예의를 중요하게 생각하며, 상대가 그 선을 넘는 행동을 하면 마음이 급격히 식을 수 있습니다. 감정 표현을 크게 하는 스타일은 아니며 오히려 담담하고 무뚝뚝하게 보일 수 있습니다. 낯간지러운 애정 표현이나 지나친 밀당을 좋아하지 않는 편입니다. 그래서 처음에는 차갑거나 무심해 보일 수도 있습니다. 하지만 한 번 마음을 정하고 나면 쉽게 흔들리지 않는 매우 강한 의리를 보입니다. 바람이나 배신 같은 행동을 극도로 싫어하며 스스로도 그런 행동을 거의 하지 않는 편입니다. 표현은 서툴지만 행동으로 책임을 지는 스타일입니다. 자존심이 강해서 속마음을 쉽게 드러내지 않는 면이 있습니다. 하지만 신뢰가 쌓이면 누구보다 믿음직한 연인이 됩니다.",
-            '辛未': "연애 상대를 선택할 때 기준이 매우 높고 까다로운 편입니다. 상대의 작은 말투나 행동에서도 호감이 생기기도 하고 반대로 정이 떨어지기도 합니다. 겉으로는 차분하고 이성적으로 보이지만 속에서는 감정이 꽤 깊습니다. 상처받는 것을 두려워해서 연애 초반에는 쉽게 마음을 열지 않습니다. 상대를 오래 지켜보고 여러 상황을 통해 판단하는 편입니다. 하지만 한 번 마음을 열면 매우 깊게 빠지는 순정적인 면도 있습니다. 상대에게 헌신하고 집착하는 정도가 강해질 수도 있습니다. 서운한 일이 있어도 바로 말하지 않고 마음속에 쌓아 두는 경우가 많습니다. 그래서 어느 순간 갑자기 감정이 폭발하는 상황이 생기기도 합니다. 완벽한 연애를 꿈꾸지만 현실에서는 그 기준 때문에 스스로 힘들어질 때도 있습니다.",
-            '壬申': "연애에서 상대의 성격과 상황에 맞게 잘 적응하는 능력이 뛰어난 편입니다. 다양한 성향의 사람과도 비교적 자연스럽게 관계를 이어가는 스타일입니다. 상대에게 맞춰주는 듯 보이지만 실제로는 내 자유와 생활을 매우 중요하게 생각합니다. 지나치게 간섭하거나 구속하는 관계를 매우 답답하게 느낍니다. 연애를 하더라도 개인적인 시간과 공간이 반드시 필요합니다. 머리가 빠르게 돌아가 상황 판단이 빠른 편이라 싸움 상황에서도 쉽게 빠져나가는 능력이 있습니다. 다만 주변에 사람도 많고 이성 인연도 비교적 잘 들어오는 편이라 연인이 불안감을 느낄 수 있습니다. 본인은 가볍게 생각해도 상대는 애가 탈 수 있는 상황이 생기기도 합니다. 자유로운 분위기의 연애를 선호하며 지나치게 무거운 관계는 부담스러워합니다. 매력과 센스가 있는 연애 스타일입니다.",
-            '癸酉': "연애에서 상대의 행동이나 태도를 매우 빠르게 파악하는 직관력이 있습니다. 거짓말이나 애매한 행동을 쉽게 눈치채는 편입니다. 그래서 연애에서도 상대의 진심을 중요하게 생각합니다. 관계의 분위기나 스타일도 깔끔하고 세련된 것을 선호합니다. 예의 없거나 가벼운 태도를 보이는 사람에게는 마음이 쉽게 닫힙니다. 논리적인 성향이 있어서 연인의 행동을 분석하고 판단하는 경우도 많습니다. 싸움이 생기면 감정적으로만 이야기하기보다는 논리적으로 설명하는 편입니다. 그래서 상대가 압박을 느낄 수도 있습니다. 자신을 존중하고 아껴주는 사람에게 마음이 편안해집니다. 자존심이 강하고 품격 있는 연애를 지향하는 스타일입니다.",
-            '甲戌': "연애에서도 책임감이 매우 강한 편입니다. 겉으로는 감정 표현이 많지 않고 담담해 보일 수 있습니다. 하지만 마음속에서는 연인을 지켜야 한다는 의무감과 소유욕이 꽤 강합니다. 말로 사랑을 표현하기보다는 현실적인 행동으로 보여주는 편입니다. 미래 계획이나 생활적인 부분을 함께 고민하는 것을 진짜 사랑이라고 생각합니다. 연애에서도 현실적인 안정과 방향을 중요하게 봅니다. 상대가 비전 없이 흐르는 모습을 보이면 마음이 식을 수 있습니다. 하지만 믿을 수 있는 사람이라고 판단하면 굉장히 든든한 연인이 됩니다. 의리가 강하고 쉽게 관계를 포기하지 않습니다. 다만 배신이나 신뢰가 무너지는 순간 미련 없이 관계를 정리하는 단호함도 있습니다.",
-            '乙亥': "연애를 할 때 감정에 너무 깊이 묶여 서로를 소모하는 관계를 굉장히 피곤하게 느끼는 사람입니다. 그래서 연애를 하더라도 어느 정도의 거리와 자유가 유지되는 관계를 선호합니다. 누군가에게 깊이 매달리거나 서로를 지나치게 얽어매는 연애는 오래 버티지 못합니다. 상대가 나의 생활이나 인간관계를 통제하려는 기미를 보이면 그 순간부터 마음이 빠르게 식기 시작합니다. 자유를 잃는 느낌이 들면 사랑보다 답답함이 먼저 올라옵니다. 그래서 갑자기 연락이 줄거나 거리를 두는 행동으로 나타나기도 합니다. 겉으로는 부드럽고 다정한 태도로 사람을 편하게 만드는 매력이 있어 주변에 호감을 느끼는 사람이 많습니다. 하지만 자신의 깊은 감정이나 진짜 속마음은 쉽게 보여주지 않습니다. 사랑하는 사람에게도 일정한 선을 두고 마음을 지키는 방어 본능이 있습니다. 그래서 가까워진 것 같다가도 어느 순간 다시 거리를 두는 모습을 보일 수 있습니다. 감정적으로 깊이 묶이는 관계보다는 서로의 세계를 존중하는 연애에서 가장 편안함을 느끼는 사람입니다.",
-            '丙子': "겉으로 보이는 모습과 연애 속 모습의 온도 차이가 꽤 큰 사람입니다. 밖에서는 누구에게나 친절하고 다정하며 밝은 분위기를 유지합니다. 그래서 주변에서는 연애도 쿨하게 하는 사람처럼 보일 수 있습니다. 하지만 실제로 연애를 시작하면 상대에게 대한 감정이 생각보다 깊어집니다. 좋아하는 사람이 생기면 그 사람의 행동과 관심이 어디에 향하는지 굉장히 신경을 쓰게 됩니다. 겉으로는 티를 잘 내지 않지만 속에서는 질투심과 소유욕이 꽤 강하게 움직입니다. 자존심이 있어서 먼저 집착하는 모습은 보이지 않으려 합니다. 대신 상대의 행동을 조용히 관찰하고 확인하려는 경향이 있습니다. 연락 패턴이나 생활 흐름을 은근히 신경 쓰며 상대의 마음을 확인하려 합니다. 그래서 연애 초반에는 여유로워 보이지만 시간이 지날수록 감정의 깊이가 점점 드러납니다. 감정이 깊어지면 관계에서 주도권을 잡고 싶어 하는 마음도 있습니다. 은근한 매력과 분위기로 상대를 자연스럽게 끌어들이는 힘이 있는 연애 스타일입니다.",
-            '丁丑': "연애를 시작하면 마음을 굉장히 깊게 쓰는 사람입니다. 좋아하는 사람이 생기면 그 사람에게 정성을 많이 쏟고 생활적인 부분까지 챙겨주는 편입니다. 상대가 힘들어 보이면 내가 대신 해결해 주고 싶어 하는 마음도 강합니다. 그래서 연애를 하면 헌신적인 연인이 되는 경우가 많습니다. 다만 상대의 단점이나 문제를 내가 감당하려고 하는 경향도 있습니다. 주변에서 말려도 내가 끝까지 책임져 보겠다는 생각을 할 때가 있습니다. 감정 표현이 겉으로 크게 드러나지 않아도 속에서는 많은 것을 참고 있는 경우가 많습니다. 서운한 일이 있어도 바로 말하기보다는 혼자 삭히는 편입니다. 하지만 그 감정이 오래 쌓이면 한 번에 강하게 터질 수 있습니다. 평소에는 온화하고 인내심이 많지만, 마음이 크게 상하면 단호하게 태도가 바뀌기도 합니다. 일상적인 배려와 스킨십, 생활 속 관심을 통해 사랑을 표현하는 스타일입니다. 시간이 지날수록 관계를 더 단단하게 만드는 힘이 있는 연애 방식입니다.",
-            '戊寅': "연애에서도 주도적인 위치에 서는 것을 자연스럽게 생각하는 사람입니다. 좋아하는 사람이 생기면 내가 이 관계를 이끌어야 한다는 책임감과 리더십이 동시에 나타납니다. 상대를 보호하고 챙기려는 마음이 강해 든든한 연인처럼 보일 수 있습니다. 연인의 문제나 어려움을 내가 해결해 주려는 태도도 있습니다. 하지만 그 보호가 지나치면 상대를 관리하거나 통제하려는 모습으로 보일 수도 있습니다. 연애에서도 내 방식이 맞다고 생각하는 경우가 많습니다. 그래서 상대의 감정이나 방식과 충돌이 생기기도 합니다. 나름대로는 사랑하는 사람을 지켜주려는 마음에서 행동하지만 상대는 부담을 느낄 수 있습니다. 자존심이 강하고 리더십이 강해 쉽게 양보하지 않는 면도 있습니다. 하지만 진심으로 사랑하면 책임감 있게 관계를 유지하려는 의지가 강합니다. 든든하고 강한 연애 스타일이지만 감정적인 배려를 배우면 훨씬 안정적인 관계가 됩니다.",
-            '己卯': "연애에서 갈등을 크게 만들지 않고 상황을 부드럽게 넘기는 능력이 있는 사람입니다. 상대의 기분이나 분위기를 빠르게 읽고 맞춰주는 편입니다. 싸움이 생길 것 같으면 먼저 한 발 물러나거나 분위기를 바꾸는 식으로 갈등을 피합니다. 그래서 겉으로 보면 순하고 맞춰주는 연인처럼 보일 수 있습니다. 하지만 속에서는 상황을 꽤 계산적으로 바라보는 면도 있습니다. 관계의 흐름과 균형을 조용히 조정하는 능력이 있습니다. 내가 손해 보는 상황을 만들지 않으면서도 관계를 유지하는 방식입니다. 상대의 심리나 감정을 파악하는 능력도 좋은 편입니다. 그래서 상대의 반응을 보면서 관계를 운영합니다. 때로는 상대가 나에게 더 집중하게 만드는 미묘한 거리 조절을 하기도 합니다. 겉으로는 부드럽고 순한 모습이지만 실제로는 꽤 전략적인 연애 감각을 가진 사람입니다.",
-            '庚辰': "연애에서 마음이 움직이면 행동이 매우 빠른 편입니다. 마음에 드는 사람이 생기면 밀당이나 눈치 보기보다 직접적으로 다가가는 경우가 많습니다. 관계를 시작할 때도 주저하지 않고 적극적으로 표현합니다. 자신감이 강하고 추진력이 있어 상대에게 강한 인상을 남깁니다. 연애에서도 체면과 자존심을 중요하게 생각합니다. 그래서 감정적으로 매달리거나 약한 모습을 보이는 것을 좋아하지 않습니다. 하지만 마음을 정하고 관계가 시작되면 책임감이 강하게 나타납니다. 연인을 보호하고 지켜주려는 태도가 분명합니다. 대신 신뢰와 의리를 매우 중요하게 생각합니다. 상대가 약속을 어기거나 믿음을 깨는 행동을 하면 마음이 크게 돌아섭니다. 그런 순간에는 미련 없이 관계를 정리하는 결단력도 있습니다. 강한 추진력과 단호함이 동시에 나타나는 연애 스타일입니다.",
-            '辛巳': "연애에서도 기본적으로 품격과 수준을 매우 중요하게 생각하는 사람입니다. 데이트 장소, 분위기, 대화의 수준까지 전반적인 연애의 질을 굉장히 신경 쓰는 편입니다. 아무 곳에서나 시간을 보내는 것보다 분위기 있는 공간과 세련된 만남을 선호합니다. 연인 앞에서는 부드럽고 다정한 모습을 보이며 상대를 편안하게 만들어 줍니다. 하지만 겉으로 보이는 다정함과 별개로 속에서는 상대를 매우 냉정하게 평가하고 있는 경우가 많습니다. 상대의 경제관념, 생활 태도, 예의, 식사 매너까지 은근히 관찰하고 판단합니다. 그래서 처음에는 호감이 있어도 상대의 수준이 내 기준에 맞지 않는다고 느끼는 순간 마음이 빠르게 식어버릴 수 있습니다. 특히 구차하거나 무책임한 모습, 체면 없는 행동을 보면 정이 급격히 떨어집니다. 반대로 나를 존중하고 인정해 주는 사람에게는 매우 너그럽고 관대한 모습을 보입니다. 자신을 높이 평가해 주는 상대에게는 다정함과 여유를 충분히 보여주는 스타일입니다. 겉은 우아하고 부드럽지만 속에서는 기준이 매우 분명한 연애관을 가진 사람입니다.",
-            '壬午': "연애에서 사람을 끌어당기는 매력과 분위기가 강한 편입니다. 말투나 표정, 분위기에서 자연스럽게 호감을 만들어 내는 능력이 있습니다. 처음 만난 사람에게도 금방 친근한 느낌을 주며 상대의 경계를 부드럽게 풀어버리는 매력이 있습니다. 연애를 시작하면 관계의 흐름을 주도하는 경우가 많습니다. 상대의 감정과 반응을 빠르게 읽고 상황을 유리하게 이끄는 감각도 좋습니다. 그래서 연애에서도 주도권을 잡는 경우가 많습니다. 다만 매력과 인기가 있는 편이라 주변에 이성 관계가 끊이지 않을 수 있습니다. 본인은 가볍게 생각해도 연인은 불안함을 느낄 수 있는 상황이 생기기도 합니다. 연애에서 감정적인 교감뿐 아니라 신체적인 친밀감도 중요하게 생각합니다. 서로의 감정과 관계의 밀도가 모두 충족되어야 만족을 느끼는 편입니다. 관계가 단조로워지거나 감정의 긴장감이 사라지면 흥미가 떨어질 수 있습니다. 매력과 열정이 강한 대신 관계의 균형이 중요해지는 연애 스타일입니다.",
-            '癸未': "연애를 하면 상대를 깊게 돌보고 챙기려는 마음이 강하게 나타나는 사람입니다. 연인이 힘든 상황에 있으면 내가 어떻게든 도와주고 싶어 하는 책임감이 생깁니다. 상대의 문제나 어려움도 내 일처럼 생각하는 경향이 있습니다. 그래서 연애를 하면 헌신적인 연인이 되는 경우가 많습니다. 하지만 정작 자신의 감정이나 외로움은 쉽게 표현하지 않는 편입니다. 겉으로는 무심하거나 퉁명스럽게 말할 때도 있지만 속에서는 상대에게 깊이 의지하고 싶어 합니다. 사랑받고 있다는 확신을 계속 확인하고 싶어 하는 마음도 있습니다. 그래서 상대의 작은 행동에도 감정이 크게 흔들릴 수 있습니다. 마음속에 외로움이나 애정 결핍이 남아 있는 경우가 많습니다. 이별을 겪으면 감정에서 회복하는 데 시간이 오래 걸리는 편입니다. 사랑을 깊게 하는 만큼 상처도 깊게 받는 연애 스타일입니다.",
-            '甲申': "연애에서도 경쟁심과 승부욕이 강하게 나타나는 사람입니다. 마음에 드는 사람이 생기면 쉽게 포기하지 않고 끝까지 도전하는 편입니다. 상대가 쉽게 마음을 열지 않아도 오히려 더 강한 흥미를 느끼는 경우가 있습니다. 관계를 얻는 과정 자체에서 성취감을 느끼기도 합니다. 그래서 연애 초반에는 매우 적극적이고 열정적인 모습을 보입니다. 하지만 관계가 안정되고 상대가 완전히 내 사람이 되었다고 느끼면 처음의 긴장감이 줄어들 수 있습니다. 연애에서도 주도권을 잡고 싶은 마음이 강합니다. 자신의 방식과 판단을 중요하게 생각하며 상대가 그것을 따라주길 기대합니다. 애교를 부리거나 지나치게 맞춰주는 행동은 자존심 때문에 잘 하지 않습니다. 대신 관계를 이끌어 가는 리더 역할을 자연스럽게 맡습니다. 강한 추진력과 자신감이 있지만 상대의 감정을 세심하게 이해하는 노력이 필요할 수 있습니다.",
-            '乙酉': "연애를 시작하면 감정이 매우 깊고 강하게 몰입되는 스타일입니다. 좋아하는 사람이 생기면 그 사람을 얻기 위해 노력과 집념을 많이 쏟는 편입니다. 쉽게 포기하지 않는 끈기가 있습니다. 하지만 관계가 시작되면 상대를 내 기준에 맞추고 싶어 하는 마음이 나타납니다. 연인의 생활 방식이나 스타일, 심지어 옷차림까지도 내가 보기 좋은 방향으로 바꾸고 싶어 할 수 있습니다. 완벽주의 성향이 강해 상대의 단점이나 실수를 쉽게 넘어가지 못하는 면도 있습니다. 그래서 말이 직설적으로 나가기도 합니다. 연애에서도 현실적인 안정과 결과를 중요하게 생각합니다. 관계가 어디로 가는지 분명하게 알고 싶어 합니다. 감정적인 낭만보다 현실적인 방향을 먼저 생각하는 편입니다. 사랑을 하면 깊이 몰입하지만 동시에 관계의 구조와 미래를 냉정하게 바라보는 연애 스타일입니다.",
-            '丙戌': "연애에서는 밝고 호탕한 모습으로 상대에게 다가가는 경우가 많습니다. 연인을 위해 아낌없이 베풀고 챙겨주는 스타일입니다. 그래서 처음에는 편안하고 든든한 연인으로 보일 수 있습니다. 하지만 마음속에는 외로움과 불안이 함께 존재하는 경우가 있습니다. 상대가 나를 떠날지도 모른다는 생각이 은근히 자리 잡고 있습니다. 사람의 감정이나 심리를 빠르게 읽는 능력도 있습니다. 그래서 연인의 작은 변화나 거짓말을 금방 눈치챌 수 있습니다. 신뢰를 매우 중요하게 생각하기 때문에 거짓말이나 배신에는 매우 단호하게 반응합니다. 평소에는 다정하고 따뜻하지만 마음이 크게 상하면 태도가 급격히 변할 수 있습니다. 감정의 폭이 커서 사랑할 때도 매우 뜨겁고 강하게 표현합니다. 밝은 겉모습과 깊은 감정이 함께 존재하는 연애 스타일입니다.",
-            '丁亥': "연애에서는 상대의 마음과 상처를 잘 이해해 주는 따뜻한 성향이 있습니다. 누군가 힘들어하는 모습을 보면 자연스럽게 위로하고 감싸 주려 합니다. 그래서 연인에게 안정감을 주는 편입니다. 감정 표현도 부드럽고 섬세한 편입니다. 하지만 자신의 깊은 속마음까지 완전히 보여주지는 않는 경우가 많습니다. 마음속에 일정한 선을 두고 감정을 관리하는 편입니다. 겉으로는 따뜻하지만 속에서는 상황을 꽤 냉정하게 판단하기도 합니다. 연인의 성격이나 배경, 미래 가능성까지 생각하며 관계를 바라보는 경우도 있습니다. 갈등이 생기면 직접적으로 부딪히기보다 상황을 조정하는 방식을 선택합니다. 상대가 자연스럽게 나에게 더 마음을 쓰도록 분위기를 만드는 능력도 있습니다. 감정적으로 따뜻하면서도 동시에 매우 영리하게 관계를 운영하는 연애 스타일입니다.",
-            '戊子': "겉으로 보면 연애 감정이 별로 없는 것처럼 무뚝뚝하고 표현도 서툰 사람처럼 보입니다. 애정 표현을 크게 하거나 달콤한 말을 자주 하는 스타일은 아닙니다. 그래서 처음에는 차갑고 건조한 사람처럼 느껴질 수 있습니다. 하지만 실제로는 연애를 매우 현실적으로 바라보는 사람입니다. 감정만으로 관계를 유지하기보다 생활과 미래까지 함께 계산하는 편입니다. 연애를 시작하면 상대와의 생활, 경제적인 부분, 미래 가능성까지 머릿속에서 정리해 보는 경향이 있습니다. 그래서 겉으로는 표현이 적어도 행동으로 책임을 지는 경우가 많습니다. 기념일에 실질적인 선물이나 현실적인 도움을 주는 것을 사랑의 표현으로 생각하기도 합니다. 한 번 마음을 정하면 쉽게 사람을 놓지 않는 편입니다. 연인을 자신의 영역 안에 두고 싶어 하는 소유욕도 꽤 강합니다. 표현은 적지만 관계에 대한 책임감과 집착이 깊은 연애 스타일입니다.",
-            '己丑': "연애에서도 매우 강한 인내심과 고집이 함께 나타나는 사람입니다. 관계에서 쉽게 포기하지 않고 오래 버티는 성향이 있습니다. 상대가 실수를 하거나 갈등이 생겨도 바로 관계를 끊기보다는 참고 지켜보는 편입니다. 그래서 오래 만나는 연애를 하는 경우가 많습니다. 하지만 감정을 속으로 쌓아두는 경향이 있습니다. 겉으로는 아무 말 하지 않고 넘어가도 속에서는 서운함이 계속 쌓일 수 있습니다. 그 감정이 한계를 넘으면 한 번에 크게 폭발하기도 합니다. 평소에는 안정적인 연인이지만 갈등이 크게 터질 때는 관계 자체가 흔들릴 수 있습니다. 연애 스타일도 비교적 보수적인 편입니다. 새로운 데이트 방식이나 변화를 크게 좋아하지 않을 수 있습니다. 익숙한 장소와 패턴을 선호합니다. 그래서 상대에게 안정감을 주지만 동시에 지루하게 느껴질 수도 있습니다. 한 번 정을 주면 배신하지 않는 매우 안정적인 연애 스타일입니다.",
-            '庚寅': "연애에서도 행동이 매우 빠르고 직선적인 스타일입니다. 마음에 드는 사람이 생기면 돌려 말하거나 눈치를 보기보다 직접적으로 표현하는 편입니다. 그래서 관계가 빠르게 진행되는 경우도 많습니다. 감정이 생기면 적극적으로 다가가고 연애에서도 주도권을 잡는 편입니다. 하지만 감정의 온도 변화도 빠른 편입니다. 상대의 단점이 크게 보이거나 기대와 다르면 마음이 갑자기 식을 수 있습니다. 욱하는 성향 때문에 순간적으로 관계를 정리하는 말을 할 수도 있습니다. 그래서 감정적으로 후회하는 상황이 생기기도 합니다. 겉으로는 강하고 당당한 모습이지만 좋아하는 사람이 약한 모습을 보이면 마음이 쉽게 흔들립니다. 상대를 지켜주고 싶어 하는 보호 본능도 강합니다. 그래서 결국 다시 챙기고 도와주는 행동을 하기도 합니다. 강한 추진력과 따뜻한 마음이 동시에 있는 연애 스타일입니다.",
-            '辛卯': "연애에서 감각과 분위기를 매우 중요하게 생각하는 사람입니다. 데이트 장소, 옷차림, 말투까지 전체적인 분위기를 굉장히 신경 씁니다. 미적 감각이 예민한 편이라 상대의 스타일이나 센스가 맞지 않으면 금방 마음이 식을 수 있습니다. 작은 매너나 행동에서도 사람을 평가하는 경우가 많습니다. 그래서 상대가 둔하거나 감각이 맞지 않는다고 느끼면 거리감이 생기기도 합니다. 연애에서도 자신만의 기준이 분명합니다. 그 기준에 맞지 않으면 말이 직설적으로 나갈 수 있습니다. 그래서 상대가 압박을 느낄 수도 있습니다. 하지만 매력적인 분위기와 감각적인 매력이 강한 사람입니다. 감정 표현과 스킨십에서도 섬세한 감각을 가지고 있습니다. 연애를 하면 감각적인 분위기와 긴장감을 만들어 내는 능력이 있습니다. 예민하지만 동시에 매력적인 연애 스타일입니다.",
-            '壬辰': "연애에서도 현실적인 조건과 가능성을 함께 보는 성향이 있습니다. 상대의 성격뿐 아니라 함께 했을 때의 미래나 성장 가능성을 생각합니다. 그래서 연애 상대를 고를 때 기준이 꽤 높은 편입니다. 단순한 감정만으로 관계를 시작하기보다 전체적인 균형을 보려고 합니다. 연애에서도 주도권을 잡으려는 성향이 있습니다. 스스로 관계를 이끌고 방향을 정하려는 리더 기질이 있습니다. 누군가에게 지시받거나 통제받는 상황을 좋아하지 않습니다. 경쟁 상황이 생기면 오히려 더 강해지는 면도 있습니다. 삼각관계나 경쟁자가 생겨도 쉽게 물러서지 않습니다. 원하는 사람을 얻기 위해 적극적으로 움직입니다. 연애에서도 목표와 성취를 중요하게 보는 스타일입니다. 강한 추진력과 야망이 동시에 나타나는 연애 방식입니다.",
-            '癸巳': "연애에서 갈등을 부드럽게 풀어내는 능력이 뛰어난 사람입니다. 상대가 화를 내거나 감정적으로 나와도 쉽게 맞서 싸우기보다 상황을 진정시키는 편입니다. 말투나 태도가 부드러워 상대의 감정을 누그러뜨리는 능력이 있습니다. 싸움이 생겨도 감정적으로 폭발하기보다 차분하게 상황을 정리하려 합니다. 그래서 상대가 스스로 미안함을 느끼게 되는 경우도 있습니다. 사람의 심리를 읽는 능력도 좋은 편입니다. 상대의 감정 흐름을 이해하고 상황을 조정합니다. 겉으로는 부드럽고 온화한 이미지가 강합니다. 그래서 주변에서 호감을 느끼는 사람도 많습니다. 하지만 속에서는 현실적인 계산도 함께 합니다. 연애에서도 경제적인 부분이나 생활적인 균형을 중요하게 생각합니다. 감정과 현실을 동시에 관리하는 연애 스타일입니다.",
-            '甲午': "연애에서 존재감이 강하고 사람의 관심을 끄는 매력이 있습니다. 말솜씨가 좋고 분위기를 주도하는 능력이 있습니다. 그래서 처음 만난 사람에게도 쉽게 호감을 얻는 편입니다. 사랑에 빠지면 감정을 숨기지 않고 적극적으로 표현합니다. 열정적인 연애를 하는 스타일입니다. 하지만 감정 기복이 비교적 큰 편입니다. 기분이나 상황에 따라 감정의 온도가 크게 달라질 수 있습니다. 그래서 어느 순간 상대에게 거리를 두는 모습이 나타날 수도 있습니다. 욱하는 성향이 있어 말이 직설적으로 나갈 때도 있습니다. 순간적으로 한 말이 상대에게 상처가 될 수 있습니다. 그래서 감정이 올라올 때 말과 행동을 조절하는 것이 중요합니다. 열정과 매력이 강하지만 감정 관리가 중요한 연애 스타일입니다.",
-            '乙未': "연애에서는 겉으로 매우 부드럽고 맞춰주는 사람처럼 보일 수 있습니다. 상대의 기분을 살피고 상황에 맞게 행동하는 능력이 있습니다. 그래서 처음에는 순하고 유연한 연인처럼 보입니다. 하지만 속에서는 관계의 흐름을 꽤 강하게 붙잡고 있는 경우가 많습니다. 쉽게 포기하지 않는 집념이 있습니다. 갈등이나 어려움이 생겨도 끝까지 버티며 관계를 유지하려 합니다. 그래서 상대보다 더 오래 감정을 붙잡는 경우도 있습니다. 사랑을 하면 집착이 강해질 수 있습니다. 상대의 연락이나 생활 패턴을 계속 신경 쓰게 됩니다. 때로는 상대의 자유를 제한하려는 모습으로 나타날 수 있습니다. 깊은 애정과 동시에 강한 소유욕이 함께 있는 연애 스타일입니다.",
-            '丙申': "연애에서도 자유로운 분위기를 중요하게 생각하는 사람입니다. 한 사람에게 오래 묶여 있는 상황을 답답하게 느낄 수 있습니다. 새로운 경험과 자극을 좋아하는 성향이 있습니다. 그래서 연애 초반에는 매우 열정적이고 매력적으로 다가갑니다. 유머 감각과 말솜씨가 좋아 사람을 쉽게 끌어당깁니다. 하지만 시간이 지나면 처음의 열정이 빠르게 식을 수도 있습니다. 관계가 반복되고 일상이 되면 흥미가 줄어드는 경우가 있습니다. 그래서 연인이 감정적으로 힘들어질 수 있습니다. 책임감보다는 순간의 감정과 분위기에 영향을 받는 편입니다. 자유로운 연애를 선호하는 스타일입니다. 안정적인 관계를 유지하려면 책임감과 꾸준함을 의식적으로 키울 필요가 있습니다.",
-            '丁酉': "연애에서도 생활의 수준과 환경을 매우 중요하게 생각하는 사람입니다. 데이트의 분위기나 장소, 음식까지 신경을 많이 씁니다. 편안하고 고급스러운 분위기를 좋아합니다. 상대가 나를 어떻게 대접하는지에 민감한 편입니다. 사랑받는다는 느낌을 받기 위해서는 일정한 수준의 배려와 대접이 필요합니다. 그래서 데이트 비용이나 방식도 은근히 계산하는 경우가 있습니다. 상대의 생활 태도나 매너도 매우 중요하게 봅니다. 작은 예절이나 말투에서도 사람을 평가할 수 있습니다. 기준이 높기 때문에 쉽게 만족하지 않는 경우도 있습니다. 하지만 자신의 기준에 맞는 사람을 만나면 오래 안정적인 관계를 유지합니다. 세련된 감각과 높은 기준을 가진 연애 스타일입니다.",
-            '戊戌': "연애에서도 자기 방식과 기준이 매우 강한 사람입니다. 상대가 사소한 일로 간섭하거나 통제하려 들면 굉장히 거부감을 느낍니다. 특히 사생활을 건드리거나 휴대폰, 인간관계에 개입하려는 행동을 매우 싫어합니다. 기본적으로 연애에서도 내가 중심이 되어 관계를 이끌어야 한다는 생각이 강합니다. 그래서 내 방식이 맞다고 확신하는 경우가 많습니다. 상대가 의견을 강하게 내면 그것을 받아들이기보다 밀어붙이려 할 때도 있습니다. 감정이 올라오면 표현도 강하게 나가는 편입니다. 화가 나면 말과 행동이 거칠어질 수 있습니다. 그래서 연인이 압박을 느끼거나 위축되는 상황이 생기기도 합니다. 하지만 그만큼 책임감도 강하고 관계를 지키려는 의지도 있습니다. 다만 타협을 배우지 않으면 갈등이 반복되기 쉽습니다. 강한 카리스마와 고집이 동시에 나타나는 연애 스타일입니다.",
-            '己亥': "겉으로는 매우 순하고 맞춰주는 사람처럼 보이는 경우가 많습니다. 연인의 말이나 의견을 잘 들어주고 갈등을 크게 만들지 않는 편입니다. 그래서 처음에는 착하고 부드러운 연인으로 보입니다. 하지만 속에서는 상황을 매우 현실적으로 판단하는 면이 있습니다. 상대의 능력, 생활 방식, 경제적인 부분까지 은근히 관찰하는 경우도 있습니다. 관계에서 손해 보는 상황을 만들지 않으려는 계산이 있습니다. 겉으로 싸우지 않으면서도 상황을 내가 원하는 방향으로 끌고 가는 능력이 있습니다. 말로 강하게 주장하기보다 분위기와 흐름을 조정하는 방식입니다. 그래서 상대가 스스로 선택했다고 느끼게 만들기도 합니다. 속마음을 쉽게 드러내지 않기 때문에 연인이 답답함을 느낄 수도 있습니다. 부드러운 겉모습과 현실적인 계산이 동시에 있는 연애 스타일입니다.",
-            '庚子': "연애에서도 사람을 매우 냉정하게 판단하는 성향이 있습니다. 상대의 말이나 행동에서 모순이나 거짓을 빠르게 발견하는 편입니다. 그래서 연애 초반부터 상대를 자세히 관찰합니다. 작은 거짓말이나 애매한 행동도 쉽게 넘어가지 않는 경우가 많습니다. 말이 직설적이고 논리적인 편이라 상대가 상처를 받을 수도 있습니다. 감정보다는 사실과 논리를 중심으로 이야기하는 경우가 많습니다. 그래서 싸움이 생기면 상대가 압박을 느끼기도 합니다. 관계에서 신뢰가 무너졌다고 판단하면 매우 단호하게 태도가 바뀝니다. 정이 떨어지면 미련 없이 관계를 정리하는 경우도 있습니다. 감정적으로 매달리기보다 판단이 빠른 스타일입니다. 연애에서도 이성과 판단력이 강하게 작용하는 사람입니다.",
-            '辛丑': "겉으로는 차분하고 냉정해 보이는 경우가 많습니다. 감정을 크게 표현하지 않고 담담하게 행동하는 편입니다. 그래서 처음에는 마음을 알기 어려운 사람처럼 보일 수 있습니다. 하지만 실제로는 감정이 깊은 편입니다. 한 번 마음을 주면 쉽게 포기하지 않는 성향이 있습니다. 주변에서 말려도 관계를 오래 붙잡고 있는 경우가 있습니다. 상대에게 상처를 받아도 쉽게 이별을 말하지 않는 편입니다. 자존심과 고집 때문에 스스로 관계를 정리하지 못하는 경우도 있습니다. 겉으로는 강해 보이지만 혼자 감정을 오래 끌어안는 스타일입니다. 그래서 이별이나 갈등을 오래 앓기도 합니다. 표현은 적지만 감정의 깊이는 큰 연애 스타일입니다.",
-            '壬寅': "연애에서도 대화와 자극이 중요한 사람입니다. 상대와 이야기하는 과정에서 지적인 교감이나 재미를 느끼는 편입니다. 단순한 감정 표현만으로는 관계가 오래 유지되기 어렵습니다. 새로운 이야기, 새로운 경험이 계속 있어야 흥미를 느낍니다. 자유를 매우 중요하게 생각하기 때문에 지나친 구속을 싫어합니다. 인간관계도 넓은 편이라 주변에 이성 친구가 많을 수 있습니다. 그래서 연인이 불안감을 느낄 수 있습니다. 사람의 고민을 잘 들어주고 도와주려는 성향도 있습니다. 하지만 그 과정에서 감정이 엮이는 상황이 생기기도 합니다. 연애에서도 활동적이고 자유로운 스타일입니다.",
-            '癸卯': "연애에서 상대의 감정을 매우 빠르게 읽는 능력이 있습니다. 상대가 원하는 말이나 행동을 자연스럽게 맞춰주는 편입니다. 그래서 처음에는 매우 다정하고 배려심 있는 연인처럼 보입니다. 상대의 기분을 살피는 능력이 뛰어납니다. 갈등이 생겨도 크게 싸우기보다 부드럽게 상황을 넘기려 합니다. 감정을 직접적으로 드러내기보다 상대가 먼저 마음을 풀도록 만드는 편입니다. 보호 본능을 자극하는 분위기도 있습니다. 그래서 주변에서 도움을 받는 경우도 많습니다. 하지만 스스로 결정을 내리는 것을 어려워할 때도 있습니다. 중요한 선택을 연인에게 맡기거나 의존하는 모습이 나타날 수 있습니다. 부드러운 성향과 의존성이 함께 나타나는 연애 스타일입니다.",
-            '甲辰': "연애에서도 자유와 주도권을 중요하게 생각하는 사람입니다. 누군가가 나를 통제하려 하면 강하게 반발하는 성향이 있습니다. 연애에서도 독립적인 위치를 유지하고 싶어 합니다. 반복되는 일상적인 데이트나 지루한 패턴을 싫어합니다. 새로운 경험이나 활동적인 만남을 선호합니다. 자존심이 강해 쉽게 고개를 숙이거나 먼저 사과하는 스타일은 아닙니다. 그래서 갈등이 생기면 충돌이 커질 수 있습니다. 상대에게 조언이나 지적을 하는 경우도 있습니다. 그것이 상대에게는 무시나 간섭처럼 느껴질 수 있습니다. 감정이 올라오면 행동이 거칠어질 수도 있습니다. 자유로운 성향과 강한 자존심이 함께 나타나는 연애 스타일입니다.",
-            '乙巳': "연애에서 사람의 시선을 끌어당기는 분위기와 매력이 매우 강한 편입니다. 처음 만난 자리에서도 자연스럽게 대화를 주도하고 상대의 관심을 끌어오는 능력이 있습니다. 말투와 표정, 눈빛에서 은근한 매력이 드러나는 경우가 많습니다. 그래서 이성에게 호감을 받는 일이 비교적 잦습니다. 연애를 시작하면 표현도 비교적 적극적인 편입니다. 상대의 기분과 반응을 빠르게 읽는 눈치도 좋은 편이라 분위기를 만들어가는 능력이 있습니다. 다만 감정 기복이 비교적 큰 편입니다. 기분이 좋을 때는 매우 다정하고 매력적인 연인이 되지만, 감정이 올라오면 짜증이나 예민함이 바로 드러날 수 있습니다. 그래서 연인이 감정의 변화를 따라가기 힘들어질 때도 있습니다. 순간적인 감정에 휩쓸려 말이 강하게 나갈 수 있는 점이 관계에서 문제를 만들기도 합니다. 감정의 균형을 잘 잡으면 매력과 분위기가 매우 강한 연애 스타일입니다.",
-            '丙午': "연애에서도 주도권과 자존심이 매우 강하게 나타나는 사람입니다. 관계에서도 내가 중심이 되어야 마음이 편한 편입니다. 좋아하는 사람이 생기면 감정을 숨기기보다는 강하게 표현하는 스타일입니다. 연애에서도 에너지와 존재감이 강한 편입니다. 하지만 타협을 잘 하지 않는 성향도 함께 나타납니다. 의견 충돌이 생기면 쉽게 물러서지 않는 경우가 많습니다. 감정이 올라오면 말이 직설적으로 나가 상대의 마음을 크게 건드릴 수 있습니다. 다만 뒤끝은 오래 가지 않는 편입니다. 화가 지나가면 금방 평소처럼 돌아오는 경우도 많습니다. 그래서 연인은 감정의 강한 파도를 느낄 수 있습니다. 열정과 에너지가 강하지만 감정 조절이 중요한 연애 스타일입니다.",
-            '丁未': "겉으로는 매우 부드럽고 다정한 사람처럼 보입니다. 상대의 감정을 잘 이해하고 공감하는 편입니다. 그래서 연인에게 안정감을 주는 경우가 많습니다. 하지만 속에서는 고집이 꽤 강한 편입니다. 한 번 마음속에 서운함이 생기면 쉽게 잊지 못하는 경우도 있습니다. 겉으로는 아무 말 하지 않고 넘어가지만 속으로는 기억하고 있는 일이 많습니다. 그래서 어느 순간 오래된 이야기까지 함께 꺼내며 감정을 표현할 수도 있습니다. 평소에는 조용하지만 감정이 쌓이면 강하게 표현되는 스타일입니다. 상대에게 상처를 주고 싶어서가 아니라 그동안 참고 있던 감정이 한 번에 나오는 경우입니다. 관계에서 솔직하게 감정을 표현하는 연습이 필요할 수 있습니다. 겉은 부드럽지만 속은 단단한 연애 스타일입니다.",
-            '戊申': "겉으로 보면 감정 표현이 거의 없는 사람처럼 보입니다. 연인이 옆에서 서운해하거나 애정 표현을 요구해도 반응이 느리고 둔해 보여 상대를 답답하게 만드는 경우가 많습니다. 그래서 연인은 내가 사랑받고 있는지 확신을 못 하고 혼자 끙끙 앓는 상황이 자주 생깁니다. 하지만 실제 속마음은 생각보다 훨씬 복잡하게 돌아갑니다. 이 관계가 내 삶에 어떤 의미가 있는지, 미래에 어떤 영향을 줄지, 지금 이 사람과 계속 가는 것이 맞는지까지 머릿속에서 계속 계산합니다. 감정보다 현실과 효율을 먼저 따지는 성향이 강합니다. 그래서 연애에서도 낭만적인 이벤트나 감정적인 표현보다는 실질적인 도움이나 현실적인 선물을 택하는 경우가 많습니다. 말은 거의 안 하지만 갑자기 큰돈이 들어간 선물이나 현실적인 지원을 툭 던지는 식입니다. 문제는 이런 계산적인 태도가 상대에게는 사랑이 아니라 거래처럼 느껴질 수 있다는 점입니다. 연인의 감정을 숫자처럼 계산하려 들면 관계가 급격히 식어버립니다. 머리로만 연애하지 말고 감정을 표현하는 연습을 하지 않으면 결국 차갑고 이해하기 어려운 사람이라는 평가를 듣기 쉽습니다.",
-            '己酉': "연애에서 사람의 감정 흐름을 읽는 능력이 굉장히 빠른 편입니다. 상대가 기분이 좋은지, 짜증이 난 건지, 나에게 서운한 건지 1초 만에 눈치채는 감각이 있습니다. 그래서 어떤 성격의 사람을 만나도 비교적 빠르게 적응하고 관계를 유지하는 능력이 있습니다. 겉으로는 둥글둥글하고 맞춰주는 연인처럼 보입니다. 상대의 말도 잘 들어주고 크게 싸우는 일도 많지 않습니다. 하지만 그 속에서는 상황을 굉장히 현실적으로 계산합니다. 내가 여기서 손해 보는 건 아닌지, 이 관계에서 내가 얻는 것이 무엇인지 계속 따집니다. 그래서 절대 호구처럼 이용당하는 일은 거의 없습니다. 연애에서도 내 시간, 내 돈, 내 이익을 철저하게 관리합니다. 문제는 말이 너무 직설적일 때입니다. 상대의 실수나 약점을 정확히 짚어내는 능력이 있어서, 화가 나면 팩트로 상대를 찌르는 말을 할 수 있습니다. 그 말은 상대에게 오래 남는 상처가 됩니다. 머리가 빠르고 상황 판단이 뛰어나지만, 말의 날을 조금 무디게 하지 않으면 스스로 관계를 깨뜨리는 경우가 생깁니다.",
-            '庚戌': "연애에서도 명확한 기준과 원칙을 가지고 움직이는 사람입니다. 내가 생각하는 연애의 규칙이 분명합니다. 거짓말을 하지 말 것, 신뢰를 깨지 말 것, 기본적인 예의를 지킬 것 같은 기준입니다. 평소에는 듬직하고 믿음직한 연인처럼 보입니다. 하지만 그 기준을 어기는 순간 태도가 완전히 달라집니다. 특히 거짓말이나 배신에 대해서는 굉장히 냉정하게 반응합니다. 한번 신뢰가 깨졌다고 판단하면 감정이 남아 있어도 관계를 정리해버리는 경우가 있습니다. 연애에서도 내가 주도권을 잡고 싶어 하는 성향이 강합니다. 상대가 나를 존중하고 따라주는 관계에서 안정감을 느낍니다. 대신 애교를 부리거나 부드럽게 상황을 넘기는 능력은 약한 편입니다. 그래서 갈등이 생기면 부딪히는 방식으로 해결하려 합니다. 연인 입장에서는 벽처럼 단단한 사람처럼 느껴질 수 있습니다. 책임감과 의리는 강하지만 유연함이 부족하면 관계가 오래 유지되기 어렵습니다.",
-            '辛亥': "연애에서도 분위기와 품격을 매우 중요하게 생각하는 사람입니다. 데이트 장소, 옷차림, 식사 매너 같은 것들이 눈에 굉장히 잘 들어옵니다. 그래서 상대의 센스나 생활 태도를 매우 빠르게 평가합니다. 깔끔하고 세련된 스타일을 좋아하며, 너무 구질구질하거나 궁상맞은 분위기를 극도로 싫어합니다. 연애에서도 나를 얼마나 정성스럽게 대하는지에 민감합니다. 그래서 상대가 나를 제대로 대접한다고 느끼면 마음이 열립니다. 반대로 작은 예절이나 매너가 어긋나면 정이 빠르게 식기도 합니다. 미적 감각이 예민해 상대의 스타일이나 행동이 눈에 걸리기 쉽습니다. 또 감정 표현에서도 연기를 잘하는 편입니다. 눈물이나 말투로 분위기를 만들어 상대의 마음을 움직이기도 합니다. 하지만 기준이 너무 높으면 스스로 좋은 인연을 놓칠 수 있습니다. 완벽한 연애만 찾다 보면 현실적인 관계를 유지하기 어려워질 수 있습니다.",
-            '壬子': "겉으로는 굉장히 부드럽고 사람 좋은 이미지로 보이는 경우가 많습니다. 누구에게나 친절하고 여유로운 태도를 보입니다. 그래서 처음에는 편안한 사람처럼 느껴집니다. 하지만 속에서는 관계의 주도권을 잡고 싶어 하는 마음이 꽤 강합니다. 겉으로는 양보하는 것처럼 보이지만 실제로는 상황을 내가 원하는 방향으로 끌고 가는 경우가 있습니다. 평소에는 감정을 잘 참는 편입니다. 화가 나도 쉽게 표현하지 않고 속에 쌓아두는 경향이 있습니다. 문제는 그 감정이 한 번 터질 때입니다. 그때는 말과 행동이 매우 거칠어질 수 있습니다. 평소 모습과 너무 달라 상대가 놀랄 정도입니다. 또 개인적인 영역을 매우 중요하게 생각합니다. 휴대폰이나 사생활을 건드리는 것을 극도로 싫어합니다. 그래서 연인이 나를 완전히 이해하지 못한다고 느낄 수 있습니다. 겉은 부드럽지만 속은 굉장히 강한 자존심과 독립성을 가진 연애 스타일입니다.",
-            '癸丑': "연애에서 겉으로 보이는 모습과 실제 속마음의 온도 차이가 꽤 큰 사람입니다. 겉으로 보면 상대에게 많이 맞춰주고 끌려다니는 것처럼 보일 때가 많습니다. 연인이 요구하는 것들을 대부분 받아주고, 다툼이 생겨도 쉽게 맞서는 편이 아닙니다. 그래서 주변에서는 내가 더 사랑해서 참고 버티는 연애처럼 보일 수 있습니다. 하지만 실제로는 상황을 굉장히 오래 관찰하고 계산하는 성향이 있습니다. 한 번 마음을 주면 쉽게 관계를 끊지 않는 인내심이 강합니다. 남들이 보기에는 이미 끝난 관계처럼 보이는 상황에서도 끝까지 버티며 관계를 붙잡는 경우가 있습니다. 문제는 이 인내가 단순한 사랑만으로 유지되는 경우가 아니라는 점입니다. 상대의 성향, 생활, 경제력, 미래 가능성까지 계속 계산하며 관계를 이어가는 경우도 있습니다. 그래서 겉으로는 희생하는 사람처럼 보여도 실제로는 관계의 중요한 흐름을 조용히 잡고 있는 경우가 많습니다. 연인이 의지하게 만들고, 생활이나 감정에서 나에게 기대게 만드는 능력도 있습니다. 다만 의심이 많아지는 순간 관계가 피곤해질 수 있습니다. 상대의 행동을 계속 확인하고 의심하면 결국 스스로 감정을 소모하게 됩니다. 깊게 버티는 힘은 강하지만 신뢰를 배우지 않으면 스스로를 괴롭히는 연애가 될 수 있습니다.",
-            '甲寅': "연애에서도 자존심과 독립성이 매우 강한 사람입니다. 누군가에게 휘둘리거나 간섭받는 것을 극도로 싫어합니다. 특히 연인이 잔소리를 하거나 내 행동을 통제하려 들면 바로 반발심이 올라옵니다. 그래서 연애에서도 내가 중심이 되어 관계를 이끌어야 마음이 편합니다. 좋아하는 사람이 생기면 매우 적극적으로 다가갑니다. 돌려 말하거나 계산하기보다 직선적으로 표현하는 편입니다. 책임감도 강해 내가 선택한 사람은 내가 지킨다는 생각을 합니다. 하지만 동시에 양보나 타협이 어려운 성향도 있습니다. 갈등이 생기면 먼저 숙이기보다는 끝까지 버티는 경우가 많습니다. 그래서 다툼이 커지는 경우도 있습니다. 한번 신뢰가 크게 깨졌다고 느끼면 관계를 다시 회복하는 것도 매우 어렵습니다. 마음속에서 선이 그어지는 순간 관계를 정리해버리는 단호함이 있습니다. 강한 추진력과 책임감이 있지만 유연함이 부족하면 연애가 오래 유지되기 어려운 스타일입니다.",
-            '乙卯': "연애에서도 경쟁심과 승부욕이 매우 강하게 나타나는 사람입니다. 마음에 드는 사람이 생기면 그 사람을 얻기 위해 노력과 에너지를 많이 쏟습니다. 다른 사람이 관심을 보이면 오히려 더 강하게 집착하는 경우도 있습니다. 그래서 관계를 쟁취하는 과정에서 열정이 강하게 나타납니다. 연애에서도 내가 지는 상황을 굉장히 싫어합니다. 사소한 말다툼에서도 끝까지 논리를 펼쳐 이기려 하는 경우가 있습니다. 그래서 연인이 감정적으로 지치는 상황이 생길 수 있습니다. 상대의 인간관계나 일정에도 관심이 많아집니다. 연인이 누구를 만나는지, 어디를 가는지 신경을 쓰는 편입니다. 이런 관심이 지나치면 통제나 감시처럼 느껴질 수 있습니다. 질투심과 소유욕이 강해지면 관계가 답답해질 수 있습니다. 다만 사랑을 하면 열정과 에너지가 강한 편입니다. 관계를 유지하려는 집념도 강합니다. 감정의 균형을 유지하면 강한 애정과 열정을 가진 연인이 될 수 있습니다.",
-            '丙辰': "연애에서도 사람을 편하게 만드는 능력이 있는 편입니다. 상대에게 잘해주고 베푸는 스타일이라 연인이 처음에는 굉장히 매력적으로 느끼는 경우가 많습니다. 데이트에서도 아낌없이 지출하거나 상대를 챙겨주는 경우가 있습니다. 그래서 연인은 내가 매우 generous한 사람이라고 느끼기도 합니다. 말솜씨도 좋은 편이라 분위기를 부드럽게 만들고 상대를 설득하는 능력이 있습니다. 다툼이 생겨도 말을 잘 풀어내는 경우가 많습니다. 문제는 이 말솜씨가 상황을 지나치게 유리하게 만들 때입니다. 내가 잘못한 상황에서도 말로 상황을 뒤집어 상대가 미안함을 느끼게 만드는 경우가 있습니다. 이런 반복이 생기면 연인은 혼란을 느낄 수 있습니다. 또 주변 사람들에게도 친절하고 다정한 성향이라 이성 친구가 많은 경우가 있습니다. 그 모습이 연인에게는 불안 요소가 되기도 합니다. 겉으로는 완벽한 연인처럼 보이지만 주변 관계가 넓어 갈등이 생기기 쉬운 스타일입니다.",
-            '丁巳': "연애에서 감정의 온도 차이가 매우 큰 사람입니다. 기분이 좋을 때는 매우 다정하고 애교도 많은 편입니다. 상대에게 애정 표현도 많이 하고 가까운 관계를 빠르게 만들기도 합니다. 하지만 감정이 올라오는 순간 반응이 강하게 나타날 수 있습니다. 화가 나면 말이나 행동이 거칠어질 수 있습니다. 그래서 연인이 감정의 변화에 당황하는 경우가 있습니다. 사랑에 빠지면 매우 깊이 몰입하는 성향도 있습니다. 좋아하는 사람에게는 많은 시간과 에너지를 쏟습니다. 하지만 질투심과 소유욕이 강하게 나타날 수 있습니다. 연락이 늦어지거나 예상하지 못한 행동이 보이면 바로 감정이 흔들릴 수 있습니다. 그래서 작은 일에서도 갈등이 커질 수 있습니다. 감정이 강한 만큼 사랑도 강하게 표현하는 스타일입니다. 감정을 조절하는 능력이 생기면 매우 열정적인 연애가 됩니다.",
-            '戊午': "연애에서도 리더십과 통제 욕구가 강하게 나타나는 사람입니다. 관계에서 주도권을 잡고 싶어 합니다. 내가 생각하는 방식대로 관계가 움직여야 안정감을 느낍니다. 그래서 연인의 생활이나 일정에도 의견을 내는 경우가 많습니다. 데이트 방식이나 생활 패턴을 바꾸려 할 때도 있습니다. 연인을 보호하고 책임지려는 마음도 강합니다. 하지만 그 보호가 통제처럼 느껴질 수 있습니다. 특히 상대의 선택을 존중하기보다 내가 맞다고 생각하는 방향을 밀어붙일 때 갈등이 생깁니다. 감정 표현도 강한 편이라 스킨십이나 애정 표현이 적극적인 경우가 많습니다. 그래서 연애 초반에는 매우 강렬한 관계가 만들어집니다. 하지만 독선적인 태도가 강해지면 상대가 지치게 됩니다. 타인의 의견을 존중하고 여유를 가지는 것이 관계 유지에 중요한 사람입니다.",
-            '己未': "연애에서 감정 표현은 많지 않지만 한 번 마음을 주면 끝까지 버티는 성향이 매우 강한 사람입니다. 주변 사람들이 보기에는 이미 끝난 관계처럼 보이는 상황에서도 혼자 묵묵히 버티는 경우가 많습니다. 연락이 뜸해지거나 상대가 거리를 두는 상황에서도 쉽게 포기하지 않습니다. 그래서 연인이 돌아올 때까지 기다리는 시간이 길어지는 경우도 있습니다. 겉으로는 아무렇지 않은 척하지만 속에서는 관계를 절대 놓지 않으려는 의지가 강하게 작동합니다. 애정 표현이나 애교가 많지 않아 연인이 감정을 확인하기 어려워할 수 있습니다. 그래서 관계가 건조하고 무뚝뚝하게 느껴질 때도 있습니다. 하지만 책임감과 의리는 매우 강한 편입니다. 한 번 관계를 시작하면 쉽게 배신하거나 떠나는 스타일은 아닙니다. 오래 지켜보며 버티는 힘이 강한 연애 스타일입니다. 문제는 고집이 강해 상대가 이미 마음을 정리한 상황에서도 끝까지 붙잡으려 할 수 있다는 점입니다. 감정 표현을 조금 더 하고 상황을 읽는 유연함을 가지면 관계가 훨씬 안정될 수 있습니다.",
-            '庚申': "연애에서도 매우 직선적이고 단단한 태도를 보이는 사람입니다. 마음에 드는 사람이 생기면 돌려 말하거나 계산하기보다 바로 표현하는 경우가 많습니다. 관계에서도 명확한 기준과 원칙을 가지고 있습니다. 가벼운 관계나 애매한 썸을 싫어하고 분명한 관계를 선호합니다. 거짓말이나 신뢰를 깨는 행동에는 매우 단호하게 반응합니다. 한 번 기준을 어겼다고 판단하면 관계를 바로 정리하는 경우도 있습니다. 그래서 주변에서는 결단력이 강한 사람으로 보이기도 합니다. 하지만 이런 단호함이 너무 강해지면 관계가 오래 유지되기 어려울 수 있습니다. 부드럽게 넘어갈 수 있는 상황에서도 원칙을 고집하다 갈등이 커지는 경우가 있습니다. 자존심도 강해 먼저 숙이거나 사과하는 일이 쉽지 않습니다. 연애에서도 내가 맞다는 확신이 강하게 나타납니다. 강한 책임감과 명확한 태도가 장점이지만 유연함을 배우지 않으면 관계가 단절되는 상황이 생기기 쉽습니다.",
-            '辛酉': "연애에서도 사람을 매우 꼼꼼하게 평가하는 성향이 있습니다. 상대의 말투, 생활 습관, 식사 매너, 센스 같은 것들이 눈에 잘 들어옵니다. 그래서 작은 행동에서도 사람의 성향을 판단하는 경우가 많습니다. 기준이 높기 때문에 쉽게 만족하지 않는 편입니다. 연인의 작은 실수나 부족한 점도 눈에 띄기 쉽습니다. 그래서 말을 할 때 직설적으로 지적하는 경우가 있습니다. 그 말은 상대에게 상처가 될 수 있습니다. 연애에서도 손해 보는 상황을 싫어합니다. 데이트 비용이나 생활적인 부분에서도 균형을 따지는 편입니다. 그래서 현실적인 계산이 빠른 편입니다. 자존심도 강해 먼저 굽히거나 사과하는 일이 쉽지 않습니다. 관계에서도 내 기준을 지키려는 태도가 강하게 나타납니다. 이런 성향 때문에 연인이 부담을 느낄 수 있습니다. 기준이 높은 만큼 만족할 수 있는 관계를 찾는 데 시간이 오래 걸릴 수 있습니다.",
-            '壬戌': "연애에서 책임감과 의리가 매우 강한 사람입니다. 좋아하는 사람이 힘든 상황에 처하면 쉽게 외면하지 않습니다. 오히려 적극적으로 도와주려는 성향이 있습니다. 상대가 어려운 상황에 있어도 끝까지 함께하려는 태도가 있습니다. 그래서 연인이 위기를 겪을 때 큰 힘이 되기도 합니다. 하지만 동시에 질투심도 강한 편입니다. 연인의 행동이나 주변 인간관계를 예민하게 바라볼 수 있습니다. 상대의 태도가 조금만 달라져도 의심이 생길 수 있습니다. 직관이 빠른 편이라 작은 변화도 눈에 잘 들어옵니다. 그래서 연인의 거짓말이나 숨기는 행동을 쉽게 알아차리는 경우도 있습니다. 문제는 의심이 커지면 행동도 강해질 수 있다는 점입니다. 감정이 올라오면 직접 확인하려 하거나 강하게 따지는 상황이 생길 수 있습니다. 사랑과 책임감이 강한 만큼 감정도 크게 움직이는 연애 스타일입니다.",
-            '癸亥': "겉으로는 매우 부드럽고 맞춰주는 사람처럼 보이는 경우가 많습니다. 연인의 의견을 잘 들어주고 크게 싸우지 않는 편입니다. 그래서 처음에는 편안한 연인으로 느껴집니다. 하지만 속에서는 상황을 매우 빠르게 판단하고 계산하는 성향이 있습니다. 사람의 심리와 행동을 관찰하는 능력이 좋은 편입니다. 그래서 연인의 감정이나 생각을 파악하는 속도가 빠릅니다. 갈등이 생겨도 정면으로 부딪히기보다 상황을 지켜보는 편입니다. 상대가 먼저 지치거나 상황이 정리될 때까지 기다리는 방식입니다. 그 과정에서 내가 원하는 방향으로 관계가 흘러가도록 조용히 조정하기도 합니다. 겉으로는 양보하는 것처럼 보여도 실제로는 상황을 잘 관리하는 편입니다. 문제는 감정보다는 계산이 먼저 움직일 때입니다. 사람을 지나치게 분석하고 판단하면 진심이 전달되지 않을 수 있습니다. 감정과 계산의 균형이 중요한 연애 스타일입니다."
-        };
-
-    function getCompatibilityResult(meGan, meZhi, youGan, youZhi, meEls, youEls) {
-        // 1. 천간 합/충 로직 (이성적 끌림)
-        const ganHap = [['甲', '己'], ['乙', '庚'], ['丙', '辛'], ['丁', '壬'], ['戊', '癸']];
-        const generateMap = {'木':'火', '火':'土', '土':'金', '金':'水', '水':'木'};
-        const overcomeMap = {'木':'土', '土':'水', '水':'火', '火':'金', '金':'木'};
-
-        let ganScore = 50, zhiScore = 10;
-        let ganText = "", zhiText = "", synergyText = "", simText = "", solutionText = "";
-        let ganRel = "무난", zhiRel = "무난";
-
-        let isHap = false;
-        ganHap.forEach(p => { if ((p[0] === meGan && p[1] === youGan) || (p[0] === youGan && p[1] === meGan)) isHap = true; });
-        
-     if (meGan === youGan) {
-    ganRel = "비견"; ganScore = 60;
-    ganText = "명리학적으로 일간(본질)이 완벽히 일치하는 <span class='hl'>비견(比肩)</span>, 즉 거울을 마주 보는 듯한 도플갱어 커플입니다. 초반에는 말하지 않아도 내 마음을 알아주는 소름 돋는 동질감에 강렬하게 끌립니다. '어떻게 나랑 이렇게 똑같지?'라는 감탄은 곧 치명적인 독이 됩니다. 서로의 장점뿐만 아니라 내가 가장 혐오하는 나의 콤플렉스와 단점까지 상대방에게서 고스란히 발견하기 때문입니다. 의견이 충돌해 자존심 싸움으로 번지는 순간, 둘 다 바닥을 칠 때까지 절대 먼저 사과하지 않는 숨 막히는 기싸움이 이어집니다. 내가 굽히기 싫은 만큼 상대도 죽어도 굽히기 싫어한다는 뼈저린 팩트를 인정하고 한 발 물러서지 않으면 결국 상처만 남고 공멸할 뿐입니다.";
-} else if (isHap) {
-    ganRel = "합"; ganScore = 95;
-    ganText = "사주 명리학에서 가장 끈끈하고 질긴 인연으로 치는 <span class='hl'>천간합(天干合)</span>이 성립되었습니다. 전생에 빚을 졌거나 지독하게 얽힌 것처럼, 이성적인 판단이 마비될 정도의 미친 흡인력을 자랑합니다. 객관적으로 보면 명백한 상대의 치명적인 단점과 레드플래그마저도 내 눈에는 보호본능을 자극하거나 거부할 수 없는 섹시함으로 왜곡되어 보입니다. 주변 지인들이 도시락을 싸 들고 다니며 뜯어말려도 결국 지인들과 연락을 끊어버리고 둘만의 세계로 숨어버릴 확률이 높은, 그야말로 눈이 단단히 뒤집힌 맹목적인 천생연분입니다. 다만 이 압도적인 끌림이 집착으로 변질되는 순간 서로를 갉아먹을 수 있으니 가끔은 이성을 찾으려는 노력이 필요합니다.";
-} else if (generateMap[elementMap[meGan]] === elementMap[youGan] || generateMap[elementMap[youGan]] === elementMap[meGan]) {
-    ganRel = "생"; ganScore = 80;
-    ganText = "마치 한쪽이 끝없이 전력을 공급하는 거대한 보조배터리가 되고, 다른 한쪽이 그 에너지를 포식하는 <span class='hl'>상생(相生)</span>의 관계입니다. 생(生)을 받는 쪽은 상대와 함께 있을 때 묘하게 일이 잘 풀리고 심리적 안정감을 느끼며 텐션이 수직 상승합니다. 반면 생을 주는 쪽은 초반에는 상대를 챙기며 헌신하는 데서 기쁨을 느끼지만, 시간이 갈수록 밑빠진 독에 물을 붓는 듯한 서늘한 현타와 번아웃을 마주하게 됩니다. 받는 쪽이 이 일방적인 희생을 '나를 사랑하니까 당연한 것'으로 착각하는 순간, 주는 쪽은 예고 없이 정을 떼고 돌아설 것입니다. 대가 없는 헌신에 기생하지 말고, 반드시 과할 정도의 보상과 진심 어린 감사를 돌려주어야만 이 불균형한 평화가 유지됩니다.";
-} else if (overcomeMap[elementMap[meGan]] === elementMap[youGan] || overcomeMap[elementMap[youGan]] === elementMap[meGan]) {
-    ganRel = "극"; ganScore = 40;
-    ganText = "서로의 존재 자체가 상대방을 억누르고 통제하려 드는 <span class='hl'>상극(相剋)</span>의 팽팽한 긴장감이 흐르는 관계입니다. 나와 완전히 정반대인 미지의 세계, 그 야생적이고 이질적인 매력에 강렬하게 스파크가 튀어 연애를 시작합니다. 하지만 막상 뚜껑을 열어보면 일상 자체가 피 튀기는 권력 투쟁의 연속입니다. 서로의 본질을 있는 그대로 인정하지 못하고, 기어이 내 입맛에 맞게 상대를 뜯어고치려는 오만함과 숨 막히는 통제욕이 끊임없이 발동합니다. 상대를 가르치려 들거나 내 방식이 맞다고 강요하는 순간 관계는 파국으로 치닫습니다. 우리는 근본적으로 다른 종족이라는 팩트를 서늘하게 인정하고, 상대의 영역을 침범하지 않는 철저한 방목을 실천해야만 생존할 수 있습니다.";
-} else {
-    ganText = "두 분의 본질은 서로를 향해 맹목적으로 돌진하지도, 그렇다고 살벌하게 물어뜯지도 않는 대단히 이성적이고 건조한 <span class='hl'>무난한 평행선</span>의 결합입니다. 영화 속 주인공들처럼 가슴 터질 듯한 애틋함이나 목숨 거는 열정은 현저히 떨어집니다. 하지만 역설적으로 그 흔한 감정 소모나 바닥을 보이는 치정극 없이, 가늘고 길게 멘탈을 지키며 만날 수 있다는 것이 최고의 장점입니다. 문제는 이 편안함이 선을 넘으면 연인이라기보다는 전우애나 무미건조한 동거인처럼 느껴진다는 것입니다. 굳이 싸울 일도 없지만 굳이 설렐 일도 없기 때문에, 미적지근한 온도에 권태를 느끼지 않도록 살기 위해서라도 의도적인 이벤트와 텐션을 끌어올리는 장치가 반드시 필요합니다.";
-}
-
-        // 2. 지지 합/충/원진 로직 (속마음, 속궁합)
-        const zhiHap = [['子', '丑'], ['寅', '亥'], ['卯', '戌'], ['辰', '酉'], ['巳', '申'], ['午', '未'], ['申', '子'], ['子', '辰'], ['亥', '卯'], ['卯', '未'], ['寅', '午'], ['午', '戌'], ['巳', '酉'], ['酉', '丑']];
-        const zhiChung = [['子', '午'], ['丑', '未'], ['寅', '申'], ['卯', '酉'], ['辰', '戌'], ['巳', '亥']];
-        const zhiWonjin = [['子', '未'], ['丑', '午'], ['寅', '酉'], ['卯', '申'], ['辰', '亥'], ['巳', '戌']];
-
-        let isZhiHap = false, isZhiChung = false, isZhiWonjin = false;
-        zhiHap.forEach(p => { if ((p[0] === meZhi && p[1] === youZhi) || (p[0] === youZhi && p[1] === meZhi)) isZhiHap = true; });
-        zhiChung.forEach(p => { if ((p[0] === meZhi && p[1] === youZhi) || (p[0] === youZhi && p[1] === meZhi)) isZhiChung = true; });
-        zhiWonjin.forEach(p => { if ((p[0] === meZhi && p[1] === youZhi) || (p[0] === youZhi && p[1] === meZhi)) isZhiWonjin = true; });
-
-     if (isZhiWonjin) {
-    zhiRel = "원진"; zhiScore = -30;
-    zhiText = "궁합을 볼 때 술사들이 가장 먼저 혀를 차며 말린다는 치명적인 애증의 굴레, <span class='hl'>원진살(怨嗔殺)</span>이 단단히 끼어 있습니다. 이 관계의 핵심은 '이유 없는 혐오'와 '징그러운 집착'의 무한 반복입니다. 머리로는 수백 번도 더 이별을 결심하지만, 막상 상대가 떠날 기미가 보이면 심장이 쿵 떨어지며 미친 듯이 매달리게 되는 소름 돋는 카르마입니다. 상대의 아주 사소한 습관, 밥 먹는 소리, 심지어 숨 쉬는 타이밍조차 꼴 보기 싫어지는 순간이 주기적으로 찾아옵니다. 귀신같이 서로의 가장 아픈 아킬레스건만 골라 후벼 파는 잔인한 말들을 쏟아내면서도, 결국 돌아서서 피눈물을 흘리며 후회합니다. 물리적인 거리를 강제로 두거나 각자의 시공간을 철저히 분리하지 않으면 서로의 멘탈이 가루가 될 때까지 피 말리는 지옥도가 펼쳐집니다.";
-} else if (isZhiChung) {
-    zhiRel = "충"; zhiScore = -20;
-    zhiText = "두 사람의 가장 은밀한 속마음과 라이프스타일이 시속 100km로 정면충돌해 박살 나는 <span class='hl'>일지충(日支沖)</span>의 살벌한 구조입니다. 만나는 순간에는 서로의 달라도 너무 다른 낯선 매력에 벼락 맞은 듯 강렬한 스파크가 튀지만, 그 불꽃이 데이트 코스, 연락 빈도, 돈 쓰는 방식 등 현실의 영역으로 넘어오는 순간 끔찍한 재앙으로 돌변합니다. 누구 하나 져줄 생각 없이 '내 방식이 무조건 맞다'며 팽팽하게 맞서다 결국 진이 빠져버립니다. 성격 차이에서 오는 이 찌릿한 도파민과 자극을 장기적인 연애로 끌고 가려면, 한쪽이 입술을 꽉 깨물고 자존심을 내려놓은 채 무조건적으로 져주는 뼈를 깎는 수양이 동반되어야만 겨우 관계가 유지됩니다.";
-} else if (isZhiHap) {
-    zhiRel = "합"; zhiScore = 30;
-    zhiText = "말하지 않아도 서로의 은밀한 욕망까지 완벽하게 스캔하고 채워주는, 기막힌 텔레파시와 경이로운 속궁합의 상징 <span class='hl'>지지합(地支合)</span>이 떴습니다. 남들에게는 절대 보여주지 못할 내 밑바닥의 찌질함이나 기괴한 취향마저도 이 사람 앞에서는 무장해제됩니다. 일상생활의 자잘한 패턴부터 은밀한 스킨십의 호흡까지 소름 돋게 톱니바퀴처럼 맞물려 돌아갑니다. 한 번 이 압도적이고 끈적한 관계의 맛에 중독되면, 외부 세계와의 단절을 자처할 만큼 서로에게 미친 듯이 파고들고 집착하게 됩니다. 친구나 커리어조차 뒷전으로 밀려나고 오직 둘만의 밀실에 갇혀버릴 위험이 다분한, 대단히 치명적이고 퇴폐적인 결합입니다.";
-} else {
-    zhiText = "두 사람의 속궁합과 일상적인 텐션은 서로의 영역을 절대 침범하지 않고 깍듯하게 선을 지키는, 대단히 건조하고 <span class='hl'>젠틀한 평행선</span>의 형태입니다. 밤새워 눈물 쏟아내며 싸우는 질척거림이나, 하루라도 안 보면 죽을 것 같은 불같은 스파크는 애초에 기대하지 않는 것이 좋습니다. 하지만 역설적으로 상대를 내 맘대로 통제하려는 욕심이 없기 때문에, 감정의 밑바닥을 보이며 서로의 멘탈을 난도질하는 비극적인 사태도 벌어지지 않습니다. 연인이라기보다는 상호 존중을 바탕으로 한 룸메이트 같은 서늘한 편안함이 지배적입니다. 어느 순간 이 관계가 연애가 맞는지 깊은 현타가 올 수 있으니, 의식적으로 파격적인 일탈을 기획하지 않으면 이내 지루함이라는 가장 무서운 적에게 잡아먹히고 맙니다.";
-}
-
-        // 3. 궁합 스탯 비교 그래프 계산 로직
-        const powerScores = {'甲':80, '乙':40, '丙':95, '丁':50, '戊':85, '己':45, '庚':90, '辛':60, '壬':75, '癸':30};
-        const sweetScores = {'甲':50, '乙':85, '丁':95, '丙':60, '戊':40, '己':80, '庚':20, '辛':30, '壬':70, '癸':90};
-        const fightScores = {'甲':70, '乙':50, '丙':90, '丁':60, '戊':80, '己':40, '庚':95, '辛':85, '壬':50, '癸':30};
-
-        let mePower = powerScores[meGan] || 50, youPower = powerScores[youGan] || 50;
-        let meSweet = sweetScores[meGan] || 50, youSweet = sweetScores[youGan] || 50;
-        let meFight = fightScores[meGan] || 50, youFight = fightScores[youGan] || 50;
-
-        let pRatio = Math.round((mePower / (mePower + youPower)) * 100);
-        let sRatio = Math.round((meSweet / (meSweet + youSweet)) * 100);
-        let fRatio = Math.round((meFight / (meFight + youFight)) * 100);
-
-        // 4. 오행 시너지 분석
-        let meLacking = Object.keys(meEls).filter(e => meEls[e] === 0);
-        let youLacking = Object.keys(youEls).filter(e => youEls[e] === 0);
-        let meExcess = Object.keys(meEls).filter(e => meEls[e] >= 3);
-        let youExcess = Object.keys(youEls).filter(e => youEls[e] >= 3);
-        
-        let synergyFound = false;
-        let tempSynergy = "";
-        
-   meLacking.forEach(el => {
-    if (youExcess.includes(el) || youEls[el] >= 2) {
-        tempSynergy += `당신의 사주 원국에 뼈아프게 결핍되어 평생의 콤플렉스나 지독한 갈증으로 작용하는 <span class='hl'>${el}</span> 기운을, 상대방이 마치 거대한 창고처럼 뿜어내고 있습니다. 내가 아무리 발버둥 쳐도 채워지지 않던 인생의 밑빠진 독을 상대가 자신의 존재 자체로 틀어막아 주는 소름 돋는 구원 서사입니다. 상대방 곁에 딱 붙어 있는 것만으로도 막혔던 숨통이 트이고, 꼬여있던 내 팔자가 마법처럼 풀려나가는 것을 체감하게 됩니다. `;
-        synergyFound = true;
-    }
-});
-
-youLacking.forEach(el => {
-    if (meExcess.includes(el) || meEls[el] >= 2) {
-        tempSynergy += `반대로 상대방의 명식에서 치명적인 약점으로 작용해 매번 인생의 발목을 잡는 <span class='hl'>${el}</span> 기운을 당신이 화수분처럼 끊임없이 공급해 주고 있습니다. 상대방은 당신이라는 존재를 만남으로써 비로소 정서적, 현실적 안정을 찾게 되며, 무의식적으로 당신의 에너지에 깊게 중독되어 당신 없이는 제대로 된 결정을 내리기조차 힘든 완벽한 의존 상태에 빠져들게 됩니다. `;
-        synergyFound = true;
-    }
-});
-
-if (synergyFound) {
-    synergyText = tempSynergy + "결론적으로 두 사람의 만남은 사주 명리학에서 가장 극찬하는, 서로의 치명적인 흉(凶)을 완벽하게 덮어주고 길(吉)로 승화시키는 '미친 오행 밸런스'의 극치입니다. 혼자서는 절대 이룰 수 없는 그릇의 확장이 일어나며, 두 사람이 결합하는 순간 재물운과 사회적 성취가 폭발하는 이른바 '상호 로또' 급의 귀한 인연입니다. 살다 보면 지긋지긋하게 미워지는 순간이 오더라도, 내 인생의 가장 강력한 인간 부적을 잃어버리는 멍청한 짓은 절대 하지 마십시오. 자존심 다 버리고 웬만하면 이 손을 끝까지 쥐고 가야 당신의 인생이 핍절해지지 않습니다.";
-} else {
-    synergyText = "사주의 오행 구조를 냉정하게 뜯어보면, 안타깝게도 두 사람은 서로의 텅 빈 구멍을 기적처럼 메워주는 운명적인 구원자와는 거리가 멉니다. 오히려 내가 넘치는 기운을 상대도 똑같이 넘치게 가지고 있거나, 내가 간절히 필요한 기운이 상대에게도 한 방울 없는 지독하게 무미건조한 '오행의 평행선' 구조에 가깝습니다. 연애를 한다고 해서 내 꼬인 팔자가 극적으로 펴지거나 상대 덕을 보아 횡재하는 드라마틱한 시너지는 애초에 기대하지 않는 것이 정신 건강에 좋습니다. 상대에게 내 인생의 구원을 바라거나 경제적, 정서적 기생을 시도하는 순간 이 관계는 추악하게 파탄 납니다. 철저하게 각자의 밥그릇과 멘탈은 스스로 챙기고, '너는 너, 나는 나'라는 서늘하고 독립적인 마인드셋을 장착해야만 이 팍팍한 평화가 유지됩니다.";
-}
-// 5. 장기 연애 시뮬레이션 및 처방전
-if (ganRel === "합" || zhiRel === "합") {
-    simText = "초반의 콩깍지가 벗겨진 후에도 두 분은 서로에게 깊이 의지하며 남들이 부러워할 만큼 각별하고 끈끈한 사이를 유지할 확률이 높습니다. 하지만 서로를 향한 밀착도가 너무 높다 보니, 둘만의 세계에 갇혀 주변 대인관계가 좁아지거나 상대의 사소한 개인 시간조차 서운하게 느끼는 등 의존도가 지나치게 높아질 수 있는 양면성을 지니고 있습니다.";
-    solutionText = "이 각별한 관계를 지치지 않고 건강하게 끌고 가려면, 역설적으로 각자의 독립적인 시간을 철저히 존중해야 합니다. 일주일에 하루 정도는 각자의 친구를 만나거나 혼자만의 취미를 즐기는 '자유의 날'을 가지는 것이 좋습니다. 상대방의 모든 일상을 100% 공유하고 싶어 하는 마음을 조금 내려놓고, 적당한 여백을 두는 지혜가 관계의 숨통을 틔워줍니다.";
-} else if (ganRel === "극" || zhiRel === "충" || zhiRel === "원진") {
-    simText = "이 커플의 장기 연애는 잔잔하고 평화로운 호수라기보다는 다이내믹한 파도와 같습니다. 타고난 성향 차이에서 오는 마찰 때문에 자주 부딪히고 의견 충돌이 발생하지만, 또 언제 그랬냐는 듯 뒤끝 없이 화해하고 가까워지는 패턴이 반복됩니다. 조용할 날은 없겠지만, 이런 솔직하고 역동적인 감정 교류가 오히려 관계의 지루함을 막아주는 강력한 자극제가 되기도 합니다.";
-    solutionText = "이 관계를 파국 없이 단단하게 유지하기 위한 핵심 처방전은 '감정의 적정 거리 유지'와 '선 넘지 않기'입니다. 감정이 격해졌을 때는 서로의 아킬레스건을 건드리는 날 선 독설을 절대 피해야 하며, 다툼이 커질 것 같으면 잠시 물리적으로 떨어져서 화를 식히는 쿨타임이 반드시 필요합니다. 다름을 쿨하게 인정하고 서로의 방식을 존중할 때 비로소 진정한 안정을 찾습니다.";
-} else {
-    simText = "연애가 안정기에 접어들면 두 분은 불같이 타오르는 연인보다는, 일상을 대단히 효율적이고 평화롭게 꾸려가는 듬직한 인생의 파트너나 단짝 친구의 모습에 가까워집니다. 감정 소모나 큰 다툼 없이 서로의 선을 지켜주며 엄청난 편안함을 주지만, 자칫하면 익숙함에 속아 연인 특유의 낭만과 설렘이 메마른 사막처럼 건조해질 수 있습니다.";
-    solutionText = "이 튼튼하고 편안한 관계에 활력을 불어넣으려면 의도적이고 계산적인 낭만이 필요합니다. 편하다는 이유로 기념일을 무심코 넘기거나 애정 표현을 생략하는 안일함이 가장 큰 적입니다. 평소와 다른 분위기 좋은 곳에서 데이트를 하거나, 서로를 향한 애정을 적극적으로 표현하는 등 익숙함 속에서 설렘의 불씨를 꺼트리지 않으려는 노력이 반드시 동반되어야 합니다.";
-}
-  let finalScore = Math.min(100, Math.max(10, ganScore + zhiScore));
-let conclusion = "";
-
-if (finalScore >= 95) {
-    conclusion = "하늘이 점지해 준 기적의 천생연분입니다! 억겁의 시간을 돌고 돌아 만난 것처럼, 서로의 영혼에 깊숙이 뿌리내리는 완벽한 결합입니다. 어떤 시련이 와도 두 사람의 견고한 연대를 흔들 수 없는 경이로운 궁합이네요 🐷";
-} else if (finalScore >= 85) {
-    conclusion = "서로의 부족함을 완벽하게 채워주는 상위 1% 찰떡 궁합입니다! 눈빛만 봐도 통하는 기막힌 타이밍과 시너지를 자랑하며, 함께 있을 때 각자의 운기가 최고조로 상승하는 든든한 상호 보완적 관계입니다 🐽";
-} else if (finalScore >= 75) {
-    conclusion = "안정감과 애정이 조화롭게 어우러진 훌륭한 인연입니다. 불같이 타오르기만 하는 일회성 열정보다는, 시간이 지날수록 은은한 진국처럼 우러나오는 깊은 신뢰와 배려가 돋보이는 매우 건강한 궁합입니다 🐷";
-} else if (finalScore >= 60) {
-    conclusion = "너무 뜨겁지도 차갑지도 않은, 현실적이고 평온한 동반자 궁합입니다. 가끔은 권태로울 수 있지만, 쓸데없는 감정 소모 없이 각자의 라이프스타일을 존중하며 가늘고 길게 이어갈 수 있는 편안함이 최고의 무기입니다 🐽";
-} else if (finalScore >= 50) {
-    conclusion = "성향 차이에서 오는 매력과 잦은 마찰이 공존하는 미묘한 평행선입니다. 서로의 다름에 끌려 시작했지만, 막상 현실에서는 꽤 많은 양보와 멘탈 관리가 요구됩니다. 상대방을 내 맘대로 바꾸려 하지 않는 쿨한 인정이 생명줄입니다 🐷";
-} else if (finalScore >= 40) {
-    conclusion = "만나면 티격태격, 안 만나면 생각나는 지독한 롤러코스터 궁합입니다. 강렬한 스파크 이면에는 팽팽한 주도권 싸움과 자존심 대결이 숨어 있습니다. 다툼이 커지기 전에 서로 한 발씩 물러서는 지혜가 반드시 필요합니다 🐽";
-} else {
-    conclusion = "전생에 못다 푼 숙제를 해결하러 만난 듯한 강렬한 애증의 카르마입니다. 폭발적인 이끌림만큼이나 서로의 멘탈을 소모시키기 쉬운 구조이므로, 뼈를 깎는 인내심과 철저한 개인 시간의 보장이 없다면 유지하기 힘든 매운맛 궁합입니다 🐷";
-}
-        return { 
-            score: finalScore, conclusion,
-            mePower, youPower, pRatio,
-            meSweet, youSweet, sRatio,
-            meFight, youFight, fRatio,
-            ganText, zhiText, synergyText, simText, solutionText
-        };
-    }
-
-    document.getElementById('love-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const getBaziAndElements = (prefix) => {
-            const year = parseInt(document.getElementById(prefix + '-year').value);
-            const month = parseInt(document.getElementById(prefix + '-month').value);
-            const day = parseInt(document.getElementById(prefix + '-day').value);
-            const timeStr = document.getElementById(prefix + '-time').value;
-            const calendarType = document.querySelector(`input[name="${prefix}-calendar"]:checked`).value;
-            
-            const timeMap = { 'unknown': 12, '자시': 0, '축시': 2, '인시': 4, '묘시': 6, '진시': 8, '사시': 10, '오시': 12, '미시': 14, '신시': 16, '유시': 18, '술시': 20, '해시': 22 };
-            const hour = timeMap[timeStr] !== undefined ? timeMap[timeStr] : 12;
-
-            let lunarObj;
-            if (calendarType === 'solar') {
-                lunarObj = Solar.fromYmdHms(year, month, day, hour, 0, 0).getLunar();
-            } else if (calendarType === 'lunar') {
-                lunarObj = Lunar.fromYmdHms(year, month, day, hour, 0, 0);
-            } else if (calendarType === 'lunar-leap') {
-                let leapMonth = 0;
-                try { leapMonth = LunarYear.fromYear(year).getLeapMonth(); } catch (err) {}
-                if (leapMonth !== month) {
-                    throw new Error(`꿀꿀! ${prefix === 'me' ? '나의' : '상대방의'} 정보에 선택하신 ${year}년에는 윤${month}월이 없습니다.`);
-                }
-                lunarObj = Lunar.fromYmdHms(year, -month, day, hour, 0, 0);
-            }
-
-            const bazi = lunarObj.getEightChar();
-            let els = { '木':0, '火':0, '土':0, '金':0, '水':0 };
-            let chars = [bazi.getYear().charAt(0), bazi.getYear().charAt(1), bazi.getMonth().charAt(0), bazi.getMonth().charAt(1), bazi.getDay().charAt(0), bazi.getDay().charAt(1)];
-            if (timeStr !== 'unknown') chars.push(bazi.getTime().charAt(0), bazi.getTime().charAt(1));
-
-            chars.forEach(c => {
-                if(['甲','乙','寅','卯'].includes(c)) els['木']++;
-                if(['丙','丁','巳','午'].includes(c)) els['火']++;
-                if(['戊','己','辰','戌','丑','未'].includes(c)) els['土']++;
-                if(['庚','辛','申','酉'].includes(c)) els['金']++;
-                if(['壬','癸','亥','子'].includes(c)) els['水']++;
-            });
-
-            return { bazi, els };
-        };
-
-        try {
-            const meData = getBaziAndElements('me');
-            const youData = getBaziAndElements('you');
-
-            const meGan = meData.bazi.getDay().charAt(0);
-            const meZhi = meData.bazi.getDay().charAt(1);
-            const youGan = youData.bazi.getDay().charAt(0);
-            const youZhi = youData.bazi.getDay().charAt(1);
-
-            const result = getCompatibilityResult(meGan, meZhi, youGan, youZhi, meData.els, youData.els);
-
-            let html = "";
-            
-            html += `<div class='dashboard-card'>`;
-            html += `<div class='bazi-flex'>`;
-            html += `<div class='person-col'><div class='person-name'>👩 나</div><div class='ilju-box'>${getCharHtml(meGan)}<br>${getCharHtml(meZhi)}</div></div>`;
-            html += `<div class='vs-badge'>VS</div>`;
-            html += `<div class='person-col'><div class='person-name'>💘 상대방</div><div class='ilju-box'>${getCharHtml(youGan)}<br>${getCharHtml(youZhi)}</div></div>`;
-            html += `</div>`;
-            html += `</div>`;
-
-            html += `<div class='score-box'>사주돼지 최종 궁합: ${result.score}점<br><span style="font-size:1.1rem; font-weight:bold; display:block; margin-top:5px;">${result.conclusion}</span></div>`;
-
-            // 재미있는 궁합 스탯 비교 (텍스트 잘림 해결)
-            html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>📊 사주돼지가 분석한 궁합 스탯</div>";
-            html += "<div class='fortune-content-text' style='margin-top: -15px;'>";
-            
-            html += `<div class='stat-compare-wrap'>`;
-            html += `<div class='stat-title'>🔥 둘 중 누가 더 주도권을 쥘까?</div>`;
-            html += `<div class='stat-bar-container'>`;
-            html += `<div class='stat-bar-fill' style='width: ${result.pRatio}%;'></div>`;
-            html += `<div class='stat-text-me'>나 ${result.pRatio}%</div>`;
-            html += `<div class='stat-text-you'>상대방 ${100 - result.pRatio}%</div>`;
-            html += `</div></div>`;
-
-            html += `<div class='stat-compare-wrap'>`;
-            html += `<div class='stat-title'>🍯 둘 중 누가 더 다정할까?</div>`;
-            html += `<div class='stat-bar-container'>`;
-            html += `<div class='stat-bar-fill' style='width: ${result.sRatio}%;'></div>`;
-            html += `<div class='stat-text-me'>나 ${result.sRatio}%</div>`;
-            html += `<div class='stat-text-you'>상대방 ${100 - result.sRatio}%</div>`;
-            html += `</div></div>`;
-
-            html += `<div class='stat-compare-wrap' style='margin-bottom:0;'>`;
-            html += `<div class='stat-title'>🧨 갈등을 유발하는 불씨는 누구?</div>`;
-            html += `<div class='stat-bar-container'>`;
-            html += `<div class='stat-bar-fill' style='width: ${result.fRatio}%;'></div>`;
-            html += `<div class='stat-text-me'>나 ${result.fRatio}%</div>`;
-            html += `<div class='stat-text-you'>상대방 ${100 - result.fRatio}%</div>`;
-            html += `</div></div>`;
-            
-            html += "</div></div>";
-
-            // 각자의 본성 팩폭
-            html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>👩 나의 진짜 성격</div>";
-            html += "<div class='fortune-content-text'>";
-            html += `<p>${iljuPersonality[meGan+meZhi] || "독특하고 뚜렷한 당신만의 기질을 지녔습니다."}</p>`;
-            html += "</div></div>";
-
-            html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>💘 상대방의 진짜 성격</div>";
-            html += "<div class='fortune-content-text'>";
-            html += `<p>${iljuPersonality[youGan+youZhi] || "알 수 없는 묘한 매력을 숨긴 기질입니다."}</p>`;
-            html += "</div></div>";
-
-            html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>🧠 꿀꿀! 두 사람의 본질 매치</div>";
-            html += "<div class='fortune-content-text'>";
-            html += `<p>${result.ganText}</p>`;
-            html += "</div></div>";
-
-            html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>🔥 사주돼지가 훔쳐본 궁합</div>";
-            html += "<div class='fortune-content-text'>";
-            html += `<p>${result.zhiText}</p>`;
-            html += "</div></div>";
-
-            html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>💧 서로를 채워주는 오행 시너지</div>";
-            html += "<div class='fortune-content-text'>";
-            html += `<p>${result.synergyText}</p>`;
-            html += "</div></div>";
-
-            html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>💍 장기 연애 시뮬레이션</div>";
-            html += "<div class='fortune-content-text'>";
-            html += `<p>${result.simText}</p>`;
-            html += "</div></div>";
-
-            html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>🚨 사주돼지의 연애 처방전</div>";
-            html += "<div class='fortune-content-text'>";
-            html += `<p>${result.solutionText}</p>`;
-            html += "</div></div>";
-
-            document.getElementById('dynamic-love-content').innerHTML = html;
-            document.getElementById('love-form').style.display = 'none';
-            document.getElementById('love-title').style.display = 'none';
-            document.getElementById('love-result-area').style.display = 'block';
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        } catch (error) {
-            alert(error.message || '꿀꿀! 궁합 계산 중 오류가 발생했습니다. 생년월일을 확인해주세요.');
-        }
-    });
-
-    function resetLoveForm() {
-        document.getElementById('love-result-area').style.display = 'none';
-        document.getElementById('love-form').style.display = 'block';
-        document.getElementById('love-title').style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function toggleBusinessInfo() {
-            const info = document.getElementById('business-info');
-            const arrow = document.getElementById('biz-arrow');
-            if (info.style.display === 'none') {
-                info.style.display = 'block';
-                arrow.innerText = '▲';
-            } else {
-                info.style.display = 'none';
-                arrow.innerText = '▼';
-            }
-        }
-        
 </script>
+
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
     import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -731,70 +290,94 @@ if (finalScore >= 95) {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
+    const googleProvider = new GoogleAuthProvider();
 
-    // [핵심] 어떤 ID든 상관없이 년, 월, 일을 찾아서 값을 꽂아넣는 함수
+    // 내 정보 채우기
     function forceFill(y, m, d, time, gender, calendar) {
-        const selects = document.querySelectorAll('select');
-        const radios = document.querySelectorAll('input[type="radio"]');
-
-        // 1. 드롭다운(select) 채우기
-        selects.forEach(el => {
-            const id = el.id.toLowerCase();
-            const name = el.name.toLowerCase();
-            
-            // 연도 칸 찾기
-            if (id.includes('year') || name.includes('year')) {
-                el.value = y;
-                if (el.value === "") el.value = y + "년";
-            }
-            // 월 칸 찾기
-            if (id.includes('month') || name.includes('month')) {
-                el.value = m;
-                if (el.value === "") el.value = m + "월";
-                if (el.value === "" && m < 10) el.value = "0" + m + "월";
-            }
-            // 일 칸 찾기
-            if (id.includes('day') || name.includes('day')) {
-                el.value = d;
-                if (el.value === "") el.value = d + "일";
-                if (el.value === "" && d < 10) el.value = "0" + d + "일";
-            }
-            // 시간 칸 찾기
-            if (id.includes('time') || name.includes('time')) {
-                el.value = time;
-            }
-        });
-
-        // 2. 라디오 버튼(성별/달력) 채우기
-        radios.forEach(radio => {
-            if (radio.name.toLowerCase().includes('gender') && radio.value === gender) radio.checked = true;
-            if (radio.name.toLowerCase().includes('calendar') && radio.value === calendar) radio.checked = true;
-        });
+        const idMap = { year: 'me-year', month: 'me-month', day: 'me-day', time: 'me-time' };
+        if(document.getElementById(idMap.year)) {
+            document.getElementById(idMap.year).value = y;
+            if(document.getElementById(idMap.year).value === "") document.getElementById(idMap.year).value = y + "년";
+        }
+        if(document.getElementById(idMap.month)) {
+            document.getElementById(idMap.month).value = m;
+            if(document.getElementById(idMap.month).value === "") document.getElementById(idMap.month).value = m + "월";
+            if(document.getElementById(idMap.month).value === "" && m < 10) document.getElementById(idMap.month).value = "0" + m + "월";
+        }
+        if(document.getElementById(idMap.day)) {
+            document.getElementById(idMap.day).value = d;
+            if(document.getElementById(idMap.day).value === "") document.getElementById(idMap.day).value = d + "일";
+            if(document.getElementById(idMap.day).value === "" && d < 10) document.getElementById(idMap.day).value = "0" + d + "일";
+        }
+        if(time && document.getElementById(idMap.time)) document.getElementById(idMap.time).value = time;
+        
+        if(gender) {
+            const gRadio = document.querySelector(`input[name="me-gender"][value="${gender}"]`);
+            if(gRadio) gRadio.checked = true;
+        }
+        if(calendar) {
+            const cRadio = document.querySelector(`input[name="me-calendar"][value="${calendar}"]`);
+            if(cRadio) cRadio.checked = true;
+        }
     }
 
     onAuthStateChanged(auth, async (user) => {
+        const headerBtn = document.getElementById('header-user-btn');
         if (user) {
+            if(headerBtn) { headerBtn.innerText = "내정보"; headerBtn.onclick = function() { location.href = 'index.html?tab=myinfo'; }; }
             try {
                 const docSnap = await getDoc(doc(db, "users", user.uid));
                 if (docSnap.exists()) {
                     const data = docSnap.data();
                     const birth = data.birthDate.split('-');
-                    const y = parseInt(birth[0]);
-                    const m = parseInt(birth[1]);
-                    const d = parseInt(birth[2]);
-
-                    // 즉시 한 번 실행
-                    forceFill(y, m, d, data.birthTime, data.gender, data.calendar);
-
-                    // 혹시 화면 로딩이 늦을까봐 0.5초 뒤에 한 번 더 확실하게 실행
-                    setTimeout(() => {
-                        forceFill(y, m, d, data.birthTime, data.gender, data.calendar);
-                    }, 500);
-
+                    forceFill(parseInt(birth[0]), parseInt(birth[1]), parseInt(birth[2]), data.birthTime, data.gender, data.calendar);
+                    setTimeout(() => { forceFill(parseInt(birth[0]), parseInt(birth[1]), parseInt(birth[2]), data.birthTime, data.gender, data.calendar); }, 500);
                 }
             } catch (e) { console.error(e); }
+        } else {
+            if(headerBtn) { headerBtn.innerText = "로그인 / 가입"; headerBtn.onclick = openLogin; }
         }
     });
+
+    window.realGoogleLogin = function() { signInWithPopup(auth, googleProvider).then(() => { closeLogin(); }).catch(console.error); }
+    window.realKakaoLogin = function() { const kakaoProvider = new OAuthProvider('oidc.kakao'); signInWithPopup(auth, kakaoProvider).then(() => { closeLogin(); }).catch(console.error); }
+
+    // ==========================================
+    // 🌟 연애 궁합 토스 결제 함수
+    // ==========================================
+    const clientKey = 'test_ck_vZnjEJeQVxbKpqLQGJMP8PmOoBN0';
+    const tossPayments = TossPayments(clientKey);
+
+    window.requestPay = function() {
+        // 내 정보 저장
+        sessionStorage.setItem('me_gender', document.querySelector('input[name="me-gender"]:checked').value);
+        sessionStorage.setItem('me_calendar', document.querySelector('input[name="me-calendar"]:checked').value);
+        sessionStorage.setItem('me_year', document.getElementById('me-year').value);
+        sessionStorage.setItem('me_month', document.getElementById('me-month').value);
+        sessionStorage.setItem('me_day', document.getElementById('me-day').value);
+        sessionStorage.setItem('me_time', document.getElementById('me-time').value);
+
+        // 상대방 정보 저장
+        sessionStorage.setItem('you_gender', document.querySelector('input[name="you-gender"]:checked').value);
+        sessionStorage.setItem('you_calendar', document.querySelector('input[name="you-calendar"]:checked').value);
+        sessionStorage.setItem('you_year', document.getElementById('you-year').value);
+        sessionStorage.setItem('you_month', document.getElementById('you-month').value);
+        sessionStorage.setItem('you_day', document.getElementById('you-day').value);
+        sessionStorage.setItem('you_time', document.getElementById('you-time').value);
+
+        // 토스 결제창 띄우기
+        tossPayments.requestPayment('카드', {
+            amount: 770, 
+            orderId: 'order_' + new Date().getTime(), 
+            orderName: '사주돼지 연애 궁합', 
+            customerName: '사주돼지 고객', 
+            successUrl: window.location.origin + '/lovepig_result.html', // 성공 시 궁합 결과 페이지로 이동!
+            failUrl: window.location.origin + '/fail.html', 
+        }).catch(function (error) {
+            if (error.code === 'USER_CANCEL') { alert('결제를 취소하셨습니다.'); } 
+            else { alert(error.message); }
+        });
+    }
 </script>
 </body>
 </html>
