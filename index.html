@@ -745,7 +745,7 @@
     }
 </script>
 
-<<script type="module">
+<script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
   import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
   // 결제 목록을 불러오기 위한 도구들 추가
@@ -870,7 +870,7 @@
                       const dateStr = `${dObj.getFullYear()}.${String(dObj.getMonth()+1).padStart(2,'0')}.${String(dObj.getDate()).padStart(2,'0')}`;
 
                       const cardHtml = `
-                          <div style="border: 1.5px solid #ffe2ea; border-radius: 14px; padding: 15px; background: #ffffff;">
+                          <div style="border: 1.5px solid #ffe2ea; border-radius: 14px; padding: 15px; background: #ffffff; margin-bottom:10px;">
                               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                                   <span style="font-size: 0.8rem; color: #999;">${dateStr} 결제</span>
                                   <span style="font-size: 0.75rem; background: #ffc4d0; color: white; padding: 3px 8px; border-radius: 999px; font-weight: bold;">결제완료</span>
@@ -904,6 +904,23 @@
       sessionStorage.setItem('saju_time', data.sajuInfo.time);
       sessionStorage.setItem('saju_gender', data.sajuInfo.gender);
       sessionStorage.setItem('saju_calendar', data.sajuInfo.calendar);
+
+      // 연애 궁합인 경우 상대방 정보도 추가로 복구해줍니다!
+      if (data.itemType === 'lovepig') {
+          sessionStorage.setItem('me_year', data.sajuInfo.year); // 내 정보
+          sessionStorage.setItem('me_month', data.sajuInfo.month);
+          sessionStorage.setItem('me_day', data.sajuInfo.day);
+          sessionStorage.setItem('me_time', data.sajuInfo.time);
+          sessionStorage.setItem('me_gender', data.sajuInfo.gender);
+          sessionStorage.setItem('me_calendar', data.sajuInfo.calendar);
+
+          sessionStorage.setItem('you_year', data.sajuInfo.youYear); // 상대방 정보
+          sessionStorage.setItem('you_month', data.sajuInfo.youMonth);
+          sessionStorage.setItem('you_day', data.sajuInfo.youDay);
+          sessionStorage.setItem('you_time', data.sajuInfo.youTime);
+          sessionStorage.setItem('you_gender', data.sajuInfo.youGender);
+          sessionStorage.setItem('you_calendar', data.sajuInfo.youCalendar);
+      }
 
       // 토스 결제 키 대신 'revisit'이라는 무적의 마스터키를 달아서 결과창으로 보냅니다!
       location.href = `${data.itemType}_result.html?orderId=${orderId}&paymentKey=revisit`;
