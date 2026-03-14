@@ -930,13 +930,22 @@
     signInWithPopup(auth, googleProvider).then(() => { document.getElementById('loginOverlay').style.display = 'none'; }).catch((error) => { console.error(error); });
   }
 
+ // 🌟 [수정된 버전] 네이버 로그인 함수
   window.realNaverLogin = function() {
     const naverProvider = new OAuthProvider('oidc.naver');
+    
+    // 네이버에게 '이 사람 정보(이메일, 이름)도 같이 보내줘'라고 요청하는 설정
+    naverProvider.addScope('openid');
+    naverProvider.addScope('email');
+    naverProvider.addScope('name');
+
     signInWithPopup(auth, naverProvider).then(() => { 
         document.getElementById('loginOverlay').style.display = 'none'; 
+        // 로그인 성공 시 페이지 새로고침하여 내 정보를 불러오게 합니다.
+        location.reload(); 
     }).catch((error) => { 
-        console.error("네이버 로그인 에러:", error); 
-        alert("네이버 로그인 연동에 실패했습니다.");
+        console.error("네이버 로그인 에러 상세:", error); 
+        alert("네이버 로그인 연동에 실패했습니다. (에러코드: " + error.code + ")");
     });
   }
 
