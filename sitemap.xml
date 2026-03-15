@@ -9,7 +9,28 @@
 
 <url>
   <loc>https://sajupig.co.kr/</loc>
-  <lastmod>2026-03-13T04:27:51+00:00</lastmod>
+  <lastmod>2026-03-14T11:40:19+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://sajupig.co.kr/index.html</loc>
+  <lastmod>2026-03-14T11:40:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sajupig.co.kr/terms.html</loc>
+  <lastmod>2026-03-14T11:40:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sajupig.co.kr/privacy.html</loc>
+  <lastmod>2026-03-14T11:40:19+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sajupig.co.kr/refund.html</loc>
+  <lastmod>2026-03-14T11:40:19+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 
 
