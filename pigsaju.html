@@ -261,7 +261,7 @@
         window.realGoogleLogin = function() { signInWithPopup(auth, googleProvider).then(() => { closeLogin(); }).catch(console.error); }
         window.realKakaoLogin = function() { const kakaoProvider = new OAuthProvider('oidc.kakao'); signInWithPopup(auth, kakaoProvider).then(() => { closeLogin(); }).catch(console.error); }
 
-        const clientKey = 'test_ck_vZnjEJeQVxbKpqLQGJMP8PmOoBN0';
+        const clientKey = 'live_ck_eqRGgYO1r54nbMjBNQXbVQnN2Eya';
         const tossPayments = TossPayments(clientKey);
 
         window.requestPay = function() {
