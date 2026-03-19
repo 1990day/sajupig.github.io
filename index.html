@@ -504,7 +504,12 @@
                 <button class="saju770-btn" style="padding: 18px;" onclick="copyEmail()">
                     <div class="saju770-title" style="font-size: 1.15rem; margin: 0;">📧 이메일로 문의하기</div>
                 </button>
-                <button class="reset-btn" onclick="realLogout()">로그아웃</button>
+              <button class="reset-btn" onclick="realLogout()">로그아웃</button>
+                <button class="reset-btn" style="background: transparent; border: none; color: #aaa; padding: 10px; font-size: 0.85rem; text-decoration: underline; margin-top: -5px;" onclick="realDeleteAccount()">회원탈퇴</button>
+            </div>
+        </div>
+    </div>
+</main>
             </div>
         </div>
     </div>
@@ -771,8 +776,8 @@ function toggleMyInfo(contentId, arrowId) {
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-  import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
-  import { getFirestore, doc, setDoc, getDoc, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+  import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged, signOut, deleteUser } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+  import { getFirestore, doc, setDoc, getDoc, collection, getDocs, query, orderBy, deleteDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyAZxy9VsEgOZ-e0FApXqHUT5cTxG3_g8o0",
@@ -967,8 +972,32 @@ function toggleMyInfo(contentId, arrowId) {
     signInWithPopup(auth, kakaoProvider).then(() => { document.getElementById('loginOverlay').style.display = 'none'; }).catch((error) => { console.error(error); });
   }
 
-  window.realLogout = function() {
+ window.realLogout = function() {
     signOut(auth).then(() => { alert("로그아웃 되었습니다."); location.href = 'index.html'; });
+  }
+
+  window.realDeleteAccount = async function() {
+      const user = auth.currentUser;
+      if (!user) return;
+
+      if (confirm("정말 사주돼지를 탈퇴하시겠습니까?\n저장된 기본 사주 정보와 결제 내역이 모두 삭제되며 복구할 수 없습니다.")) {
+          try {
+              await deleteDoc(doc(db, "users", user.uid));
+              await deleteUser(user);
+              
+              alert("회원탈퇴가 완료되었습니다. 이용해 주셔서 감사합니다.");
+              location.href = 'index.html';
+          } catch (error) {
+              console.error("탈퇴 에러:", error);
+              if (error.code === 'auth/requires-recent-login') {
+                  alert("보안을 위해 로그아웃 후 다시 로그인하신 뒤 탈퇴를 진행해 주세요.");
+                  await signOut(auth);
+                  location.href = 'index.html';
+              } else {
+                  alert("탈퇴 처리 중 문제가 발생했습니다.");
+              }
+          }
+      }
   }
 </script>
 <script>
