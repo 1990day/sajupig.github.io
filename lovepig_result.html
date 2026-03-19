@@ -113,7 +113,7 @@
 
 <main>
     <div id="result-loading" style="text-align: center; padding: 100px 0; font-weight: bold; color: #ff85a2; font-size: 1.2rem;">
-        🐷 결제 확인 완료! 두 사람의 운명을 뼈 때리게 엮어보는 중입니다... 잠시만 기다려주세요!
+        🐷 결제 확인 완료! 잠시만 기다려주세요!
     </div>
 
     <div id="dynamic-fortune-content" class="fortune-result-box" style="display: none;"></div>
@@ -439,9 +439,9 @@
             html += `<div class='dashboard-card'>`;
             html += `<div class='payment-info'>결제 번호: ${orderId}</div>`;
             html += `<div class='bazi-flex'>`;
-            html += `<div class='person-col'><div class='person-name'>👩 나</div><div class='ilju-box'>${getCharHtml(meGan)}<br>${getCharHtml(meZhi)}</div></div>`;
+            html += `<div class='person-col'><div class='person-name'>나</div><div class='ilju-box'>${getCharHtml(meGan)}<br>${getCharHtml(meZhi)}</div></div>`;
             html += `<div class='vs-badge'>VS</div>`;
-            html += `<div class='person-col'><div class='person-name'>🧑 상대방</div><div class='ilju-box'>${getCharHtml(youGan)}<br>${getCharHtml(youZhi)}</div></div>`;
+            html += `<div class='person-col'><div class='person-name'>상대방</div><div class='ilju-box'>${getCharHtml(youGan)}<br>${getCharHtml(youZhi)}</div></div>`;
             html += `</div>`;
             html += `</div>`;
 
