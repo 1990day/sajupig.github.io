@@ -361,7 +361,13 @@
     const clientKey = 'live_ck_eqRGgYO1r54nbMjBNQXbVQnN2Eya';
     const tossPayments = TossPayments(clientKey);
 
-    window.requestPay = function() {
+        window.requestPay = function() {
+    // 🚨 1. 여기서 로그인 여부를 먼저 깐깐하게 검사합니다!
+    if (!auth.currentUser) {
+        alert("결제 내역을 안전하게 보관하기 위해 먼저 로그인이 필요합니다! 🐷");
+        openLogin(); // 팝업 로그인 창 스르륵 띄우기
+        return; // 로그인 안 했으면 여기서 멈춤 (아래 토스 결제 코드 실행 안 됨)
+    }
         // 내 정보 저장
         sessionStorage.setItem('me_gender', document.querySelector('input[name="me-gender"]:checked').value);
         sessionStorage.setItem('me_calendar', document.querySelector('input[name="me-calendar"]:checked').value);
