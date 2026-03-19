@@ -114,7 +114,7 @@
 
     <main>
         <div id="result-loading" style="text-align: center; padding: 100px 0; font-weight: bold; color: #ff85a2; font-size: 1.2rem;">
-            🐷 결제 확인 완료! 평생 운명을 뼈 때리게 분석 중입니다... 잠시만 기다려주세요!
+            🐷 결제 확인 완료! 잠시만 기다려주세요!
         </div>
 
         <div id="dynamic-fortune-content" class="fortune-result-box" style="display: none;"></div>
@@ -708,7 +708,39 @@ if (tenGodsCount[dom1] === tenGodsCount[dom2] && tenGodsCount[dom1] > 0) {
         }
 
         // 결과 화면 표시
-        window.onload = function() {
+      window.onload = async function() {
+    // 1. 주소창에서 결제 승인에 필요한 값들 가져오기
+    const amount = urlParams.get('amount') || 770; 
+
+    // 2. 백엔드 서버로 결제 최종 승인 요청 (실제 출금 발생)
+    try {
+        console.log("평생 사주 결제 승인 요청 시작..."); 
+        
+        const response = await fetch("https://confirmtosspayment-reeglhkbha-du.a.run.app", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                paymentKey: paymentKey,
+                orderId: orderId,
+                amount: Number(amount) // 숫자로 확실히 변환
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text(); 
+            console.error("토스 결제 거절 사유:", errorText);
+            throw new Error("서버에서 결제 승인을 거절했습니다.");
+        }
+        
+        console.log("토스 최종 출금 승인 완료!");
+    } catch (error) {
+        console.error("🚨 결제 에러 상세 정보:", error);
+        alert("결제 처리 중 문제가 발생했습니다. 결제창으로 이동합니다.");
+        window.location.replace("familypig.html");
+        return; 
+    }
             setTimeout(() => {
                 const gender = sessionStorage.getItem('saju_gender');
                 const calendarType = sessionStorage.getItem('saju_calendar');
