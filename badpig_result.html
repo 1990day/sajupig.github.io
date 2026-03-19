@@ -682,6 +682,8 @@
 
   window.onload = async function() {
     try {
+        console.log("결제 승인 요청 시작..."); 
+        
         const response = await fetch("https://confirmtosspayment-reeglhkbha-du.a.run.app", {
             method: "POST",
             headers: {
@@ -690,21 +692,21 @@
             body: JSON.stringify({
                 paymentKey: paymentKey,
                 orderId: orderId,
-                amount: Number(amount) // 👈 무조건 숫자로 변환해서 보냄!
+                amount: Number(amount)
             })
         });
 
         if (!response.ok) {
-            // 서버가 에러를 뱉으면 상세 이유를 콘솔에 출력
-            const errorData = await response.json();
-            console.error("토스 결제 거절 사유:", errorData);
+            const errorText = await response.text(); 
+            console.error("토스 결제 거절 사유:", errorText);
             throw new Error("서버에서 결제 승인을 거절했습니다.");
         }
         
         console.log("토스 최종 출금 승인 완료!");
     } catch (error) {
-        alert("결제 처리 중 문제가 발생했습니다. 다시 시도해 주세요.");
-        window.location.replace("badpig.html");
+        console.error("🚨 진짜 에러 상세 정보:", error);
+        alert("결제 에러가 났습니다. F12 콘솔창을 확인해주세요!");
+        // window.location.replace("badpig.html"); // 👈 화면 넘어가는 걸 막기 위해 주석 처리!
         return; 
     }
 
