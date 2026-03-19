@@ -419,72 +419,85 @@
         </div>
     </div>
 
-    <div id="myinfo" class="section">
+   <div id="myinfo" class="section">
         <div class="card">
             <h2>👤 내 정보</h2>
             <p id="user-name-display" style="color: #d11534; font-weight: bold; margin-bottom: 20px;">로그인이 필요합니다.</p>
             
             <div class="saju-form" style="margin-bottom: 20px; border-color: #ffd4df; background-color: #fffafb;">
-                <h3 style="font-size: 1.1rem; margin-top: 0; color: #d11534;">📜 내 사주 보관함</h3>
-                <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">결제하신 사주 내역을 언제든 다시 볼 수 있습니다.</p>
-                
-                <div id="purchase-list-container" style="display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="toggleMyInfo('purchase-content', 'purchase-arrow')">
+                    <div>
+                        <h3 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 5px; color: #d11534;">📜 내 사주 보관함</h3>
+                        <p style="font-size: 0.85rem; color: #666; margin: 0;">결제하신 내역을 언제든 다시 볼 수 있습니다.</p>
                     </div>
+                    <div id="purchase-arrow" style="font-size: 1.2rem; color: #d11534; transition: transform 0.3s ease;">▼</div>
+                </div>
+                
+                <div id="purchase-content" style="display: none; border-top: 1px dashed #ffd4df; padding-top: 15px; margin-top: 15px;">
+                    <div id="purchase-list-container" style="display: flex; flex-direction: column; gap: 10px;"></div>
+                </div>
             </div>
 
             <div class="saju-form" style="margin-bottom: 20px;">
-                <h3 style="font-size: 1.1rem; margin-top: 0; color: #5a3a41;">⚙️ 내 기본 사주 설정</h3>
-                <p style="font-size: 0.85rem; color: #666;">저장해두면 사주를 볼 때 자동으로 입력됩니다.</p>
-                
-                <div style="display:flex; flex-direction:column; gap: 10px; margin-bottom: 15px;">
-                    
-                    <div class="form-group" style="margin-bottom: 10px;">
-                        <label style="font-size: 0.85rem;">닉네임</label>
-                        <input type="text" id="my-saved-nickname" placeholder="사주돼지 회원">
+                <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="toggleMyInfo('setting-content', 'setting-arrow')">
+                    <div>
+                        <h3 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 5px; color: #5a3a41;">⚙️ 내 기본 사주 설정</h3>
+                        <p style="font-size: 0.85rem; color: #666; margin: 0;">저장해두면 사주를 볼 때 자동 입력됩니다.</p>
                     </div>
-
-                    <div class="form-group" style="margin-bottom: 10px;">
-                        <label style="font-size: 0.85rem;">성별</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="my-saved-gender" value="M" checked><span>남성</span></label>
-                            <label><input type="radio" name="my-saved-gender" value="F"><span>여성</span></label>
-                        </div>
-                    </div>
-
-                    <div class="form-group" style="margin-bottom: 10px;">
-                        <label style="font-size: 0.85rem;">양력 / 음력</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="my-saved-calendar" value="solar" checked><span>양력</span></label>
-                            <label><input type="radio" name="my-saved-calendar" value="lunar"><span>음력 평달</span></label>
-                            <label><input type="radio" name="my-saved-calendar" value="lunar-leap"><span>음력 윤달</span></label>
-                        </div>
-                    </div>
-
-                    <label style="font-size: 0.85rem; color: #d11534; font-weight: 800;">생년월일</label>
-                    <div class="date-select-group">
-                        <select id="my-saved-year" style="padding: 12px 5px; border: 1.5px solid #ffd4df; border-radius: 12px;"></select>
-                        <select id="my-saved-month" style="padding: 12px 5px; border: 1.5px solid #ffd4df; border-radius: 12px;"></select>
-                        <select id="my-saved-day" style="padding: 12px 5px; border: 1.5px solid #ffd4df; border-radius: 12px;"></select>
-                    </div>
-                    
-                    <label style="font-size: 0.85rem; color: #d11534; font-weight: 800;">태어난 시간</label>
-                    <select id="my-saved-time" style="padding: 12px; border: 1.5px solid #ffd4df; border-radius: 12px;">
-                        <option value="unknown">태어난 시간 모름</option>
-                        <option value="자시">자시 (23:30 ~ 01:29)</option>
-                        <option value="축시">축시 (01:30 ~ 03:29)</option>
-                        <option value="인시">인시 (03:30 ~ 05:29)</option>
-                        <option value="묘시">묘시 (05:30 ~ 07:29)</option>
-                        <option value="진시">진시 (07:30 ~ 09:29)</option>
-                        <option value="사시">사시 (09:30 ~ 11:29)</option>
-                        <option value="오시">오시 (11:30 ~ 13:29)</option>
-                        <option value="미시">미시 (13:30 ~ 15:29)</option>
-                        <option value="신시">신시 (15:30 ~ 17:29)</option>
-                        <option value="유시">유시 (17:30 ~ 19:29)</option>
-                        <option value="술시">술시 (19:30 ~ 21:29)</option>
-                        <option value="해시">해시 (21:30 ~ 23:29)</option>
-                    </select>
+                    <div id="setting-arrow" style="font-size: 1.2rem; color: #5a3a41; transition: transform 0.3s ease;">▼</div>
                 </div>
-                <button class="submit-btn" style="padding: 14px; font-size: 1rem;" onclick="saveMyInfo()">내 정보 저장하기</button>
+                
+                <div id="setting-content" style="display: none; border-top: 1px dashed #ffe2ea; padding-top: 15px; margin-top: 15px;">
+                    <div style="display:flex; flex-direction:column; gap: 10px; margin-bottom: 15px;">
+                        
+                        <div class="form-group" style="margin-bottom: 10px;">
+                            <label style="font-size: 0.85rem;">닉네임</label>
+                            <input type="text" id="my-saved-nickname" placeholder="사주돼지 회원">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 10px;">
+                            <label style="font-size: 0.85rem;">성별</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="my-saved-gender" value="M" checked><span>남성</span></label>
+                                <label><input type="radio" name="my-saved-gender" value="F"><span>여성</span></label>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 10px;">
+                            <label style="font-size: 0.85rem;">양력 / 음력</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="my-saved-calendar" value="solar" checked><span>양력</span></label>
+                                <label><input type="radio" name="my-saved-calendar" value="lunar"><span>음력 평달</span></label>
+                                <label><input type="radio" name="my-saved-calendar" value="lunar-leap"><span>음력 윤달</span></label>
+                            </div>
+                        </div>
+
+                        <label style="font-size: 0.85rem; color: #d11534; font-weight: 800;">생년월일</label>
+                        <div class="date-select-group">
+                            <select id="my-saved-year" style="padding: 12px 5px; border: 1.5px solid #ffd4df; border-radius: 12px;"></select>
+                            <select id="my-saved-month" style="padding: 12px 5px; border: 1.5px solid #ffd4df; border-radius: 12px;"></select>
+                            <select id="my-saved-day" style="padding: 12px 5px; border: 1.5px solid #ffd4df; border-radius: 12px;"></select>
+                        </div>
+                        
+                        <label style="font-size: 0.85rem; color: #d11534; font-weight: 800;">태어난 시간</label>
+                        <select id="my-saved-time" style="padding: 12px; border: 1.5px solid #ffd4df; border-radius: 12px;">
+                            <option value="unknown">태어난 시간 모름</option>
+                            <option value="자시">자시 (23:30 ~ 01:29)</option>
+                            <option value="축시">축시 (01:30 ~ 03:29)</option>
+                            <option value="인시">인시 (03:30 ~ 05:29)</option>
+                            <option value="묘시">묘시 (05:30 ~ 07:29)</option>
+                            <option value="진시">진시 (07:30 ~ 09:29)</option>
+                            <option value="사시">사시 (09:30 ~ 11:29)</option>
+                            <option value="오시">오시 (11:30 ~ 13:29)</option>
+                            <option value="미시">미시 (13:30 ~ 15:29)</option>
+                            <option value="신시">신시 (15:30 ~ 17:29)</option>
+                            <option value="유시">유시 (17:30 ~ 19:29)</option>
+                            <option value="술시">술시 (19:30 ~ 21:29)</option>
+                            <option value="해시">해시 (21:30 ~ 23:29)</option>
+                        </select>
+                    </div>
+                    <button class="submit-btn" style="padding: 14px; font-size: 1rem;" onclick="saveMyInfo()">내 정보 저장하기</button>
+                </div>
             </div>
 
             <div class="saju770-menu" style="margin-top: 0;">
@@ -495,7 +508,6 @@
             </div>
         </div>
     </div>
-
 </main>
 
 <footer style="padding: 20px; text-align: center; font-size: 0.75rem; color: #999; background: #fdf5f7; margin-top: 30px; border-top: 1px solid #ffe4eb;">
@@ -742,6 +754,19 @@
             prompt("아래 이메일 주소를 복사해서 문의를 남겨주세요:", email);
         });
     }
+function toggleMyInfo(contentId, arrowId) {
+        const content = document.getElementById(contentId);
+        const arrow = document.getElementById(arrowId);
+        
+        if (content.style.display === 'none') {
+            content.style.display = 'block';
+            arrow.style.transform = 'rotate(180deg)'; // 화살표 뒤집기
+        } else {
+            content.style.display = 'none';
+            arrow.style.transform = 'rotate(0deg)'; // 화살표 원상복구
+        }
+    }
+
 </script>
 
 <script type="module">
