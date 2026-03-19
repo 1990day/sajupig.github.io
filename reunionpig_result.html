@@ -834,5 +834,45 @@
     window.realGoogleLogin = function() { signInWithPopup(auth, googleProvider).then(() => { closeLogin(); }).catch(console.error); }
     window.realKakaoLogin = function() { const kakaoProvider = new OAuthProvider('oidc.kakao'); signInWithPopup(auth, kakaoProvider).then(() => { closeLogin(); }).catch(console.error); }
 </script>
+<script>
+    // 1. 마우스 우클릭 금지
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    // 2. F12 및 개발자 도구 단축키 금지
+    document.addEventListener('keydown', function(e) {
+        // F12 키 막기
+        if (e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl + Shift + I (개발자 도구 여는 단축키) 막기
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl + Shift + J (개발자 도구 콘솔 여는 단축키) 막기
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl + Shift + C (개발자 도구 요소 검사 단축키) 막기
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl + U (페이지 소스 보기 단축키) 막기
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // 3. 마우스 드래그 금지 (텍스트 복사 방지)
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+    });
+</script>
 </body>
 </html>
