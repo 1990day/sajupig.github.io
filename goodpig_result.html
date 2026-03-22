@@ -144,6 +144,7 @@
         // ==========================================================
         const urlParams = new URLSearchParams(window.location.search);
         const paymentKey = urlParams.get('paymentKey'); 
+        const amount = urlParams.get('amount'); //
         const sajuYear = sessionStorage.getItem('saju_year'); 
         const orderId = urlParams.get('orderId') || '현장결제';
 
