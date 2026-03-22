@@ -141,10 +141,11 @@
         function closeLogin() { document.getElementById('loginOverlay').style.display = 'none'; }
 
         // 보안 체크 로직
-        const urlParams = new URLSearchParams(window.location.search);
-        const paymentKey = urlParams.get('paymentKey'); 
-        const sajuYear = sessionStorage.getItem('saju_year'); 
-        const orderId = urlParams.get('orderId') || '현장결제';
+     const urlParams = new URLSearchParams(window.location.search);
+const paymentKey = urlParams.get('paymentKey');
+const amount = urlParams.get('amount'); // 🚨 이 한 줄을 똑같이 추가해 주세요!
+const sajuYear = sessionStorage.getItem('saju_year');
+const orderId = urlParams.get('orderId') || '현장결제';
 
         if (!paymentKey || !sajuYear) {
             alert("정상적인 결제 내역이 확인되지 않았습니다! 결제 페이지로 이동합니다.");
