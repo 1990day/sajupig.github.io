@@ -134,8 +134,10 @@
     // ==========================================================
     // 🚨 [필수] 결제 우회 방지 철통 보안 코드 (Kill Switch 작동)
     // ==========================================================
-    const urlParams = new URLSearchParams(window.location.search);
-    const paymentKey = urlParams.get('paymentKey'); 
+   const urlParams = new URLSearchParams(window.location.search);
+const paymentKey = urlParams.get('paymentKey');
+const amount = urlParams.get('amount'); // 🚨 이 한 줄을 꼭 추가해 주세요!!!
+// 궁합은 '내 정보'와 '상대방 정보' 두 개가 모두 필요합니다.
     // 궁합은 '내 정보'와 '상대방 정보' 두 개가 모두 필요합니다.
     const meYear = sessionStorage.getItem('me_year'); 
     const youYear = sessionStorage.getItem('you_year'); 
