@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사주돼지 - 멍냥 궁합</title>
+    <title>사주돼지 - 반려동물 궁합</title>
     <meta name="keywords" content="사주돼지, 반려동물사주, 강아지사주, 고양이사주, 멍냥궁합, 펫사주, 무료사주, 신년운세">
     <meta property="og:type" content="website"> 
-    <meta property="og:title" content="사주돼지 - 멍냥 궁합">
-    <meta property="og:description" content="사주돼지에서 확인하는 사랑 넘치는 우리 아이와의 궁합 풀이">
+    <meta property="og:title" content="사주돼지 - 반려동물 궁합">
+    <meta property="og:description" content="사주돼지에서 확인하는 반려동물과의 궁합 풀이">
     <meta property="og:image" content="og_img.png">
     <meta property="og:url" content="https://sajupig.co.kr/petpig">
     <script src="https://unpkg.com/lunar-javascript/lunar.js"></script>
@@ -759,7 +759,7 @@
                     const purchaseRef = doc(db, "users", user.uid, "purchases", window.orderId);
                     await setDoc(purchaseRef, {
                         orderId: window.orderId,
-                        itemName: "멍냥 궁합",
+                        itemName: "반려동물 궁합",
                         itemType: "petpig",
                         purchaseDate: new Date().toISOString(),
                         sajuInfo: {
@@ -777,7 +777,7 @@
                             youCalendar: sessionStorage.getItem('you_calendar')
                         }
                     }, { merge: true });
-                    console.log("결제 내역(멍냥 궁합) 저장 완료");
+                    console.log("결제 내역(반려동물 궁합) 저장 완료");
                 } catch (e) { console.error("영수증 저장 실패:", e); }
             }
         } else {
@@ -787,6 +787,18 @@
 
     window.realGoogleLogin = function() { signInWithPopup(auth, googleProvider).then(() => { closeLogin(); }).catch(console.error); }
     window.realKakaoLogin = function() { const kakaoProvider = new OAuthProvider('oidc.kakao'); signInWithPopup(auth, kakaoProvider).then(() => { closeLogin(); }).catch(console.error); }
+</script>
+
+<script>
+    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+    document.addEventListener('keydown', function(e) {
+        if (e.keyCode === 123) { e.preventDefault(); return false; }
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) { e.preventDefault(); return false; }
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) { e.preventDefault(); return false; }
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 67) { e.preventDefault(); return false; }
+        if (e.ctrlKey && e.keyCode === 85) { e.preventDefault(); return false; }
+    });
+    document.addEventListener('selectstart', function(e) { e.preventDefault(); });
 </script>
 
 </body>
