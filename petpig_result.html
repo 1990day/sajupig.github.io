@@ -62,13 +62,23 @@
         .final-score-circle { background: #ffffff; color: #ff5277; width: 110px; height: 110px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; font-weight: 900; margin: 0 auto 20px auto; box-shadow: 0 8px 15px rgba(255, 82, 119, 0.2); border: 4px dashed #ffc4d0; }
         .final-score-text { background: #ffffff; color: #4a3333; padding: 22px; border-radius: 20px; font-size: 1.1rem; line-height: 1.6; font-weight: 900; box-shadow: inset 0 2px 5px rgba(0,0,0,0.03); word-break: keep-all; }
 
-        .fortune-section-card { background: #ffffff; border: 4px solid #ffe4e8; border-radius: 30px; padding: 35px 20px 20px 20px; margin-top: 25px; margin-bottom: 35px; box-shadow: 0 8px 20px rgba(255, 182, 193, 0.2); position: relative; }
-        .fortune-section-title { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); color: #ffffff; background: #ff85a2; padding: 10px 25px; border-radius: 30px; font-size: 1.15rem; font-weight: 900; box-shadow: 0 6px 12px rgba(255, 133, 162, 0.4); border: 3px solid #ffffff; white-space: nowrap; z-index: 10; }
-        .fortune-content-text { color: #3b2a2a; font-size: 1.05rem; line-height: 1.75; text-align: justify; letter-spacing: -0.5px; word-break: keep-all; }
+        /* 타이틀 삐져나감 수정 및 가독성 개선 */
+        .fortune-section-card { background: #ffffff; border: 4px solid #ffe4e8; border-radius: 30px; padding: 45px 20px 20px 20px; margin-top: 30px; margin-bottom: 35px; box-shadow: 0 8px 20px rgba(255, 182, 193, 0.2); position: relative; }
+        .fortune-section-title { 
+            position: absolute; top: -20px; left: 50%; transform: translateX(-50%); 
+            color: #ffffff; background: #ff85a2; padding: 10px 20px; border-radius: 30px; 
+            font-size: 1.1rem; font-weight: 900; box-shadow: 0 6px 12px rgba(255, 133, 162, 0.4); 
+            border: 3px solid #ffffff; 
+            width: 85%; max-width: 320px; /* 너무 넓어지지 않게 제한 */
+            word-break: keep-all; line-height: 1.3; text-align: center; z-index: 10; 
+        }
+        
+        /* 텍스트 띄어쓰기 찢어짐 수정 (text-align: left 로 변경) */
+        .fortune-content-text { color: #3b2a2a; font-size: 1.05rem; line-height: 1.75; text-align: left; letter-spacing: -0.5px; word-break: keep-all; }
         .fortune-content-text p { margin-bottom: 20px; padding: 18px; background: #fff0f5; border-radius: 20px; font-weight: 500; }
         
         .stat-compare-wrap { margin-bottom: 25px; }
-        .stat-title { text-align: center; font-weight: 900; color: #4a3333; margin-bottom: 8px; font-size: 1.05rem; }
+        .stat-title { text-align: center; font-weight: 900; color: #4a3333; margin-bottom: 8px; font-size: 1.05rem; word-break: keep-all; line-height: 1.3; padding: 0 10px;}
         .stat-bar-container { position: relative; height: 34px; border-radius: 17px; overflow: hidden; border: 3px solid #ffe4e8; background: #ffc4d0; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); }
         .stat-bar-fill { position: absolute; top: 0; left: 0; height: 100%; background: #ff5277; transition: width 1s ease-in-out; }
         .stat-text-me { position: absolute; left: 15px; top: 0; line-height: 34px; font-weight: 900; font-size: 0.95rem; color: #ffffff; z-index: 2; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); white-space: nowrap; }
@@ -161,6 +171,33 @@
         if (!char || char === 'unknown') return "?";
         const el = elementMap[char];
         return `<span class="${colorClasses[el]}">${char}</span>`;
+    }
+
+    // 신규 로직: 사람이었다면 어떤 관계였을까?
+    function getHumanRelationship(ganRel, zhiRel) {
+        let title = "";
+        let desc = "";
+
+        if (ganRel === "합" || zhiRel === "합" || zhiRel === "육합" || zhiRel === "삼합") {
+            title = "👩‍❤️‍👨 전생에 우린 애틋한 연인 혹은 소울메이트!";
+            desc = "만약 사람이었다면 눈만 마주쳐도 불꽃이 튀는 연인이었거나, 말하지 않아도 속마음을 꿰뚫어 보는 영혼의 단짝이었을 거예요. 서로에게 묘하게 끌리고 챙겨주고 싶어 하는 마음이 아주 강해서, 남들이 보기엔 유난 떤다고 할 정도로 찰떡같이 붙어 다녔을 사이랍니다.";
+        } else if (ganRel === "비견" || zhiRel === "동지지") {
+            title = "👯‍♀️ 쌍둥이처럼 닮은 영혼의 현실 찐친!";
+            desc = "사람이었다면 성격, 취향, 개그 코드까지 소름 돋게 똑같은 동네 불알친구였을 거예요! 좋을 때는 세상 둘도 없이 쿵짝이 잘 맞지만, 고집 부릴 때는 서로 절대 양보 안 해서 한바탕 투닥거리기도 하는 귀여운 찐친의 모습이네요.";
+        } else if (ganRel === "내가 생함" || ganRel === "아이가 생함") {
+            title = "👨‍👩‍👧 내리사랑 듬뿍 주는 헌신적인 가족!";
+            desc = "사람이었다면 한쪽이 다른 한쪽을 조건 없이 챙겨주고 아껴주는 끈끈한 부모 자식이나 다정한 남매 같았을 거예요. 뭔가 해주고 싶어서 안달이 나고, 옆에 없으면 밥은 먹었는지 걱정되는 아주 따뜻하고 희생적인 인연이랍니다.";
+        } else if (ganRel === "내가 극함" || ganRel === "아이가 극함" || zhiRel === "충") {
+            title = "⚔️ 만나면 으르렁! 환장의 라이벌 혹은 앙숙!";
+            desc = "만약 사람이었다면 만나기만 하면 서로 태클 걸고 장난치느라 정신없는 환장의 라이벌이었을 거예요! 겉으로는 으르렁거리면서도 막상 남이 내 라이벌을 욕하면 편들어주는, 미운 정이 아주 무섭게 든 톰과 제리 같은 사이랍니다.";
+        } else if (zhiRel === "원진" || zhiRel === "형" || zhiRel === "해") {
+            title = "💔 미워할 수 없는 마라맛 애증의 관계!";
+            desc = "사람이었다면 헤어지지도 못하고 계속 만나면서 지지고 볶는 엄청난 애증의 연인이었을지도 몰라요. 이상하게 신경 쓰이고, 미우면서도 자꾸 보고 싶고, 떨어져 있으면 생각나는 아주 징글징글하고 끈끈한 마라맛 인연입니다.";
+        } else {
+            title = "☕ 말없이 있어도 편안한 동네 룸메이트!";
+            desc = "사람이었다면 억지로 대화를 짜내지 않아도 어색하지 않고, 각자 할 일 하면서도 묘한 안정감을 주는 편안한 룸메이트나 동네 친구였을 거예요. 피곤한 날 맥주 한 캔 마시며 아무 말 없이 멍때려도 가장 편한, 일상을 든든하게 받쳐주는 사이랍니다.";
+        }
+        return { title, desc };
     }
 
     const ownerIljuText = {
@@ -388,6 +425,7 @@
         const affectionScores = {"甲":60, "乙":85, "丙":90, "丁":95, "戊":50, "己":75, "庚":40, "辛":65, "壬":80, "癸":95};
         const stubbornScores = {"甲":95, "乙":50, "丙":85, "丁":60, "戊":90, "己":80, "庚":95, "辛":85, "壬":70, "癸":40};
 
+        // 한글과 한자 불일치 해결! 완전히 한자로 통일했습니다.
         const elementMeta = {
             "木": { keywords: "성장력, 적응력, 회복력, 생기", meaning: "새로운 환경에 적응하고 기운을 바깥으로 뻗어 나가게 만드는 힘", care: "햇볕, 산책, 식물 많은 공간, 새로운 냄새와 자극", lackEffect: "활력이 처지거나 새로운 환경에 적응하는 속도가 더딜 수 있고, 마음이 쉽게 움츠러들 수 있습니다.", excessEffect: "움직임이 많고 호기심이 풍부하지만 한곳에 차분히 머무는 힘은 다소 약해질 수 있습니다." },
             "火": { keywords: "온기, 표현력, 애정, 활발함", meaning: "감정을 드러내고 관계의 온도를 빠르게 끌어올리는 힘", care: "따뜻한 교감, 칭찬, 놀아 주는 시간, 밝은 분위기", lackEffect: "표현이 적고 반응이 무던해 보여도 속으로는 정서적 건조함이 쌓일 수 있습니다.", excessEffect: "애정 표현이 풍부하고 생동감이 넘치지만 흥분과 예민함도 함께 올라갈 수 있습니다." },
@@ -503,7 +541,7 @@
             meEnergy, youEnergy, eRatio,
             meAffection, youAffection, aRatio,
             meStubborn, youStubborn, sRatio,
-            ganText, zhiText, synergyText, simText, solutionText
+            ganText, zhiText, synergyText, simText, solutionText, ganRel, zhiRel // ganRel, zhiRel 리턴 추가
         };
     }
 
@@ -579,6 +617,9 @@
                 const finalOwnerText = (ownerIljuText[meGan+meZhi] || ownerIljuText['甲子']);
                 const finalPetText = (petIljuText[youGan+youZhi] || petIljuText['甲子']);
 
+                // 사람이었다면 어떤 관계였을까? 데이터 가져오기
+                const humanRel = getHumanRelationship(result.ganRel, result.zhiRel);
+
                 let html = "";
                 html += `<div class='dashboard-card'>`;
                 html += `<div class='bazi-flex'>`;
@@ -593,6 +634,14 @@
                 html += `<div class='final-score-circle'>${result.score}점</div>`;
                 html += `<div class='final-score-text'>${result.conclusion}</div>`;
                 html += `</div>`;
+
+                // 새로 추가된 "사람이었다면?" 섹션
+                html += "<div class='fortune-section-card'>";
+                html += "<div class='fortune-section-title'>👤 만약 우리 아이가 사람이었다면?</div>";
+                html += "<div class='fortune-content-text' style='text-align: center;'>";
+                html += `<h3 style='color: #ff5277; margin-top: 10px; margin-bottom: 15px; word-break: keep-all; line-height: 1.4;'>${humanRel.title}</h3>`;
+                html += `<p style='text-align: left;'>${humanRel.desc}</p>`;
+                html += "</div></div>";
 
                 html += "<div class='fortune-section-card'>";
                 html += "<div class='fortune-section-title'>📊 사주돼지가 훔쳐본 멍냥 스탯</div>";
