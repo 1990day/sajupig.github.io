@@ -15,7 +15,6 @@
     <link rel="icon" type="image/png" href="/favicon.png">
     
     <style>
-        /* 기존 핑크빛 디자인 완벽 유지 */
         html { background-color: #fce4ec; }
         body {
             margin: 0 auto; max-width: 480px; min-height: 100vh;
@@ -172,13 +171,6 @@
 
                 <div class="sub-title">🐾 반려동물 정보</div>
                 <div class="form-group">
-                    <label>성별</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="you-gender" value="M" checked><span>수컷</span></label>
-                        <label><input type="radio" name="you-gender" value="F"><span>암컷</span></label>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label>양력 / 음력</label>
                     <div class="radio-group">
                         <label><input type="radio" name="you-calendar" value="solar" checked><span>양력</span></label>
@@ -245,8 +237,8 @@
 
     (function initDropdowns() {
         const selects = [
-            {y: 'me-year', m: 'me-month', d: 'me-day'},
-            {y: 'you-year', m: 'you-month', d: 'you-day'}
+            {y: 'me-year', m: 'me-month', d: 'me-day', def: '1990'},
+            {y: 'you-year', m: 'you-month', d: 'you-day', def: '2010'}
         ];
         
         const curYear = new Date().getFullYear();
@@ -262,7 +254,7 @@
             for(let i = 1; i <= 12; i++) monthSel.add(new Option(i + "월", i));
             for(let i = 1; i <= 31; i++) daySel.add(new Option(i + "일", i));
             
-            yearSel.value = "1990";
+            yearSel.value = group.def;
         });
     })();
 </script>
@@ -353,7 +345,7 @@
         sessionStorage.setItem('me_day', document.getElementById('me-day').value);
         sessionStorage.setItem('me_time', document.getElementById('me-time').value);
 
-        sessionStorage.setItem('you_gender', document.querySelector('input[name="you-gender"]:checked').value);
+        sessionStorage.setItem('you_gender', 'M'); // 결과 페이지 에러 방지용 기본값
         sessionStorage.setItem('you_calendar', document.querySelector('input[name="you-calendar"]:checked').value);
         sessionStorage.setItem('you_year', document.getElementById('you-year').value);
         sessionStorage.setItem('you_month', document.getElementById('you-month').value);
