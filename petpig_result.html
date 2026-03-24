@@ -8,96 +8,515 @@
     <meta property="og:type" content="website"> 
     <meta property="og:title" content="사주돼지 - 반려동물 궁합">
     <meta property="og:description" content="사주돼지에서 확인하는 반려동물과의 궁합 풀이">
-    <meta property="og:image" content="https://sajupig.co.kr/og_img.png">
+    <meta property="og:image" content="og_img.png">
     <meta property="og:url" content="https://sajupig.co.kr/petpig">
     <script src="https://unpkg.com/lunar-javascript/lunar.js"></script>
     <link rel="icon" type="image/png" href="/favicon.png">
     <style>
         html { background-color: #fce4ec; }
+
+        * { box-sizing: border-box; }
+
         body {
-            /* width: 100% 추가로 중앙 정렬 해결, 기본 폰트 크기 축소 */
-            margin: 0 auto; width: 100%; max-width: 480px; min-height: 100vh;
-            font-family: 'Pretendard', -apple-system, sans-serif;
-            background-color: #fff0f5; color: #4a3333;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08); position: relative; padding: 20px; box-sizing: border-box;
-            font-size: 0.95rem;
+            margin: 0 auto;
+            max-width: 480px;
+            min-height: 100vh;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(255,255,255,0.55) 0, rgba(255,255,255,0) 28%),
+                linear-gradient(180deg, #fff7fa 0%, #fff0f5 100%);
+            color: #4a3333;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            padding: 18px 16px 26px;
         }
 
         header { 
-            background-color: #ffb6c1; position: sticky; top: 0; z-index: 100; 
+            background-color: #ffb6c1;
+            position: sticky;
+            top: 0;
+            z-index: 100; 
             box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4); 
-            border-bottom: 4px solid #ff85a2; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
-            margin: -20px -20px 20px -20px;
+            border-bottom: 4px solid #ff85a2;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            margin: -18px -16px 18px -16px;
         }
-        .header-logo { display: block; height: 28px; width: auto; }
-        .header-top { display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 15px 20px; }
+
+        .header-logo { display: block; height: 30px; width: auto; }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px 15px 20px;
+        }
         .main-link { text-decoration: none; color: inherit; }
+
         .login-btn-header {
-            background: #ffffff; border: 3px solid #ff85a2; color: #ff85a2;
-            padding: 6px 16px; border-radius: 25px; font-size: 0.85rem; font-weight: 900; cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.2s;
+            background: #ffffff;
+            border: 3px solid #ff85a2;
+            color: #ff85a2;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s;
         }
         
-        nav { display: flex; justify-content: space-between; padding: 10px 15px 20px 15px; gap: 10px; overflow-x: auto; white-space: nowrap; }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px 20px 15px;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
         nav button { 
-            flex: 1; background-color: #ffffff; border: 3px solid #ffe4e8; font-size: 0.8rem; color: #ff85a2; 
-            cursor: pointer; font-weight: 900; transition: all 0.2s; border-radius: 20px; aspect-ratio: 1 / 1; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
+            flex: 1;
+            background-color: #ffffff;
+            border: 3px solid #ffe4e8;
+            font-size: 0.85rem;
+            color: #ff85a2; 
+            cursor: pointer;
+            font-weight: 900;
+            transition: all 0.2s;
+            border-radius: 20px;
+            aspect-ratio: 1 / 1; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
         }
-        nav button.active { color: #ffffff; background-color: #ff85a2; border-color: #ff85a2; transform: translateY(-4px); box-shadow: 0 8px 15px rgba(255, 133, 162, 0.4); }
-        nav button span.icon { font-size: 1.4rem; }
+
+        nav button.active {
+            color: #ffffff;
+            background-color: #ff85a2;
+            border-color: #ff85a2;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(255, 133, 162, 0.4);
+        }
+
+        nav button span.icon { font-size: 1.6rem; }
         nav::-webkit-scrollbar { display: none; }
-        
-        main { padding: 10px 0; text-align: center; }
-        
-        .fortune-result-box { background: transparent; text-align: left; animation: fadeIn 0.8s ease-in-out; }
-        
-        .dashboard-card { background: #ffffff; padding: 20px 15px; border-radius: 25px; margin-bottom: 25px; border: 4px solid #ffb6c1; box-shadow: 0 6px 15px rgba(255, 182, 193, 0.3); text-align: center; }
-        .vs-badge { display: inline-block; background: #ff5277; color: white; padding: 4px 12px; border-radius: 20px; font-weight: bold; margin: 10px 0; font-size: 1.1rem; box-shadow: 0 4px 8px rgba(255, 82, 119, 0.3); }
-        .bazi-flex { display: flex; justify-content: space-around; align-items: center; }
-        .person-col { flex: 1; }
-        .person-name { font-size: 1rem; color: #ff85a2; font-weight: 900; margin-bottom: 8px; }
-        .ilju-box { font-size: 1.6rem; font-weight: 900; background: #fff0f5; padding: 12px; border-radius: 20px; border: 2px dashed #ffc4d0; display: inline-block; line-height: 1.2; }
 
-        .final-score-card { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); border-radius: 30px; padding: 25px 20px; text-align: center; box-shadow: 0 10px 20px rgba(255, 133, 162, 0.3); margin-bottom: 30px; border: 4px solid #ffffff; }
-        .final-score-title { color: #ffffff; font-size: 1.2rem; font-weight: 900; margin-bottom: 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.15); }
-        .final-score-circle { background: #ffffff; color: #ff5277; width: 90px; height: 90px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 900; margin: 0 auto 15px auto; box-shadow: 0 8px 15px rgba(255, 82, 119, 0.2); border: 4px dashed #ffc4d0; }
-        .final-score-text { background: #ffffff; color: #4a3333; padding: 18px; border-radius: 20px; font-size: 0.95rem; line-height: 1.5; font-weight: 900; box-shadow: inset 0 2px 5px rgba(0,0,0,0.03); word-break: keep-all; }
-
-        .fortune-section-card { background: #ffffff; border: 4px solid #ffe4e8; border-radius: 30px; padding: 40px 20px 20px 20px; margin-top: 30px; margin-bottom: 30px; box-shadow: 0 8px 20px rgba(255, 182, 193, 0.2); position: relative; }
-        .fortune-section-title { 
-            position: absolute; top: -18px; left: 50%; transform: translateX(-50%); 
-            color: #ffffff; background: #ff85a2; padding: 8px 18px; border-radius: 30px; 
-            font-size: 1rem; font-weight: 900; box-shadow: 0 6px 12px rgba(255, 133, 162, 0.4); 
-            border: 3px solid #ffffff; 
-            width: 85%; max-width: 300px; 
-            word-break: keep-all; line-height: 1.3; text-align: center; z-index: 10; 
+        main {
+            padding: 6px 0 0;
+            text-align: center;
         }
-        
-        /* 본문 폰트 사이즈 축소 및 자간/행간 조정 */
-        .fortune-content-text { color: #3b2a2a; font-size: 0.95rem; line-height: 1.6; text-align: left; letter-spacing: -0.3px; word-break: keep-all; }
-        .fortune-content-text p { margin-bottom: 15px; padding: 15px; background: #fff0f5; border-radius: 20px; font-weight: 500; }
-        
-        .stat-compare-wrap { margin-bottom: 20px; }
-        .stat-title { text-align: center; font-weight: 900; color: #4a3333; margin-bottom: 8px; font-size: 0.95rem; word-break: keep-all; line-height: 1.3; padding: 0 10px;}
-        .stat-bar-container { position: relative; height: 30px; border-radius: 15px; overflow: hidden; border: 3px solid #ffe4e8; background: #ffc4d0; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); }
-        .stat-bar-fill { position: absolute; top: 0; left: 0; height: 100%; background: #ff5277; transition: width 1s ease-in-out; }
-        .stat-text-me { position: absolute; left: 12px; top: 0; line-height: 30px; font-weight: 900; font-size: 0.85rem; color: #ffffff; z-index: 2; text-shadow: 1px 1px 2px rgba(0,0,0,0.4); white-space: nowrap; }
-        .stat-text-you { position: absolute; right: 12px; top: 0; line-height: 30px; font-weight: 900; font-size: 0.85rem; color: #4a3333; z-index: 2; white-space: nowrap; }
 
-        .go-home-btn { width: 100%; background: #ff85a2; color: white; border: none; padding: 18px; border-radius: 20px; font-size: 1.1rem; font-weight: 900; cursor: pointer; margin-top: 10px; box-shadow: 0 8px 20px rgba(255, 133, 162, 0.4); }
+        #result-loading {
+            text-align: center;
+            padding: 90px 14px;
+            font-weight: 800;
+            color: #ff85a2;
+            font-size: 1rem;
+            line-height: 1.7;
+            background: rgba(255,255,255,0.72);
+            border: 3px solid #ffe2ea;
+            border-radius: 24px;
+            box-shadow: 0 10px 24px rgba(255, 182, 193, 0.18);
+        }
 
-        .login-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(74, 51, 51, 0.8); z-index: 1000; justify-content: center; align-items: center; animation: fadeIn 0.2s; }
-        .login-box { background-color: #ffffff; width: 85%; max-width: 340px; border-radius: 30px; padding: 35px 25px; text-align: center; position: relative; border: 5px solid #ffb6c1; }
-        .close-login { position: absolute; top: 12px; right: 18px; background: none; border: none; font-size: 2rem; color: #ff85a2; cursor: pointer; font-weight: bold;}
-        .login-box h2 { margin-top: 0; color: #ff85a2; margin-bottom: 12px; font-weight: 900; font-size: 1.3rem; }
-        .social-btn { display: block; width: 100%; padding: 16px; margin-bottom: 10px; border-radius: 20px; font-size: 1.05rem; font-weight: 900; text-align: center; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+        .fortune-result-box {
+            background: transparent;
+            text-align: left;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .dashboard-card {
+            background: linear-gradient(180deg, #ffffff 0%, #fff8fb 100%);
+            padding: 18px 14px 16px;
+            border-radius: 24px;
+            margin-bottom: 18px;
+            border: 2px solid #ffd6e1;
+            box-shadow: 0 10px 24px rgba(255, 182, 193, 0.18);
+            text-align: center;
+        }
+
+        .bazi-flex {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .person-col {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .person-name {
+            font-size: 0.95rem;
+            color: #ff6d95;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -0.2px;
+        }
+
+        .ilju-box {
+            font-size: 1.6rem;
+            font-weight: 900;
+            background: linear-gradient(180deg, #fff7fa 0%, #fff0f5 100%);
+            padding: 12px 10px;
+            border-radius: 18px;
+            border: 2px dashed #ffc4d0;
+            display: inline-block;
+            line-height: 1.15;
+            min-width: 86px;
+            box-shadow: inset 0 2px 6px rgba(255,255,255,0.75);
+        }
+
+        .vs-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, #ff6d95 0%, #ff89ad 100%);
+            color: white;
+            border-radius: 50%;
+            font-weight: 900;
+            margin: 0 2px;
+            font-size: 1rem;
+            box-shadow: 0 8px 18px rgba(255, 82, 119, 0.28);
+            border: 3px solid #fff;
+        }
+
+        .final-score-card {
+            background: linear-gradient(145deg, #ff8fb1 0%, #ffc6d8 52%, #fff3f8 100%);
+            border-radius: 28px;
+            padding: 24px 16px 18px;
+            text-align: center;
+            box-shadow: 0 14px 28px rgba(255, 133, 162, 0.22);
+            margin-bottom: 18px;
+            border: 3px solid rgba(255,255,255,0.92);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-score-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 18%, rgba(255,255,255,0.45) 0, rgba(255,255,255,0) 24%),
+                radial-gradient(circle at 80% 12%, rgba(255,255,255,0.36) 0, rgba(255,255,255,0) 26%);
+            pointer-events: none;
+        }
+
+        .final-score-title {
+            position: relative;
+            z-index: 1;
+            color: #ffffff;
+            font-size: 1.16rem;
+            font-weight: 900;
+            margin-bottom: 14px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.14);
+            line-height: 1.4;
+            word-break: keep-all;
+        }
+
+        .final-score-circle {
+            position: relative;
+            z-index: 1;
+            background: #ffffff;
+            color: #ff5277;
+            width: 94px;
+            height: 94px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.95rem;
+            font-weight: 900;
+            margin: 0 auto 16px auto;
+            box-shadow: 0 10px 20px rgba(255, 82, 119, 0.16);
+            border: 3px dashed #ffc4d0;
+        }
+
+        .final-score-text {
+            position: relative;
+            z-index: 1;
+            background: rgba(255,255,255,0.96);
+            color: #4a3333;
+            padding: 16px 15px;
+            border-radius: 18px;
+            font-size: 0.94rem;
+            line-height: 1.75;
+            font-weight: 700;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);
+            word-break: keep-all;
+            letter-spacing: -0.15px;
+        }
+
+        .fortune-section-card {
+            background: linear-gradient(180deg, #ffffff 0%, #fff9fb 100%);
+            border: 2px solid #ffe2ea;
+            border-radius: 24px;
+            padding: 42px 14px 14px;
+            margin-top: 18px;
+            margin-bottom: 0;
+            box-shadow: 0 10px 24px rgba(255, 182, 193, 0.15);
+            position: relative;
+            overflow: visible;
+        }
+
+        .fortune-section-title { 
+            position: absolute;
+            top: -14px;
+            left: 14px;
+            transform: none;
+            color: #ffffff;
+            background: linear-gradient(135deg, #ff7fa3 0%, #ff97b5 100%);
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 900;
+            box-shadow: 0 8px 16px rgba(255, 133, 162, 0.22);
+            border: 2px solid #ffffff;
+            width: auto;
+            max-width: calc(100% - 28px);
+            word-break: keep-all;
+            line-height: 1.35;
+            text-align: left;
+            z-index: 10;
+            letter-spacing: -0.1px;
+        }
+
+        .fortune-content-text {
+            color: #3b2a2a;
+            font-size: 0.93rem;
+            line-height: 1.82;
+            text-align: left;
+            letter-spacing: -0.2px;
+            word-break: keep-all;
+        }
+
+        .fortune-content-text p {
+            margin: 0;
+            padding: 14px 13px;
+            background: linear-gradient(180deg, #fff6f9 0%, #fff1f5 100%);
+            border-radius: 18px;
+            font-weight: 600;
+            border: 1px solid #ffe2ea;
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .fortune-content-text h3 {
+            font-size: 1.02rem !important;
+            line-height: 1.45 !important;
+            margin-top: 4px !important;
+            margin-bottom: 12px !important;
+            font-weight: 900;
+            letter-spacing: -0.2px;
+        }
+
+        .stat-compare-wrap {
+            margin-bottom: 16px;
+            background: linear-gradient(180deg, #fff7fa 0%, #fff1f6 100%);
+            border: 1px solid #ffe1ea;
+            border-radius: 18px;
+            padding: 12px 12px 13px;
+        }
+
+        .stat-compare-wrap:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-title {
+            text-align: left;
+            font-weight: 900;
+            color: #4a3333;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            word-break: keep-all;
+            line-height: 1.45;
+            padding: 0;
+            letter-spacing: -0.15px;
+        }
+
+        .stat-bar-container {
+            position: relative;
+            height: 32px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid #ffe4e8;
+            background: #ffd6e2;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.04);
+        }
+
+        .stat-bar-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #ff6d95 0%, #ff8fb1 100%);
+            transition: width 1s ease-in-out;
+        }
+
+        .stat-text-me,
+        .stat-text-you {
+            position: absolute;
+            top: 0;
+            line-height: 32px;
+            font-weight: 900;
+            font-size: 0.77rem;
+            z-index: 2;
+            white-space: nowrap;
+            letter-spacing: -0.1px;
+        }
+
+        .stat-text-me {
+            left: 11px;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.35);
+        }
+
+        .stat-text-you {
+            right: 11px;
+            color: #4a3333;
+        }
+
+        .go-home-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #ff7fa3 0%, #ff95b3 100%);
+            color: white;
+            border: none;
+            padding: 17px 16px;
+            border-radius: 18px;
+            font-size: 1rem;
+            font-weight: 900;
+            cursor: pointer;
+            margin-top: 18px;
+            box-shadow: 0 10px 20px rgba(255, 133, 162, 0.22);
+        }
+
+        .login-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(74, 51, 51, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.2s;
+        }
+
+        .login-box {
+            background-color: #ffffff;
+            width: 85%;
+            max-width: 360px;
+            border-radius: 30px;
+            padding: 40px 25px;
+            text-align: center;
+            position: relative;
+            border: 5px solid #ffb6c1;
+        }
+
+        .close-login {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2.2rem;
+            color: #ff85a2;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .login-box h2 {
+            margin-top: 0;
+            color: #ff85a2;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+
+        .social-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            margin-bottom: 12px;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
         .btn-kakao { background-color: #FEE500; color: #4a3333; }
-        .btn-google { background-color: #f1f1f1; color: #4a3333; border: 2px solid #ffe4e8;}
+        .btn-google { background-color: #f1f1f1; color: #4a3333; border: 2px solid #ffe4e8; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .hl { background-color: #ffe4e8; padding: 2px 6px; border-radius: 4px; font-weight: 900; color: #ff5277;}
-        .c-wood { color: #4CAF50; } .c-fire { color: #F44336; } .c-earth { color: #FF9800; } .c-metal { color: #78909C; } .c-water { color: #2196F3; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hl {
+            background-color: #ffe6ee;
+            padding: 1px 6px;
+            border-radius: 8px;
+            font-weight: 900;
+            color: #ff5277;
+        }
+
+        .c-wood { color: #4CAF50; }
+        .c-fire { color: #F44336; }
+        .c-earth { color: #FF9800; }
+        .c-metal { color: #78909C; }
+        .c-water { color: #2196F3; }
+
+        @media (max-width: 380px) {
+            body {
+                padding: 16px 12px 24px;
+            }
+
+            header {
+                margin: -16px -12px 16px -12px;
+            }
+
+            .fortune-section-title {
+                left: 12px;
+                max-width: calc(100% - 24px);
+                font-size: 0.85rem;
+                padding: 8px 12px;
+            }
+
+            .fortune-section-card {
+                padding: 40px 12px 12px;
+            }
+
+            .final-score-title {
+                font-size: 1.05rem;
+            }
+
+            .final-score-text,
+            .fortune-content-text {
+                font-size: 0.9rem;
+            }
+
+            .stat-text-me,
+            .stat-text-you {
+                font-size: 0.72rem;
+            }
+
+            .person-name {
+                font-size: 0.88rem;
+            }
+
+            .ilju-box {
+                font-size: 1.45rem;
+                min-width: 76px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -111,10 +530,11 @@
         <button class="social-btn btn-google" onclick="realGoogleLogin()">구글로 시작하기</button>
     </div>
 </div>
+
 <header>
     <div class="header-top">
         <a href="index.html" class="main-link">
-        <img src="/logo.png" alt="사주돼지" class="header-logo">
+            <img src="/logo.png" alt="사주돼지" class="header-logo">
         </a>
         <button id="header-user-btn" class="login-btn-header" onclick="openLogin()">로그인 / 가입</button>
     </div>
@@ -127,7 +547,7 @@
 </header>
 
 <main>
-    <div id="result-loading" style="text-align: center; padding: 100px 0; font-weight: bold; color: #ff85a2; font-size: 1.2rem;">
+    <div id="result-loading">
         🐾 결제 확인 완료! 잠시만 기다려주세요!
     </div>
 
@@ -222,7 +642,7 @@
         '丁卯': "당신은 반려동물의 감정과 기분 변화를 아주 민감하게 읽어내는 정서 교감형 보호자입니다. 아이가 평소와 다르게 숨을 쉬거나 눈빛이 살짝 달라지는 것만 봐도 바로 상태를 알아차릴 만큼 관찰력과 공감 능력이 뛰어납니다. 단순히 돌보는 차원을 넘어 아이의 마음을 이해하고 맞춰주는 데 강점이 있으며, 아이 역시 당신 곁에서 심리적으로 큰 안정감을 느끼는 경우가 많습니다. 강하게 통제하거나 억누르기보다는 부드럽게 달래고 자연스럽게 유도하는 방식을 택하기 때문에, 아이와의 관계가 억압적이지 않고 매우 유연하게 흘러갑니다. 감정이입이 깊은 편이라 아이가 아프거나 힘들어하면 보호자 본인도 크게 흔들릴 수 있지만, 그만큼 끝까지 세심하게 곁을 지키는 힘이 있습니다. 아이 입장에서는 가장 편하게 기대고 마음을 풀 수 있는, 정서적으로 매우 안전한 보호자입니다.",
         '丁丑': "당신은 화려하게 티 내기보다는 묵묵히 끝까지 책임지는 헌신형 보호자입니다. 아이를 위해 해야 할 일이 있다면 누가 보지 않아도 꾸준히 해내는 성실함이 있으며, 생활 관리와 건강 돌봄 같은 기본적인 부분에서 특히 강한 힘을 보입니다. 겉으로 표현은 담백할 수 있지만 실제 애정의 깊이는 매우 크고, 한번 마음을 준 존재에게는 쉽게 변하지 않는 지속적인 사랑을 보여줍니다. 아이가 어릴 때도, 나이가 들어갈 때도, 상황이 좋을 때도 힘들 때도 한결같은 태도로 곁을 지키는 신뢰감이 큰 장점입니다. 때로는 감정을 겉으로 많이 드러내지 않아 무심해 보일 수 있지만 실제로는 아이의 상태와 필요를 누구보다 진지하게 받아들이고 있습니다. 아이에게는 늘 같은 자리에서 안정감을 주는, 오래 볼수록 더 귀한 보호자입니다.",
         '丁亥': "당신은 반려동물을 조건 없이 감싸 안는 깊은 애정형 보호자입니다. 아이를 하나의 존재로 소중히 여기는 마음이 매우 크고, 단순한 귀여움 이상의 정서적 의미를 부여하는 경향이 강합니다. 아이가 편안해하는지, 외롭지는 않은지, 작은 불안이라도 느끼고 있지는 않은지 계속 마음을 쓰며, 정서적인 안정까지 함께 책임지려 합니다. 공감 능력이 풍부하고 마음이 여려서 아이가 힘들어하면 본인도 같이 아파하고, 아이가 행복해하면 그 모습을 오래 바라보며 큰 위로를 얻습니다. 사랑을 줄 때 계산하지 않고, 내가 더 주는 것이 당연하다고 여기는 편이라 헌신의 밀도가 상당히 높은 보호자입니다. 아이는 당신과 함께 있을 때 가장 따뜻하고 포근한 보호를 받고 있다고 느끼며, 깊은 애착 관계를 형성하기 쉽습니다.",
-        '丁酉': "당신은 반려동물을 세심하고 정갈하게 돌보는 관리형 보호자입니다. 아이가 지내는 공간, 먹는 것, 사용하는 물건 하나까지 깔끔하고 안정적으로 유지하려는 성향이 강하며, 불편함이 생기지 않도록 미리 챙기는 능력이 뛰어납니다. 감각이 섬세하고 기준이 분명해 청결, 위생, 생활 환경의 질을 높이는 데 강점을 보이며, 작은 변화도 쉽게 지나치지 않습니다. 아이를 귀하게 키운다는 자부심이 있고, 보호자로서 제대로 돌보고 있다는 확신이 있어야 마음이 놓이는 편입니다. 그래서 때로는 기준이 높아 스스로 피곤해질 수 있지만, 그만큼 아이는 안정적이고 잘 정돈된 환경 안에서 생활하게 됩니다. 아이에게는 늘 상태가 잘 관리되고 편안함이 유지되는, 믿음직하고 세련된 보호자입니다.",
+        '丁酉': "당신은 반려동물을 세심하고 정갈하게 돌보는 관리형 보호자입니다. 아이가 지내는 공간, 먹는 것, 사용하는 물건 하나까지 깔끔하고 안정적으로 유지하려는 성향이 강하며, 불편함이 생기지 않도록 미리 챙기는 능력이 뛰어납니다. 감각이 섬세하고 기준이 분명해 청결, 위생, 생활 환경의 질을 높이는 데 강점을 보이며, 아이를 귀하게 키운다는 자부심이 있고, 보호자로서 제대로 돌보고 있다는 확신이 있어야 마음이 놓이는 편입니다. 그래서 때로는 기준이 높아 스스로 피곤해질 수 있지만, 그만큼 아이는 안정적이고 잘 정돈된 환경 안에서 생활하게 됩니다. 아이에게는 늘 상태가 잘 관리되고 편안함이 유지되는, 믿음직하고 세련된 보호자입니다.",
         '丁未': "당신은 반려동물을 향한 애착이 매우 깊고 정이 많은 보호자입니다. 아이의 행동 하나하나를 그냥 지나치지 못하고, 작은 표정과 몸짓에도 큰 의미를 부여할 만큼 마음이 많이 가는 편입니다. 아이를 특별한 존재로 여기며, 남들이 보기에는 사소한 일상도 당신에게는 소중한 추억이 됩니다. 함께 있는 시간 자체에서 정서적인 충만함을 크게 느끼고, 품에 안거나 체온을 나누는 순간에 가장 큰 안정과 행복을 얻는 특징이 있습니다. 다만 애착이 깊은 만큼 떨어져 있는 시간을 힘들어하거나 걱정이 많아질 수 있지만, 그만큼 아이를 향한 보호 본능과 헌신도 강합니다. 아이는 당신의 따뜻한 관심과 애정 속에서 사랑받는 감각을 뚜렷하게 느끼며 자라게 됩니다.",
         '丁巳': "당신은 반려동물의 상태와 필요를 빠르게 읽어내고 즉각적으로 반응하는 예민하고 똑똑한 보호자입니다. 아이가 무엇을 원하는지, 지금 편안한지 불편한지, 어떤 점을 먼저 챙겨야 하는지를 재빨리 파악하는 감각이 뛰어나며, 돌봄의 밀도가 매우 높은 편입니다. 사랑 표현은 부드럽지만 내면에는 강한 책임감과 보호 본능이 자리하고 있어 아이를 향한 집중력이 상당히 높습니다. 겉으로는 차분하고 냉정해 보여도 아이 앞에서는 표정과 태도가 훨씬 부드러워지고, 누구보다 세심하게 맞춤형으로 돌보려는 모습을 보입니다. 때로는 신경을 많이 쓰는 탓에 긴장하거나 예민해질 수 있지만, 그만큼 아이의 변화에 빠르게 대응하는 장점도 큽니다. 아이에게는 가장 빠르게 나를 이해하고 챙겨주는, 든든하고 정교한 보호자입니다.",
         '戊辰': "당신은 반려동물에게 흔들리지 않는 안정감을 제공하는 기반형 보호자입니다. 감정의 기복보다는 꾸준한 생활 관리와 환경 조성을 통해 아이가 편안하게 지낼 수 있도록 돕는 현실적인 돌봄 방식을 가지고 있습니다. 아이의 성향을 존중하며 과도한 간섭보다는 스스로 적응하고 성장할 수 있는 여유를 주는 편입니다. 책임감이 강해 한번 맡은 존재는 끝까지 돌봐야 한다는 신념이 분명하며, 위기 상황에서도 쉽게 동요하지 않는 단단함이 있습니다. 겉으로는 표현이 크지 않아도 행동으로 보여주는 신뢰가 크기 때문에 아이는 당신 곁에서 안정적인 삶의 리듬을 유지하게 됩니다. 함께하는 시간이 길어질수록 보호자와 반려동물 사이에 깊고 묵직한 유대가 형성되는 특징이 있습니다.",
@@ -245,7 +665,7 @@
         '庚申': "당신은 반려동물에게 자유와 안전을 동시에 제공하려는 균형형 보호자입니다. 불필요한 간섭이나 과보호를 줄이면서도 기본적인 생활 기반과 보호는 확실히 책임지는 현실적인 성향을 가지고 있습니다. 아이가 스스로 탐색하고 경험할 수 있는 환경을 만들어주며, 필요할 때는 강하게 개입해 방향을 잡아주는 조절 능력이 뛰어납니다. 감정 표현은 담백하지만 꾸준하고 진솔해 시간이 지날수록 깊은 신뢰가 쌓입니다. 아이와의 관계에서도 서로를 존중하는 안정적인 거리감이 유지되며 건강한 유대가 형성됩니다. 아이에게는 자유롭게 성장할 수 있도록 지켜보면서도 언제든 보호해 줄 준비가 된 든든한 보호자입니다.",
         '辛未': "당신은 반려동물을 정성스럽게 가꾸고 보호하는 품격형 보호자입니다. 생활 환경의 질과 위생 상태, 먹는 것과 사용하는 물건까지 꼼꼼하게 관리하며 아이가 항상 안정되고 편안한 상태를 유지하도록 노력합니다. 감각이 섬세하고 기준이 분명해 작은 변화도 쉽게 놓치지 않으며, 보호자로서 제대로 돌보고 있다는 확신이 있어야 마음이 놓이는 편입니다. 아이를 단순히 키우는 것이 아니라 함께 살아가는 공간과 분위기까지 책임지려는 의식이 강합니다. 때로는 완벽하게 해주고 싶은 마음이 부담으로 이어질 수 있지만, 그만큼 꾸준한 정성과 헌신이 관계를 깊게 만듭니다. 아이는 당신의 세심한 돌봄 속에서 안정감과 보호받고 있다는 확신을 느끼며 성장하게 됩니다.",
         '辛巳': "당신은 반려동물의 매력과 개성을 잘 살려주는 감각형 보호자입니다. 아이가 더 건강하고 아름답게 보일 수 있도록 환경과 생활 방식을 세심하게 조율하며, 외적인 관리와 분위기 형성에도 신경을 많이 쓰는 편입니다. 표현 방식은 세련되고 부드러우며, 애정을 드러낼 때도 감정과 분위기를 중요하게 생각합니다. 겉으로는 차분하고 냉정해 보일 수 있지만 실제로는 아이와의 교감에서 큰 행복을 느끼는 로맨틱한 면이 있습니다. 아이가 편안하게 느끼는 공간을 만들기 위해 꾸준히 노력하며, 함께하는 시간을 특별하게 만드는 능력이 있습니다. 아이에게는 아름답고 안정적인 일상을 선물하는 보호자입니다.",
-        '辛卯': "당신은 반려동물의 기분과 컨디션을 매우 세밀하게 읽어내는 정밀 교감형 보호자입니다. 작은 소음이나 환경 변화에도 민감하게 반응하며 아이가 스트레스를 받지 않도록 생활 환경을 조정하는 능력이 뛰어납니다. 감정 표현은 크지 않지만 깊고 지속적인 관심을 통해 아이와의 유대감이 천천히 쌓아갑니다. 보호자로서 기준이 높아 때로는 스스로에게도 엄격해질 수 있지만, 그만큼 아이의 삶의 질을 높이려는 의지가 강합니다. 아이가 편안하고 안정된 상태를 유지할 수 있도록 세심하게 돌보는 과정에서 보호자 본인도 큰 만족을 느낍니다. 아이에게는 가장 나를 잘 이해하고 배려해 주는 섬세한 보호자입니다.",
+        '辛卯': "당신은 반려동물의 기분과 컨디션을 매우 세밀하게 읽어내는 정밀 교감형 보호자입니다. 작은 소음이나 환경 변화에도 민감하게 반응하며 아이가 스트레스를 받지 않도록 생활 환경을 조정하는 능력이 뛰어납니다. 감정 표현은 크지 않지만 깊고 지속적인 관심을 통해 아이와의 유대감을 천천히 쌓아갑니다. 보호자로서 기준이 높아 때로는 스스로에게도 엄격해질 수 있지만, 그만큼 아이의 삶의 질을 높이려는 의지가 강합니다. 아이가 편안하고 안정된 상태를 유지할 수 있도록 세심하게 돌보는 과정에서 보호자 본인도 큰 만족을 느낍니다. 아이에게는 가장 나를 잘 이해하고 배려해 주는 섬세한 보호자입니다.",
         '辛丑': "당신은 조용하지만 매우 깊은 애정을 지속적으로 보여주는 내면형 보호자입니다. 겉으로 화려하게 표현하지 않아도 행동과 선택에서 진심이 드러나는 타입이며, 아이를 향한 책임감이 쉽게 흔들리지 않습니다. 반복되는 돌봄과 생활 관리 속에서도 꾸준함을 유지하며, 아이가 편안하게 지낼 수 있는 기반을 묵묵히 만들어갑니다. 감정적으로 크게 요동치기보다는 안정된 태도를 유지해 아이에게 심리적 안정을 주는 힘이 있습니다. 시간이 지날수록 관계의 밀도가 깊어지고 서로에 대한 신뢰가 단단히 쌓이는 특징이 있습니다. 아이에게는 늘 같은 자리에서 기다려주는 따뜻하고 단단한 보호자입니다.",
         '辛亥': "당신은 반려동물과의 관계에서 정서적 교감과 분위기를 중요하게 여기는 감성형 보호자입니다. 아이가 편안함을 느끼는 공간과 시간을 만들기 위해 세심하게 신경 쓰며, 함께하는 순간에서 큰 행복과 위로를 얻는 특징이 있습니다. 생활의 속도를 아이의 리듬에 맞추려는 유연함이 있어 관계가 부드럽고 자연스럽게 이어집니다. 감정이 깊고 애착이 강해 아이의 상태 변화에도 민감하게 반응하며, 보호자로서의 역할에 의미를 많이 부여하는 편입니다. 때로는 지나치게 마음을 쓰거나 걱정이 많아질 수 있지만 그만큼 애정의 밀도가 높습니다. 아이에게는 정서적으로 따뜻하게 감싸주는 고요한 보호자입니다.",
         '辛酉': "당신은 반려동물을 향한 마음이 분명하고 오래 지속되는 신념형 보호자입니다. 한번 마음을 준 존재에게는 쉽게 변하지 않는 애정을 보이며, 보호자로서의 역할을 자부심 있게 받아들이는 특징이 있습니다. 생활 환경과 건강 관리에서 높은 기준을 세우고 아이가 항상 좋은 상태를 유지할 수 있도록 노력합니다. 겉으로는 냉정하거나 까다로워 보일 수 있지만 실제로는 매우 부드럽고 헌신적인 마음을 가지고 있습니다. 아이와의 관계에서도 신뢰를 중요하게 여기며 꾸준히 시간을 투자하는 편입니다. 아이에게는 변함없이 나를 지켜주는 단단하고 믿음직한 보호자입니다.",
@@ -304,13 +724,13 @@
         '庚辰': "이 아이는 용기와 탐색 본능이 강한 리더형 반려동물입니다. 새로운 장소나 상황에서도 먼저 움직이며 환경을 확인하려는 성향이 뚜렷하게 나타납니다. 겁이 적고 호기심이 많아 외부 활동이나 변화에 비교적 잘 적응하는 편입니다. 다만 자기 방식대로 행동하려는 기질도 있어 일관된 교육과 신뢰 형성이 중요합니다. 보호자와의 관계가 안정되면 따뜻한 애정 표현과 충성심이 함께 드러나는 특징이 있습니다. 함께 지낼수록 든든함과 추진력을 동시에 느끼게 하는 아이입니다.",
         '庚寅': "이 아이는 겉으로는 경계심이 있지만 속은 매우 정이 깊은 츤데레형 반려동물입니다. 처음에는 거리를 두거나 시크한 태도를 보일 수 있으나 마음을 열면 갑자기 애교가 늘어나는 반전 매력이 있습니다. 자기 공간과 감정을 중요하게 여기는 독립성도 함께 살아 있는 타입입니다. 보호자와 신뢰가 쌓일수록 충성심과 애착이 강해지며 관계가 매우 끈끈해지는 특징이 있습니다. 강압적인 방식보다 존중과 꾸준한 교감이 성격 안정에 큰 도움이 됩니다. 함께 지낼수록 매력을 더 크게 느끼게 되는 아이입니다.",
         '庚子': "이 아이는 집중력과 학습 능력이 뛰어난 지능형 반려동물입니다. 보호자의 말이나 행동을 주의 깊게 관찰하고 훈련이나 규칙을 빠르게 이해하는 경우가 많습니다. 칭찬과 반응에 민감하게 반응하며 인정받는 순간 큰 만족감을 느끼는 성향이 있습니다. 활동성과 사고 능력이 균형 있게 발달하는 타입이라 다양한 놀이와 교육이 도움이 됩니다. 보호자와의 교류가 많을수록 성격이 더욱 안정되고 자신감이 높아집니다. 함께 생활할수록 똑똑함과 성실함을 동시에 느끼게 하는 아이입니다.",
-        '庚戌': "이 아이는 가족 보호 본능과 충성심이 매우 강한 수호자형 반려동물입니다. 자기 식구라는 인식이 분명해지면 보호자를 지키려는 행동이나 경계 태도가 나타날 수 있습니다. 기본적으로는 따뜻한 성향이지만 책임감이 느끼는 상황에서는 단단한 모습을 보이는 특징이 있습니다. 함께 생활하는 시간이 길어질수록 애정 표현이 깊어지고 유대감이 더욱 확고해집니다. 안정된 관계 속에서 자라면 매우 믿음직하고 헌신적인 동반자가 됩니다. 평생 곁을 지켜주는 든든한 아이입니다.",
+        '庚戌': "이 아이는 가족 보호 본능과 충성심이 매우 강한 수호자형 반려동물입니다. 자기 식구라는 인식이 분명해지면 보호자를 지키려는 행동이나 경계 태도가 나타날 수 있습니다. 기본적으로는 따뜻한 성향이지만 책임감을 느끼는 상황에서는 단단한 모습을 보이는 특징이 있습니다. 함께 생활하는 시간이 길어질수록 애정 표현이 깊어지고 유대감이 더욱 확고해집니다. 안정된 관계 속에서 자라면 매우 믿음직하고 헌신적인 동반자가 됩니다. 평생 곁을 지켜주는 든든한 아이입니다.",
         '庚申': "이 아이는 민첩성과 관찰력이 뛰어난 활동형 반려동물입니다. 집안 곳곳을 탐색하거나 새로운 자극에 빠르게 반응하며 생활 속에서 끊임없이 움직임을 찾는 성향이 있습니다. 지루함을 오래 견디지 못해 놀이와 환경 변화가 적절히 필요한 타입입니다. 보호자 곁에 올라가거나 가까이 붙어 있으려는 행동으로 애정을 표현하는 경우도 많습니다. 활동성과 교감 욕구가 동시에 살아 있어 함께 시간을 보낼수록 관계가 깊어집니다. 에너지를 충분히 발산할 수 있는 환경에서 가장 건강하고 매력적으로 성장하는 아이입니다.",
         '辛未': "이 아이는 청결감과 자기 기준이 분명한 우아한 성향의 반려동물입니다. 진흙이나 지저분한 환경을 본능적으로 피하려는 경향이 있으며, 편안하고 정돈된 공간에서 심리적 안정감을 크게 느낍니다. 움직임도 과하게 분주하기보다 여유롭고 단정한 분위기를 유지하는 경우가 많습니다. 보호자의 손길로 털을 정리하거나 몸단장을 해주는 시간 자체를 깊은 교감으로 받아들이는 타입입니다. 낯선 상황에서는 조심스럽게 반응하지만 신뢰가 쌓이면 애정 표현이 은근하고 깊게 이어집니다. 차분하고 세심한 돌봄 속에서 가장 빛나는 매력을 드러내는 아이입니다.",
         '辛巳': "이 아이는 관심과 반응을 즐기면서도 자기 스타일을 분명히 가진 개성형 반려동물입니다. 예쁜 옷이나 장식, 새로운 환경 속에서 존재감을 드러내는 것을 자연스럽게 즐기는 성향이 있습니다. 사람의 시선과 분위기를 빠르게 읽고 상황에 맞는 행동을 선택하는 센스가 뛰어난 편입니다. 활동성과 표현력이 적절히 어우러져 함께 지내는 시간이 활기차고 재미있게 느껴집니다. 보호자의 반응과 칭찬이 많을수록 자신감이 높아지고 애정 표현도 적극적으로 변화합니다. 교감과 관심 속에서 더욱 매력적으로 성장하는 아이입니다.",
         '辛卯': "이 아이는 매우 섬세하고 감각적인 반응을 보이는 민감형 반려동물입니다. 작은 소리나 환경 변화에도 귀를 세우고 상황을 살피는 관찰 습관이 강하게 나타납니다. 낯선 자극에는 조심스럽게 접근하지만 보호자의 부드러운 손길이나 목소리에는 빠르게 마음을 여는 특징이 있습니다. 안전하다고 느끼는 순간 긴장을 풀고 깊은 애착 행동을 보이기도 합니다. 정서적 안정이 확보될수록 밝고 사랑스러운 본성이 더욱 드러납니다. 조용하고 따뜻한 환경 속에서 가장 행복해지는 아이입니다.",
         '辛丑': "이 아이는 요구가 많지 않고 속 깊은 애정을 조용히 표현하는 안정형 반려동물입니다. 보호자 곁에 조용히 다가와 체온을 나누거나 작은 행동으로 마음을 전하는 경우가 많습니다. 과하게 떼를 쓰거나 흥분하기보다 일정한 리듬 속에서 편안함을 찾는 성향이 있습니다. 신뢰가 형성되면 꾸준하고 오래가는 유대감을 보여주는 특징이 있습니다. 혼자 있는 시간도 어느 정도 잘 보내지만 보호자와 같은 공간에 있는 것만으로 큰 안정감을 느낍니다. 함께 지낼수록 깊은 정이 쌓이는 따뜻한 아이입니다.",
-        '辛亥': "이 아이는 청결하고 정돈된 환경을 선호하는 고요한 감성형 반려동물입니다. 자기만의 공간에서 편안하게 쉬며 여유로운 시간을 보내는 것을 좋아하는 성향이 있습니다. 겉으로는 까탈스럽거나 독립적으로 보일 수 있지만, 마음을 열면 애교와 교감 표현이 부드럽게 이어지는 타입입니다. 보호자가 간식이나 놀이로 다가오면 갑자기 밝고 적극적인 반응을 보이는 반전 매력도 있습니다. 스트레스가 적은 환경에서 생활할수록 성격이 더욱 안정되고 애정 표현도 자연스럽게 늘어납니다. 차분하지만 깊은 정을 느끼게 하는 아이입니다.",
+        '辛亥': "이 아이는 청결하고 정돈된 환경을 선호하는 고요한 감성형 반려동물입니다. 자기만의 공간에서 편안하게 쉬며 여유로운 시간을 보내는 것을 좋아하는 성향이 있습니다. 겉으로는 까탈스럽거나 독립적으로 보일 수 있지만, 마음을 열면 애교와 교감 표현이 부드럽게 이어지는 타입입니다. 보호자가 간식이나 놀이로 다가오면 अचानक 밝고 적극적인 반응을 보이는 반전 매력도 있습니다. 스트레스가 적은 환경에서 생활할수록 성격이 더욱 안정되고 애정 표현도 자연스럽게 늘어납니다. 차분하지만 깊은 정을 느끼게 하는 아이입니다.",
         '辛酉': "이 아이는 생활 패턴과 상황을 빠르게 파악하는 관찰력 높은 지능형 반려동물입니다. 보호자의 눈빛이나 움직임만 보고도 다음 행동을 예측하려는 특징이 있습니다. 규칙적인 생활 속에서 안정감을 느끼며 루틴을 스스로 기억하고 요구하기도 합니다. 깔끔한 환경과 정성 어린 돌봄 속에서 자신감과 애정 표현이 함께 성장합니다. 때로는 예민한 반응을 보일 수 있지만 그만큼 세심하게 교감하면 관계가 깊어집니다. 함께 지낼수록 똑똑함과 사랑스러움을 동시에 느끼게 하는 아이입니다.",
         '壬申': "이 아이는 자유로운 호기심과 탐험 욕구가 매우 강한 활동형 반려동물입니다. 새로운 냄새나 자극을 발견하면 스스로 확인하고 경험하려는 성향이 뚜렷하게 나타납니다. 물, 낙엽, 흙 같은 자연 요소에도 거리낌 없이 다가가며 세상을 몸으로 배우는 타입입니다. 움직임 속에서 스트레스를 해소하고 즐거움을 느끼기 때문에 산책이나 외부 활동이 중요합니다. 보호자와 함께 탐험을 나서는 시간을 통해 유대감이 더욱 깊어지는 특징이 있습니다. 자유로운 환경 속에서 가장 밝고 건강한 성격으로 성장하는 아이입니다.",
         '壬午': "이 아이는 에너지와 긍정성이 넘치는 분위기 메이커형 반려동물입니다. 집안 곳곳을 활발히 돌아다니며 생활 공간 전체에 생기를 불어넣는 존재입니다. 보호자를 향한 반가움 표현도 매우 강하고 즉각적이라 재회 순간마다 큰 감동을 주는 타입입니다. 감정 표현이 솔직하고 밝아 함께 지내는 시간이 자연스럽게 즐거워집니다. 활동량이 충분히 확보되면 성격이 더욱 안정되고 행복도가 높아집니다. 보호자와 함께 움직이고 놀 때 가장 큰 만족감을 느끼는 아이입니다.",
@@ -326,423 +746,446 @@
         '癸亥': "이 아이는 부드러운 성격과 넉넉한 감정 흐름을 가진 평화형 반려동물입니다. 갈등 상황에서도 쉽게 흥분하지 않고 자연스럽게 분위기를 완화하는 힘이 있습니다. 보호자의 생활 리듬에 맞춰 유연하게 적응하는 능력도 뛰어납니다. 포근한 체온과 편안한 존재감으로 집안 전체에 안정감을 만들어 줍니다. 과한 자극보다 따뜻하고 여유로운 환경 속에서 가장 행복합니다. 함께 지낼수록 삶의 위로가 되어주는 소중한 동반자입니다."
     };
 
-    function getCompatibilityResult(meGan, meZhi, youGan, youZhi, meEls, youEls) {
-        const ganHap = [['甲', '己'], ['乙', '庚'], ['丙', '辛'], ['丁', '壬'], ['戊', '癸']];
-        const generateMap = {'木':'火', '火':'土', '土':'金', '金':'水', '水':'木'};
-        const overcomeMap = {'木':'土', '土':'水', '水':'火', '火':'金', '金':'木'};
+   function getCompatibilityResult(meGan, meZhi, youGan, youZhi, meEls, youEls) {
+    const ganHap = [['甲', '己'], ['乙', '庚'], ['丙', '辛'], ['丁', '壬'], ['戊', '癸']];
+    const generateMap = { '木': '火', '火': '土', '土': '金', '金': '水', '水': '木' };
+    const overcomeMap = { '木': '土', '土': '水', '水': '火', '火': '金', '金': '木' };
 
-        let ganScore = 50, zhiScore = 10;
-        let ganText = "", zhiText = "", synergyText = "", simText = "", solutionText = "";
-        let ganRel = "무난", zhiRel = "무난";
+    let ganScore = 50;
+    let zhiScore = 10;
+    let ganText = "";
+    let zhiText = "";
+    let synergyText = "";
+    let simText = "";
+    let solutionText = "";
+    let ganRel = "무난";
+    let zhiRel = "무난";
 
-        let isHap = false;
-        ganHap.forEach(p => { if ((p[0] === meGan && p[1] === youGan) || (p[0] === youGan && p[1] === meGan)) isHap = true; });
-        
-        if (meGan === youGan) {
-            ganRel = "비견";
-            ganScore = 64;
-            ganText = "보호자님과 아이는 명리학적으로 같은 천간의 기운을 타고난 <span class='hl'>비견 관계</span>입니다. 쉽게 말하면 서로의 본질과 결이 매우 닮아 있는 구조라, 처음부터 이상하게 익숙하고 편안한 느낌이 강하게 생기는 인연입니다. 아이를 보고 있으면 '왜 이렇게 나랑 닮았지?' 싶은 순간이 자주 생기고, 보호자님 기분과 생활 리듬에 아이가 묘하게 발을 맞추는 흐름도 자주 나타납니다. 내가 조용히 있고 싶은 날엔 아이도 괜히 차분해 보이고, 내가 신나서 말이 많아지는 날엔 아이도 덩달아 들뜨는 식으로 감정 동기화가 강하게 일어나는 궁합입니다. 이 관계의 가장 큰 장점은 서로를 이해하는 속도가 굉장히 빠르다는 점입니다. 보호자님은 아이가 왜 저러는지 비교적 빨리 감을 잡고, 아이도 보호자님이 어떤 사람인지 금방 파악하며 관계 속으로 깊이 들어옵니다. 그래서 남들이 보기엔 그냥 반려동물인데, 보호자님에게는 유독 더 가족 같고 유독 더 내 새끼 같은 진한 정이 빨리 드는 편입니다. 하지만 비슷하다는 것은 장점만 있는 것이 아닙니다. 서로 고집이 닮아 있어 한 번 흐름이 엇나가면 괜히 더 팽팽해질 수 있고, 아이가 유독 자기주장을 하는 날에는 보호자님도 같이 지치거나 예민해질 수 있습니다. 즉, 너무 잘 맞아서 좋지만 너무 닮아서 부딪히는 순간도 있는 관계입니다. 그럼에도 결국은 가장 오래 보고 가장 오래 함께할수록 깊어지는 구조라, 시간이 흐를수록 '이 아이는 그냥 키우는 존재가 아니라 나와 결이 맞는 동반자구나' 하는 감정을 진하게 남깁니다. 사랑, 닮음, 편안함, 고집이 전부 섞여 있는 아주 진한 가족형 인연입니다.";
-        } else if (isHap) {
-            ganRel = "합";
-            ganScore = 96;
-            ganText = "보호자님과 아이는 천간합으로 이어지는 <span class='hl'>강한 끌림과 정서적 결속을 가진 특별한 인연</span>입니다. 사주에서 천간합은 단순히 잘 맞는 수준이 아니라, 서로의 기운이 자연스럽게 끌리고 섞이며 강한 애착을 만들어 내는 관계로 봅니다. 그래서 이 인연은 첫 만남부터 이상하게 마음이 쓰이고, 유독 눈길이 가고, 평소보다 더 빨리 정이 들어 버리는 흐름이 강합니다. 아이는 보호자님의 시선, 표정, 목소리에 유난히 민감하게 반응하며 보호자님 쪽으로 감정을 붙이는 경우가 많고, 보호자님 역시 다른 아이에게는 안 그랬을 것 같은데 이상하게 이 아이에게만 유독 약해지고, 더 챙기고, 더 안아주고 싶어지는 마음이 커집니다. 이 구조에서는 말보다 분위기와 정서가 더 크게 작용합니다. 굳이 뭘 하지 않아도 같이 있는 것만으로 마음이 편해지고, 아이가 옆에 누워 있는 것만으로도 하루의 피로가 녹아내리는 식의 정서적 밀착이 강하게 생깁니다. 천간합 관계의 장점은 애착 형성이 매우 깊고 빠르다는 점입니다. 아이가 보호자님을 심리적 안전기지처럼 여기기 쉽고, 보호자님 또한 이 아이를 보면 괜히 마음이 약해지고 부드러워집니다. 다만 합은 너무 강하면 서로에게 지나치게 정이 몰리거나 의존성이 커질 수 있습니다. 아이를 혼자 두는 것이 유독 마음 아프고, 사소한 아픔도 크게 느껴질 수 있으며, 보호자님 역시 이 아이가 내 감정의 중요한 부분을 차지하게 될 가능성이 높습니다. 그렇지만 바로 그 깊은 정 때문에 이 관계는 평범한 반려를 넘어서, 함께하는 시간 자체가 위로가 되고 삶의 결을 바꾸는 수준의 의미를 남길 수 있습니다. 한마디로 이 궁합은 예쁘다를 넘어서, 정말 마음 깊이 남는 소울메이트형 인연입니다.";
-        } else if (generateMap[elementMap[meGan]] === elementMap[youGan]) {
-            ganRel = "내가 생함";
-            ganScore = 83;
-            ganText = "보호자님이 아이를 생하는 이 관계는 명리학적으로 <span class='hl'>내 기운이 아이를 키우고 보듬어 주는 상생 관계</span>입니다. 쉽게 말해 보호자님이 이 아이에게 마음, 시간, 정성, 체력, 애정을 자연스럽게 흘려 보내게 되는 구조입니다. 그래서 이 아이를 만나면 이상할 정도로 책임감이 강해지고, 그냥 예뻐하는 정도를 넘어서 잘 먹이고, 잘 재우고, 건강하게 오래 살게 하고 싶은 부모 같은 마음이 아주 강해집니다. 이 관계에서는 보호자님이 아이를 위해 자꾸 더 해주게 됩니다. 좋은 사료를 찾고, 편한 쿠션을 사주고, 조금만 기운 없어 보여도 걱정이 많아지고, 작은 습관 하나도 세심하게 신경 쓰게 됩니다. 명리학적으로 내가 상대를 생하는 구조는 기본적으로 내가 에너지를 많이 쓰는 관계이기 때문에, 보호자님은 이 아이를 향해 자발적으로 헌신하게 될 가능성이 큽니다. 그런데 이 헌신이 억지로 느껴지기보다 이상하게 기쁘고, 해주는 것 자체가 사랑처럼 느껴지는 것이 특징입니다. 아이는 그런 보호자님의 사랑을 먹고 자라며 점점 더 안정되고 예쁘게 피어나는 흐름을 가집니다. 다만 한 가지 주의할 점은 보호자님이 너무 많이 퍼주다 보면 아이에게 기준이 흐려질 수 있다는 점입니다. 너무 봐주고, 너무 맞춰주고, 너무 걱정하다 보면 보호자님이 오히려 감정적으로 더 약해질 수 있습니다. 그래서 이 궁합은 사랑이 많을수록 좋지만, 동시에 생활 습관과 훈육의 선도 함께 잡아주는 것이 중요합니다. 전체적으로 보면 이 관계는 보호자님의 사랑이 아이에게 직접적인 성장 에너지가 되는 구조이며, 아이를 통해 보호자님 안의 깊은 부모 본능과 헌신성이 크게 깨어나는 따뜻한 인연입니다.";
-        } else if (generateMap[elementMap[youGan]] === elementMap[meGan]) {
-            ganRel = "아이가 생함";
-            ganScore = 88;
-            ganText = "아이의 기운이 보호자님을 생하는 이 관계는 <span class='hl'>아이가 보호자님을 살리고 채워 주는 상생 관계</span>입니다. 명리학적으로 상대가 나를 생하면 그 존재가 나에게 활력, 위로, 안정감, 심리적 회복력을 넣어 주는 흐름이 생깁니다. 그래서 이 아이는 단순히 귀여운 반려동물을 넘어서 보호자님의 마음을 살리는 복덩이 역할을 하게 될 가능성이 큽니다. 밖에서 지치고 기운 빠진 상태로 돌아와도 아이 얼굴만 보면 이상하게 마음이 풀리고, 안아 보는 순간 숨이 쉬어지고, 아무것도 아닌 일상이 이 아이 덕분에 견딜 만해지는 경험을 하게 될 수 있습니다. 이런 궁합에서는 보호자님이 아이를 돌보는 동시에 사실은 아이에게 더 많이 위로받고 있을 가능성이 높습니다. 아이가 꼬리를 흔들며 반겨주는 장면, 조용히 옆에 와 눕는 순간, 아무 말 없이 눈을 마주치는 짧은 시간마저도 보호자님에게는 아주 큰 정서적 회복으로 작용합니다. 특히 마음이 약해졌을 때, 삶이 공허하게 느껴질 때, 인간관계로 지쳤을 때 이 아이가 심리적 수호천사처럼 작용하는 경우가 많습니다. 다만 이렇게 좋은 궁합일수록 보호자님이 이 아이에게 정서적으로 너무 많이 기대는 흐름도 생길 수 있습니다. 아이의 기분이나 건강 상태에 따라 보호자님 하루 컨디션이 크게 좌우될 수도 있고, 이별에 대한 두려움도 남들보다 더 크게 느낄 수 있습니다. 그럼에도 이 궁합의 핵심은 분명합니다. 이 아이는 보호자님 삶에 들어와 마음의 온도를 올리고, 웃음을 늘리고, 지친 영혼을 부드럽게 회복시키는 존재입니다. 말 그대로 보호자님 인생에 들어온 살아 있는 복과 위안의 기운입니다.";
-        } else if (overcomeMap[elementMap[meGan]] === elementMap[youGan]) {
-            ganRel = "내가 극함";
-            ganScore = 49;
-            ganText = "보호자님이 아이를 극하는 이 관계는 <span class='hl'>보호자님이 주도권과 기준을 잡게 되는 상극 구조</span>입니다. 명리학적으로 내가 상대를 극한다는 것은 내가 상대를 제어하고 다듬고 이끌려는 힘이 강하게 작용한다는 뜻입니다. 그래서 이 아이를 만나면 유독 손이 많이 가는 느낌이 들거나, 생활 습관을 잡아주고 싶고, 버릇을 제대로 들여야겠다는 마음이 커질 수 있습니다. 단순히 예뻐하는 관계보다는 내가 이 아이를 책임지고 관리해야 한다는 감각이 더 강하게 들어오는 궁합입니다. 아이 입장에서는 보호자님을 든든하고 큰 존재로 느끼면서도, 동시에 약간은 무서운 기준점처럼 받아들일 수도 있습니다. 그래서 이 관계에서는 훈육, 규칙, 생활 리듬, 선 긋기가 아주 중요해집니다. 잘만 풀리면 아이가 안정적으로 자라고 생활 습관도 반듯해질 수 있지만, 반대로 보호자님의 통제 욕구가 너무 강해지면 아이 본연의 성격과 자유로움이 눌릴 수 있습니다. 특히 보호자님이 피곤하거나 예민할 때 아이의 작은 장난에도 더 민감하게 반응할 수 있기 때문에, 감정 훈육이 아니라 생활 훈육으로 방향을 잡는 것이 중요합니다. 명리학적으로 상극이라고 해서 무조건 나쁜 관계는 아닙니다. 오히려 기준을 세워 주고 방향을 만들어 주는 힘이 있다는 뜻이기도 하니까요. 이 궁합의 핵심은 보호자님이 가진 주도성을 따뜻한 리더십으로 바꾸는 것입니다. 그렇게만 되면 이 아이는 보호자님 아래에서 안정감을 얻고, 보호자님은 이 아이를 제대로 키워 낸다는 깊은 보람을 느끼게 됩니다.";
-        } else if (overcomeMap[elementMap[youGan]] === elementMap[meGan]) {
-            ganRel = "아이가 극함";
-            ganScore = 54;
-            ganText = "아이의 기운이 보호자님을 극하는 이 관계는 <span class='hl'>아이의 존재감이 보호자님 삶을 강하게 흔들고 바꾸는 상극 구조</span>입니다. 명리학적으로 상대가 나를 극하면 그 존재가 내 리듬을 깨고, 내 생각을 바꾸고, 내 감정을 흔드는 힘이 강하게 들어옵니다. 그래서 이 아이는 보호자님에게 그저 순한 천사라기보다, 너무 귀엽고 너무 강력해서 결국 내 생활 패턴을 통째로 바꾸게 만드는 존재가 될 가능성이 큽니다. 안 된다고 다짐해도 결국 간식을 하나 더 주게 되고, 혼내려다가도 애교 한 번에 마음이 풀리고, 오늘은 일찍 자야지 하다가도 아이랑 놀아주느라 루틴이 무너지는 식입니다. 이 관계는 정신없고 귀엽고 사랑스럽고 피곤한 것이 한꺼번에 들어 있습니다. 보호자님이 이 아이에게 자꾸 휘둘리는 것 같지만, 사실 그만큼 아이가 보호자님 마음의 가장 약한 부분을 정확히 건드리는 존재라는 뜻이기도 합니다. 물론 이 구조에서는 아이가 기세가 세거나 자기주장이 강하게 느껴질 수도 있고, 보호자님이 생각한 대로 관계가 흘러가지 않을 수도 있습니다. 하지만 바로 그 예측 불가함 때문에 일상이 훨씬 생생해지고, 웃긴 사건도 많아지고, 정 역시 빠르게 깊어집니다. 중요한 것은 아이에게 완전히 끌려다니지 않으면서도 이 아이의 강한 존재감을 하나의 매력으로 받아들이는 것입니다. 그렇게 균형만 잡히면, 이 궁합은 서로를 평범하지 않게 만드는 강렬한 인연으로 남습니다.";
-        } else {
-            ganRel = "평형";
-            ganScore = 74;
-            ganText = "보호자님과 아이는 서로의 기운이 과하게 얽히거나 세게 충돌하지 않는 <span class='hl'>안정적인 평형 관계</span>입니다. 명리학적으로 보면 아주 강렬한 합도 아니고, 피곤할 정도의 상극도 아닌 구조라 처음에는 드라마틱하지 않게 느껴질 수 있습니다. 하지만 실제 생활에서는 이런 궁합이 가장 오래 편안하고 무난하게 가는 경우가 많습니다. 보호자님은 아이를 과하게 조이거나 지나치게 휘둘리지 않고, 아이 역시 보호자님의 생활 리듬을 크게 무너뜨리지 않으면서 자연스럽게 가족 안으로 스며듭니다. 이 관계에서는 서로를 존중하는 감각이 중요하게 작용합니다. 아이는 필요할 때 다가오고 쉴 때는 자기만의 시간을 가지며, 보호자님도 아이의 성향을 무리하게 바꾸려 하기보다 있는 그대로 이해하게 됩니다. 그래서 분리불안이나 감정 과몰입이 심하지 않은 대신, 은근하고 오래 가는 신뢰가 차곡차곡 쌓이는 구조입니다. 처음에는 막 폭발적인 궁합처럼 보이지 않아도 함께 지낼수록 '이렇게 편한 관계가 제일 좋다'는 감정을 크게 주게 됩니다. 갈등이 적고 생활 피로도가 낮으며, 서로의 존재가 일상 속 안정감으로 작용하는 관계이기 때문입니다. 한마디로 이 궁합은 강렬함보다는 지속성, 자극보다는 평온함, 뜨거움보다는 잔잔한 깊이를 가진 편안한 가족 인연입니다.";
+    let isHap = false;
+    ganHap.forEach(p => {
+        if ((p[0] === meGan && p[1] === youGan) || (p[0] === youGan && p[1] === meGan)) {
+            isHap = true;
         }
+    });
 
-        const zhiYukhap = [['子', '丑'],['寅', '亥'],['卯', '戌'],['辰', '酉'],['巳', '申'],['午', '未']];
-        const zhiSamhap = [['申', '子'], ['子', '辰'], ['申', '辰'], ['亥', '卯'], ['卯', '未'], ['亥', '未'], ['寅', '午'], ['午', '戌'], ['寅', '戌'], ['巳', '酉'], ['酉', '丑'], ['巳', '丑']];
-        const zhiChung = [['子', '午'],['丑', '未'],['寅', '申'],['卯', '酉'],['辰', '戌'],['巳', '亥']];
-        const zhiWonjin = [['子', '未'],['丑', '午'],['寅', '酉'],['卯', '申'],['辰', '亥'],['巳', '戌']];
-        const zhiHyeong = [['子', '卯'],['寅', '巳'],['巳', '申'],['申', '寅'],['丑', '戌'],['戌', '未'],['未', '丑'],['辰', '辰'],['午', '午'],['酉', '酉'],['亥', '亥']];
-        const zhiHae = [['子', '未'],['丑', '午'],['寅', '巳'],['卯', '辰'],['申', '亥'],['酉', '戌']];
-
-        function hasZhiPair(arr, a, b) {
-            return arr.some(([x, y]) => (x === a && y === b) || (x === b && y === a));
-        }
-
-        const isSameZhi = meZhi === youZhi;
-        const isZhiYukhap = hasZhiPair(zhiYukhap, meZhi, youZhi);
-        const isZhiSamhap = hasZhiPair(zhiSamhap, meZhi, youZhi);
-        const isZhiChung = hasZhiPair(zhiChung, meZhi, youZhi);
-        const isZhiWonjin = hasZhiPair(zhiWonjin, meZhi, youZhi);
-        const isZhiHyeong = hasZhiPair(zhiHyeong, meZhi, youZhi);
-        const isZhiHae = hasZhiPair(zhiHae, meZhi, youZhi);
-
-        if (isSameZhi) {
-            zhiRel = "동지지";
-            zhiScore = 38;
-            zhiText = "보호자님과 아이는 같은 지지의 생활 리듬을 가진 <span class='hl'>닮은꼴 생활 동기화 관계</span>입니다. 지지는 함께 살아갈 때 드러나는 습관, 반응 속도, 쉬는 방식, 예민해지는 포인트를 보여주는데, 같은 지지라는 것은 이 일상 감각이 유난히 비슷하다는 뜻입니다. 그래서 보호자님이 쉬고 싶을 때 아이도 같이 늘어지고, 보호자님이 움직이기 시작하면 아이도 덩달아 텐션이 살아나는 식의 생활 동조가 강하게 나타날 수 있습니다. 이 관계의 가장 큰 장점은 억지로 맞추지 않아도 생활이 비교적 자연스럽게 굴러간다는 점입니다. 같이 있는 시간이 불편하지 않고, 서로의 페이스를 본능적으로 이해하기 때문에 반려생활 피로도가 낮은 편입니다. 하지만 너무 닮았기 때문에 예민해지는 타이밍도 겹치기 쉽고, 한번 고집이 붙으면 서로 양보 없이 버티는 흐름으로 갈 수도 있습니다. 아이가 유독 자기 방식대로 굴 때 보호자님도 이상하게 더 예민하게 느끼는 이유가 바로 여기 있습니다. 그래도 결국은 가장 생활감이 잘 맞는 궁합 중 하나라, 함께하는 시간이 길어질수록 가족 같다는 감정이 아주 깊어집니다. 자극적이기보다 진득하고, 화려하기보다 익숙하고, 그래서 더 오래 가는 생활 밀착형 인연입니다.";
-        } else if (isZhiYukhap) {
-            zhiRel = "육합";
-            zhiScore = 34;
-            zhiText = "보호자님과 아이는 일상 속 호흡이 부드럽게 맞물리는 <span class='hl'>생활 친화형 육합 관계</span>입니다. 지지의 합은 감정의 폭발적인 끌림이라기보다, 함께 살수록 생활의 마찰이 적고 서로를 편하게 받아들이는 흐름을 의미합니다. 그래서 이 궁합은 같은 공간에서 지내는 피로감이 적고, 밥 먹는 시간, 쉬는 시간, 붙어 있는 방식, 떨어져 있는 거리감이 전체적으로 무리 없이 흘러가는 편입니다. 보호자님이 소파에 기대면 아이도 옆에 와 자리를 잡고, 보호자님이 바쁠 때는 아이도 자기만의 시간을 보내며, 놀아줄 때는 또 자연스럽게 합을 맞추는 식의 부드러운 조율이 잘 일어납니다. 이 관계의 장점은 서로를 과하게 소모하지 않는다는 점입니다. 아이가 보호자님을 너무 흔들지도 않고, 보호자님도 아이를 지나치게 조이지 않아서 같이 살수록 마음이 편안해집니다. 특히 장기적으로 봤을 때 생활 스트레스가 낮고, 무난하면서도 애정 깊은 관계로 자리 잡기 좋습니다. 다만 너무 편안하다 보니 초반에는 강렬함이 덜하다고 느낄 수 있지만, 시간이 흐를수록 이런 평온한 합이 오히려 가장 귀하고 오래 간다는 걸 체감하게 됩니다. 한마디로 육합은 드라마틱한 사랑보다, 매일매일 잘 맞는 생활형 사랑에 가깝습니다.";
-        } else if (isZhiSamhap) {
-            zhiRel = "삼합";
-            zhiScore = 42;
-            zhiText = "보호자님과 아이는 함께할수록 기운이 커지고 팀워크가 좋아지는 <span class='hl'>성장형 삼합 관계</span>입니다. 삼합은 둘이 만났을 때 단순히 편한 수준을 넘어, 같이 있을수록 관계의 에너지가 살아나고 서로의 장점을 끌어올리는 구조로 봅니다. 그래서 이 궁합은 처음보다 시간이 지날수록 더 잘 맞는 느낌이 강해질 가능성이 높습니다. 보호자님은 아이와 함께하면서 생활의 활력과 루틴을 얻고, 아이는 보호자님과 함께하면서 안정감과 자신감을 키우는 식의 상호 상승이 일어날 수 있습니다. 특히 산책, 놀이, 여행, 루틴 만들기처럼 같이 움직이는 활동에서 합이 좋은 편이라 '같이 뭔가 할 때 유독 더 잘 맞는다'는 체감이 크게 들어옵니다. 이 관계는 정서적인 밀착뿐 아니라 실제 생활 속 협응력이 좋기 때문에, 아이가 보호자님의 리듬에 잘 적응하고 보호자님도 아이의 본능을 자연스럽게 이해하게 됩니다. 다만 삼합은 기운이 커지는 관계라 좋은 방향이면 아주 좋지만, 생활 패턴이 무너지거나 흥분도가 올라가면 같이 과열될 수도 있습니다. 그래서 이 궁합은 좋은 습관과 건강한 루틴을 함께 만들수록 진가가 크게 드러납니다. 함께 살수록 더 잘 맞고, 함께할수록 더 단단해지는 성장형 가족 궁합입니다.";
-        } else if (isZhiWonjin) {
-            zhiRel = "원진";
-            zhiScore = -28;
-            zhiText = "보호자님과 아이는 애정과 예민함이 묘하게 얽히는 <span class='hl'>감정 꼬임형 원진 관계</span>입니다. 원진은 사주에서 단순한 불화라기보다, 좋아하면서도 괜히 더 예민해지고, 끌리면서도 피곤하고, 멀리하기엔 또 너무 정이 가는 복잡한 감정선을 만드는 관계로 봅니다. 그래서 이 궁합은 아이가 너무 예뻐서 못 견디겠는데 동시에 이상하게 손이 더 많이 가고, 작은 행동에도 웃다가도 짜증이 났다가도 또 바로 풀어지는 식의 감정 롤러코스터를 만들 수 있습니다. 휴지통을 엎고, 이불을 어지럽히고, 안 되는 걸 계속 해도 그 동그란 눈으로 쳐다보면 화를 제대로 끝까지 못 내는 흐름이 생기기 쉽습니다. 이 관계의 특징은 정이 깊은데 감정 소모도 같이 크다는 점입니다. 유독 아이의 작은 컨디션 변화에도 마음이 흔들리고, 평소라면 넘길 일도 이 아이 일에는 크게 반응하게 될 수 있습니다. 그렇다고 나쁜 궁합이냐 하면 또 그렇지는 않습니다. 원진은 싫어서 끊기는 관계보다, 묘하게 정이 들어서 더 못 놓는 관계에 가깝기 때문입니다. 다만 이 관계가 건강하게 오래 가려면 보호자님도 아이도 각자의 쉬는 리듬과 거리 두는 시간을 조금씩 배워야 합니다. 그래야 애정은 깊게 유지하면서 감정 피로는 줄일 수 있습니다. 징글징글하게 정들고, 괜히 더 마음 쓰이고, 그래서 더 못 놓는 애증형 껌딱지 인연입니다.";
-        } else if (isZhiChung) {
-            zhiRel = "충";
-            zhiScore = -18;
-            zhiText = "보호자님과 아이는 생활 리듬과 행동 방식이 정면으로 부딪히는 <span class='hl'>다이내믹 충 관계</span>입니다. 지지의 충은 감정보다 생활에서 먼저 체감되는 경우가 많아서, 쉬는 시간, 활동 시간, 예민해지는 포인트, 원하는 거리감이 서로 다르게 나타날 수 있습니다. 보호자님은 쉬고 싶은데 아이는 놀아 달라고 달려오고, 보호자님은 조용한 시간을 원할 때 아이는 활발하게 집안을 누비는 식으로 타이밍 충돌이 생기기 쉽습니다. 처음에는 이 차이가 꽤 피곤하게 느껴질 수 있습니다. 하지만 충 관계는 무조건 나쁘다기보다, 서로의 삶을 흔들어 놓으면서 변화를 만드는 힘이 강한 관계이기도 합니다. 그래서 이 아이를 만나고 나서 보호자님 생활이 더 부지런해지거나, 더 규칙적으로 바뀌거나, 오히려 건강한 루틴을 되찾는 경우도 많습니다. 아이 입장에서도 보호자님을 통해 지나친 예민함이나 과한 흥분이 조절될 수 있습니다. 중요한 것은 서로를 억지로 같은 템포로 만들려 하지 않는 것입니다. 충 관계는 다름을 인정하고 생활 설계를 잘하면 오히려 활력과 생동감을 주는 궁합으로 바뀔 수 있습니다. 정신없고 피곤한 날도 있지만, 그래서 단 하루도 심심하지 않고 관계가 늘 살아 움직이는 에너지형 인연입니다.";
-        } else if (isZhiHyeong) {
-            zhiRel = "형";
-            zhiScore = -22;
-            zhiText = "보호자님과 아이는 사소한 습관이나 예민한 포인트에서 자주 건드려지는 <span class='hl'>신경전형 형 관계</span>입니다. 지지의 형은 대놓고 크게 부딪히기보다는, 계속 작은 마찰이 쌓이며 스트레스를 만드는 관계로 보는 경우가 많습니다. 그래서 이 궁합은 아이의 특정 행동이 유독 거슬리거나, 보호자님의 특정 반응에 아이가 유난히 예민하게 굴 수 있습니다. 예를 들면 훈육할 때 자꾸 타이밍이 꼬이거나, 반복되는 습관 문제 때문에 서로 피곤함이 누적되는 식입니다. 이 관계의 핵심은 사랑이 없어서 부딪히는 것이 아니라, 가까워질수록 서로의 예민한 부분을 더 잘 건드린다는 데 있습니다. 그렇기 때문에 생활 규칙을 감정적으로 잡기보다, 일관되고 단순한 패턴으로 정리하는 것이 중요합니다. 형 관계는 한 번 틀이 잡히면 오히려 훨씬 안정적으로 풀리는 경우도 많습니다. 즉, 초반에는 손이 많이 가고 피곤할 수 있지만, 보호자님이 중심을 잘 잡아주면 아이도 점차 불필요한 긴장을 줄이고 편안해질 수 있습니다. 날카로운 부분만 잘 다듬으면 오히려 서로에게 좋은 훈련이 되는 관계입니다. 다듬을수록 괜찮아지는, 초반 관리형 궁합이라고 보면 됩니다.";
-        } else if (isZhiHae) {
-            zhiRel = "해";
-            zhiScore = -14;
-            zhiText = "보호자님과 아이는 겉으로는 큰 문제 없어 보여도 은근한 오해와 엇갈림이 생기기 쉬운 <span class='hl'>미묘한 해 관계</span>입니다. 지지의 해는 강하게 싸우는 구조라기보다, 서로의 의도를 잘못 읽거나 감정 타이밍이 조금씩 어긋나면서 답답함이 쌓이는 방식으로 나타나는 경우가 많습니다. 보호자님은 사랑해서 한 행동인데 아이는 부담스러워하고, 아이는 애교를 부린 건데 보호자님은 버릇 없는 행동처럼 느끼는 식의 미세한 오독이 반복될 수 있습니다. 그래서 이 관계에서는 아이를 내 기준으로 해석하지 않고, 아이 나름의 표현 방식을 천천히 읽어주는 태도가 중요합니다. 아이 역시 보호자님의 생활 패턴과 감정 기복을 익히는 시간이 필요할 수 있습니다. 해 관계의 장점은 대놓고 크게 부딪히는 대신, 이해만 깊어지면 의외로 금방 부드러워질 수 있다는 점입니다. 즉, 몰라서 엇갈리는 것이지 정말 안 맞아서 깨지는 구조는 아니라는 뜻입니다. 초반에는 왜 이리 타이밍이 안 맞지 싶을 수 있지만, 서로를 읽는 시간이 쌓이면 오히려 더 세심한 관계로 바뀔 수 있습니다. 조심스럽지만 천천히 맞춰 가면 은근히 정이 깊어지는 타입의 인연입니다.";
-        } else {
-            zhiRel = "평형";
-            zhiScore = 18;
-            zhiText = "보호자님과 아이는 서로의 생활 영역을 크게 침범하지 않으면서도 자연스럽게 따뜻함을 주고받는 <span class='hl'>평형형 라이프스타일 궁합</span>입니다. 지지는 함께 살아갈 때의 리듬과 습관을 보는데, 이 관계는 강한 합처럼 들러붙지도 않고 충처럼 요란하게 흔들리지도 않아서 일상이 비교적 편안하게 굴러가는 편입니다. 보호자님이 바쁠 때 아이는 자기만의 방식으로 시간을 보내고, 놀아줄 때는 또 그 순간에 맞춰 반응해 주는 식으로 완급 조절이 잘 맞는 편입니다. 이 구조의 장점은 생활 피로도가 낮다는 것입니다. 과한 집착이나 지나친 긴장 없이, 서로를 가족으로 자연스럽게 받아들이며 무난하고 안정된 애정을 쌓아 갈 수 있습니다. 처음에는 강렬함이 덜해 보여도 오래 함께할수록 이런 평형 관계가 얼마나 귀한지 알게 됩니다. 감정 기복보다 신뢰가 먼저 자리 잡고, 자극보다 평온이 오래 남기 때문입니다. 이 궁합은 억지로 일상을 바꾸지 않아도 함께 있는 것만으로 집 안의 공기가 따뜻해지는 편안한 가족형 인연입니다.";
-        }
-
-        const energyScores = {"甲":80, "乙":70, "丙":95, "丁":85, "戊":50, "己":60, "庚":90, "辛":75, "壬":85, "癸":65};
-        const affectionScores = {"甲":60, "乙":85, "丙":90, "丁":95, "戊":50, "己":75, "庚":40, "辛":65, "壬":80, "癸":95};
-        const stubbornScores = {"甲":95, "乙":50, "丙":85, "丁":60, "戊":90, "己":80, "庚":95, "辛":85, "壬":70, "癸":40};
-
-        const elementMeta = {
-            "木": { keywords: "성장력, 적응력, 회복력, 생기", meaning: "새로운 환경에 적응하고 기운을 바깥으로 뻗어 나가게 만드는 힘", care: "햇볕, 산책, 식물 많은 공간, 새로운 냄새와 자극", lackEffect: "활력이 처지거나 새로운 환경에 적응하는 속도가 더딜 수 있고, 마음이 쉽게 움츠러들 수 있습니다.", excessEffect: "움직임이 많고 호기심이 풍부하지만 한곳에 차분히 머무는 힘은 다소 약해질 수 있습니다." },
-            "火": { keywords: "온기, 표현력, 애정, 활발함", meaning: "감정을 드러내고 관계의 온도를 빠르게 끌어올리는 힘", care: "따뜻한 교감, 칭찬, 놀아 주는 시간, 밝은 분위기", lackEffect: "표현이 적고 반응이 무던해 보여도 속으로는 정서적 건조함이 쌓일 수 있습니다.", excessEffect: "애정 표현이 풍부하고 생동감이 넘치지만 흥분과 예민함도 함께 올라갈 수 있습니다." },
-            "土": { keywords: "안정감, 생활력, 중심감, 보호력", meaning: "하루의 리듬을 지켜 주고 버티는 힘을 만들어 주는 중심축", care: "규칙적인 식사, 익숙한 공간, 일정한 루틴, 편안한 휴식", lackEffect: "생활 리듬이 흔들리기 쉽고, 익숙한 패턴이 깨질 때 불안이 커질 수 있습니다.", excessEffect: "안정감은 좋지만 고집과 완고함으로 보이는 면이 강해질 수 있습니다." },
-            "金": { keywords: "질서감, 경계감, 정리력, 예민한 감각", meaning: "몸과 생활을 정돈하고 위험을 빨리 감지하게 해 주는 힘", care: "청결한 공간, 규칙적인 관리, 지나친 소음이나 자극 줄이기", lackEffect: "생활 리듬이 퍼지거나 기본 관리가 느슨해지기 쉬워 작은 불편이 쌓일 수 있습니다.", excessEffect: "예민하고 기준이 분명해져서 작은 변화에도 민감하게 반응할 수 있습니다." },
-            "水": { keywords: "감수성, 교감력, 휴식, 정서적 안정", meaning: "말없이도 마음을 주고받고 깊게 정 붙이는 힘", care: "조용한 휴식, 포근한 교감, 안정된 수면 환경, 과한 자극 줄이기", lackEffect: "마음을 쉬게 하는 힘이 약해져 긴장과 피로가 속에 남기 쉽습니다.", excessEffect: "감수성이 풍부하고 정이 깊지만 예민함과 불안도 함께 깊어질 수 있습니다." }
-        };
-
-        function buildElementSynergyText(meEls, youEls) {
-            const meLacking = Object.keys(meEls).filter(e => meEls[e] === 0);
-            const youLacking = Object.keys(youEls).filter(e => youEls[e] === 0);
-            const meExcess = Object.keys(meEls).filter(e => meEls[e] >= 3);
-            const youExcess = Object.keys(youEls).filter(e => youEls[e] >= 3);
-
-            let synergyFound = false;
-            let parts = [];
-
-            meLacking.forEach(el => {
-                if (youExcess.includes(el) || youEls[el] >= 2) {
-                    const meta = elementMeta[el];
-                    parts.push(`보호자님 사주 원국에서 비어 있거나 약하게 드러나는 <span class='hl'>${el}</span> 기운은 ${meta.keywords}과 깊게 연결됩니다. 원래 이 기운이 부족한 분은 삶의 특정 부분에서 늘 미세한 허전함이나 균형 부족을 느끼기 쉽습니다. 그런데 아이 사주에는 이 <span class='hl'>${el}</span> 흐름이 비교적 또렷하게 살아 있어 ${meta.meaning}으로 작용합니다. 쉽게 말해 보호자님이 원래 타고난 구조 안에서 부족했던 결을 아이가 생활 속에서 부드럽게 메워 주는 셈입니다. 아이를 안고 바라보는 것만으로도 마음이 풀리고, 집 안 공기가 달라지고, 괜히 숨통이 트이는 느낌이 드는 이유가 바로 여기에 있습니다. 이건 단순한 귀여움의 문제가 아니라 서로의 기운이 맞물리는 방식의 문제입니다.`);
-                    parts.push(`특히 <span class='hl'>${el}</span> 기운은 ${meta.care}와 연결되므로, 아이와 함께하는 일상 속에서 이런 요소가 자연스럽게 늘어날수록 보호자님에게도 좋은 흐름이 더 강하게 들어옵니다. 결국 아이는 그냥 함께 사는 존재가 아니라, 보호자님의 부족한 결을 조용히 채워 주는 살아 있는 복의 통로로 볼 수 있습니다.`);
-                    synergyFound = true;
-                }
-            });
-
-            youLacking.forEach(el => {
-                if (meExcess.includes(el) || meEls[el] >= 2) {
-                    const meta = elementMeta[el];
-                    parts.push(`반대로 아이 사주에서 다소 약하게 드러나는 <span class='hl'>${el}</span> 기운은 보호자님이 비교적 충분히 품고 있는 흐름입니다. 아이 입장에서는 보호자님 곁이 단순히 안전한 장소를 넘어, 자기 원국의 빈틈이 자연스럽게 보완되는 치유의 자리로 작동할 수 있습니다. ${meta.keywords}과 관련된 부분을 보호자님이 생활 속에서 안정적으로 공급해 주기 때문에 아이는 보호자님과 함께 있을 때 더 빨리 긴장을 풀고, 더 솔직하게 감정을 드러내고, 더 편안하게 자기다운 모습을 보여 줄 수 있습니다.`);
-                    parts.push(`이런 구조에서는 보호자님의 말투, 손길, 생활 리듬, 공간 분위기 자체가 아이에게 약처럼 작용하는 경우가 많습니다. 아이가 보호자님 옆에서 유독 깊게 잠들거나, 괜히 더 오래 기대 있으려 하거나, 떨어졌다가도 다시 가까이 오려는 모습이 자주 보인다면 이런 보완 작용이 실제 생활 안에서 강하게 나타나는 것이라 볼 수 있습니다.`);
-                    synergyFound = true;
-                }
-            });
-
-            if (synergyFound) {
-                parts.push(`정리하면 이 만남은 한쪽만 돌보고 한쪽만 받는 단순한 구조가 아닙니다. 보호자님은 아이를 통해 자기 안의 빈 곳이 따뜻하게 채워지고, 아이는 보호자님을 통해 자기 원국의 약한 부분을 안정적으로 보완받습니다. 그래서 이 관계는 시간이 흐를수록 더 좋아지는 후반형 궁합으로 보는 것이 맞습니다. 처음보다 몇 달, 몇 년 함께한 뒤에 훨씬 더 강한 정과 신뢰가 생길 가능성이 높고, 말로 설명하기 어려운 깊은 가족감이 만들어질 가능성이 큽니다.`);
-            } else {
-                parts.push(`오행 결핍과 과다의 관점에서 보았을 때 극적인 보완 작용이 강하게 드러나는 구조는 아닙니다. 하지만 이것은 결코 약한 인연이라는 뜻이 아닙니다. 오히려 서로의 기운을 과하게 흔들지 않고, 본래의 성향을 편안하게 유지하게 해 주는 잔잔하고 안정적인 만남으로 볼 수 있습니다. 큰 숙제를 던지는 인연이라기보다, 함께 있는 것만으로도 숨이 편해지고 마음이 누그러지는 관계에 가깝습니다. 화려한 사건보다 평범한 일상이 더 큰 행복을 만들어 주는 궁합입니다.`);
-            }
-            return parts.join(" ");
-        }
-
-        function buildRelationNarrative(ganRel, zhiRel) {
-            let simText = "";
-            let solutionText = "";
-
-            if (ganRel === "합" || zhiRel === "합") {
-                simText = `천간이나 지지에서 <span class='hl'>합</span>의 기운이 보인다는 것은, 서로의 존재가 자연스럽게 끌리고 섞이며 정서적 유착이 잘 생기는 구조라는 뜻입니다. 이런 조합은 처음부터 경계심이 오래 가지 않거나, 함께 있을수록 금방 익숙해지고 편안해지기 쉽습니다. 보호자님이 기쁘면 아이도 같이 들뜨고, 보호자님이 지치면 아이도 조용히 곁을 지키며 분위기를 맞추는 식의 교감이 자연스럽게 나타날 수 있습니다. 생활 속에서는 눈빛, 체온, 루틴 같은 비언어적 요소를 통해 관계가 깊어질 가능성이 크며, 함께 있는 것 자체가 안정이 되는 흐름으로 발전하기 쉽습니다. `;
-                simText += `다만 합이 강한 궁합은 서로의 존재에 너무 익숙해지고 의지하게 되는 만큼, 잠깐의 거리감에도 서운함이나 불안을 크게 느낄 수 있습니다. 보호자님이 외출만 해도 아이가 유난히 예민해지거나, 아이가 안 보이면 보호자님 마음이 허전해지는 식의 애착 심화가 나타날 수 있습니다. 그래서 이 관계는 사랑이 부족해서 문제가 생기는 것이 아니라, 사랑이 너무 깊어져서 건강한 거리 조절이 중요해지는 궁합입니다.`;
-
-                solutionText = `이 아름다운 관계를 오래 건강하게 지켜 주는 핵심은 가까움 속에서도 안정된 거리감을 함께 배우는 것입니다. 늘 붙어 있는 것만이 사랑은 아닙니다. 잠깐 떨어져 있어도 관계는 안전하다는 감각을 아이에게 익히게 해 주는 것이 매우 중요합니다. 짧게 혼자 쉬는 시간, 혼자 장난감을 가지고 노는 시간, 보호자님이 다시 돌아온다는 반복 경험이 쌓이면 애착은 더 건강하고 단단해집니다. 보호자님 역시 아이에게서 잠시 떨어져 있을 때 죄책감을 느끼기보다, 오히려 더 오래 좋은 관계를 만들기 위한 과정이라고 생각하는 것이 좋습니다.`;
-            } else if (ganRel === "극" || zhiRel === "충" || zhiRel === "원진") {
-                simText = `천간의 <span class='hl'>극</span>이나 지지의 <span class='hl'>충</span>, <span class='hl'>원진</span>이 걸린 관계는 정적이고 무난한 흐름보다는 서로가 서로를 강하게 자극하는 구조로 나타나기 쉽습니다. 보호자님의 감정과 아이의 반응이 서로에게 즉각적인 영향을 주고, 작은 사건도 체감상 크게 느껴질 가능성이 있습니다. 그래서 함께 살면 웃길 때는 정말 많이 웃기고, 정신없을 때는 하루에 여러 감정이 빠르게 오갈 수 있습니다. 이런 조합은 밖에서 보면 시트콤 같고, 안에서는 아주 생생한 정이 쌓이는 경우가 많습니다. `;
-                simText += `중요한 것은 이런 자극이 꼭 나쁜 뜻이 아니라는 점입니다. 오히려 무기력한 일상에 생기를 넣고, 보호자님이 자기 감정과 반응을 더 분명히 자각하게 만들며, 아이 역시 존재감이 강한 가족으로 자리 잡게 됩니다. 다만 서로의 예민 포인트를 읽지 못하면 피로가 빨리 쌓일 수 있습니다. 즉, 이 궁합은 약한 궁합이 아니라 다루는 방식이 중요한 강한 궁합입니다.`;
-
-                solutionText = `이 관계의 핵심 처방은 넘치는 에너지를 좋은 방향으로 순환시키는 것입니다. 몸의 긴장을 먼저 빼 주고, 감정이 올라왔을 때 바로 힘으로 누르지 않는 것이 중요합니다. 충분한 산책, 냄새 놀이, 규칙적인 루틴, 흥분 후 진정 시간은 이 궁합에서 특히 큰 효과를 냅니다. 보호자님도 감정이 올라왔을 때 즉각 반응하기보다 템포를 한 박자 늦추는 습관이 필요합니다. 그렇게만 하면 이 관계는 피곤한 궁합이 아니라 매일이 살아 있는 유쾌한 궁합으로 바뀝니다.`;
-            } else {
-                simText = `천간과 지지의 관계가 과하게 들러붙지도, 크게 부딪히지도 않는다면 기본적으로는 잔잔하고 생활 밀착형인 궁합으로 보는 것이 맞습니다. 함께 있을 때 감정 소모가 크지 않고, 일상 루틴 안에서 차분하게 정이 깊어지는 흐름입니다. 아이는 보호자님에게 과하게 매달리지 않으면서도 믿고 의지하고, 보호자님 역시 아이의 리듬을 존중하며 무리 없이 돌볼 수 있는 가능성이 큽니다. 이런 조합은 겉으로 화려한 이벤트가 많지 않아도 실제 만족도가 높은 편입니다. `;
-                simText += `하루하루의 산책, 식사, 휴식, 잠드는 시간 같은 반복되는 장면들이 관계를 단단하게 만들고, 시간이 흐를수록 특별한 일이 없어도 그냥 함께 있는 시간이 가장 큰 위안이 되는 형태로 자리 잡기 쉽습니다. 즉, 자극형 궁합이 아니라 안심형 궁합이라고 볼 수 있습니다.`;
-
-                solutionText = `이 평화로운 관계를 더 풍성하게 만드는 비결은 익숙함 위에 작은 설렘을 얹는 것입니다. 기본적으로 안정적인 궁합일수록 루틴이 잘 맞는 장점이 있지만, 너무 익숙해지면 자극과 활력이 줄어들 수 있습니다. 그래서 가끔은 새로운 산책 코스, 새로운 냄새, 새로운 장난감, 특별 간식을 통해 관계에 가벼운 변화를 주는 것이 좋습니다. 이런 변화는 불안을 만드는 것이 아니라 관계의 즐거움을 환기해 주는 역할을 합니다. 안정감 위에 신선함을 한 스푼 얹어 주면 이 궁합은 오래도록 질리지 않는 매우 좋은 반려 흐름으로 발전합니다.`;
-            }
-            return { simText, solutionText };
-        }
-
-        let finalScore = Math.min(100, Math.max(10, ganScore + zhiScore));
-        let conclusionTitle = "";
-        let conclusion = "";
-
-        if (finalScore >= 95) {
-            conclusionTitle = "기적처럼 깊게 이어진 최상급 인연";
-            conclusion = "두 분의 궁합은 단순히 잘 맞는 수준을 넘어, 서로의 삶과 감정을 깊이 보완해 주는 최상급 인연으로 해석됩니다. 아이는 보호자님 곁에서 가장 편안하고 안정된 모습을 드러낼 가능성이 크며, 보호자님 역시 이 아이를 통해 말로 설명하기 어려운 위로와 충만함을 얻게 됩니다. 함께하는 시간 자체가 운을 부드럽게 풀어 주는 흐름이라 볼 수 있으며, 평생 곁에 두고 아끼면 아낄수록 복이 깊어지는 귀한 궁합입니다.";
-        } else if (finalScore >= 85) {
-            conclusionTitle = "서로를 치유하는 상위권 힐링 궁합";
-            conclusion = "정서적 교감과 생활 궁합이 모두 매우 뛰어난 편으로, 함께 있을수록 마음이 편안해지고 서로에게 좋은 영향을 주는 이상적인 관계입니다. 아이는 보호자님의 사랑을 안정적으로 받아들이고, 보호자님은 아이를 돌보는 과정에서 오히려 자신의 마음까지 치유받게 될 가능성이 큽니다. 평범한 하루조차 더 따뜻하고 빛나게 만들어 주는 힘이 있는, 만족도가 매우 높은 상위권 궁합입니다.";
-        } else if (finalScore >= 75) {
-            conclusionTitle = "오래 갈수록 더 좋아지는 안정형 궁합";
-            conclusion = "서로를 편안하게 받아들이고 오랜 시간 무리 없이 곁을 지켜 갈 수 있는 안정형 궁합입니다. 처음부터 강렬하게 불타오르는 관계라기보다, 함께 지낼수록 정이 깊어지고 신뢰가 단단해지는 흐름에 가깝습니다. 생활 리듬을 천천히 맞춰 가면 아이도 더 편안해지고 보호자님도 관계 속에서 큰 피로 없이 오래 행복을 느낄 수 있는 좋은 인연입니다.";
-        } else if (finalScore >= 60) {
-            conclusionTitle = "무리 없이 스며드는 편안한 가족 궁합";
-            conclusion = "기본적인 궁합의 흐름은 무난하고 부드러운 편이며, 서로의 선을 침범하기보다 자연스럽게 존중하며 맞춰 가는 관계로 볼 수 있습니다. 다만 아주 강한 결속이나 극적인 보완 작용보다는 생활 속 작은 배려와 꾸준한 교감이 중요하게 작용하는 궁합입니다. 무리하게 서두르지 않고 아이의 성향을 천천히 이해해 가면 충분히 편안하고 다정한 가족 관계로 발전할 수 있습니다.";
-        } else if (finalScore >= 50) {
-            conclusionTitle = "다름 속에서 정이 쌓이는 유쾌한 궁합";
-            conclusion = "이 궁합은 잔잔하기만 한 관계라기보다, 서로 다른 매력과 반응 방식이 부딪히며 의외의 재미를 만들어 내는 타입에 가깝습니다. 가끔은 엇갈리고 예상 밖의 상황도 생기겠지만, 그 안에서 웃음과 정이 쌓일 가능성도 큽니다. 중요한 것은 상대를 내 방식대로 바꾸려 하지 않는 것입니다. 서로의 다름을 개성으로 받아들이면 생각보다 훨씬 정감 있고 생기 있는 관계가 될 수 있습니다.";
-        } else if (finalScore >= 40) {
-            conclusionTitle = "이해할수록 빛나는 다이내믹 궁합";
-            conclusion = "서로의 기운과 반응 방식이 제법 다르게 작동하는 편이라 초반에는 리듬이 어긋나거나 피곤함이 느껴질 수 있습니다. 하지만 이런 관계가 꼭 나쁜 것은 아닙니다. 오히려 적절한 거리 조절과 생활 관리만 잘해 주면, 서로에게 부족한 부분을 배우게 하고 일상에 활력을 불어넣는 특별한 인연이 되기도 합니다. 이 궁합은 감으로만 대하기보다 이해와 관찰이 중요한 관계입니다.";
-        } else {
-            conclusionTitle = "조율 속에서 깊어지는 특별한 인연";
-            conclusion = "쉽게만 흘러가는 궁합은 아니지만, 그렇다고 해서 인연이 약하다고 단정할 수는 없습니다. 서로의 기질 차이가 분명하기 때문에 더 많은 이해와 세심한 조율이 필요하지만, 바로 그 과정을 통해 오히려 더 깊은 애정과 책임감이 생길 수 있습니다. 이 관계의 핵심은 완벽한 찰떡궁합이 되는 것이 아니라, 서로의 다름을 받아들이며 자신들만의 안정된 호흡을 만들어 가는 데 있습니다.";
-        }
-        
-        let meEnergy = energyScores[meGan] || 50;
-        let youEnergy = energyScores[youGan] || 50;
-        let eRatio = Math.round((meEnergy / (meEnergy + youEnergy)) * 100);
-
-        let meAffection = affectionScores[meGan] || 50;
-        let youAffection = affectionScores[youGan] || 50;
-        let aRatio = Math.round((meAffection / (meAffection + youAffection)) * 100);
-
-        let meStubborn = stubbornScores[meGan] || 50;
-        let youStubborn = stubbornScores[youGan] || 50;
-        let sRatio = Math.round((meStubborn / (meStubborn + youStubborn)) * 100);
-
-        const relationPack = buildRelationNarrative(ganRel, zhiRel);
-        simText = relationPack.simText;
-        solutionText = relationPack.solutionText;
-        synergyText = buildElementSynergyText(meEls, youEls);
-
-        return { 
-            score: finalScore, conclusion, conclusionTitle,
-            meEnergy, youEnergy, eRatio,
-            meAffection, youAffection, aRatio,
-            meStubborn, youStubborn, sRatio,
-            ganText, zhiText, synergyText, simText, solutionText, ganRel, zhiRel 
-        };
+    if (meGan === youGan) {
+        ganRel = "비견";
+        ganScore = 64;
+        ganText = "보호자님과 아이는 명리학적으로 같은 천간의 기운을 타고난 <span class='hl'>비견 관계</span>입니다. 쉽게 말하면 서로의 본질과 결이 매우 닮아 있는 구조라, 처음부터 이상하게 익숙하고 편안한 느낌이 강하게 생기는 인연입니다. 아이를 보고 있으면 왜 이렇게 나랑 닮았지 싶은 순간이 자주 생기고, 보호자님 기분과 생활 리듬에 아이가 묘하게 발을 맞추는 흐름도 자주 나타납니다. 내가 조용히 있고 싶은 날엔 아이도 괜히 차분해 보이고, 내가 신나서 말이 많아지는 날엔 아이도 덩달아 들뜨는 식으로 감정 동기화가 강하게 일어나는 궁합입니다. 이 관계의 가장 큰 장점은 서로를 이해하는 속도가 굉장히 빠르다는 점입니다. 보호자님은 아이가 왜 저러는지 비교적 빨리 감을 잡고, 아이도 보호자님이 어떤 사람인지 금방 파악하며 관계 속으로 깊이 들어옵니다. 그래서 남들이 보기엔 그냥 반려동물인데, 보호자님에게는 유독 더 가족 같고 유독 더 내 새끼 같은 진한 정이 빨리 드는 편입니다. 하지만 비슷하다는 것은 장점만 있는 것이 아닙니다. 서로 고집이 닮아 있어 한 번 흐름이 엇나가면 괜히 더 팽팽해질 수 있고, 아이가 유독 자기주장을 하는 날에는 보호자님도 같이 지치거나 예민해질 수 있습니다. 즉, 너무 잘 맞아서 좋지만 너무 닮아서 부딪히는 순간도 있는 관계입니다. 그럼에도 결국은 가장 오래 보고 가장 오래 함께할수록 깊어지는 구조라, 시간이 흐를수록 이 아이는 그냥 키우는 존재가 아니라 나와 결이 맞는 동반자구나 하는 감정을 진하게 남깁니다. 사랑, 닮음, 편안함, 고집이 전부 섞여 있는 아주 진한 가족형 인연입니다.";
+    } else if (isHap) {
+        ganRel = "합";
+        ganScore = 96;
+        ganText = "보호자님과 아이는 천간합으로 이어지는 <span class='hl'>강한 끌림과 정서적 결속을 가진 특별한 인연</span>입니다. 사주에서 천간합은 단순히 잘 맞는 수준을 넘어, 서로의 기운이 자연스럽게 끌리고 섞이며 강한 애착을 만들어 내는 관계로 봅니다. 그래서 이 인연은 첫 만남부터 이상하게 마음이 쓰이고, 유독 눈길이 가고, 평소보다 더 빨리 정이 들어 버리는 흐름이 강합니다. 아이는 보호자님의 시선, 표정, 목소리에 유난히 민감하게 반응하며 보호자님 쪽으로 감정을 붙이는 경우가 많고, 보호자님 역시 다른 아이에게는 안 그랬을 것 같은데 이상하게 이 아이에게만 유독 약해지고, 더 챙기고, 더 안아주고 싶어지는 마음이 커집니다. 이 구조에서는 말보다 분위기와 정서가 더 크게 작용합니다. 굳이 뭘 하지 않아도 같이 있는 것만으로 마음이 편해지고, 아이가 옆에 누워 있는 것만으로도 하루의 피로가 녹아내리는 식의 정서적 밀착이 강하게 생깁니다. 천간합 관계의 장점은 애착 형성이 매우 깊고 빠르다는 점입니다. 아이가 보호자님을 심리적 안전기지처럼 여기기 쉽고, 보호자님 또한 이 아이를 보면 괜히 마음이 약해지고 부드러워집니다. 다만 합은 너무 강하면 서로에게 지나치게 정이 몰리거나 의존성이 커질 수 있습니다. 아이를 혼자 두는 것이 유독 마음 아프고, 사소한 아픔도 크게 느껴질 수 있으며, 보호자님 역시 이 아이가 내 감정의 중요한 부분을 차지하게 될 가능성이 높습니다. 그렇지만 바로 그 깊은 정 때문에 이 관계는 평범한 반려를 넘어서, 함께하는 시간 자체가 위로가 되고 삶의 결을 바꾸는 수준의 의미를 남길 수 있습니다. 한마디로 이 궁합은 예쁘다를 넘어서, 정말 마음 깊이 남는 소울메이트형 인연입니다.";
+    } else if (generateMap[elementMap[meGan]] === elementMap[youGan]) {
+        ganRel = "내가 생함";
+        ganScore = 83;
+        ganText = "보호자님이 아이를 생하는 이 관계는 명리학적으로 <span class='hl'>내 기운이 아이를 키우고 보듬어 주는 상생 관계</span>입니다. 쉽게 말해 보호자님이 이 아이에게 마음, 시간, 정성, 체력, 애정을 자연스럽게 흘려 보내게 되는 구조입니다. 그래서 이 아이를 만나면 이상할 정도로 책임감이 강해지고, 그냥 예뻐하는 정도를 넘어서 잘 먹이고, 잘 재우고, 건강하게 오래 살게 하고 싶은 부모 같은 마음이 아주 강해집니다. 이 관계에서는 보호자님이 아이를 위해 자꾸 더 해주게 됩니다. 좋은 사료를 찾고, 편한 쿠션을 사주고, 조금만 기운 없어 보여도 걱정이 많아지고, 작은 습관 하나도 세심하게 신경 쓰게 됩니다. 명리학적으로 내가 상대를 생하는 구조는 기본적으로 내가 에너지를 많이 쓰는 관계이기 때문에, 보호자님은 이 아이를 향해 자발적으로 헌신하게 될 가능성이 큽니다. 그런데 이 헌신이 억지로 느껴지기보다 이상하게 기쁘고, 해주는 것 자체가 사랑처럼 느껴지는 것이 특징입니다. 아이는 그런 보호자님의 사랑을 먹고 자라며 점점 더 안정되고 예쁘게 피어나는 흐름을 가집니다. 다만 한 가지 주의할 점은 보호자님이 너무 많이 퍼주다 보면 아이에게 기준이 흐려질 수 있다는 점입니다. 너무 봐주고, 너무 맞춰주고, 너무 걱정하다 보면 보호자님이 오히려 감정적으로 더 약해질 수 있습니다. 그래서 이 궁합은 사랑이 많을수록 좋지만, 동시에 생활 습관과 훈육의 선도 함께 잡아주는 것이 중요합니다. 전체적으로 보면 이 관계는 보호자님의 사랑이 아이에게 직접적인 성장 에너지가 되는 구조이며, 아이를 통해 보호자님 안의 깊은 부모 본능과 헌신성이 크게 깨어나는 따뜻한 인연입니다.";
+    } else if (generateMap[elementMap[youGan]] === elementMap[meGan]) {
+        ganRel = "아이가 생함";
+        ganScore = 88;
+        ganText = "아이의 기운이 보호자님을 생하는 이 관계는 <span class='hl'>아이가 보호자님을 살리고 채워 주는 상생 관계</span>입니다. 명리학적으로 상대가 나를 생하면 그 존재가 나에게 활력, 위로, 안정감, 심리적 회복력을 넣어 주는 흐름이 생깁니다. 그래서 이 아이는 단순히 귀여운 반려동물을 넘어서 보호자님의 마음을 살리는 복덩이 역할을 하게 될 가능성이 큽니다. 밖에서 지치고 기운 빠진 상태로 돌아와도 아이 얼굴만 보면 이상하게 마음이 풀리고, 안아 보는 순간 숨이 쉬어지고, 아무것도 아닌 일상이 이 아이 덕분에 견딜 만해지는 경험을 하게 될 수 있습니다. 이런 궁합에서는 보호자님이 아이를 돌보는 동시에 사실은 아이에게 더 많이 위로받고 있을 가능성이 높습니다. 아이가 꼬리를 흔들며 반겨주는 장면, 조용히 옆에 와 눕는 순간, 아무 말 없이 눈을 마주치는 짧은 시간마저도 보호자님에게는 아주 큰 정서적 회복으로 작용합니다. 특히 마음이 약해졌을 때, 삶이 공허하게 느껴질 때, 인간관계로 지쳤을 때 이 아이가 심리적 수호천사처럼 작용하는 경우가 많습니다. 다만 이렇게 좋은 궁합일수록 보호자님이 이 아이에게 정서적으로 너무 많이 기대는 흐름도 생길 수 있습니다. 아이의 기분이나 건강 상태에 따라 보호자님 하루 컨디션이 크게 좌우될 수도 있고, 이별에 대한 두려움도 남들보다 더 크게 느낄 수 있습니다. 그럼에도 이 궁합의 핵심은 분명합니다. 이 아이는 보호자님 삶에 들어와 마음의 온도를 올리고, 웃음을 늘리고, 지친 영혼을 부드럽게 회복시키는 존재입니다. 말 그대로 보호자님 인생에 들어온 살아 있는 복과 위안의 기운입니다.";
+    } else if (overcomeMap[elementMap[meGan]] === elementMap[youGan]) {
+        ganRel = "내가 극함";
+        ganScore = 49;
+        ganText = "보호자님이 아이를 극하는 이 관계는 <span class='hl'>보호자님이 주도권과 기준을 잡게 되는 상극 구조</span>입니다. 명리학적으로 내가 상대를 극한다는 것은 내가 상대를 제어하고 다듬고 이끌려는 힘이 강하게 작용한다는 뜻입니다. 그래서 이 아이를 만나면 유독 손이 많이 가는 느낌이 들거나, 생활 습관을 잡아주고 싶고, 버릇을 제대로 들여야겠다는 마음이 커질 수 있습니다. 단순히 예뻐하는 관계보다는 내가 이 아이를 책임지고 관리해야 한다는 감각이 더 강하게 들어오는 궁합입니다. 아이 입장에서는 보호자님을 든든하고 큰 존재로 느끼면서도, 동시에 약간은 무서운 기준점처럼 받아들일 수도 있습니다. 그래서 이 관계에서는 훈육, 규칙, 생활 리듬, 선 긋기가 아주 중요해집니다. 잘만 풀리면 아이가 안정적으로 자라고 생활 습관도 반듯해질 수 있지만, 반대로 보호자님의 통제 욕구가 너무 강해지면 아이 본연의 성격과 자유로움이 눌릴 수 있습니다. 특히 보호자님이 피곤하거나 예민할 때 아이의 작은 장난에도 더 민감하게 반응할 수 있기 때문에, 감정 훈육이 아니라 생활 훈육으로 방향을 잡는 것이 중요합니다. 명리학적으로 상극이라고 해서 무조건 나쁜 관계는 아닙니다. 오히려 기준을 세워 주고 방향을 만들어 주는 힘이 있다는 뜻이기도 하니까요. 이 궁합의 핵심은 보호자님이 가진 주도성을 따뜻한 리더십으로 바꾸는 것입니다. 그렇게만 되면 이 아이는 보호자님 아래에서 안정감을 얻고, 보호자님은 이 아이를 제대로 키워 낸다는 깊은 보람을 느끼게 됩니다.";
+    } else if (overcomeMap[elementMap[youGan]] === elementMap[meGan]) {
+        ganRel = "아이가 극함";
+        ganScore = 54;
+        ganText = "아이의 기운이 보호자님을 극하는 이 관계는 <span class='hl'>아이의 존재감이 보호자님 삶을 강하게 흔들고 바꾸는 상극 구조</span>입니다. 명리학적으로 상대가 나를 극하면 그 존재가 내 리듬을 깨고, 내 생각을 바꾸고, 내 감정을 흔드는 힘이 강하게 들어옵니다. 그래서 이 아이는 보호자님에게 그저 순한 천사라기보다, 너무 귀엽고 너무 강력해서 결국 내 생활 패턴을 통째로 바꾸게 만드는 존재가 될 가능성이 큽니다. 안 된다고 다짐해도 결국 간식을 하나 더 주게 되고, 혼내려다가도 애교 한 번에 마음이 풀리고, 오늘은 일찍 자야지 하다가도 아이랑 놀아주느라 루틴이 무너지는 식입니다. 이 관계는 정신없고 귀엽고 사랑스럽고 피곤한 것이 한꺼번에 들어 있습니다. 보호자님이 이 아이에게 자꾸 휘둘리는 것 같지만, 사실 그만큼 아이가 보호자님 마음의 가장 약한 부분을 정확히 건드리는 존재라는 뜻이기도 합니다. 물론 이 구조에서는 아이가 기세가 세거나 자기주장이 강하게 느껴질 수도 있고, 보호자님이 생각한 대로 관계가 흘러가지 않을 수도 있습니다. 하지만 바로 그 예측 불가함 때문에 일상이 훨씬 생생해지고, 웃긴 사건도 많아지고, 정 역시 빠르게 깊어집니다. 중요한 것은 아이에게 완전히 끌려다니지 않으면서도 이 아이의 강한 존재감을 하나의 매력으로 받아들이는 것입니다. 그렇게 균형만 잡히면, 이 궁합은 서로를 평범하지 않게 만드는 강렬한 인연으로 남습니다.";
+    } else {
+        ganRel = "평형";
+        ganScore = 74;
+        ganText = "보호자님과 아이는 서로의 기운이 과하게 얽히거나 세게 충돌하지 않는 <span class='hl'>안정적인 평형 관계</span>입니다. 명리학적으로 보면 아주 강렬한 합도 아니고, 피곤할 정도의 상극도 아닌 구조라 처음에는 드라마틱하지 않게 느껴질 수 있습니다. 하지만 실제 생활에서는 이런 궁합이 가장 오래 편안하고 무난하게 가는 경우가 많습니다. 보호자님은 아이를 과하게 조이거나 지나치게 휘둘리지 않고, 아이 역시 보호자님의 생활 리듬을 크게 무너뜨리지 않으면서 자연스럽게 가족 안으로 스며듭니다. 이 관계에서는 서로를 존중하는 감각이 중요하게 작용합니다. 아이는 필요할 때 다가오고 쉴 때는 자기만의 시간을 가지며, 보호자님도 아이의 성향을 무리하게 바꾸려 하기보다 있는 그대로 이해하게 됩니다. 그래서 분리불안이나 감정 과몰입이 심하지 않은 대신, 은근하고 오래 가는 신뢰가 차곡차곡 쌓이는 구조입니다. 처음에는 막 폭발적인 궁합처럼 보이지 않아도 함께 지낼수록 이렇게 편한 관계가 제일 좋다는 감정을 크게 주게 됩니다. 갈등이 적고 생활 피로도가 낮으며, 서로의 존재가 일상 속 안정감으로 작용하는 관계이기 때문입니다. 한마디로 이 궁합은 강렬함보다는 지속성, 자극보다는 평온함, 뜨거움보다는 잔잔한 깊이를 가진 편안한 가족 인연입니다.";
     }
 
-    window.onload = async function() {
-        if (window.paymentKey !== 'revisit') {
-            try {
-                console.log("결제 승인 요청 시작..."); 
-                const response = await fetch("https://confirmtosspayment-reeglhkbha-du.a.run.app", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        paymentKey: window.paymentKey, orderId: window.orderId, amount: Number(window.amount)
-                    })
-                });
+    const zhiYukhap = [['子', '丑'], ['寅', '亥'], ['卯', '戌'], ['辰', '酉'], ['巳', '申'], ['午', '未']];
+    const zhiSamhap = [['申', '子'], ['子', '辰'], ['申', '辰'], ['亥', '卯'], ['卯', '未'], ['亥', '未'], ['寅', '午'], ['午', '戌'], ['寅', '戌'], ['巳', '酉'], ['酉', '丑'], ['巳', '丑']];
+    const zhiChung = [['子', '午'], ['丑', '未'], ['寅', '申'], ['卯', '酉'], ['辰', '戌'], ['巳', '亥']];
+    const zhiWonjin = [['子', '未'], ['丑', '午'], ['寅', '酉'], ['卯', '申'], ['辰', '亥'], ['巳', '戌']];
+    const zhiHyeong = [['子', '卯'], ['寅', '巳'], ['巳', '申'], ['申', '寅'], ['丑', '戌'], ['戌', '未'], ['未', '丑'], ['辰', '辰'], ['午', '午'], ['酉', '酉'], ['亥', '亥']];
+    const zhiHae = [['子', '未'], ['丑', '午'], ['寅', '巳'], ['卯', '辰'], ['申', '亥'], ['酉', '戌']];
 
-                if (!response.ok) {
-                    const errorText = await response.text(); 
-                    console.error("토스 결제 거절 사유:", errorText);
-                    throw new Error("서버에서 결제 승인을 거절했습니다.");
-                }
-                console.log("토스 최종 출금 승인 완료!");
-            } catch (error) {
-                console.error("에러 상세 정보:", error);
-                alert("결제 처리 중 문제가 발생했습니다. 결제창으로 이동합니다."); 
-                window.location.replace("petpig.html"); 
-                return; 
+    function hasZhiPair(arr, a, b) {
+        return arr.some(([x, y]) => (x === a && y === b) || (x === b && y === a));
+    }
+
+    const isSameZhi = meZhi === youZhi;
+    const isZhiYukhap = hasZhiPair(zhiYukhap, meZhi, youZhi);
+    const isZhiSamhap = hasZhiPair(zhiSamhap, meZhi, youZhi);
+    const isZhiChung = hasZhiPair(zhiChung, meZhi, youZhi);
+    const isZhiWonjin = hasZhiPair(zhiWonjin, meZhi, youZhi);
+    const isZhiHyeong = hasZhiPair(zhiHyeong, meZhi, youZhi);
+    const isZhiHae = hasZhiPair(zhiHae, meZhi, youZhi);
+
+    if (isSameZhi) {
+        zhiRel = "동지지";
+        zhiScore = 38;
+        zhiText = "보호자님과 아이는 같은 지지의 생활 리듬을 가진 <span class='hl'>닮은꼴 생활 동기화 관계</span>입니다. 지지는 함께 살아갈 때 드러나는 습관, 반응 속도, 쉬는 방식, 예민해지는 포인트를 보여주는데, 같은 지지라는 것은 이 일상 감각이 유난히 비슷하다는 뜻입니다. 그래서 보호자님이 쉬고 싶을 때 아이도 같이 늘어지고, 보호자님이 움직이기 시작하면 아이도 덩달아 텐션이 살아나는 식의 생활 동조가 강하게 나타날 수 있습니다. 이 관계의 가장 큰 장점은 억지로 맞추지 않아도 생활이 비교적 자연스럽게 굴러간다는 점입니다. 같이 있는 시간이 불편하지 않고, 서로의 페이스를 본능적으로 이해하기 때문에 반려생활 피로도가 낮은 편입니다. 하지만 너무 닮았기 때문에 예민해지는 타이밍도 겹치기 쉽고, 한번 고집이 붙으면 서로 양보 없이 버티는 흐름으로 갈 수도 있습니다. 아이가 유독 자기 방식대로 굴 때 보호자님도 이상하게 더 예민하게 느끼는 이유가 바로 여기 있습니다. 그래도 결국은 가장 생활감이 잘 맞는 궁합 중 하나라, 함께하는 시간이 길어질수록 가족 같다는 감정이 아주 깊어집니다. 자극적이기보다 진득하고, 화려하기보다 익숙하고, 그래서 더 오래 가는 생활 밀착형 인연입니다.";
+    } else if (isZhiYukhap) {
+        zhiRel = "육합";
+        zhiScore = 34;
+        zhiText = "보호자님과 아이는 일상 속 호흡이 부드럽게 맞물리는 <span class='hl'>생활 친화형 육합 관계</span>입니다. 지지의 합은 감정의 폭발적인 끌림이라기보다, 함께 살수록 생활의 마찰이 적고 서로를 편하게 받아들이는 흐름을 의미합니다. 그래서 이 궁합은 같은 공간에서 지내는 피로감이 적고, 밥 먹는 시간, 쉬는 시간, 붙어 있는 방식, 떨어져 있는 거리감이 전체적으로 무리 없이 흘러가는 편입니다. 보호자님이 소파에 기대면 아이도 옆에 와 자리를 잡고, 보호자님이 바쁠 때는 아이도 자기만의 시간을 보내며, 놀아줄 때는 또 자연스럽게 합을 맞추는 식의 부드러운 조율이 잘 일어납니다. 이 관계의 장점은 서로를 과하게 소모하지 않는다는 점입니다. 아이가 보호자님을 너무 흔들지도 않고, 보호자님도 아이를 지나치게 조이지 않아서 같이 살수록 마음이 편안해집니다. 특히 장기적으로 봤을 때 생활 스트레스가 낮고, 무난하면서도 애정 깊은 관계로 자리 잡기 좋습니다. 다만 너무 편안하다 보니 초반에는 강렬함이 덜하다고 느낄 수 있지만, 시간이 흐를수록 이런 평온한 합이 오히려 가장 귀하고 오래 간다는 걸 체감하게 됩니다. 한마디로 육합은 드라마틱한 사랑보다, 매일매일 잘 맞는 생활형 사랑에 가깝습니다.";
+    } else if (isZhiSamhap) {
+        zhiRel = "삼합";
+        zhiScore = 42;
+        zhiText = "보호자님과 아이는 함께할수록 기운이 커지고 팀워크가 좋아지는 <span class='hl'>성장형 삼합 관계</span>입니다. 삼합은 둘이 만났을 때 단순히 편한 수준을 넘어, 같이 있을수록 관계의 에너지가 살아나고 서로의 장점을 끌어올리는 구조로 봅니다. 그래서 이 궁합은 처음보다 시간이 지날수록 더 잘 맞는 느낌이 강해질 가능성이 높습니다. 보호자님은 아이와 함께하면서 생활의 활력과 루틴을 얻고, 아이는 보호자님과 함께하면서 안정감과 자신감을 키우는 식의 상호 상승이 일어날 수 있습니다. 특히 산책, 놀이, 여행, 루틴 만들기처럼 같이 움직이는 활동에서 합이 좋은 편이라 같이 뭔가 할 때 유독 더 잘 맞는다는 체감이 크게 들어옵니다. 이 관계는 정서적인 밀착뿐 아니라 실제 생활 속 협응력이 좋기 때문에, 아이가 보호자님의 리듬에 잘 적응하고 보호자님도 아이의 본능을 자연스럽게 이해하게 됩니다. 다만 삼합은 기운이 커지는 관계라 좋은 방향이면 아주 좋지만, 생활 패턴이 무너지거나 흥분도가 올라가면 같이 과열될 수도 있습니다. 그래서 이 궁합은 좋은 습관과 건강한 루틴을 함께 만들수록 진가가 크게 드러납니다. 함께 살수록 더 잘 맞고, 함께할수록 더 단단해지는 성장형 가족 궁합입니다.";
+    } else if (isZhiWonjin) {
+        zhiRel = "원진";
+        zhiScore = -28;
+        zhiText = "보호자님과 아이는 애정과 예민함이 묘하게 얽히는 <span class='hl'>감정 꼬임형 원진 관계</span>입니다. 원진은 사주에서 단순한 불화라기보다, 좋아하면서도 괜히 더 예민해지고, 끌리면서도 피곤하고, 멀리하기엔 또 너무 정이 가는 복잡한 감정선을 만드는 관계로 봅니다. 그래서 이 궁합은 아이가 너무 예뻐서 못 견디겠는데 동시에 이상하게 손이 더 많이 가고, 작은 행동에도 웃다가도 짜증이 났다가도 또 바로 풀어지는 식의 감정 롤러코스터를 만들 수 있습니다. 휴지통을 엎고, 이불을 어지럽히고, 안 되는 걸 계속 해도 그 동그란 눈으로 쳐다보면 화를 제대로 끝까지 못 내는 흐름이 생기기 쉽습니다. 이 관계의 특징은 정이 깊은데 감정 소모도 같이 크다는 점입니다. 유독 아이의 작은 컨디션 변화에도 마음이 흔들리고, 평소라면 넘길 일도 이 아이 일에는 크게 반응하게 될 수 있습니다. 그렇다고 나쁜 궁합이냐 하면 또 그렇지는 않습니다. 원진은 싫어서 끊기는 관계보다, 묘하게 정이 들어서 더 못 놓는 관계에 가깝기 때문입니다. 다만 이 관계가 건강하게 오래 가려면 보호자님도 아이도 각자의 쉬는 리듬과 거리 두는 시간을 조금씩 배워야 합니다. 그래야 애정은 깊게 유지하면서 감정 피로는 줄일 수 있습니다. 징글징글하게 정들고, 괜히 더 마음 쓰이고, 그래서 더 못 놓는 애증형 껌딱지 인연입니다.";
+    } else if (isZhiChung) {
+        zhiRel = "충";
+        zhiScore = -18;
+        zhiText = "보호자님과 아이는 생활 리듬과 행동 방식이 정면으로 부딪히는 <span class='hl'>다이내믹 충 관계</span>입니다. 지지의 충은 감정보다 생활에서 먼저 체감되는 경우가 많아서, 쉬는 시간, 활동 시간, 예민해지는 포인트, 원하는 거리감이 서로 다르게 나타날 수 있습니다. 보호자님은 쉬고 싶은데 아이는 놀아 달라고 달려오고, 보호자님은 조용한 시간을 원할 때 아이는 활발하게 집안을 누비는 식으로 타이밍 충돌이 생기기 쉽습니다. 처음에는 이 차이가 꽤 피곤하게 느껴질 수 있습니다. 하지만 충 관계는 무조건 나쁘다기보다, 서로의 삶을 흔들어 놓으면서 변화를 만드는 힘이 강한 관계이기도 합니다. 그래서 이 아이를 만나고 나서 보호자님 생활이 더 부지런해지거나, 더 규칙적으로 바뀌거나, 오히려 건강한 루틴을 되찾는 경우도 많습니다. 아이 입장에서도 보호자님을 통해 지나친 예민함이나 과한 흥분이 조절될 수 있습니다. 중요한 것은 서로를 억지로 같은 템포로 만들려 하지 않는 것입니다. 충 관계는 다름을 인정하고 생활 설계를 잘하면 오히려 활력과 생동감을 주는 궁합으로 바뀔 수 있습니다. 정신없고 피곤한 날도 있지만, 그래서 단 하루도 심심하지 않고 관계가 늘 살아 움직이는 에너지형 인연입니다.";
+    } else if (isZhiHyeong) {
+        zhiRel = "형";
+        zhiScore = -22;
+        zhiText = "보호자님과 아이는 사소한 습관이나 예민한 포인트에서 자주 건드려지는 <span class='hl'>신경전형 형 관계</span>입니다. 지지의 형은 대놓고 크게 부딪히기보다는, 계속 작은 마찰이 쌓이며 스트레스를 만드는 관계로 보는 경우가 많습니다. 그래서 이 궁합은 아이의 특정 행동이 유독 거슬리거나, 보호자님의 특정 반응에 아이가 유난히 예민하게 굴 수 있습니다. 예를 들면 훈육할 때 자꾸 타이밍이 꼬이거나, 반복되는 습관 문제 때문에 서로 피곤함이 누적되는 식입니다. 이 관계의 핵심은 사랑이 없어서 부딪히는 것이 아니라, 가까워질수록 서로의 예민한 부분을 더 잘 건드린다는 데 있습니다. 그렇기 때문에 생활 규칙을 감정적으로 잡기보다, 일관되고 단순한 패턴으로 정리하는 것이 중요합니다. 형 관계는 한 번 틀이 잡히면 오히려 훨씬 안정적으로 풀리는 경우도 많습니다. 즉, 초반에는 손이 많이 가고 피곤할 수 있지만, 보호자님이 중심을 잘 잡아주면 아이도 점차 불필요한 긴장을 줄이고 편안해질 수 있습니다. 날카로운 부분만 잘 다듬으면 오히려 서로에게 좋은 훈련이 되는 관계입니다. 다듬을수록 괜찮아지는, 초반 관리형 궁합이라고 보면 됩니다.";
+    } else if (isZhiHae) {
+        zhiRel = "해";
+        zhiScore = -14;
+        zhiText = "보호자님과 아이는 겉으로는 큰 문제 없어 보여도 은근한 오해와 엇갈림이 생기기 쉬운 <span class='hl'>미묘한 해 관계</span>입니다. 지지의 해는 강하게 싸우는 구조라기보다, 서로의 의도를 잘못 읽거나 감정 타이밍이 조금씩 어긋나면서 답답함이 쌓이는 방식으로 나타나는 경우가 많습니다. 보호자님은 사랑해서 한 행동인데 아이는 부담스러워하고, 아이는 애교를 부린 건데 보호자님은 버릇 없는 행동처럼 느끼는 식의 미세한 오독이 반복될 수 있습니다. 그래서 이 관계에서는 아이를 내 기준으로 해석하지 않고, 아이 나름의 표현 방식을 천천히 읽어주는 태도가 중요합니다. 아이 역시 보호자님의 생활 패턴과 감정 기복을 익히는 시간이 필요할 수 있습니다. 해 관계의 장점은 대놓고 크게 부딪히는 대신, 이해만 깊어지면 의외로 금방 부드러워질 수 있다는 점입니다. 즉, 몰라서 엇갈리는 것이지 정말 안 맞아서 깨지는 구조는 아니라는 뜻입니다. 초반에는 왜 이리 타이밍이 안 맞지 싶을 수 있지만, 서로를 읽는 시간이 쌓이면 오히려 더 세심한 관계로 바뀔 수 있습니다. 조심스럽지만 천천히 맞춰 가면 은근히 정이 깊어지는 타입의 인연입니다.";
+    } else {
+        zhiRel = "평형";
+        zhiScore = 18;
+        zhiText = "보호자님과 아이는 서로의 생활 영역을 크게 침범하지 않으면서도 자연스럽게 따뜻함을 주고받는 <span class='hl'>평형형 라이프스타일 궁합</span>입니다. 지지는 함께 살아갈 때의 리듬과 습관을 보는데, 이 관계는 강한 합처럼 들러붙지도 않고 충처럼 요란하게 흔들리지도 않아서 일상이 비교적 편안하게 굴러가는 편입니다. 보호자님이 바쁠 때 아이는 자기만의 방식으로 시간을 보내고, 놀아줄 때는 또 그 순간에 맞춰 반응해 주는 식으로 완급 조절이 잘 맞는 편입니다. 이 구조의 장점은 생활 피로도가 낮다는 것입니다. 과한 집착이나 지나친 긴장 없이, 서로를 가족으로 자연스럽게 받아들이며 무난하고 안정된 애정을 쌓아 갈 수 있습니다. 처음에는 강렬함이 덜해 보여도 오래 함께할수록 이런 평형 관계가 얼마나 귀한지 알게 됩니다. 감정 기복보다 신뢰가 먼저 자리 잡고, 자극보다 평온이 오래 남기 때문입니다. 이 궁합은 억지로 일상을 바꾸지 않아도 함께 있는 것만으로 집 안의 공기가 따뜻해지는 편안한 가족형 인연입니다.";
+    }
+
+    const energyScores = { "甲": 80, "乙": 70, "丙": 95, "丁": 85, "戊": 50, "己": 60, "庚": 90, "辛": 75, "壬": 85, "癸": 65 };
+    const affectionScores = { "甲": 60, "乙": 85, "丙": 90, "丁": 95, "戊": 50, "己": 75, "庚": 40, "辛": 65, "壬": 80, "癸": 95 };
+    const stubbornScores = { "甲": 95, "乙": 50, "丙": 85, "丁": 60, "戊": 90, "己": 80, "庚": 95, "辛": 85, "壬": 70, "癸": 40 };
+
+    const elementMeta = {
+        "木": { keywords: "성장력, 적응력, 회복력, 생기", meaning: "새로운 환경에 적응하고 기운을 바깥으로 뻗어 나가게 만드는 힘", care: "햇볕, 산책, 식물 많은 공간, 새로운 냄새와 자극" },
+        "火": { keywords: "온기, 표현력, 애정, 활발함", meaning: "감정을 드러내고 관계의 온도를 빠르게 끌어올리는 힘", care: "따뜻한 교감, 칭찬, 놀아 주는 시간, 밝은 분위기" },
+        "土": { keywords: "안정감, 생활력, 중심감, 보호력", meaning: "하루의 리듬을 지켜 주고 버티는 힘을 만들어 주는 중심축", care: "규칙적인 식사, 익숙한 공간, 일정한 루틴, 편안한 휴식" },
+        "金": { keywords: "질서감, 경계감, 정리력, 예민한 감각", meaning: "몸과 생활을 정돈하고 위험을 빨리 감지하게 해 주는 힘", care: "청결한 공간, 규칙적인 관리, 지나친 소음이나 자극 줄이기" },
+        "水": { keywords: "감수성, 교감력, 휴식, 정서적 안정", meaning: "말없이도 마음을 주고받고 깊게 정 붙이는 힘", care: "조용한 휴식, 포근한 교감, 안정된 수면 환경, 과한 자극 줄이기" }
+    };
+
+    function buildElementSynergyText(meEls, youEls) {
+        const meLacking = Object.keys(meEls).filter(e => meEls[e] === 0);
+        const youLacking = Object.keys(youEls).filter(e => youEls[e] === 0);
+        const meExcess = Object.keys(meEls).filter(e => meEls[e] >= 3);
+        const youExcess = Object.keys(youEls).filter(e => youEls[e] >= 3);
+
+        let synergyFound = false;
+        let parts = [];
+
+        meLacking.forEach(el => {
+            if (youExcess.includes(el) || youEls[el] >= 2) {
+                const meta = elementMeta[el];
+                parts.push(`보호자님 사주 원국에서 비어 있거나 약하게 드러나는 <span class='hl'>${el}</span> 기운은 ${meta.keywords}과 깊게 연결됩니다. 원래 이 기운이 부족한 분은 삶의 특정 부분에서 늘 미세한 허전함이나 균형 부족을 느끼기 쉽습니다. 그런데 아이 사주에는 이 <span class='hl'>${el}</span> 흐름이 비교적 또렷하게 살아 있어 ${meta.meaning}으로 작용합니다. 쉽게 말해 보호자님이 원래 타고난 구조 안에서 부족했던 결을 아이가 생활 속에서 부드럽게 메워 주는 셈입니다. 아이를 안고 바라보는 것만으로도 마음이 풀리고, 집 안 공기가 달라지고, 괜히 숨통이 트이는 느낌이 드는 이유가 바로 여기에 있습니다. 이건 단순한 귀여움의 문제가 아니라 서로의 기운이 맞물리는 방식의 문제입니다.`);
+                parts.push(`특히 <span class='hl'>${el}</span> 기운은 ${meta.care}와 연결되므로, 아이와 함께하는 일상 속에서 이런 요소가 자연스럽게 늘어날수록 보호자님에게도 좋은 흐름이 더 강하게 들어옵니다. 결국 아이는 그냥 함께 사는 존재가 아니라, 보호자님의 부족한 결을 조용히 채워 주는 살아 있는 복의 통로로 볼 수 있습니다.`);
+                synergyFound = true;
             }
+        });
+
+        youLacking.forEach(el => {
+            if (meExcess.includes(el) || meEls[el] >= 2) {
+                const meta = elementMeta[el];
+                parts.push(`반대로 아이 사주에서 다소 약하게 드러나는 <span class='hl'>${el}</span> 기운은 보호자님이 비교적 충분히 품고 있는 흐름입니다. 아이 입장에서는 보호자님 곁이 단순히 안전한 장소를 넘어, 자기 원국의 빈틈이 자연스럽게 보완되는 치유의 자리로 작동할 수 있습니다. ${meta.keywords}과 관련된 부분을 보호자님이 생활 속에서 안정적으로 공급해 주기 때문에 아이는 보호자님과 함께 있을 때 더 빨리 긴장을 풀고, 더 솔직하게 감정을 드러내고, 더 편안하게 자기다운 모습을 보여 줄 수 있습니다.`);
+                parts.push(`이런 구조에서는 보호자님의 말투, 손길, 생활 리듬, 공간 분위기 자체가 아이에게 약처럼 작용하는 경우가 많습니다. 아이가 보호자님 옆에서 유독 깊게 잠들거나, 괜히 더 오래 기대 있으려 하거나, 떨어졌다가도 다시 가까이 오려는 모습이 자주 보인다면 이런 보완 작용이 실제 생활 안에서 강하게 나타나는 것이라 볼 수 있습니다.`);
+                synergyFound = true;
+            }
+        });
+
+        if (synergyFound) {
+            parts.push(`정리하면 이 만남은 한쪽만 돌보고 한쪽만 받는 단순한 구조가 아닙니다. 보호자님은 아이를 통해 자기 안의 빈 곳이 따뜻하게 채워지고, 아이는 보호자님을 통해 자기 원국의 약한 부분을 안정적으로 보완받습니다. 그래서 이 관계는 시간이 흐를수록 더 좋아지는 후반형 궁합으로 보는 것이 맞습니다. 처음보다 몇 달, 몇 년 함께한 뒤에 훨씬 더 강한 정과 신뢰가 생길 가능성이 높고, 말로 설명하기 어려운 깊은 가족감이 만들어질 가능성이 큽니다.`);
+        } else {
+            parts.push(`오행 결핍과 과다의 관점에서 보았을 때 극적인 보완 작용이 강하게 드러나는 구조는 아닙니다. 하지만 이것은 결코 약한 인연이라는 뜻이 아닙니다. 오히려 서로의 기운을 과하게 흔들지 않고, 본래의 성향을 편안하게 유지하게 해 주는 잔잔하고 안정적인 만남으로 볼 수 있습니다. 큰 숙제를 던지는 인연이라기보다, 함께 있는 것만으로도 숨이 편해지고 마음이 누그러지는 관계에 가깝습니다. 화려한 사건보다 평범한 일상이 더 큰 행복을 만들어 주는 궁합입니다.`);
         }
 
-        setTimeout(() => {
-            try {
-                // 긴 글을 읽기 쉽게 문단을 나누고 첫 문장에 포인트를 주는 도우미 함수 추가
-                function formatLongText(text) {
-                    if (!text) return "";
-                    let sentences = text.split('. ');
-                    if (sentences.length <= 1) return text;
-                    
-                    let result = `<span class='hl'>${sentences[0]}.</span><br><br>`;
-                    for (let i = 1; i < sentences.length; i++) {
-                        result += sentences[i] + (i === sentences.length - 1 ? "" : ". ");
-                        // 마지막 문장이 아니면서 짝수 번째 문장일 때 줄바꿈 처리
-                        if (i % 2 === 0 && i !== sentences.length - 1) {
-                            result += "<br><br>";
-                        }
-                    }
-                    return result;
-                }
+        return parts.join(" ");
+    }
 
-                const getBaziAndElements = (prefix) => {
-                    const year = parseInt(sessionStorage.getItem(prefix + '_year')) || 2024;
-                    const month = parseInt(sessionStorage.getItem(prefix + '_month')) || 1;
-                    const day = parseInt(sessionStorage.getItem(prefix + '_day')) || 1;
-                    const timeStr = sessionStorage.getItem(prefix + '_time');
-                    const calendarType = sessionStorage.getItem(prefix + '_calendar') || 'solar';
-                    
-                    const timeMap = { 'unknown': 12, '자시': 0, '축시': 2, '인시': 4, '묘시': 6, '진시': 8, '사시': 10, '오시': 12, '미시': 14, '신시': 16, '유시': 18, '술시': 20, '해시': 22 };
-                    const hour = timeMap[timeStr] !== undefined ? timeMap[timeStr] : 12;
+    function buildRelationNarrative(ganRel, zhiRel) {
+        let simText = "";
+        let solutionText = "";
 
-                    let lunarObj;
-                    if (calendarType === 'solar') lunarObj = Solar.fromYmdHms(year, month, day, hour, 0, 0).getLunar();
-                    else if (calendarType === 'lunar') lunarObj = Lunar.fromYmdHms(year, month, day, hour, 0, 0);
-                    else lunarObj = Lunar.fromYmdHms(year, -month, day, hour, 0, 0);
+        if (ganRel === "합" || zhiRel === "합") {
+            simText = `천간이나 지지에서 <span class='hl'>합</span>의 기운이 보인다는 것은, 서로의 존재가 자연스럽게 끌리고 섞이며 정서적 유착이 잘 생기는 구조라는 뜻입니다. 이런 조합은 처음부터 경계심이 오래 가지 않거나, 함께 있을수록 금방 익숙해지고 편안해지기 쉽습니다. 보호자님이 기쁘면 아이도 같이 들뜨고, 보호자님이 지치면 아이도 조용히 곁을 지키며 분위기를 맞추는 식의 교감이 자연스럽게 나타날 수 있습니다. 생활 속에서는 눈빛, 체온, 루틴 같은 비언어적 요소를 통해 관계가 깊어질 가능성이 크며, 함께 있는 것 자체가 안정이 되는 흐름으로 발전하기 쉽습니다. 다만 합이 강한 궁합은 서로의 존재에 너무 익숙해지고 의지하게 되는 만큼, 잠깐의 거리감에도 서운함이나 불안을 크게 느낄 수 있습니다. 보호자님이 외출만 해도 아이가 유난히 예민해지거나, 아이가 안 보이면 보호자님 마음이 허전해지는 식의 애착 심화가 나타날 수 있습니다. 그래서 이 관계는 사랑이 부족해서 문제가 생기는 것이 아니라, 사랑이 너무 깊어져서 건강한 거리 조절이 중요해지는 궁합입니다.`;
+            solutionText = `이 아름다운 관계를 오래 건강하게 지켜 주는 핵심은 가까움 속에서도 안정된 거리감을 함께 배우는 것입니다. 늘 붙어 있는 것만이 사랑은 아닙니다. 잠깐 떨어져 있어도 관계는 안전하다는 감각을 아이에게 익히게 해 주는 것이 매우 중요합니다. 짧게 혼자 쉬는 시간, 혼자 장난감을 가지고 노는 시간, 보호자님이 다시 돌아온다는 반복 경험이 쌓이면 애착은 더 건강하고 단단해집니다. 보호자님 역시 아이에게서 잠시 떨어져 있을 때 죄책감을 느끼기보다, 오히려 더 오래 좋은 관계를 만들기 위한 과정이라고 생각하는 것이 좋습니다.`;
+        } else if (ganRel === "내가 극함" || ganRel === "아이가 극함" || zhiRel === "충" || zhiRel === "원진") {
+            simText = `천간의 <span class='hl'>극</span>이나 지지의 <span class='hl'>충</span>, <span class='hl'>원진</span>이 걸린 관계는 정적이고 무난한 흐름보다는 서로가 서로를 강하게 자극하는 구조로 나타나기 쉽습니다. 보호자님의 감정과 아이의 반응이 서로에게 즉각적인 영향을 주고, 작은 사건도 체감상 크게 느껴질 가능성이 있습니다. 그래서 함께 살면 웃길 때는 정말 많이 웃기고, 정신없을 때는 하루에 여러 감정이 빠르게 오갈 수 있습니다. 이런 조합은 밖에서 보면 시트콤 같고, 안에서는 아주 생생한 정이 쌓이는 경우가 많습니다. 중요한 것은 이런 자극이 꼭 나쁜 뜻이 아니라는 점입니다. 오히려 무기력한 일상에 생기를 넣고, 보호자님이 자기 감정과 반응을 더 분명히 자각하게 만들며, 아이 역시 존재감이 강한 가족으로 자리 잡게 됩니다. 다만 서로의 예민 포인트를 읽지 못하면 피로가 빨리 쌓일 수 있습니다. 즉, 이 궁합은 약한 궁합이 아니라 다루는 방식이 중요한 강한 궁합입니다.`;
+            solutionText = `이 관계의 핵심 처방은 넘치는 에너지를 좋은 방향으로 순환시키는 것입니다. 몸의 긴장을 먼저 빼 주고, 감정이 올라왔을 때 바로 힘으로 누르지 않는 것이 중요합니다. 충분한 산책, 냄새 놀이, 규칙적인 루틴, 흥분 후 진정 시간은 이 궁합에서 특히 큰 효과를 냅니다. 보호자님도 감정이 올라왔을 때 즉각 반응하기보다 템포를 한 박자 늦추는 습관이 필요합니다. 그렇게만 하면 이 관계는 피곤한 궁합이 아니라 매일이 살아 있는 유쾌한 궁합으로 바뀝니다.`;
+        } else {
+            simText = `천간과 지지의 관계가 과하게 들러붙지도, 크게 부딪히지도 않는다면 기본적으로는 잔잔하고 생활 밀착형인 궁합으로 보는 것이 맞습니다. 함께 있을 때 감정 소모가 크지 않고, 일상 루틴 안에서 차분하게 정이 깊어지는 흐름입니다. 아이는 보호자님에게 과하게 매달리지 않으면서도 믿고 의지하고, 보호자님 역시 아이의 리듬을 존중하며 무리 없이 돌볼 수 있는 가능성이 큽니다. 이런 조합은 겉으로 화려한 이벤트가 많지 않아도 실제 만족도가 높은 편입니다. 하루하루의 산책, 식사, 휴식, 잠드는 시간 같은 반복되는 장면들이 관계를 단단하게 만들고, 시간이 흐를수록 특별한 일이 없어도 그냥 함께 있는 시간이 가장 큰 위안이 되는 형태로 자리 잡기 쉽습니다. 즉, 자극형 궁합이 아니라 안심형 궁합이라고 볼 수 있습니다.`;
+            solutionText = `이 평화로운 관계를 더 풍성하게 만드는 비결은 익숙함 위에 작은 설렘을 얹는 것입니다. 기본적으로 안정적인 궁합일수록 루틴이 잘 맞는 장점이 있지만, 너무 익숙해지면 자극과 활력이 줄어들 수 있습니다. 그래서 가끔은 새로운 산책 코스, 새로운 냄새, 새로운 장난감, 특별 간식을 통해 관계에 가벼운 변화를 주는 것이 좋습니다. 이런 변화는 불안을 만드는 것이 아니라 관계의 즐거움을 환기해 주는 역할을 합니다. 안정감 위에 신선함을 한 스푼 얹어 주면 이 궁합은 오래도록 질리지 않는 매우 좋은 반려 흐름으로 발전합니다.`;
+        }
 
-                    const bazi = lunarObj.getEightChar();
-                    let els = { '木':0, '火':0, '土':0, '金':0, '水':0 };
-                    let chars = [bazi.getYear().charAt(0), bazi.getYear().charAt(1), bazi.getMonth().charAt(0), bazi.getMonth().charAt(1), bazi.getDay().charAt(0), bazi.getDay().charAt(1)];
-                    if (timeStr && timeStr !== 'unknown') chars.push(bazi.getTime().charAt(0), bazi.getTime().charAt(1));
+        return { simText, solutionText };
+    }
 
-                    chars.forEach(c => {
-                        if(['甲','乙','寅','卯'].includes(c)) els['木']++;
-                        if(['丙','丁','巳','午'].includes(c)) els['火']++;
-                        if(['戊','己','辰','戌','丑','未'].includes(c)) els['土']++;
-                        if(['庚','辛','申','酉'].includes(c)) els['金']++;
-                        if(['壬','癸','亥','子'].includes(c)) els['水']++;
-                    });
+    let finalScore = Math.min(100, Math.max(10, ganScore + zhiScore));
+    let conclusionTitle = "";
+    let conclusion = "";
 
-                    return { bazi, els };
+    if (finalScore >= 95) {
+        conclusionTitle = "기적처럼 깊게 이어진 최상급 인연";
+        conclusion = "두 분의 궁합은 단순히 잘 맞는 수준을 넘어, 서로의 삶과 감정을 깊이 보완해 주는 최상급 인연으로 해석됩니다. 아이는 보호자님 곁에서 가장 편안하고 안정된 모습을 드러낼 가능성이 크며, 보호자님 역시 이 아이를 통해 말로 설명하기 어려운 위로와 충만함을 얻게 됩니다. 함께하는 시간 자체가 운을 부드럽게 풀어 주는 흐름이라 볼 수 있으며, 평생 곁에 두고 아끼면 아낄수록 복이 깊어지는 귀한 궁합입니다.";
+    } else if (finalScore >= 85) {
+        conclusionTitle = "서로를 치유하는 상위권 힐링 궁합";
+        conclusion = "정서적 교감과 생활 궁합이 모두 매우 뛰어난 편으로, 함께 있을수록 마음이 편안해지고 서로에게 좋은 영향을 주는 이상적인 관계입니다. 아이는 보호자님의 사랑을 안정적으로 받아들이고, 보호자님은 아이를 돌보는 과정에서 오히려 자신의 마음까지 치유받게 될 가능성이 큽니다. 평범한 하루조차 더 따뜻하고 빛나게 만들어 주는 힘이 있는, 만족도가 매우 높은 상위권 궁합입니다.";
+    } else if (finalScore >= 75) {
+        conclusionTitle = "오래 갈수록 더 좋아지는 안정형 궁합";
+        conclusion = "서로를 편안하게 받아들이고 오랜 시간 무리 없이 곁을 지켜 갈 수 있는 안정형 궁합입니다. 처음부터 강렬하게 불타오르는 관계라기보다, 함께 지낼수록 정이 깊어지고 신뢰가 단단해지는 흐름에 가깝습니다. 생활 리듬을 천천히 맞춰 가면 아이도 더 편안해지고 보호자님도 관계 속에서 큰 피로 없이 오래 행복을 느낄 수 있는 좋은 인연입니다.";
+    } else if (finalScore >= 60) {
+        conclusionTitle = "무리 없이 스며드는 편안한 가족 궁합";
+        conclusion = "기본적인 궁합의 흐름은 무난하고 부드러운 편이며, 서로의 선을 침범하기보다 자연스럽게 존중하며 맞춰 가는 관계로 볼 수 있습니다. 다만 아주 강한 결속이나 극적인 보완 작용보다는 생활 속 작은 배려와 꾸준한 교감이 중요하게 작용하는 궁합입니다. 무리하게 서두르지 않고 아이의 성향을 천천히 이해해 가면 충분히 편안하고 다정한 가족 관계로 발전할 수 있습니다.";
+    } else if (finalScore >= 50) {
+        conclusionTitle = "다름 속에서 정이 쌓이는 유쾌한 궁합";
+        conclusion = "이 궁합은 잔잔하기만 한 관계라기보다, 서로 다른 매력과 반응 방식이 부딪히며 의외의 재미를 만들어 내는 타입에 가깝습니다. 가끔은 엇갈리고 예상 밖의 상황도 생기겠지만, 그 안에서 웃음과 정이 쌓일 가능성도 큽니다. 중요한 것은 상대를 내 방식대로 바꾸려 하지 않는 것입니다. 서로의 다름을 개성으로 받아들이면 생각보다 훨씬 정감 있고 생기 있는 관계가 될 수 있습니다.";
+    } else if (finalScore >= 40) {
+        conclusionTitle = "이해할수록 빛나는 다이내믹 궁합";
+        conclusion = "서로의 기운과 반응 방식이 제법 다르게 작동하는 편이라 초반에는 리듬이 어긋나거나 피곤함이 느껴질 수 있습니다. 하지만 이런 관계가 꼭 나쁜 것은 아닙니다. 오히려 적절한 거리 조절과 생활 관리만 잘해 주면, 서로에게 부족한 부분을 배우게 하고 일상에 활력을 불어넣는 특별한 인연이 되기도 합니다. 이 궁합은 감으로만 대하기보다 이해와 관찰이 중요한 관계입니다.";
+    } else {
+        conclusionTitle = "조율 속에서 깊어지는 특별한 인연";
+        conclusion = "쉽게만 흘러가는 궁합은 아니지만, 그렇다고 해서 인연이 약하다고 단정할 수는 없습니다. 서로의 기질 차이가 분명하기 때문에 더 많은 이해와 세심한 조율이 필요하지만, 바로 그 과정을 통해 오히려 더 깊은 애정과 책임감이 생길 수 있습니다. 이 관계의 핵심은 완벽한 찰떡궁합이 되는 것이 아니라, 서로의 다름을 받아들이며 자신들만의 안정된 호흡을 만들어 가는 데 있습니다.";
+    }
+
+    let meEnergy = energyScores[meGan] || 50;
+    let youEnergy = energyScores[youGan] || 50;
+    let eRatio = Math.round((meEnergy / (meEnergy + youEnergy)) * 100);
+
+    let meAffection = affectionScores[meGan] || 50;
+    let youAffection = affectionScores[youGan] || 50;
+    let aRatio = Math.round((meAffection / (meAffection + youAffection)) * 100);
+
+    let meStubborn = stubbornScores[meGan] || 50;
+    let youStubborn = stubbornScores[youGan] || 50;
+    let sRatio = Math.round((meStubborn / (meStubborn + youStubborn)) * 100);
+
+    const relationPack = buildRelationNarrative(ganRel, zhiRel);
+    simText = relationPack.simText;
+    solutionText = relationPack.solutionText;
+    synergyText = buildElementSynergyText(meEls, youEls);
+
+    return {
+        score: finalScore,
+        conclusion,
+        conclusionTitle,
+        meEnergy,
+        youEnergy,
+        eRatio,
+        meAffection,
+        youAffection,
+        aRatio,
+        meStubborn,
+        youStubborn,
+        sRatio,
+        ganText,
+        zhiText,
+        synergyText,
+        simText,
+        solutionText,
+        ganRel,
+        zhiRel
+    };
+}
+
+window.onload = async function () {
+    if (window.paymentKey !== 'revisit') {
+        try {
+            const response = await fetch("https://confirmtosspayment-reeglhkbha-du.a.run.app", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    paymentKey: window.paymentKey,
+                    orderId: window.orderId,
+                    amount: Number(window.amount)
+                })
+            });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error("토스 결제 거절 사유:", errorText);
+                throw new Error("서버에서 결제 승인을 거절했습니다.");
+            }
+        } catch (error) {
+            console.error("에러 상세 정보:", error);
+            alert("결제 처리 중 문제가 발생했습니다. 결제창으로 이동합니다.");
+            window.location.replace("petpig.html");
+            return;
+        }
+    }
+
+    setTimeout(() => {
+        try {
+            const getBaziAndElements = (prefix) => {
+                const year = parseInt(sessionStorage.getItem(prefix + '_year')) || 2024;
+                const month = parseInt(sessionStorage.getItem(prefix + '_month')) || 1;
+                const day = parseInt(sessionStorage.getItem(prefix + '_day')) || 1;
+                const timeStr = sessionStorage.getItem(prefix + '_time');
+                const calendarType = sessionStorage.getItem(prefix + '_calendar') || 'solar';
+
+                const timeMap = {
+                    'unknown': 12,
+                    '자시': 0,
+                    '축시': 2,
+                    '인시': 4,
+                    '묘시': 6,
+                    '진시': 8,
+                    '사시': 10,
+                    '오시': 12,
+                    '미시': 14,
+                    '신시': 16,
+                    '유시': 18,
+                    '술시': 20,
+                    '해시': 22
                 };
 
-                const meData = getBaziAndElements('me');
-                const youData = getBaziAndElements('you');
+                const hour = timeMap[timeStr] !== undefined ? timeMap[timeStr] : 12;
 
-                const meGan = meData.bazi.getDay().charAt(0);
-                const meZhi = meData.bazi.getDay().charAt(1);
-                const youGan = youData.bazi.getDay().charAt(0);
-                const youZhi = youData.bazi.getDay().charAt(1);
+                let lunarObj;
+                if (calendarType === 'solar') {
+                    lunarObj = Solar.fromYmdHms(year, month, day, hour, 0, 0).getLunar();
+                } else if (calendarType === 'lunar') {
+                    lunarObj = Lunar.fromYmdHms(year, month, day, hour, 0, 0);
+                } else {
+                    lunarObj = Lunar.fromYmdHms(year, -month, day, hour, 0, 0);
+                }
 
-                const result = getCompatibilityResult(meGan, meZhi, youGan, youZhi, meData.els, youData.els);
+                const bazi = lunarObj.getEightChar();
+                let els = { '木': 0, '火': 0, '土': 0, '金': 0, '水': 0 };
+                let chars = [
+                    bazi.getYear().charAt(0), bazi.getYear().charAt(1),
+                    bazi.getMonth().charAt(0), bazi.getMonth().charAt(1),
+                    bazi.getDay().charAt(0), bazi.getDay().charAt(1)
+                ];
 
-                // 원본 텍스트를 formatLongText 함수에 통과시켜서 예쁘게 조립
-                const finalOwnerText = formatLongText(ownerIljuText[meGan+meZhi] || ownerIljuText['甲子']);
-                const finalPetText = formatLongText(petIljuText[youGan+youZhi] || petIljuText['甲子']);
+                if (timeStr && timeStr !== 'unknown') {
+                    chars.push(bazi.getTime().charAt(0), bazi.getTime().charAt(1));
+                }
 
-                const humanRel = getHumanRelationship(result.ganRel, result.zhiRel);
+                chars.forEach(c => {
+                    if (['甲', '乙', '寅', '卯'].includes(c)) els['木']++;
+                    if (['丙', '丁', '巳', '午'].includes(c)) els['火']++;
+                    if (['戊', '己', '辰', '戌', '丑', '未'].includes(c)) els['土']++;
+                    if (['庚', '辛', '申', '酉'].includes(c)) els['金']++;
+                    if (['壬', '癸', '亥', '子'].includes(c)) els['水']++;
+                });
 
-                let html = "";
-                html += `<div class='dashboard-card'>`;
-                html += `<div class='bazi-flex'>`;
-                html += `<div class='person-col'><div class='person-name'>😎 나 (보호자)</div><div class='ilju-box'>${getCharHtml(meGan)}<br>${getCharHtml(meZhi)}</div></div>`;
-                html += `<div class='vs-badge'>💖</div>`;
-                html += `<div class='person-col'><div class='person-name'>🐾 반려동물</div><div class='ilju-box'>${getCharHtml(youGan)}<br>${getCharHtml(youZhi)}</div></div>`;
-                html += `</div>`;
-                html += `</div>`;
+                return { bazi, els };
+            };
 
-                html += `<div class='final-score-card'>`;
-                html += `<div class='final-score-title'>👑 ${result.conclusionTitle}</div>`; // 고정 텍스트 대신 변수 적용 완료
-                html += `<div class='final-score-circle'>${result.score}점</div>`;
-                html += `<div class='final-score-text'>${result.conclusion}</div>`;
-                html += `</div>`;
+            const meData = getBaziAndElements('me');
+            const youData = getBaziAndElements('you');
 
-                // 새로 추가된 "사람이었다면?" 섹션
-                html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>👤 만약 사람이었다면?</div>";
-                html += "<div class='fortune-content-text' style='text-align: center;'>";
-                html += `<h3 style='color: #ff5277; margin-top: 5px; margin-bottom: 12px; font-size: 1.1rem; word-break: keep-all; line-height: 1.4;'>${humanRel.title}</h3>`;
-                html += `<p style='text-align: left;'>${humanRel.desc}</p>`;
-                html += "</div></div>";
+            const meGan = meData.bazi.getDay().charAt(0);
+            const meZhi = meData.bazi.getDay().charAt(1);
+            const youGan = youData.bazi.getDay().charAt(0);
+            const youZhi = youData.bazi.getDay().charAt(1);
 
-                html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>📊 사주돼지가 훔쳐본 스탯</div>";
-                html += "<div class='fortune-content-text' style='margin-top: -5px;'>";
-                
-                html += `<div class='stat-compare-wrap'>`;
-                html += `<div class='stat-title'>⚡ 누가 더 텐션이 높을까?</div>`;
-                html += `<div class='stat-bar-container'>`;
-                html += `<div class='stat-bar-fill' style='width: ${result.eRatio}%;'></div>`;
-                html += `<div class='stat-text-me'>보호자님 ${result.eRatio}%</div>`;
-                html += `<div class='stat-text-you'>우리 아이 ${100 - result.eRatio}%</div>`;
-                html += `</div></div>`;
+            const result = getCompatibilityResult(meGan, meZhi, youGan, youZhi, meData.els, youData.els);
 
-                html += `<div class='stat-compare-wrap'>`;
-                html += `<div class='stat-title'>💖 누가 더 사랑을 표현할까?</div>`;
-                html += `<div class='stat-bar-container'>`;
-                html += `<div class='stat-bar-fill' style='width: ${result.aRatio}%;'></div>`;
-                html += `<div class='stat-text-me'>보호자님 ${result.aRatio}%</div>`;
-                html += `<div class='stat-text-you'>우리 아이 ${100 - result.aRatio}%</div>`;
-                html += `</div></div>`;
+            const finalOwnerText = ownerIljuText[meGan + meZhi] || ownerIljuText['甲子'];
+            const finalPetText = petIljuText[youGan + youZhi] || petIljuText['甲子'];
+            const humanRel = getHumanRelationship(result.ganRel, result.zhiRel);
 
-                html += `<div class='stat-compare-wrap' style='margin-bottom:0;'>`;
-                html += `<div class='stat-title'>👑 누가 진짜 서열 1위일까?</div>`;
-                html += `<div class='stat-bar-container'>`;
-                html += `<div class='stat-bar-fill' style='width: ${result.sRatio}%;'></div>`;
-                html += `<div class='stat-text-me'>보호자님 ${result.sRatio}%</div>`;
-                html += `<div class='stat-text-you'>우리 아이 ${100 - result.sRatio}%</div>`;
-                html += `</div></div>`;
-                html += "</div></div>";
+            let html = "";
 
-                html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>보호자님 성향</div>";
-                html += "<div class='fortune-content-text'>";
-                html += `<p>${finalOwnerText}</p>`;
-                html += "</div></div>";
+            html += `<div class="dashboard-card">`;
+            html += `<div class="bazi-flex">`;
+            html += `<div class="person-col"><div class="person-name">😎 나 (보호자)</div><div class="ilju-box">${getCharHtml(meGan)}<br>${getCharHtml(meZhi)}</div></div>`;
+            html += `<div class="vs-badge">💖</div>`;
+            html += `<div class="person-col"><div class="person-name">🐾 반려동물</div><div class="ilju-box">${getCharHtml(youGan)}<br>${getCharHtml(youZhi)}</div></div>`;
+            html += `</div>`;
+            html += `</div>`;
 
-                html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>반려동물의 진짜 속마음</div>";
-                html += "<div class='fortune-content-text'>";
-                html += `<p>${finalPetText}</p>`;
-                html += "</div></div>";
+            html += `<div class="final-score-card">`;
+            html += `<div class="final-score-title">👑 ${result.conclusionTitle}</div>`;
+            html += `<div class="final-score-circle">${result.score}점</div>`;
+            html += `<div class="final-score-text">${result.conclusion}</div>`;
+            html += `</div>`;
 
-                html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>우리의 관계</div>";
-                html += "<div class='fortune-content-text'>";
-                html += `<p>${formatLongText(result.ganText)}</p>`;
-                html += "</div></div>";
+            html += `<div class="fortune-section-card">`;
+            html += `<div class="fortune-section-title">👤 만약 반려동물이 사람이었다면?</div>`;
+            html += `<div class="fortune-content-text">`;
+            html += `<h3 style="color:#ff5277; margin-top:4px; margin-bottom:12px; text-align:center;">${humanRel.title}</h3>`;
+            html += `<p>${humanRel.desc}</p>`;
+            html += `</div></div>`;
 
-                html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>라이프스타일 궁합</div>";
-                html += "<div class='fortune-content-text'>";
-                html += `<p>${formatLongText(result.zhiText)}</p>`;
-                html += "</div></div>";
+            html += `<div class="fortune-section-card">`;
+            html += `<div class="fortune-section-title">📊 사주돼지가 훔쳐본 반려동물 스탯</div>`;
+            html += `<div class="fortune-content-text">`;
+            html += `<div class="stats-grid">`;
 
-                html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>관계 맞춤 솔루션</div>";
-                html += "<div class='fortune-content-text'>";
-                html += `<p>${formatLongText(result.synergyText)}</p>`;
-                html += "</div></div>";
+            html += `<div class="stat-compare-wrap">`;
+            html += `<div class="stat-title">⚡ 누가 더 매일매일 신나고 텐션이 높을까?</div>`;
+            html += `<div class="stat-bar-container">`;
+            html += `<div class="stat-bar-fill" style="width:${result.eRatio}%;"></div>`;
+            html += `<div class="stat-text-me">보호자님 ${result.eRatio}%</div>`;
+            html += `<div class="stat-text-you">우리 아이 ${100 - result.eRatio}%</div>`;
+            html += `</div></div>`;
 
-                html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>서로에게 미치는 영향</div>";
-                html += "<div class='fortune-content-text'>";
-                html += `<p>${formatLongText(result.simText)}</p>`;
-                html += "</div></div>";
+            html += `<div class="stat-compare-wrap">`;
+            html += `<div class="stat-title">💖 누가 더 사랑을 많이 표현할까?</div>`;
+            html += `<div class="stat-bar-container">`;
+            html += `<div class="stat-bar-fill" style="width:${result.aRatio}%;"></div>`;
+            html += `<div class="stat-text-me">보호자님 ${result.aRatio}%</div>`;
+            html += `<div class="stat-text-you">우리 아이 ${100 - result.aRatio}%</div>`;
+            html += `</div></div>`;
 
-                html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>관계를 위한 꿀팁</div>";
-                html += "<div class='fortune-content-text'>";
-                html += `<p>${formatLongText(result.solutionText)}</p>`;
-                html += "</div></div>";
+            html += `<div class="stat-compare-wrap">`;
+            html += `<div class="stat-title">👑 누가 이 구역의 진짜 서열 1위일까?</div>`;
+            html += `<div class="stat-bar-container">`;
+            html += `<div class="stat-bar-fill" style="width:${result.sRatio}%;"></div>`;
+            html += `<div class="stat-text-me">보호자님 ${result.sRatio}%</div>`;
+            html += `<div class="stat-text-you">우리 아이 ${100 - result.sRatio}%</div>`;
+            html += `</div></div>`;
 
-                document.getElementById('result-loading').style.display = 'none';
-                document.getElementById('dynamic-fortune-content').innerHTML = html;
-                document.getElementById('dynamic-fortune-content').style.display = 'block';
-                document.getElementById('go-home-btn').style.display = 'block';
+            html += `</div>`;
+            html += `</div></div>`;
 
-            } catch (err) {
-                const loadingDiv = document.getElementById('result-loading');
-                loadingDiv.style.color = '#ff5277';
-                loadingDiv.innerHTML = "앗! 화면을 그리던 중 문제가 발생했습니다.<br><br><span style='font-size: 0.9rem; font-weight: normal;'>" + err.message + "</span><br><br>F12를 눌러 콘솔창을 확인하시거나, 결제 전 입력값이 정상적으로 들어왔는지 확인해 주세요.";
-                console.error("화면 렌더링 중 에러 발생:", err);
-            }
-        }, 1500); 
-    };
+            html += `<div class="fortune-section-card">`;
+            html += `<div class="fortune-section-title">보호자님 성향</div>`;
+            html += `<div class="fortune-content-text"><p>${finalOwnerText}</p></div>`;
+            html += `</div>`;
+
+            html += `<div class="fortune-section-card">`;
+            html += `<div class="fortune-section-title">반려동물의 진짜 속마음</div>`;
+            html += `<div class="fortune-content-text"><p>${finalPetText}</p></div>`;
+            html += `</div>`;
+
+            html += `<div class="fortune-section-card">`;
+            html += `<div class="fortune-section-title">우리의 관계</div>`;
+            html += `<div class="fortune-content-text"><p>${result.ganText}</p></div>`;
+            html += `</div>`;
+
+            html += `<div class="fortune-section-card">`;
+            html += `<div class="fortune-section-title">라이프스타일 궁합</div>`;
+            html += `<div class="fortune-content-text"><p>${result.zhiText}</p></div>`;
+            html += `</div>`;
+
+            html += `<div class="fortune-section-card">`;
+            html += `<div class="fortune-section-title">관계 맞춤 솔루션</div>`;
+            html += `<div class="fortune-content-text"><p>${result.synergyText}</p></div>`;
+            html += `</div>`;
+
+            html += `<div class="fortune-section-card">`;
+            html += `<div class="fortune-section-title">서로에게 미치는 영향</div>`;
+            html += `<div class="fortune-content-text"><p>${result.simText}</p></div>`;
+            html += `</div>`;
+
+            html += `<div class="fortune-section-card">`;
+            html += `<div class="fortune-section-title">관계를 위한 조언과 꿀팁</div>`;
+            html += `<div class="fortune-content-text"><p>${result.solutionText}</p></div>`;
+            html += `</div>`;
+
+            document.getElementById('result-loading').style.display = 'none';
+            document.getElementById('dynamic-fortune-content').innerHTML = html;
+            document.getElementById('dynamic-fortune-content').style.display = 'block';
+            document.getElementById('go-home-btn').style.display = 'block';
+
+        } catch (err) {
+            const loadingDiv = document.getElementById('result-loading');
+            loadingDiv.style.color = '#ff5277';
+            loadingDiv.innerHTML = "앗! 화면을 그리던 중 문제가 발생했습니다.<br><br><span style='font-size:0.9rem; font-weight:normal;'>" + err.message + "</span><br><br>F12를 눌러 콘솔창을 확인하시거나, 결제 전 입력값이 정상적으로 들어왔는지 확인해 주세요.";
+            console.error("화면 렌더링 중 에러 발생:", err);
+        }
+    }, 1500);
+};
 </script>
 
 <script type="module">
@@ -766,11 +1209,17 @@
     const googleProvider = new GoogleAuthProvider();
 
     onAuthStateChanged(auth, async (user) => {
-        const headerBtn = document.getElementById('header-user-btn');
+        const headerBtn = document.getElementById("header-user-btn");
+
         if (user) {
-            if(headerBtn) { headerBtn.innerText = "내정보"; headerBtn.onclick = function() { location.href = 'index.html?tab=myinfo'; }; }
-            
-            if (window.orderId && window.paymentKey && window.paymentKey !== 'revisit') {
+            if (headerBtn) {
+                headerBtn.innerText = "내정보";
+                headerBtn.onclick = function () {
+                    location.href = "index.html?tab=myinfo";
+                };
+            }
+
+            if (window.orderId && window.paymentKey && window.paymentKey !== "revisit") {
                 try {
                     const purchaseRef = doc(db, "users", user.uid, "purchases", window.orderId);
                     await setDoc(purchaseRef, {
@@ -779,42 +1228,87 @@
                         itemType: "petpig",
                         purchaseDate: new Date().toISOString(),
                         sajuInfo: {
-                            year: sessionStorage.getItem('me_year'),
-                            month: sessionStorage.getItem('me_month'),
-                            day: sessionStorage.getItem('me_day'),
-                            time: sessionStorage.getItem('me_time'),
-                            gender: sessionStorage.getItem('me_gender'),
-                            calendar: sessionStorage.getItem('me_calendar'),
-                            youYear: sessionStorage.getItem('you_year'),
-                            youMonth: sessionStorage.getItem('you_month'),
-                            youDay: sessionStorage.getItem('you_day'),
-                            youTime: sessionStorage.getItem('you_time'),
-                            youGender: sessionStorage.getItem('you_gender'),
-                            youCalendar: sessionStorage.getItem('you_calendar')
+                            year: sessionStorage.getItem("me_year"),
+                            month: sessionStorage.getItem("me_month"),
+                            day: sessionStorage.getItem("me_day"),
+                            time: sessionStorage.getItem("me_time"),
+                            gender: sessionStorage.getItem("me_gender"),
+                            calendar: sessionStorage.getItem("me_calendar"),
+                            youYear: sessionStorage.getItem("you_year"),
+                            youMonth: sessionStorage.getItem("you_month"),
+                            youDay: sessionStorage.getItem("you_day"),
+                            youTime: sessionStorage.getItem("you_time"),
+                            youGender: sessionStorage.getItem("you_gender"),
+                            youCalendar: sessionStorage.getItem("you_calendar")
                         }
                     }, { merge: true });
+
                     console.log("결제 내역(반려동물 궁합) 저장 완료");
-                } catch (e) { console.error("영수증 저장 실패:", e); }
+                } catch (e) {
+                    console.error("영수증 저장 실패:", e);
+                }
             }
         } else {
-            if(headerBtn) { headerBtn.innerText = "로그인 / 가입"; headerBtn.onclick = openLogin; }
+            if (headerBtn) {
+                headerBtn.innerText = "로그인 / 가입";
+                headerBtn.onclick = window.openLogin;
+            }
         }
     });
 
-    window.realGoogleLogin = function() { signInWithPopup(auth, googleProvider).then(() => { closeLogin(); }).catch(console.error); }
-    window.realKakaoLogin = function() { const kakaoProvider = new OAuthProvider('oidc.kakao'); signInWithPopup(auth, kakaoProvider).then(() => { closeLogin(); }).catch(console.error); }
+    window.realGoogleLogin = function () {
+        signInWithPopup(auth, googleProvider)
+            .then(() => {
+                window.closeLogin();
+            })
+            .catch((error) => {
+                console.error("구글 로그인 실패:", error);
+            });
+    };
+
+    window.realKakaoLogin = function () {
+        const kakaoProvider = new OAuthProvider("oidc.kakao");
+        signInWithPopup(auth, kakaoProvider)
+            .then(() => {
+                window.closeLogin();
+            })
+            .catch((error) => {
+                console.error("카카오 로그인 실패:", error);
+            });
+    };
 </script>
 
 <script>
-    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-    document.addEventListener('keydown', function(e) {
-        if (e.keyCode === 123) { e.preventDefault(); return false; }
-        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) { e.preventDefault(); return false; }
-        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) { e.preventDefault(); return false; }
-        if (e.ctrlKey && e.shiftKey && e.keyCode === 67) { e.preventDefault(); return false; }
-        if (e.ctrlKey && e.keyCode === 85) { e.preventDefault(); return false; }
+    document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
     });
-    document.addEventListener('selectstart', function(e) { e.preventDefault(); });
+
+    document.addEventListener("keydown", function (e) {
+        if (e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    document.addEventListener("selectstart", function (e) {
+        e.preventDefault();
+    });
 </script>
 
 </body>
