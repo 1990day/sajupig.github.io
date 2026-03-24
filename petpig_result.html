@@ -625,26 +625,26 @@
                 html += `<div class='bazi-flex'>`;
                 html += `<div class='person-col'><div class='person-name'>😎 나 (보호자)</div><div class='ilju-box'>${getCharHtml(meGan)}<br>${getCharHtml(meZhi)}</div></div>`;
                 html += `<div class='vs-badge'>💖</div>`;
-                html += `<div class='person-col'><div class='person-name'>🐾 우리 천사 아이</div><div class='ilju-box'>${getCharHtml(youGan)}<br>${getCharHtml(youZhi)}</div></div>`;
+                html += `<div class='person-col'><div class='person-name'>🐾 반려동물</div><div class='ilju-box'>${getCharHtml(youGan)}<br>${getCharHtml(youZhi)}</div></div>`;
                 html += `</div>`;
                 html += `</div>`;
 
                 html += `<div class='final-score-card'>`;
-                html += `<div class='final-score-title'>👑 사주돼지가 분석한 멍냥 찰떡 점수</div>`;
+                html += `<div class='final-score-title'>👑 사주돼지가 분석한 궁합 점수</div>`;
                 html += `<div class='final-score-circle'>${result.score}점</div>`;
                 html += `<div class='final-score-text'>${result.conclusion}</div>`;
                 html += `</div>`;
 
                 // 새로 추가된 "사람이었다면?" 섹션
                 html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>👤 만약 우리 아이가 사람이었다면?</div>";
+                html += "<div class='fortune-section-title'>👤 만약 반려동물이 사람이었다면?</div>";
                 html += "<div class='fortune-content-text' style='text-align: center;'>";
                 html += `<h3 style='color: #ff5277; margin-top: 10px; margin-bottom: 15px; word-break: keep-all; line-height: 1.4;'>${humanRel.title}</h3>`;
                 html += `<p style='text-align: left;'>${humanRel.desc}</p>`;
                 html += "</div></div>";
 
                 html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>📊 사주돼지가 훔쳐본 멍냥 스탯</div>";
+                html += "<div class='fortune-section-title'>📊 사주돼지가 훔쳐본 반려동물 스탯</div>";
                 html += "<div class='fortune-content-text' style='margin-top: -5px;'>";
                 
                 html += `<div class='stat-compare-wrap'>`;
@@ -656,7 +656,7 @@
                 html += `</div></div>`;
 
                 html += `<div class='stat-compare-wrap'>`;
-                html += `<div class='stat-title'>💖 누가 먼저 뽀뽀하고 안아달라 할까?</div>`;
+                html += `<div class='stat-title'>💖 누가 더 사랑을 많이 표현할까?</div>`;
                 html += `<div class='stat-bar-container'>`;
                 html += `<div class='stat-bar-fill' style='width: ${result.aRatio}%;'></div>`;
                 html += `<div class='stat-text-me'>보호자님 ${result.aRatio}%</div>`;
@@ -673,43 +673,43 @@
                 html += "</div></div>";
 
                 html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>😎 꿀이 뚝뚝! 나의 찐 사랑꾼 성향</div>";
+                html += "<div class='fortune-section-title'>보호자님 성향</div>";
                 html += "<div class='fortune-content-text'>";
                 html += `<p>${finalOwnerText}</p>`;
                 html += "</div></div>";
 
                 html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>🐾 우리 천사 아이의 진짜 속마음</div>";
+                html += "<div class='fortune-section-title'>반려동물의 진짜 속마음</div>";
                 html += "<div class='fortune-content-text'>";
                 html += `<p>${finalPetText}</p>`;
                 html += "</div></div>";
 
                 html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>🧠 꿀꿀! 보호자와 아이의 영혼 이끌림</div>";
+                html += "<div class='fortune-section-title'>우리의 관계</div>";
                 html += "<div class='fortune-content-text'>";
                 html += `<p>${result.ganText}</p>`;
                 html += "</div></div>";
 
                 html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>🔥 눈빛만 봐도 통하는 라이프스타일 궁합</div>";
+                html += "<div class='fortune-section-title'>라이프스타일 궁합</div>";
                 html += "<div class='fortune-content-text'>";
                 html += `<p>${result.zhiText}</p>`;
                 html += "</div></div>";
 
                 html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>💧 아이가 내 인생에 미치는 마법 같은 힐링 시너지</div>";
+                html += "<div class='fortune-section-title'>관계 맞춤 솔루션</div>";
                 html += "<div class='fortune-content-text'>";
                 html += `<p>${result.synergyText}</p>`;
                 html += "</div></div>";
 
                 html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>💍 평생을 함께할 동화 같은 반려 라이프 시뮬레이션</div>";
+                html += "<div class='fortune-section-title'>서로에게 미치는 영향</div>";
                 html += "<div class='fortune-content-text'>";
                 html += `<p>${result.simText}</p>`;
                 html += "</div></div>";
 
                 html += "<div class='fortune-section-card'>";
-                html += "<div class='fortune-section-title'>🚨 더 완벽하고 행복한 반려생활을 위한 꿀팁</div>";
+                html += "<div class='fortune-section-title'>관계를 위한 조언과 꿀팁</div>";
                 html += "<div class='fortune-content-text'>";
                 html += `<p>${result.solutionText}</p>`;
                 html += "</div></div>";
