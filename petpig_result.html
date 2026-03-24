@@ -12,512 +12,542 @@
     <meta property="og:url" content="https://sajupig.co.kr/petpig">
     <script src="https://unpkg.com/lunar-javascript/lunar.js"></script>
     <link rel="icon" type="image/png" href="/favicon.png">
-    <style>
-        html { background-color: #fce4ec; }
+  <style>
+    html {
+        background: #f9edf1;
+    }
 
-        * { box-sizing: border-box; }
+    body {
+        margin: 0 auto;
+        max-width: 480px;
+        min-height: 100vh;
+        font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+        background: linear-gradient(180deg, #fff9fb 0%, #fff3f7 100%);
+        color: #473437;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+        position: relative;
+        padding: 16px;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+    }
 
+    header { 
+        background-color: #ffb6c1;
+        position: sticky;
+        top: 0;
+        z-index: 100; 
+        box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4); 
+        border-bottom: 4px solid #ff85a2;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        margin: -16px -16px 18px -16px;
+    }
+
+    .header-logo {
+        display: block;
+        height: 30px;
+        width: auto;
+    }
+
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 16px 14px 16px;
+    }
+
+    .main-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .login-btn-header {
+        background: #ffffff;
+        border: 3px solid #ff85a2;
+        color: #ff85a2;
+        padding: 7px 16px;
+        border-radius: 22px;
+        font-size: 0.84rem;
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+        transition: all 0.2s;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 12px 18px 12px;
+        gap: 10px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    nav button { 
+        flex: 1;
+        background-color: #ffffff;
+        border: 3px solid #ffe4e8;
+        font-size: 0.78rem;
+        color: #ff85a2; 
+        cursor: pointer;
+        font-weight: 900;
+        transition: all 0.2s;
+        border-radius: 18px;
+        aspect-ratio: 1 / 1; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        box-shadow: 0 4px 8px rgba(255, 182, 193, 0.18);
+        min-width: 76px;
+    }
+
+    nav button.active {
+        color: #ffffff;
+        background-color: #ff85a2;
+        border-color: #ff85a2;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(255, 133, 162, 0.35);
+    }
+
+    nav button span.icon {
+        font-size: 1.4rem;
+    }
+
+    nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    main {
+        padding: 4px 0 16px 0;
+        text-align: center;
+    }
+
+    .fortune-result-box {
+        background: transparent;
+        text-align: left;
+        animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .intro-compare-card {
+        background: #ffffff;
+        border: 1px solid #ffdce6;
+        border-radius: 26px;
+        box-shadow: 0 12px 28px rgba(255, 171, 192, 0.18);
+        padding: 18px 16px;
+        margin-bottom: 16px;
+    }
+
+    .compare-head {
+        font-size: 0.95rem;
+        font-weight: 900;
+        color: #ff5f84;
+        text-align: center;
+        margin-bottom: 14px;
+    }
+
+    .bazi-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .person-col {
+        flex: 1;
+        background: #fff8fb;
+        border: 1px solid #ffe1ea;
+        border-radius: 20px;
+        padding: 14px 10px;
+        text-align: center;
+    }
+
+    .person-name {
+        font-size: 0.9rem;
+        color: #ff7898;
+        font-weight: 900;
+        margin-bottom: 10px;
+        line-height: 1.35;
+    }
+
+    .ilju-box {
+        font-size: 1.6rem;
+        font-weight: 900;
+        background: #ffffff;
+        padding: 14px 14px;
+        border-radius: 18px;
+        border: 1px dashed #ffc4d0;
+        display: inline-block;
+        line-height: 1.1;
+        min-width: 70px;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    .vs-badge {
+        flex: 0 0 auto;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ff7098, #ff97b5);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 0.9rem;
+        box-shadow: 0 8px 16px rgba(255, 112, 152, 0.28);
+    }
+
+    .final-score-card {
+        background: linear-gradient(135deg, #ff8faa 0%, #ffadc2 52%, #ffdbe7 100%);
+        border-radius: 28px;
+        padding: 22px 16px 18px 16px;
+        text-align: center;
+        box-shadow: 0 14px 28px rgba(255, 133, 162, 0.22);
+        margin-bottom: 18px;
+        border: 1px solid rgba(255,255,255,0.75);
+    }
+
+    .final-score-title {
+        color: #ffffff;
+        font-size: 1.08rem;
+        font-weight: 900;
+        margin-bottom: 14px;
+        line-height: 1.45;
+        word-break: keep-all;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .final-score-circle {
+        background: #ffffff;
+        color: #ff5277;
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.95rem;
+        font-weight: 900;
+        margin: 0 auto 16px auto;
+        box-shadow: 0 8px 15px rgba(255, 82, 119, 0.15);
+        border: 3px dashed #ffc4d0;
+    }
+
+    .final-score-text {
+        background: rgba(255,255,255,0.94);
+        color: #473437;
+        padding: 17px 15px;
+        border-radius: 18px;
+        font-size: 0.94rem;
+        line-height: 1.72;
+        font-weight: 700;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.03);
+        word-break: keep-all;
+    }
+
+    .section-stack {
+        display: grid;
+        gap: 14px;
+    }
+
+    .fortune-section-card {
+        background: #ffffff;
+        border: 1px solid #ffdbe4;
+        border-radius: 22px;
+        padding: 15px 14px 14px 14px;
+        box-shadow: 0 8px 20px rgba(255, 182, 193, 0.12);
+        overflow: hidden;
+    }
+
+    .fortune-section-card::before {
+        content: "";
+        display: block;
+        height: 6px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #ff8ead, #ffd0de);
+        margin-bottom: 12px;
+    }
+
+    .fortune-section-title {
+        color: #ff5b82;
+        font-size: 0.98rem;
+        font-weight: 900;
+        line-height: 1.45;
+        text-align: left;
+        margin-bottom: 10px;
+        word-break: keep-all;
+        letter-spacing: -0.2px;
+    }
+
+    .fortune-content-text {
+        color: #49383b;
+        font-size: 0.92rem;
+        line-height: 1.78;
+        text-align: left;
+        letter-spacing: -0.2px;
+        word-break: keep-all;
+    }
+
+    .fortune-content-box {
+        margin: 0;
+        padding: 14px 13px;
+        background: #fff7fa;
+        border-radius: 16px;
+        font-weight: 500;
+        border: 1px solid #ffe5ec;
+    }
+
+    .human-title {
+        font-size: 1rem;
+        font-weight: 900;
+        color: #ff5277;
+        text-align: center;
+        margin-bottom: 12px;
+        line-height: 1.45;
+    }
+
+    .stats-grid {
+        display: grid;
+        gap: 10px;
+    }
+
+    .stat-card {
+        background: #fff7fa;
+        border: 1px solid #ffe3eb;
+        border-radius: 16px;
+        padding: 12px;
+    }
+
+    .stat-title {
+        text-align: left;
+        font-weight: 800;
+        color: #473437;
+        margin-bottom: 9px;
+        font-size: 0.87rem;
+        word-break: keep-all;
+        line-height: 1.45;
+    }
+
+    .stat-bar-container {
+        position: relative;
+        height: 30px;
+        border-radius: 999px;
+        overflow: hidden;
+        border: 1px solid #ffd7e0;
+        background: #ffe7ee;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
+    }
+
+    .stat-bar-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: linear-gradient(90deg, #ff6f96, #ff8fb0);
+        transition: width 1s ease-in-out;
+    }
+
+    .stat-text-me,
+    .stat-text-you {
+        position: absolute;
+        top: 0;
+        line-height: 30px;
+        font-weight: 900;
+        font-size: 0.75rem;
+        z-index: 2;
+        white-space: nowrap;
+    }
+
+    .stat-text-me {
+        left: 10px;
+        color: #ffffff;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.25);
+    }
+
+    .stat-text-you {
+        right: 10px;
+        color: #574348;
+    }
+
+    .go-home-btn {
+        width: 100%;
+        background: linear-gradient(135deg, #ff7fa2, #ff95b2);
+        color: white;
+        border: none;
+        padding: 17px;
+        border-radius: 18px;
+        font-size: 1rem;
+        font-weight: 900;
+        cursor: pointer;
+        margin-top: 14px;
+        box-shadow: 0 10px 20px rgba(255, 133, 162, 0.28);
+    }
+
+    .login-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(74, 51, 51, 0.8);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.2s;
+    }
+
+    .login-box {
+        background-color: #ffffff;
+        width: 85%;
+        max-width: 360px;
+        border-radius: 30px;
+        padding: 40px 25px;
+        text-align: center;
+        position: relative;
+        border: 5px solid #ffb6c1;
+    }
+
+    .close-login {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 2.2rem;
+        color: #ff85a2;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .login-box h2 {
+        margin-top: 0;
+        color: #ff85a2;
+        margin-bottom: 15px;
+        font-weight: 900;
+    }
+
+    .social-btn {
+        display: block;
+        width: 100%;
+        padding: 18px;
+        margin-bottom: 12px;
+        border-radius: 20px;
+        font-size: 1.1rem;
+        font-weight: 900;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .btn-kakao {
+        background-color: #FEE500;
+        color: #4a3333;
+    }
+
+    .btn-google {
+        background-color: #f1f1f1;
+        color: #4a3333;
+        border: 2px solid #ffe4e8;
+    }
+
+    #result-loading {
+        text-align: center;
+        padding: 80px 10px;
+        font-weight: 800;
+        color: #ff85a2;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .hl {
+        background-color: #ffe7ef;
+        padding: 1px 6px;
+        border-radius: 8px;
+        font-weight: 900;
+        color: #ff5277;
+    }
+
+    .c-wood { color: #4CAF50; }
+    .c-fire { color: #F44336; }
+    .c-earth { color: #FF9800; }
+    .c-metal { color: #78909C; }
+    .c-water { color: #2196F3; }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(12px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 380px) {
         body {
-            margin: 0 auto;
-            max-width: 480px;
-            min-height: 100vh;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
-            background:
-                radial-gradient(circle at top right, rgba(255,255,255,0.55) 0, rgba(255,255,255,0) 28%),
-                linear-gradient(180deg, #fff7fa 0%, #fff0f5 100%);
-            color: #4a3333;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
-            position: relative;
-            padding: 18px 16px 26px;
+            padding: 14px;
         }
 
-        header { 
-            background-color: #ffb6c1;
-            position: sticky;
-            top: 0;
-            z-index: 100; 
-            box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4); 
-            border-bottom: 4px solid #ff85a2;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-            margin: -18px -16px 18px -16px;
+        header {
+            margin: -14px -14px 16px -14px;
         }
 
-        .header-logo { display: block; height: 30px; width: auto; }
         .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 20px 15px 20px;
+            padding: 16px 14px 12px 14px;
         }
-        .main-link { text-decoration: none; color: inherit; }
 
-        .login-btn-header {
-            background: #ffffff;
-            border: 3px solid #ff85a2;
-            color: #ff85a2;
-            padding: 8px 18px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 900;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.2s;
-        }
-        
         nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 15px 20px 15px;
-            gap: 10px;
-            overflow-x: auto;
-            white-space: nowrap;
+            padding: 8px 10px 16px 10px;
+            gap: 8px;
         }
 
-        nav button { 
-            flex: 1;
-            background-color: #ffffff;
-            border: 3px solid #ffe4e8;
-            font-size: 0.85rem;
-            color: #ff85a2; 
-            cursor: pointer;
-            font-weight: 900;
-            transition: all 0.2s;
-            border-radius: 20px;
-            aspect-ratio: 1 / 1; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
+        nav button {
+            font-size: 0.72rem;
+            min-width: 72px;
         }
 
-        nav button.active {
-            color: #ffffff;
-            background-color: #ff85a2;
-            border-color: #ff85a2;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 15px rgba(255, 133, 162, 0.4);
-        }
-
-        nav button span.icon { font-size: 1.6rem; }
-        nav::-webkit-scrollbar { display: none; }
-
-        main {
-            padding: 6px 0 0;
-            text-align: center;
-        }
-
-        #result-loading {
-            text-align: center;
-            padding: 90px 14px;
-            font-weight: 800;
-            color: #ff85a2;
-            font-size: 1rem;
-            line-height: 1.7;
-            background: rgba(255,255,255,0.72);
-            border: 3px solid #ffe2ea;
-            border-radius: 24px;
-            box-shadow: 0 10px 24px rgba(255, 182, 193, 0.18);
-        }
-
-        .fortune-result-box {
-            background: transparent;
-            text-align: left;
-            animation: fadeIn 0.8s ease-in-out;
-        }
-
-        .dashboard-card {
-            background: linear-gradient(180deg, #ffffff 0%, #fff8fb 100%);
-            padding: 18px 14px 16px;
-            border-radius: 24px;
-            margin-bottom: 18px;
-            border: 2px solid #ffd6e1;
-            box-shadow: 0 10px 24px rgba(255, 182, 193, 0.18);
-            text-align: center;
-        }
-
-        .bazi-flex {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .person-col {
-            flex: 1;
-            min-width: 0;
+        nav button span.icon {
+            font-size: 1.25rem;
         }
 
         .person-name {
-            font-size: 0.95rem;
-            color: #ff6d95;
-            font-weight: 900;
-            margin-bottom: 8px;
-            letter-spacing: -0.2px;
+            font-size: 0.84rem;
         }
 
         .ilju-box {
-            font-size: 1.6rem;
-            font-weight: 900;
-            background: linear-gradient(180deg, #fff7fa 0%, #fff0f5 100%);
-            padding: 12px 10px;
-            border-radius: 18px;
-            border: 2px dashed #ffc4d0;
-            display: inline-block;
-            line-height: 1.15;
-            min-width: 86px;
-            box-shadow: inset 0 2px 6px rgba(255,255,255,0.75);
-        }
-
-        .vs-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 52px;
-            height: 52px;
-            background: linear-gradient(135deg, #ff6d95 0%, #ff89ad 100%);
-            color: white;
-            border-radius: 50%;
-            font-weight: 900;
-            margin: 0 2px;
-            font-size: 1rem;
-            box-shadow: 0 8px 18px rgba(255, 82, 119, 0.28);
-            border: 3px solid #fff;
-        }
-
-        .final-score-card {
-            background: linear-gradient(145deg, #ff8fb1 0%, #ffc6d8 52%, #fff3f8 100%);
-            border-radius: 28px;
-            padding: 24px 16px 18px;
-            text-align: center;
-            box-shadow: 0 14px 28px rgba(255, 133, 162, 0.22);
-            margin-bottom: 18px;
-            border: 3px solid rgba(255,255,255,0.92);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .final-score-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 20% 18%, rgba(255,255,255,0.45) 0, rgba(255,255,255,0) 24%),
-                radial-gradient(circle at 80% 12%, rgba(255,255,255,0.36) 0, rgba(255,255,255,0) 26%);
-            pointer-events: none;
+            font-size: 1.45rem;
+            min-width: 64px;
+            padding: 12px 12px;
         }
 
         .final-score-title {
-            position: relative;
-            z-index: 1;
-            color: #ffffff;
-            font-size: 1.16rem;
-            font-weight: 900;
-            margin-bottom: 14px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.14);
-            line-height: 1.4;
-            word-break: keep-all;
+            font-size: 1rem;
         }
 
         .final-score-circle {
-            position: relative;
-            z-index: 1;
-            background: #ffffff;
-            color: #ff5277;
-            width: 94px;
-            height: 94px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.95rem;
-            font-weight: 900;
-            margin: 0 auto 16px auto;
-            box-shadow: 0 10px 20px rgba(255, 82, 119, 0.16);
-            border: 3px dashed #ffc4d0;
+            width: 86px;
+            height: 86px;
+            font-size: 1.72rem;
         }
 
-        .final-score-text {
-            position: relative;
-            z-index: 1;
-            background: rgba(255,255,255,0.96);
-            color: #4a3333;
-            padding: 16px 15px;
-            border-radius: 18px;
-            font-size: 0.94rem;
-            line-height: 1.75;
-            font-weight: 700;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);
-            word-break: keep-all;
-            letter-spacing: -0.15px;
-        }
-
-        .fortune-section-card {
-            background: linear-gradient(180deg, #ffffff 0%, #fff9fb 100%);
-            border: 2px solid #ffe2ea;
-            border-radius: 24px;
-            padding: 42px 14px 14px;
-            margin-top: 18px;
-            margin-bottom: 0;
-            box-shadow: 0 10px 24px rgba(255, 182, 193, 0.15);
-            position: relative;
-            overflow: visible;
-        }
-
-        .fortune-section-title { 
-            position: absolute;
-            top: -14px;
-            left: 14px;
-            transform: none;
-            color: #ffffff;
-            background: linear-gradient(135deg, #ff7fa3 0%, #ff97b5 100%);
-            padding: 8px 14px;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            font-weight: 900;
-            box-shadow: 0 8px 16px rgba(255, 133, 162, 0.22);
-            border: 2px solid #ffffff;
-            width: auto;
-            max-width: calc(100% - 28px);
-            word-break: keep-all;
-            line-height: 1.35;
-            text-align: left;
-            z-index: 10;
-            letter-spacing: -0.1px;
-        }
-
+        .final-score-text,
         .fortune-content-text {
-            color: #3b2a2a;
-            font-size: 0.93rem;
-            line-height: 1.82;
-            text-align: left;
-            letter-spacing: -0.2px;
-            word-break: keep-all;
-        }
-
-        .fortune-content-text p {
-            margin: 0;
-            padding: 14px 13px;
-            background: linear-gradient(180deg, #fff6f9 0%, #fff1f5 100%);
-            border-radius: 18px;
-            font-weight: 600;
-            border: 1px solid #ffe2ea;
-            box-shadow: inset 0 1px 2px rgba(255,255,255,0.8);
-        }
-
-        .fortune-content-text h3 {
-            font-size: 1.02rem !important;
-            line-height: 1.45 !important;
-            margin-top: 4px !important;
-            margin-bottom: 12px !important;
-            font-weight: 900;
-            letter-spacing: -0.2px;
-        }
-
-        .stat-compare-wrap {
-            margin-bottom: 16px;
-            background: linear-gradient(180deg, #fff7fa 0%, #fff1f6 100%);
-            border: 1px solid #ffe1ea;
-            border-radius: 18px;
-            padding: 12px 12px 13px;
-        }
-
-        .stat-compare-wrap:last-child {
-            margin-bottom: 0;
-        }
-
-        .stat-title {
-            text-align: left;
-            font-weight: 900;
-            color: #4a3333;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            word-break: keep-all;
-            line-height: 1.45;
-            padding: 0;
-            letter-spacing: -0.15px;
-        }
-
-        .stat-bar-container {
-            position: relative;
-            height: 32px;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 2px solid #ffe4e8;
-            background: #ffd6e2;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.04);
-        }
-
-        .stat-bar-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            background: linear-gradient(90deg, #ff6d95 0%, #ff8fb1 100%);
-            transition: width 1s ease-in-out;
+            font-size: 0.89rem;
         }
 
         .stat-text-me,
         .stat-text-you {
-            position: absolute;
-            top: 0;
-            line-height: 32px;
-            font-weight: 900;
-            font-size: 0.77rem;
-            z-index: 2;
-            white-space: nowrap;
-            letter-spacing: -0.1px;
+            font-size: 0.69rem;
         }
-
-        .stat-text-me {
-            left: 11px;
-            color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.35);
-        }
-
-        .stat-text-you {
-            right: 11px;
-            color: #4a3333;
-        }
-
-        .go-home-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #ff7fa3 0%, #ff95b3 100%);
-            color: white;
-            border: none;
-            padding: 17px 16px;
-            border-radius: 18px;
-            font-size: 1rem;
-            font-weight: 900;
-            cursor: pointer;
-            margin-top: 18px;
-            box-shadow: 0 10px 20px rgba(255, 133, 162, 0.22);
-        }
-
-        .login-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(74, 51, 51, 0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.2s;
-        }
-
-        .login-box {
-            background-color: #ffffff;
-            width: 85%;
-            max-width: 360px;
-            border-radius: 30px;
-            padding: 40px 25px;
-            text-align: center;
-            position: relative;
-            border: 5px solid #ffb6c1;
-        }
-
-        .close-login {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 2.2rem;
-            color: #ff85a2;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .login-box h2 {
-            margin-top: 0;
-            color: #ff85a2;
-            margin-bottom: 15px;
-            font-weight: 900;
-        }
-
-        .social-btn {
-            display: block;
-            width: 100%;
-            padding: 18px;
-            margin-bottom: 12px;
-            border-radius: 20px;
-            font-size: 1.1rem;
-            font-weight: 900;
-            text-align: center;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .btn-kakao { background-color: #FEE500; color: #4a3333; }
-        .btn-google { background-color: #f1f1f1; color: #4a3333; border: 2px solid #ffe4e8; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hl {
-            background-color: #ffe6ee;
-            padding: 1px 6px;
-            border-radius: 8px;
-            font-weight: 900;
-            color: #ff5277;
-        }
-
-        .c-wood { color: #4CAF50; }
-        .c-fire { color: #F44336; }
-        .c-earth { color: #FF9800; }
-        .c-metal { color: #78909C; }
-        .c-water { color: #2196F3; }
-
-        @media (max-width: 380px) {
-            body {
-                padding: 16px 12px 24px;
-            }
-
-            header {
-                margin: -16px -12px 16px -12px;
-            }
-
-            .fortune-section-title {
-                left: 12px;
-                max-width: calc(100% - 24px);
-                font-size: 0.85rem;
-                padding: 8px 12px;
-            }
-
-            .fortune-section-card {
-                padding: 40px 12px 12px;
-            }
-
-            .final-score-title {
-                font-size: 1.05rem;
-            }
-
-            .final-score-text,
-            .fortune-content-text {
-                font-size: 0.9rem;
-            }
-
-            .stat-text-me,
-            .stat-text-you {
-                font-size: 0.72rem;
-            }
-
-            .person-name {
-                font-size: 0.88rem;
-            }
-
-            .ilju-box {
-                font-size: 1.45rem;
-                min-width: 76px;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
 
@@ -1083,95 +1113,103 @@ window.onload = async function () {
             const finalPetText = petIljuText[youGan + youZhi] || petIljuText['甲子'];
             const humanRel = getHumanRelationship(result.ganRel, result.zhiRel);
 
-            let html = "";
+         let html = "";
 
-            html += `<div class="dashboard-card">`;
-            html += `<div class="bazi-flex">`;
-            html += `<div class="person-col"><div class="person-name">😎 나 (보호자)</div><div class="ilju-box">${getCharHtml(meGan)}<br>${getCharHtml(meZhi)}</div></div>`;
-            html += `<div class="vs-badge">💖</div>`;
-            html += `<div class="person-col"><div class="person-name">🐾 반려동물</div><div class="ilju-box">${getCharHtml(youGan)}<br>${getCharHtml(youZhi)}</div></div>`;
-            html += `</div>`;
-            html += `</div>`;
+html += `<div class="intro-compare-card">`;
+html += `<div class="compare-head">사주돼지가 본 우리 둘의 기본 궁합</div>`;
+html += `<div class="bazi-flex">`;
+html += `<div class="person-col"><div class="person-name">😎 나 (보호자)</div><div class="ilju-box">${getCharHtml(meGan)}<br>${getCharHtml(meZhi)}</div></div>`;
+html += `<div class="vs-badge">VS</div>`;
+html += `<div class="person-col"><div class="person-name">🐾 반려동물</div><div class="ilju-box">${getCharHtml(youGan)}<br>${getCharHtml(youZhi)}</div></div>`;
+html += `</div>`;
+html += `</div>`;
 
-            html += `<div class="final-score-card">`;
-            html += `<div class="final-score-title">👑 ${result.conclusionTitle}</div>`;
-            html += `<div class="final-score-circle">${result.score}점</div>`;
-            html += `<div class="final-score-text">${result.conclusion}</div>`;
-            html += `</div>`;
+html += `<div class="final-score-card">`;
+html += `<div class="final-score-title">👑 ${result.conclusionTitle}</div>`;
+html += `<div class="final-score-circle">${result.score}점</div>`;
+html += `<div class="final-score-text">${result.conclusion}</div>`;
+html += `</div>`;
 
-            html += `<div class="fortune-section-card">`;
-            html += `<div class="fortune-section-title">👤 만약 반려동물이 사람이었다면?</div>`;
-            html += `<div class="fortune-content-text">`;
-            html += `<h3 style="color:#ff5277; margin-top:4px; margin-bottom:12px; text-align:center;">${humanRel.title}</h3>`;
-            html += `<p>${humanRel.desc}</p>`;
-            html += `</div></div>`;
+html += `<div class="section-stack">`;
 
-            html += `<div class="fortune-section-card">`;
-            html += `<div class="fortune-section-title">📊 사주돼지가 훔쳐본 반려동물 스탯</div>`;
-            html += `<div class="fortune-content-text">`;
-            html += `<div class="stats-grid">`;
+html += `<div class="fortune-section-card">`;
+html += `<div class="fortune-section-title">👤 만약 반려동물이 사람이었다면?</div>`;
+html += `<div class="fortune-content-text">`;
+html += `<div class="human-title">${humanRel.title}</div>`;
+html += `<div class="fortune-content-box">${humanRel.desc}</div>`;
+html += `</div>`;
+html += `</div>`;
 
-            html += `<div class="stat-compare-wrap">`;
-            html += `<div class="stat-title">⚡ 누가 더 매일매일 신나고 텐션이 높을까?</div>`;
-            html += `<div class="stat-bar-container">`;
-            html += `<div class="stat-bar-fill" style="width:${result.eRatio}%;"></div>`;
-            html += `<div class="stat-text-me">보호자님 ${result.eRatio}%</div>`;
-            html += `<div class="stat-text-you">우리 아이 ${100 - result.eRatio}%</div>`;
-            html += `</div></div>`;
+html += `<div class="fortune-section-card">`;
+html += `<div class="fortune-section-title">📊 사주돼지가 훔쳐본 반려동물 스탯</div>`;
+html += `<div class="stats-grid">`;
 
-            html += `<div class="stat-compare-wrap">`;
-            html += `<div class="stat-title">💖 누가 더 사랑을 많이 표현할까?</div>`;
-            html += `<div class="stat-bar-container">`;
-            html += `<div class="stat-bar-fill" style="width:${result.aRatio}%;"></div>`;
-            html += `<div class="stat-text-me">보호자님 ${result.aRatio}%</div>`;
-            html += `<div class="stat-text-you">우리 아이 ${100 - result.aRatio}%</div>`;
-            html += `</div></div>`;
+html += `<div class="stat-card">`;
+html += `<div class="stat-title">⚡ 누가 더 매일매일 신나고 텐션이 높을까?</div>`;
+html += `<div class="stat-bar-container">`;
+html += `<div class="stat-bar-fill" style="width:${result.eRatio}%;"></div>`;
+html += `<div class="stat-text-me">보호자님 ${result.eRatio}%</div>`;
+html += `<div class="stat-text-you">우리 아이 ${100 - result.eRatio}%</div>`;
+html += `</div>`;
+html += `</div>`;
 
-            html += `<div class="stat-compare-wrap">`;
-            html += `<div class="stat-title">👑 누가 이 구역의 진짜 서열 1위일까?</div>`;
-            html += `<div class="stat-bar-container">`;
-            html += `<div class="stat-bar-fill" style="width:${result.sRatio}%;"></div>`;
-            html += `<div class="stat-text-me">보호자님 ${result.sRatio}%</div>`;
-            html += `<div class="stat-text-you">우리 아이 ${100 - result.sRatio}%</div>`;
-            html += `</div></div>`;
+html += `<div class="stat-card">`;
+html += `<div class="stat-title">💖 누가 더 사랑을 많이 표현할까?</div>`;
+html += `<div class="stat-bar-container">`;
+html += `<div class="stat-bar-fill" style="width:${result.aRatio}%;"></div>`;
+html += `<div class="stat-text-me">보호자님 ${result.aRatio}%</div>`;
+html += `<div class="stat-text-you">우리 아이 ${100 - result.aRatio}%</div>`;
+html += `</div>`;
+html += `</div>`;
 
-            html += `</div>`;
-            html += `</div></div>`;
+html += `<div class="stat-card">`;
+html += `<div class="stat-title">👑 누가 이 구역의 진짜 서열 1위일까?</div>`;
+html += `<div class="stat-bar-container">`;
+html += `<div class="stat-bar-fill" style="width:${result.sRatio}%;"></div>`;
+html += `<div class="stat-text-me">보호자님 ${result.sRatio}%</div>`;
+html += `<div class="stat-text-you">우리 아이 ${100 - result.sRatio}%</div>`;
+html += `</div>`;
+html += `</div>`;
 
-            html += `<div class="fortune-section-card">`;
-            html += `<div class="fortune-section-title">보호자님 성향</div>`;
-            html += `<div class="fortune-content-text"><p>${finalOwnerText}</p></div>`;
-            html += `</div>`;
+html += `</div>`;
+html += `</div>`;
 
-            html += `<div class="fortune-section-card">`;
-            html += `<div class="fortune-section-title">반려동물의 진짜 속마음</div>`;
-            html += `<div class="fortune-content-text"><p>${finalPetText}</p></div>`;
-            html += `</div>`;
+html += `<div class="fortune-section-card">`;
+html += `<div class="fortune-section-title">🙋 보호자님 성향</div>`;
+html += `<div class="fortune-content-text"><div class="fortune-content-box">${finalOwnerText}</div></div>`;
+html += `</div>`;
 
-            html += `<div class="fortune-section-card">`;
-            html += `<div class="fortune-section-title">우리의 관계</div>`;
-            html += `<div class="fortune-content-text"><p>${result.ganText}</p></div>`;
-            html += `</div>`;
+html += `<div class="fortune-section-card">`;
+html += `<div class="fortune-section-title">🐶 반려동물의 진짜 속마음</div>`;
+html += `<div class="fortune-content-text"><div class="fortune-content-box">${finalPetText}</div></div>`;
+html += `</div>`;
 
-            html += `<div class="fortune-section-card">`;
-            html += `<div class="fortune-section-title">라이프스타일 궁합</div>`;
-            html += `<div class="fortune-content-text"><p>${result.zhiText}</p></div>`;
-            html += `</div>`;
+html += `<div class="fortune-section-card">`;
+html += `<div class="fortune-section-title">💞 우리의 관계</div>`;
+html += `<div class="fortune-content-text"><div class="fortune-content-box">${result.ganText}</div></div>`;
+html += `</div>`;
 
-            html += `<div class="fortune-section-card">`;
-            html += `<div class="fortune-section-title">관계 맞춤 솔루션</div>`;
-            html += `<div class="fortune-content-text"><p>${result.synergyText}</p></div>`;
-            html += `</div>`;
+html += `<div class="fortune-section-card">`;
+html += `<div class="fortune-section-title">🏠 라이프스타일 궁합</div>`;
+html += `<div class="fortune-content-text"><div class="fortune-content-box">${result.zhiText}</div></div>`;
+html += `</div>`;
 
-            html += `<div class="fortune-section-card">`;
-            html += `<div class="fortune-section-title">서로에게 미치는 영향</div>`;
-            html += `<div class="fortune-content-text"><p>${result.simText}</p></div>`;
-            html += `</div>`;
+html += `<div class="fortune-section-card">`;
+html += `<div class="fortune-section-title">✨ 관계 맞춤 솔루션</div>`;
+html += `<div class="fortune-content-text"><div class="fortune-content-box">${result.synergyText}</div></div>`;
+html += `</div>`;
 
-            html += `<div class="fortune-section-card">`;
-            html += `<div class="fortune-section-title">관계를 위한 조언과 꿀팁</div>`;
-            html += `<div class="fortune-content-text"><p>${result.solutionText}</p></div>`;
-            html += `</div>`;
+html += `<div class="fortune-section-card">`;
+html += `<div class="fortune-section-title">🌙 서로에게 미치는 영향</div>`;
+html += `<div class="fortune-content-text"><div class="fortune-content-box">${result.simText}</div></div>`;
+html += `</div>`;
+
+html += `<div class="fortune-section-card">`;
+html += `<div class="fortune-section-title">🍯 관계를 위한 조언과 꿀팁</div>`;
+html += `<div class="fortune-content-text"><div class="fortune-content-box">${result.solutionText}</div></div>`;
+html += `</div>`;
+
+html += `</div>`;
 
             document.getElementById('result-loading').style.display = 'none';
             document.getElementById('dynamic-fortune-content').innerHTML = html;
