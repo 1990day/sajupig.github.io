@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사주돼지 - 돼지 반려동물 궁합</title>
+    <meta name="keywords" content="사주돼지, 770사주, 무료사주, 유료사주, 사주궁합, 평생사주, 신년운세, 신년사주, 만세력, 무료만세력, 사주풀이, 좋은말사주, 나쁜말사주">
+    <meta property="og:type" content="website"> 
+    <meta property="og:title" content="사주돼지 - 돼지 반려동물 궁합">
+    <meta property="og:description" content="사주돼지에서 확인하는 솔직하고 강한 사주 풀이">
+    <meta property="og:image" content="og_img.png">
+    <meta property="og:url" content="https://sajupig.co.kr/petpig">
+    
+    <script src="https://js.tosspayments.com/v1"></script>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <style>
+        /* 기존 핑크빛 디자인 완벽 유지 */
+        html { background-color: #fce4ec; }
+        body {
+            margin: 0 auto; max-width: 480px; min-height: 100vh;
+            font-family: 'Pretendard', -apple-system, sans-serif;
+            background-color: #fff0f5; color: #4a3333;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08); position: relative;
+        }
+
+        header { 
+            background-color: #ffb6c1; position: sticky; top: 0; z-index: 100; 
+            box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4); 
+            border-bottom: 4px solid #ff85a2; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
+        }
+        .header-logo { display: block; height: 30px; width: auto; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 15px 20px; }
+        .main-link { text-decoration: none; color: inherit; }
+        .login-btn-header {
+            background: #ffffff; border: 3px solid #ff85a2; color: #ff85a2;
+            padding: 8px 18px; border-radius: 25px; font-size: 0.9rem; font-weight: 900; cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.2s;
+        }
+        
+        nav { display: flex; justify-content: space-between; padding: 10px 15px 20px 15px; gap: 10px; overflow-x: auto; white-space: nowrap; }
+        nav button { 
+            flex: 1; background-color: #ffffff; border: 3px solid #ffe4e8; font-size: 0.85rem; color: #ff85a2; 
+            cursor: pointer; font-weight: 900; transition: all 0.2s; border-radius: 20px; aspect-ratio: 1 / 1; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
+        }
+        nav button.active { color: #ffffff; background-color: #ff85a2; border-color: #ff85a2; transform: translateY(-4px); box-shadow: 0 8px 15px rgba(255, 133, 162, 0.4); }
+        nav button span.icon { font-size: 1.6rem; }
+        nav::-webkit-scrollbar { display: none; }
+        
+        main { padding: 15px; text-align: center; }
+        .section { display: none; min-height: 60vh; animation: fadeIn 0.4s ease-in-out; }
+        .section.active { display: block; }
+        
+        .card { background: #ffffff; padding: 30px 20px; border-radius: 30px; box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3); margin-top: 10px; border: 4px solid #ffe4e8; }
+        .card h2 { color: #ff85a2; margin-top: 0; font-size: 1.6rem; font-weight: 900; text-shadow: 1px 1px 0px #fff0f5;}
+
+        .saju-form { text-align: left; margin-top: 20px; background-color: #fff0f5; padding: 25px 20px; border-radius: 25px; border: 3px dashed #ffb6c1; position: relative;}
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 1.05rem; color: #ff85a2; margin-bottom: 10px; font-weight: 900; }
+        
+        .date-select-group { display: flex; gap: 8px; }
+        .date-select-group select { flex: 1; padding: 14px 5px; font-size: 1rem; color: #4a3333; outline: none; border-radius: 15px; border: 2px solid #ffc4d0; background: #ffffff; font-weight: bold; }
+        .form-group input[type="text"], .form-group input[type="date"], select { 
+            width: 100%; padding: 16px; border: 2px solid #ffc4d0; border-radius: 15px; box-sizing: border-box; 
+            font-size: 1rem; color: #4a3333; outline: none; background-color: #ffffff; transition: all 0.3s; font-weight: bold;
+        }
+        .form-group input:focus, select:focus { border-color: #ff85a2; box-shadow: 0 0 10px rgba(255, 133, 162, 0.3); }
+        
+        .radio-group { display: flex; gap: 8px; margin-bottom: 10px; }
+        .radio-group label { flex: 1; background-color: #ffffff; padding: 16px 5px; text-align: center; border-radius: 15px; cursor: pointer; margin-bottom: 0; border: 2px solid #ffc4d0; font-size: 1.05rem; color: #ffb6c1; transition: all 0.2s; font-weight: 900; }
+        .radio-group input[type="radio"] { display: none; }
+        .radio-group input[type="radio"]:checked + span { color: #ff85a2; font-weight: 900; }
+        .radio-group input[type="radio"]:checked ~ label, .radio-group label:has(input[type="radio"]:checked) { background-color: #ffe4e8; border-color: #ff85a2; }
+        
+        .submit-btn { width: 100%; background: #ff85a2; color: white; border: none; padding: 22px; border-radius: 20px; font-size: 1.25rem; font-weight: 900; cursor: pointer; box-shadow: 0 8px 20px rgba(255, 133, 162, 0.4); transition: transform 0.1s; letter-spacing: 1px; margin-top: 10px;}
+        .submit-btn:active { transform: scale(0.96); }
+        .sub-title { display: block; font-weight: 900; color: #ff5277; font-size: 1.15rem; margin-bottom: 10px; border-bottom: 2px dashed #ffc4d0; padding-bottom: 5px; margin-top: 15px; }
+
+        .login-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(74, 51, 51, 0.8); z-index: 1000; justify-content: center; align-items: center; animation: fadeIn 0.2s; }
+        .login-box { background-color: #ffffff; width: 85%; max-width: 360px; border-radius: 30px; padding: 40px 25px; text-align: center; position: relative; border: 5px solid #ffb6c1; }
+        .close-login { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 2.2rem; color: #ff85a2; cursor: pointer; font-weight: bold;}
+        .login-box h2 { margin-top: 0; color: #ff85a2; margin-bottom: 15px; font-weight: 900; }
+        .login-box p { color: #4a3333; font-size: 1rem; margin-bottom: 30px; font-weight: bold; line-height: 1.5;}
+        .social-btn { display: block; width: 100%; padding: 18px; margin-bottom: 12px; border-radius: 20px; font-size: 1.1rem; font-weight: 900; text-align: center; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+        .btn-kakao { background-color: #FEE500; color: #4a3333; }
+        .btn-google { background-color: #f1f1f1; color: #4a3333; border: 2px solid #ffe4e8;}
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .divider { height: 4px; background: #ffe4e8; margin: 30px 0; border-radius: 2px; }
+    </style>
+</head>
+<body>
+
+<div id="loginOverlay" class="login-overlay">
+    <div class="login-box">
+        <button class="close-login" onclick="closeLogin()">×</button>
+        <h2>🐷 사주돼지 시작하기</h2>
+        <p>3초만에 가입하고 나의 운명을 확인하세요<br><span style="font-size: 0.8rem; font-weight: normal;">간편가입이라 따로 정보 입력할 필요 없어요</span></p>
+        <button class="social-btn btn-kakao" onclick="realKakaoLogin()">카카오로 시작하기</button>
+        <button class="social-btn btn-google" onclick="realGoogleLogin()">구글로 시작하기</button>
+    </div>
+</div>
+
+<header>
+    <div class="header-top">
+        <a href="index.html" class="main-link">
+           <img src="/logo.png" alt="사주돼지" class="header-logo">
+        </a>
+        <button id="header-user-btn" class="login-btn-header" onclick="openLogin()">로그인 / 가입</button>
+    </div>
+    <nav id="menu-bar">
+        <button onclick="location.href='index.html?tab=manseryeok'"><span class="icon">🐷</span><span>돼지 만세력</span></button>
+        <button onclick="location.href='index.html?tab=saju770'"><span class="icon">🪙</span><span>770사주</span></button>
+        <button class="active" onclick="location.href='index.html?tab=love'"><span class="icon">💕</span><span>돼지궁합</span></button>
+        <button onclick="location.href='index.html?tab=fact'"><span class="icon">👊</span><span>돼지팩폭</span></button>
+    </nav>
+</header>
+
+<main>
+    <div id="love-fortune" class="section active">
+        <div class="card">
+            <h2 id="love-title">🐾 돼지 반려동물 궁합</h2>
+            
+            <form id="love-form" class="saju-form">
+                <p style="color: #ff85a2; font-size: 1.05rem; margin-top: 0; font-weight: 900; text-align: center; margin-bottom: 20px;"></p>
+                
+                <div class="sub-title">🐷 보호자 정보</div>
+                <div class="form-group">
+                    <label>성별</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="me-gender" value="M" checked><span>남성</span></label>
+                        <label><input type="radio" name="me-gender" value="F"><span>여성</span></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>양력 / 음력</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="me-calendar" value="solar" checked><span>양력</span></label>
+                        <label><input type="radio" name="me-calendar" value="lunar"><span>음력 평달</span></label>
+                        <label><input type="radio" name="me-calendar" value="lunar-leap"><span>음력 윤달</span></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>생년월일</label>
+                    <div class="date-select-group">
+                        <select id="me-year"></select>
+                        <select id="me-month"></select>
+                        <select id="me-day"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>태어난 시간</label>
+                    <select id="me-time">
+                        <option value="unknown">모름 (시간 미적용)</option>
+                        <option value="자시">자시 (23:30 ~ 01:29)</option>
+                        <option value="축시">축시 (01:30 ~ 03:29)</option>
+                        <option value="인시">인시 (03:30 ~ 05:29)</option>
+                        <option value="묘시">묘시 (05:30 ~ 07:29)</option>
+                        <option value="진시">진시 (07:30 ~ 09:29)</option>
+                        <option value="사시">사시 (09:30 ~ 11:29)</option>
+                        <option value="오시">오시 (11:30 ~ 13:29)</option>
+                        <option value="미시">미시 (13:30 ~ 15:29)</option>
+                        <option value="신시">신시 (15:30 ~ 17:29)</option>
+                        <option value="유시">유시 (17:30 ~ 19:29)</option>
+                        <option value="술시">술시 (19:30 ~ 21:29)</option>
+                        <option value="해시">해시 (21:30 ~ 23:29)</option>
+                    </select>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="sub-title">🐾 반려동물 정보</div>
+                <div class="form-group">
+                    <label>성별</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="you-gender" value="M" checked><span>수컷</span></label>
+                        <label><input type="radio" name="you-gender" value="F"><span>암컷</span></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>양력 / 음력</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="you-calendar" value="solar" checked><span>양력</span></label>
+                        <label><input type="radio" name="you-calendar" value="lunar"><span>음력 평달</span></label>
+                        <label><input type="radio" name="you-calendar" value="lunar-leap"><span>음력 윤달</span></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>생년월일</label>
+                    <div class="date-select-group">
+                        <select id="you-year"></select>
+                        <select id="you-month"></select>
+                        <select id="you-day"></select>
+                    </div>
+                </div>
+
+                <div style="margin: 20px 0 15px 0; padding: 18px; background-color: #ffffff; border-radius: 15px; border: 2px solid #ffcdd2; font-size: 0.9rem; color: #555; line-height: 1.5; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
+                    <p style="margin: 0 0 8px 0; color: #c62828; font-weight: 900;">[상품 제공 기간 및 환불 안내]</p>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li style="margin-bottom: 5px;"><strong>제공 기간:</strong> 결제 완료 직후 웹페이지를 통해 사주 결과가 즉시 제공됩니다.</li>
+                        <li><strong>환불 정책:</strong> 디지털 콘텐츠 특성상 결과가 도출되어 열람한 이후에는 <strong>환불이 불가</strong>합니다. (하단 환불규정 참고)</li>
+                    </ul>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="requestPay()">770원 결제하고 궁합 보기 🐽</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<footer style="padding: 20px; text-align: center; font-size: 0.75rem; color: #999; background: #fdf5f7; margin-top: 30px; border-top: 1px solid #ffe4eb;">
+    <div style="display: flex; justify-content: center; gap: 12px; font-weight: 800; margin-bottom: 15px;">
+        <a href="terms.html" style="color: #888; text-decoration: none;">이용약관</a>
+        <span style="color: #ddd;">|</span>
+        <a href="privacy.html" style="color: #888; text-decoration: none;">개인정보처리방침</a>
+        <span style="color: #ddd;">|</span>
+        <a href="refund.html" style="color: #d11534; text-decoration: none;">환불규정</a>
+    </div>
+    
+    <button onclick="toggleBusinessInfo()" style="background: none; border: none; color: #888; font-size: 0.8rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0 auto; padding: 5px;">
+        <span>사업자 정보 보기</span>
+        <span id="biz-arrow" style="font-size: 0.6rem;">▼</span>
+    </button>
+
+    <div id="business-info" style="display: none; margin-top: 15px; line-height: 1.6; text-align: center; color: #a0a0a0;">
+        <p style="margin: 0;">상호명: 테스트잇 | 대표자: 송다혜</p>
+        <p style="margin: 0;">사업자등록번호: 662-54-00892</p>
+        <p style="margin: 0;">통신판매업신고: 제 2026-경기하남-0331호</p>
+        <p style="margin: 0;">사업장 소재지: 경기도 하남시 미사강변서로 85, 2005동 2003호</p>
+        <p style="margin: 0;">이메일: pigsaju@gmail.com</p>
+        <p style="margin: 0;">전화번호: 010-2175-2277</p>
+    </div>
+</footer>
+
+<script>
+    function openLogin() { document.getElementById('loginOverlay').style.display = 'flex'; }
+    function closeLogin() { document.getElementById('loginOverlay').style.display = 'none'; }
+    function toggleBusinessInfo() {
+        const info = document.getElementById('business-info');
+        const arrow = document.getElementById('biz-arrow');
+        if (info.style.display === 'none') { info.style.display = 'block'; arrow.innerText = '▲'; } 
+        else { info.style.display = 'none'; arrow.innerText = '▼'; }
+    }
+
+    (function initDropdowns() {
+        const selects = [
+            {y: 'me-year', m: 'me-month', d: 'me-day'},
+            {y: 'you-year', m: 'you-month', d: 'you-day'}
+        ];
+        
+        const curYear = new Date().getFullYear();
+        
+        selects.forEach(group => {
+            const yearSel = document.getElementById(group.y);
+            const monthSel = document.getElementById(group.m);
+            const daySel = document.getElementById(group.d);
+            
+            if (!yearSel || yearSel.options.length > 0) return;
+
+            for(let i = curYear; i >= 1900; i--) yearSel.add(new Option(i + "년", i));
+            for(let i = 1; i <= 12; i++) monthSel.add(new Option(i + "월", i));
+            for(let i = 1; i <= 31; i++) daySel.add(new Option(i + "일", i));
+            
+            yearSel.value = "1990";
+        });
+    })();
+</script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAZxy9VsEgOZ-e0FApXqHUT5cTxG3_g8o0",
+        authDomain: "sajupig.firebaseapp.com",
+        projectId: "sajupig",
+        storageBucket: "sajupig.firebasestorage.app",
+        messagingSenderId: "589751416400",
+        appId: "1:589751416400:web:c7ed36efc6d5f23e020355",
+        measurementId: "G-HGW4HHQ3WR"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const googleProvider = new GoogleAuthProvider();
+
+    function forceFill(y, m, d, time, gender, calendar) {
+        const idMap = { year: 'me-year', month: 'me-month', day: 'me-day', time: 'me-time' };
+        if(document.getElementById(idMap.year)) {
+            document.getElementById(idMap.year).value = y;
+            if(document.getElementById(idMap.year).value === "") document.getElementById(idMap.year).value = y + "년";
+        }
+        if(document.getElementById(idMap.month)) {
+            document.getElementById(idMap.month).value = m;
+            if(document.getElementById(idMap.month).value === "") document.getElementById(idMap.month).value = m + "월";
+            if(document.getElementById(idMap.month).value === "" && m < 10) document.getElementById(idMap.month).value = "0" + m + "월";
+        }
+        if(document.getElementById(idMap.day)) {
+            document.getElementById(idMap.day).value = d;
+            if(document.getElementById(idMap.day).value === "") document.getElementById(idMap.day).value = d + "일";
+            if(document.getElementById(idMap.day).value === "" && d < 10) document.getElementById(idMap.day).value = "0" + d + "일";
+        }
+        if(time && document.getElementById(idMap.time)) document.getElementById(idMap.time).value = time;
+        
+        if(gender) {
+            const gRadio = document.querySelector(`input[name="me-gender"][value="${gender}"]`);
+            if(gRadio) gRadio.checked = true;
+        }
+        if(calendar) {
+            const cRadio = document.querySelector(`input[name="me-calendar"][value="${calendar}"]`);
+            if(cRadio) cRadio.checked = true;
+        }
+    }
+
+    onAuthStateChanged(auth, async (user) => {
+        const headerBtn = document.getElementById('header-user-btn');
+        if (user) {
+            if(headerBtn) { headerBtn.innerText = "내정보"; headerBtn.onclick = function() { location.href = 'index.html?tab=myinfo'; }; }
+            try {
+                const docSnap = await getDoc(doc(db, "users", user.uid));
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    const birth = data.birthDate.split('-');
+                    forceFill(parseInt(birth[0]), parseInt(birth[1]), parseInt(birth[2]), data.birthTime, data.gender, data.calendar);
+                    setTimeout(() => { forceFill(parseInt(birth[0]), parseInt(birth[1]), parseInt(birth[2]), data.birthTime, data.gender, data.calendar); }, 500);
+                }
+            } catch (e) { console.error(e); }
+        } else {
+            if(headerBtn) { headerBtn.innerText = "로그인 / 가입"; headerBtn.onclick = openLogin; }
+        }
+    });
+
+    window.realGoogleLogin = function() { signInWithPopup(auth, googleProvider).then(() => { closeLogin(); }).catch(console.error); }
+    window.realKakaoLogin = function() { const kakaoProvider = new OAuthProvider('oidc.kakao'); signInWithPopup(auth, kakaoProvider).then(() => { closeLogin(); }).catch(console.error); }
+
+    const clientKey = 'live_ck_eqRGgYO1r54nbMjBNQXbVQnN2Eya';
+    const tossPayments = TossPayments(clientKey);
+
+    window.requestPay = function() {
+        if (!auth.currentUser) {
+            alert("결제 내역을 안전하게 보관하기 위해 먼저 로그인이 필요합니다! 🐷");
+            openLogin();
+            return;
+        }
+
+        sessionStorage.setItem('me_gender', document.querySelector('input[name="me-gender"]:checked').value);
+        sessionStorage.setItem('me_calendar', document.querySelector('input[name="me-calendar"]:checked').value);
+        sessionStorage.setItem('me_year', document.getElementById('me-year').value);
+        sessionStorage.setItem('me_month', document.getElementById('me-month').value);
+        sessionStorage.setItem('me_day', document.getElementById('me-day').value);
+        sessionStorage.setItem('me_time', document.getElementById('me-time').value);
+
+        sessionStorage.setItem('you_gender', document.querySelector('input[name="you-gender"]:checked').value);
+        sessionStorage.setItem('you_calendar', document.querySelector('input[name="you-calendar"]:checked').value);
+        sessionStorage.setItem('you_year', document.getElementById('you-year').value);
+        sessionStorage.setItem('you_month', document.getElementById('you-month').value);
+        sessionStorage.setItem('you_day', document.getElementById('you-day').value);
+        sessionStorage.setItem('you_time', 'unknown');
+
+        tossPayments.requestPayment('카드', {
+            amount: 770, 
+            orderId: 'order_' + new Date().getTime(), 
+            orderName: '사주돼지 반려동물 궁합', 
+            customerName: '사주돼지 고객', 
+            successUrl: window.location.origin + '/petpig_result.html',
+            failUrl: window.location.origin + '/fail.html', 
+        }).catch(function (error) {
+            if (error.code === 'USER_CANCEL') { alert('결제를 취소하셨습니다.'); } 
+            else { alert(error.message); }
+        });
+    }
+</script>
+
+<script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+            e.preventDefault();
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+    });
+</script>
+</body>
+</html>
