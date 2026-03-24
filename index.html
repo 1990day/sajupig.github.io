@@ -397,9 +397,13 @@
                 <button class="saju770-btn" onclick="location.href='familypig.html'">
                     <div class="saju770-title">👨‍👩‍👧‍👦 돼지 가족 궁합</div>
                 </button>
+                      <button class="saju770-btn" onclick="location.href='petpig.html'">
+                    <div class="saju770-title">🐾 돼지 반려동물 궁합</div>
+                </button>
                 <button class="saju770-btn" onclick="location.href='reunionpig.html'">
                     <div class="saju770-title">💔 돼지 재회 사주</div>
                 </button>
+          
             </div>
         </div>
     </div>
@@ -506,10 +510,6 @@
                 </button>
               <button class="reset-btn" onclick="realLogout()">로그아웃</button>
                 <button class="reset-btn" style="background: transparent; border: none; color: #aaa; padding: 10px; font-size: 0.85rem; text-decoration: underline; margin-top: -5px;" onclick="realDeleteAccount()">회원탈퇴</button>
-            </div>
-        </div>
-    </div>
-</main>
             </div>
         </div>
     </div>
@@ -765,10 +765,10 @@ function toggleMyInfo(contentId, arrowId) {
         
         if (content.style.display === 'none') {
             content.style.display = 'block';
-            arrow.style.transform = 'rotate(180deg)'; // 화살표 뒤집기
+            arrow.style.transform = 'rotate(180deg)';
         } else {
             content.style.display = 'none';
-            arrow.style.transform = 'rotate(0deg)'; // 화살표 원상복구
+            arrow.style.transform = 'rotate(0deg)';
         }
     }
 
@@ -944,7 +944,7 @@ function toggleMyInfo(contentId, arrowId) {
       sessionStorage.setItem('saju_gender', data.sajuInfo.gender);
       sessionStorage.setItem('saju_calendar', data.sajuInfo.calendar);
 
-      if (data.itemType === 'lovepig' || data.itemType === 'friendspig' || data.itemType === 'familypig' || data.itemType === 'reunionpig') {
+      if (data.itemType === 'lovepig' || data.itemType === 'friendspig' || data.itemType === 'familypig' || data.itemType === 'reunionpig' || data.itemType === 'petpig') {
           sessionStorage.setItem('me_year', data.sajuInfo.year);
           sessionStorage.setItem('me_month', data.sajuInfo.month);
           sessionStorage.setItem('me_day', data.sajuInfo.day);
