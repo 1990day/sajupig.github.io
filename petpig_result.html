@@ -300,15 +300,15 @@
         border: 1px solid #ffe5ec;
     }
 
-    .human-title {
-        font-size: 1rem;
-        font-weight: 900;
-        color: #ff5277;
-        text-align: center;
-        margin-bottom: 12px;
-        line-height: 1.45;
-    }
-
+ .human-title {
+    font-size: 1rem;
+    font-weight: 900;
+    color: #ff5277;
+    text-align: center;
+    margin-bottom: 12px;
+    line-height: 1.45;
+    word-break: keep-all;
+}
     .stats-grid {
         display: grid;
         gap: 10px;
@@ -1135,8 +1135,10 @@ html += `<div class="section-stack">`;
 html += `<div class="fortune-section-card">`;
 html += `<div class="fortune-section-title">👤 만약 반려동물이 사람이었다면?</div>`;
 html += `<div class="fortune-content-text">`;
+html += `<div class="fortune-content-box">`;
 html += `<div class="human-title">${humanRel.title}</div>`;
-html += `<div class="fortune-content-box">${humanRel.desc}</div>`;
+html += `<div>${humanRel.desc}</div>`;
+html += `</div>`;
 html += `</div>`;
 html += `</div>`;
 
