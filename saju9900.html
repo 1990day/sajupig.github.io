@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>사주돼지 - 나를 꿰뚫는 정밀사주</title>
+
+    <meta name="keywords" content="사주돼지, 9900사주, 나를 꿰뚫는 사주, 나를 꿰뚫는 정밀사주, 정밀사주, 유료사주, 사주풀이, 평생사주, 신년운세, 신년사주, 만세력, 무료만세력">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:title" content="사주돼지 - 나를 꿰뚫는 정밀사주">
+
+    <meta property="og:description" content="타고난 성향과 숨은 흐름까지 깊게 보는 9900원 정밀 사주 리포트">
+
+    <meta property="og:image" content="og_img.png">
+
+    <meta property="og:url" content="https://sajupig.co.kr/saju9900.html">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
+
+    <script src="https://js.tosspayments.com/v1"></script>
+
+    <script src="https://unpkg.com/lunar-javascript@1.7.7/lunar.js"></script>
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <style>
+
+        [hidden]{display:none!important;}
+
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+        * {
+
+            box-sizing: border-box;
+
+        }
+
+        html {
+
+            background-color: #fce4ec;
+
+        }
+
+        body {
+
+            margin: 0 auto;
+
+            max-width: 480px;
+
+            min-height: 100vh;
+
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            background-color: #fff0f5;
+
+            color: #4a3333;
+
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+
+            position: relative;
+
+            word-break: keep-all;
+
+        }
+
+        header {
+
+            background-color: #ffc4d0;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4);
+
+            border-bottom: 4px solid #ff85a2;
+
+            border-bottom-left-radius: 30px;
+
+            border-bottom-right-radius: 30px;
+
+        }
+
+        .header-logo {
+
+            display: block;
+
+            height: 30px;
+
+            width: auto;
+
+        }
+
+        .header-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 20px 20px 15px 20px;
+
+        }
+
+        .main-link {
+
+            text-decoration: none;
+
+            color: inherit;
+
+        }
+
+        .login-btn-header {
+
+            background: #ffffff;
+
+            border: 3px solid #ff85a2;
+
+            color: #ff85a2;
+
+            padding: 8px 18px;
+
+            border-radius: 25px;
+
+            font-size: 0.9rem;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+            transition: all 0.2s;
+
+            font-family: inherit;
+
+        }
+
+        nav {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 10px 15px 20px 15px;
+
+            gap: 10px;
+
+            overflow-x: auto;
+
+            white-space: nowrap;
+
+        }
+
+        nav button {
+
+            flex: 1;
+
+            background-color: #ffffff;
+
+            border: 3px solid #ffe4e8;
+
+            font-size: 0.85rem;
+
+            color: #ff85a2;
+
+            cursor: pointer;
+
+            font-weight: 900;
+
+            transition: all 0.2s;
+
+            border-radius: 20px;
+
+            aspect-ratio: 1 / 1;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 6px;
+
+            box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
+
+            font-family: inherit;
+
+        }
+
+        nav button.active {
+
+            color: #ffffff;
+
+            background-color: #ff85a2;
+
+            border-color: #ff85a2;
+
+            transform: translateY(-4px);
+
+            box-shadow: 0 8px 15px rgba(255, 133, 162, 0.4);
+
+        }
+
+        nav button span.icon {
+
+            font-size: 1.6rem;
+
+        }
+
+        nav::-webkit-scrollbar {
+
+            display: none;
+
+        }
+
+        main {
+
+            padding: 15px;
+
+            text-align: center;
+
+        }
+
+        .card {
+
+            background: #ffffff;
+
+            padding: 30px 20px;
+
+            border-radius: 30px;
+
+            box-shadow: 0 10px 25px rgba(255, 182, 193, 0.3);
+
+            margin-top: 10px;
+
+            border: 4px solid #ffe4e8;
+
+        }
+
+        .premium-badge {
+
+            display: inline-block;
+
+            padding: 7px 13px;
+
+            border-radius: 999px;
+
+            background: #fff0bd;
+
+            border: 2px solid #f1c86a;
+
+            color: #9d6b00;
+
+            font-size: 0.82rem;
+
+            font-weight: 900;
+
+            margin-bottom: 13px;
+
+        }
+
+        .card h2 {
+
+            color: #d11534;
+
+            margin: 0 0 18px 0;
+
+            font-size: 1.48rem;
+
+            font-weight: 950;
+
+            line-height: 1.25;
+
+            letter-spacing: -1px;
+
+            text-shadow: 1px 1px 0px #fff0f5;
+
+            white-space: nowrap;
+
+        }
+
+        .point-box {
+
+            margin: 0 0 20px;
+
+            padding: 17px 16px;
+
+            background: #fffaf1;
+
+            border: 2px solid #ffe1a6;
+
+            border-radius: 20px;
+
+            text-align: left;
+
+        }
+
+        .point-title {
+
+            color: #b47b00;
+
+            font-size: 0.98rem;
+
+            font-weight: 950;
+
+            margin-bottom: 8px;
+
+        }
+
+        .point-box ul {
+
+            margin: 0;
+
+            padding-left: 19px;
+
+            color: #73564d;
+
+            font-size: 0.88rem;
+
+            line-height: 1.62;
+
+            font-weight: 800;
+
+        }
+
+        .saju-form {
+
+            text-align: left;
+
+            margin-top: 20px;
+
+            background-color: #fff0f5;
+
+            padding: 25px 20px;
+
+            border-radius: 25px;
+
+            border: 3px dashed #ffb6c1;
+
+        }
+
+        .form-guide {
+
+            color: #d11534;
+
+            font-size: 1.05rem;
+
+            margin-top: 0;
+
+            font-weight: 900;
+
+            text-align: center;
+
+            margin-bottom: 20px;
+
+            line-height: 1.45;
+
+        }
+
+        .form-group {
+
+            margin-bottom: 20px;
+
+        }
+
+        .form-group label {
+
+            display: block;
+
+            font-size: 1.05rem;
+
+            color: #ff85a2;
+
+            margin-bottom: 10px;
+
+            font-weight: 900;
+
+        }
+
+        .date-select-group {
+
+            display: flex;
+
+            gap: 8px;
+
+        }
+
+        .date-select-group select {
+
+            flex: 1;
+
+            padding: 14px 5px;
+
+            font-size: 1rem;
+
+            color: #4a3333;
+
+            outline: none;
+
+            border-radius: 15px;
+
+            border: 2px solid #ffc4d0;
+
+            background: #ffffff;
+
+            font-weight: bold;
+
+            font-family: inherit;
+
+        }
+
+        .form-group input[type="text"],
+
+        .form-group input[type="date"],
+
+        select {
+
+            width: 100%;
+
+            padding: 16px;
+
+            border: 2px solid #ffc4d0;
+
+            border-radius: 15px;
+
+            box-sizing: border-box;
+
+            font-size: 1rem;
+
+            color: #4a3333;
+
+            outline: none;
+
+            background-color: #ffffff;
+
+            transition: all 0.3s;
+
+            font-weight: bold;
+
+            font-family: inherit;
+
+        }
+
+        .form-group input:focus,
+
+        select:focus {
+
+            border-color: #ff85a2;
+
+            box-shadow: 0 0 10px rgba(255, 133, 162, 0.3);
+
+        }
+
+        .radio-group {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-bottom: 10px;
+
+        }
+
+        .radio-group label {
+
+            flex: 1;
+
+            background-color: #ffffff;
+
+            padding: 16px 5px;
+
+            text-align: center;
+
+            border-radius: 15px;
+
+            cursor: pointer;
+
+            margin-bottom: 0;
+
+            border: 2px solid #ffc4d0;
+
+            font-size: 1.05rem;
+
+            color: #ffb6c1;
+
+            transition: all 0.2s;
+
+            font-weight: 900;
+
+        }
+
+        .radio-group input[type="radio"] {
+
+            display: none;
+
+        }
+
+        .radio-group input[type="radio"]:checked + span {
+
+            color: #ff85a2;
+
+            font-weight: 900;
+
+        }
+
+        .radio-group label:has(input[type="radio"]:checked) {
+
+            background-color: #ffe4e8;
+
+            border-color: #ff85a2;
+
+        }
+
+        .notice-box {
+
+            margin: 20px 0 15px 0;
+
+            padding: 18px;
+
+            background-color: #ffffff;
+
+            border-radius: 15px;
+
+            border: 2px solid #ffcdd2;
+
+            font-size: 0.9rem;
+
+            color: #555;
+
+            line-height: 1.5;
+
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+
+        }
+
+        .notice-box p {
+
+            margin: 0 0 8px 0;
+
+            color: #c62828;
+
+            font-weight: 900;
+
+        }
+
+        .notice-box ul {
+
+            margin: 0;
+
+            padding-left: 20px;
+
+        }
+
+        .notice-box li {
+
+            margin-bottom: 5px;
+
+        }
+
+        .submit-btn {
+
+            width: 100%;
+
+            background: linear-gradient(180deg, #f4c44f 0%, #d49a16 100%);
+
+            color: white;
+
+            border: none;
+
+            padding: 22px;
+
+            border-radius: 20px;
+
+            font-size: 1.18rem;
+
+            font-weight: 950;
+
+            cursor: pointer;
+
+            box-shadow: 0 8px 20px rgba(212, 154, 22, 0.35);
+
+            transition: transform 0.1s;
+
+            margin-top: 10px;
+
+            font-family: inherit;
+
+        }
+
+        .submit-btn:active {
+
+            transform: scale(0.96);
+
+        }
+
+        .login-overlay {
+
+            display: none;
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            right: 0;
+
+            bottom: 0;
+
+            background-color: rgba(74, 51, 51, 0.8);
+
+            z-index: 1000;
+
+            justify-content: center;
+
+            align-items: center;
+
+            animation: fadeIn 0.2s;
+
+        }
+
+        .login-box {
+
+            background-color: #ffffff;
+
+            width: 85%;
+
+            max-width: 360px;
+
+            border-radius: 30px;
+
+            padding: 40px 25px;
+
+            text-align: center;
+
+            position: relative;
+
+            border: 5px solid #ffb6c1;
+
+        }
+
+        .close-login {
+
+            position: absolute;
+
+            top: 15px;
+
+            right: 20px;
+
+            background: none;
+
+            border: none;
+
+            font-size: 2.2rem;
+
+            color: #ff85a2;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+        .login-box h2 {
+
+            margin-top: 0;
+
+            color: #ff85a2;
+
+            margin-bottom: 15px;
+
+            font-weight: 900;
+
+        }
+
+        .login-box p {
+
+            color: #4a3333;
+
+            font-size: 1rem;
+
+            margin-bottom: 30px;
+
+            font-weight: bold;
+
+            line-height: 1.5;
+
+        }
+
+        .social-btn {
+
+            display: block;
+
+            width: 100%;
+
+            padding: 18px;
+
+            margin-bottom: 12px;
+
+            border-radius: 20px;
+
+            font-size: 1.1rem;
+
+            font-weight: 900;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            border: none;
+
+            cursor: pointer;
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+            font-family: inherit;
+
+        }
+
+        .btn-kakao {
+
+            background-color: #FEE500;
+
+            color: #4a3333;
+
+        }
+
+        .btn-google {
+
+            background-color: #f1f1f1;
+
+            color: #4a3333;
+
+            border: 2px solid #ffe4e8;
+
+        }
+
+        footer {
+
+            padding: 20px;
+
+            text-align: center;
+
+            font-size: 0.75rem;
+
+            color: #999;
+
+            background: #fdf5f7;
+
+            margin-top: 30px;
+
+            border-top: 1px solid #ffe4eb;
+
+        }
+
+        .footer-links {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            font-weight: 800;
+
+            margin-bottom: 15px;
+
+        }
+
+        .footer-links a {
+
+            color: #888;
+
+            text-decoration: none;
+
+        }
+
+        .biz-btn {
+
+            background: none;
+
+            border: none;
+
+            color: #888;
+
+            font-size: 0.8rem;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 4px;
+
+            margin: 0 auto;
+
+            padding: 5px;
+
+            font-family: inherit;
+
+        }
+
+        #business-info {
+
+            display: none;
+
+            margin-top: 15px;
+
+            line-height: 1.6;
+
+            text-align: center;
+
+            color: #a0a0a0;
+
+        }
+
+        #business-info p {
+
+            margin: 0;
+
+        }
+
+        @keyframes fadeIn {
+
+            from { opacity: 0; }
+
+            to { opacity: 1; }
+
+        }
+
+        @media (max-width: 390px) {
+
+            main {
+
+                padding: 14px 12px;
+
+            }
+
+            .card {
+
+                padding: 26px 16px;
+
+            }
+
+            .card h2 {
+
+                font-size: 1.26rem;
+
+                letter-spacing: -1.2px;
+
+            }
+
+            .radio-group label {
+
+                font-size: 0.94rem;
+
+                padding: 14px 3px;
+
+            }
+
+            .submit-btn {
+
+                font-size: 1.08rem;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="loginOverlay" class="login-overlay">
+
+        <div class="login-box">
+
+            <button class="close-login" onclick="closeLogin()">×</button>
+
+            <h2>🐷 사주돼지 시작하기</h2>
+
+            <p>
+
+                결제 내역을 안전하게 보관하기 위해<br>
+
+                먼저 로그인해 주세요<br>
+
+                <span style="font-size: 0.8rem; font-weight: normal;">간편가입이라 따로 정보 입력할 필요 없어요</span>
+
+            </p>
+
+            <button class="social-btn btn-kakao" onclick="realKakaoLogin()">카카오로 시작하기</button>
+
+            <button class="social-btn btn-google" onclick="realGoogleLogin()">구글로 시작하기</button>
+
+        </div>
+
+    </div>
+
+    <header>
+
+        <div class="header-top">
+
+            <a href="index.html" class="main-link">
+
+                <img src="/logo.png" alt="사주돼지" class="header-logo">
+
+            </a>
+
+            <button id="header-user-btn" class="login-btn-header" onclick="openLogin()">로그인 / 가입</button>
+
+        </div>
+
+        <nav id="menu-bar">
+
+            <button onclick="location.href='index.html?tab=manseryeok'">
+
+                <span class="icon">🐷</span>
+
+                <span>돼지 만세력</span>
+
+            </button>
+
+            <button class="active" onclick="location.href='index.html?tab=saju770'">
+
+                <span class="icon">🪙</span>
+
+                <span>770사주</span>
+
+            </button>
+
+            <button onclick="location.href='index.html?tab=love'">
+
+                <span class="icon">💕</span>
+
+                <span>돼지궁합</span>
+
+            </button>
+
+            <button onclick="location.href='index.html?tab=fact'">
+
+                <span class="icon">👊</span>
+
+                <span>돼지팩폭</span>
+
+            </button>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        <div class="card">
+
+            <div class="premium-badge">9900사주</div>
+
+            <h2>나를 꿰뚫는 정밀사주</h2>
+
+            <div class="point-box">
+
+                <div class="point-title">정밀사주에서 확인하는 내용</div>
+
+                <ul>
+
+                    <li>내 사주의 가장 강한 성향과 숨은 기질</li>
+
+                    <li>강하게 작용하는 살과 귀인의 흐름</li>
+
+                    <li>장점과 단점, 조심해야 할 패턴</li>
+
+                    <li>연애운, 재물운, 직업운, 건강운 분석</li>
+
+                    <li>인생 흐름을 한눈에 보는 운 그래프</li>
+
+                </ul>
+
+            </div>
+
+            <form id="precision-form" class="saju-form">
+
+                <p id="precision-test-note" hidden style="text-align:center;color:#9c2445;font-size:13px">테스트 모드 · 결제 없이 입력한 사주를 확인할 수 있어요</p>
+
+                <p class="form-guide">
+
+                    정확한 분석을 위해<br>
+
+                    태어난 정보를 입력해 주세요
+
+                </p>
+
+                <div class="form-group">
+
+                    <label for="precision-name">풀이할 이름</label>
+
+                    <input id="precision-name" type="text" maxlength="50" autocomplete="name" placeholder="이름 또는 닉네임을 입력해 주세요" required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>성별</label>
+
+                    <div class="radio-group">
+
+                        <label><input type="radio" name="precision-gender" value="M" checked><span>남성</span></label>
+
+                        <label><input type="radio" name="precision-gender" value="F"><span>여성</span></label>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>양력 / 음력</label>
+
+                    <div class="radio-group">
+
+                        <label><input type="radio" name="precision-calendar" value="solar" checked><span>양력</span></label>
+
+                        <label><input type="radio" name="precision-calendar" value="lunar"><span>음력 평달</span></label>
+
+                        <label><input type="radio" name="precision-calendar" value="lunar-leap"><span>음력 윤달</span></label>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>생년월일</label>
+
+                    <div class="date-select-group">
+
+                        <select id="precision-year"></select>
+
+                        <select id="precision-month"></select>
+
+                        <select id="precision-day"></select>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>태어난 시간</label>
+
+                    <select id="precision-time">
+
+                        <option value="unknown">모름 (시간 미적용)</option>
+
+                        <option value="exact">시·분 직접 입력</option>
+
+                        <option value="자시">자시 (23:00 ~ 00:59)</option>
+
+                        <option value="축시">축시 (01:00 ~ 02:59)</option>
+
+                        <option value="인시">인시 (03:00 ~ 04:59)</option>
+
+                        <option value="묘시">묘시 (05:00 ~ 06:59)</option>
+
+                        <option value="진시">진시 (07:00 ~ 08:59)</option>
+
+                        <option value="사시">사시 (09:00 ~ 10:59)</option>
+
+                        <option value="오시">오시 (11:00 ~ 12:59)</option>
+
+                        <option value="미시">미시 (13:00 ~ 14:59)</option>
+
+                        <option value="신시">신시 (15:00 ~ 16:59)</option>
+
+                        <option value="유시">유시 (17:00 ~ 18:59)</option>
+
+                        <option value="술시">술시 (19:00 ~ 20:59)</option>
+
+                        <option value="해시">해시 (21:00 ~ 22:59)</option>
+
+                    </select>
+
+                    <div id="precision-clock-fields" hidden style="margin-top:10px;display:flex;gap:8px">
+
+                        <label for="precision-hour">시<input id="precision-hour" type="number" min="0" max="23" value="9" style="width:100%;padding:12px;border:2px solid #ffc4d0;background:white;font:inherit"></label>
+
+                        <label for="precision-minute">분<input id="precision-minute" type="number" min="0" max="59" value="25" style="width:100%;padding:12px;border:2px solid #ffc4d0;background:white;font:inherit"></label>
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="notice-box">
+
+                    <p>[상품 제공 기간 및 환불 안내]</p>
+
+                    <ul>
+
+                        <li><strong>제공 기간:</strong> 결제 완료 직후 웹페이지를 통해 정밀사주 결과가 즉시 제공됩니다.</li>
+
+                        <li><strong>환불 정책:</strong> 디지털 콘텐츠 특성상 결과가 도출되어 열람한 이후에는 <strong>환불이 불가</strong>합니다. (하단 환불규정 참고)</li>
+
+                    </ul>
+
+                </div>
+
+                <button id="precision-submit" type="button" class="submit-btn" onclick="requestPay()">9900원 결제하고 정밀사주 보기</button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <footer>
+
+        <div class="footer-links">
+
+            <a href="terms.html">이용약관</a>
+
+            <span style="color: #ddd;">|</span>
+
+            <a href="privacy.html">개인정보처리방침</a>
+
+            <span style="color: #ddd;">|</span>
+
+            <a href="refund.html" style="color: #d11534;">환불규정</a>
+
+        </div>
+
+        <button onclick="toggleBusinessInfo()" class="biz-btn">
+
+            <span>사업자 정보 보기</span>
+
+            <span id="biz-arrow" style="font-size: 0.6rem;">▼</span>
+
+        </button>
+
+        <div id="business-info">
+
+            <p>상호명: 테스트잇 | 대표자: 송다혜</p>
+
+            <p>사업자등록번호: 662-54-00892</p>
+
+            <p>통신판매업신고: 제 2026-경기하남-0331호</p>
+
+            <p>사업장 소재지: 경기도 하남시 미사강변서로 85, 2005동 2003호</p>
+
+            <p>이메일: pigsaju@gmail.com</p>
+
+            <p>전화번호: 010-2175-2277</p>
+
+        </div>
+
+    </footer>
+
+    <script>
+
+        const TEST_MODE = false;
+
+        // 출시 전 두 페이지의 TEST_MODE를 함께 해제합니다. 결제 승인 확인은 서버에서 처리해야 합니다.
+
+        window.TIME_BRANCH_TO_HOUR = {
+
+            '자시': 0,
+
+            '축시': 2,
+
+            '인시': 4,
+
+            '묘시': 6,
+
+            '진시': 8,
+
+            '사시': 10,
+
+            '오시': 12,
+
+            '미시': 14,
+
+            '신시': 16,
+
+            '유시': 18,
+
+            '술시': 20,
+
+            '해시': 22,
+
+            'unknown': 12
+
+        };
+
+        function openLogin() {
+
+            document.getElementById('loginOverlay').style.display = 'flex';
+
+        }
+
+        function closeLogin() {
+
+            document.getElementById('loginOverlay').style.display = 'none';
+
+        }
+
+        function toggleBusinessInfo() {
+
+            const info = document.getElementById('business-info');
+
+            const arrow = document.getElementById('biz-arrow');
+
+            if (info.style.display === 'none' || info.style.display === '') {
+
+                info.style.display = 'block';
+
+                arrow.innerText = '▲';
+
+            } else {
+
+                info.style.display = 'none';
+
+                arrow.innerText = '▼';
+
+            }
+
+        }
+
+        function syncClockFields() {
+
+            const time=document.getElementById('precision-time');
+
+            document.getElementById('precision-clock-fields').hidden=time.value!=='exact';
+
+
+
+            const labels=['자시','축시','인시','묘시','진시','사시','오시','미시','신시','유시','술시','해시'];
+
+            labels.forEach((label,i)=>{
+
+                const start=(23+2*i)%24,end=(start+2)%24;
+
+                const pad=n=>String(n).padStart(2,'0');
+
+                const option=[...time.options].find(o=>o.value===label);
+
+                option.textContent=`${label} (${pad(start)}:00 ~ ${pad((end+23)%24)}:59)`;
+
+            });
+
+        }
+
+        function getDaysInMonth(year, month) {
+
+            const calendar=document.querySelector('input[name="precision-calendar"]:checked').value;
+
+            if(calendar==='solar') return new Date(year,month,0).getDate();
+
+            if(typeof Lunar==='undefined') return 30;
+
+            const lunarMonth=calendar==='lunar-leap'?-month:month;
+
+            try {
+
+                for(const day of [30,29]) {
+
+                    const check=Lunar.fromYmd(year,lunarMonth,day).getSolar().getLunar();
+
+                    if(check.getYear()===year && check.getMonth()===lunarMonth && check.getDay()===day) return day;
+
+                }
+
+            } catch(error) { return 30; }
+
+            return 30;
+
+        }
+
+        function updateDayOptions() {
+
+            const yearSel = document.getElementById('precision-year');
+
+            const monthSel = document.getElementById('precision-month');
+
+            const daySel = document.getElementById('precision-day');
+
+            if (!yearSel || !monthSel || !daySel) return;
+
+            const selectedDay = parseInt(daySel.value || '1', 10);
+
+            const year = parseInt(yearSel.value || '1995', 10);
+
+            const month = parseInt(monthSel.value || '1', 10);
+
+            const days = getDaysInMonth(year, month);
+
+            daySel.innerHTML = '';
+
+            for (let i = 1; i <= days; i++) {
+
+                daySel.add(new Option(i + '일', i));
+
+            }
+
+            daySel.value = Math.min(selectedDay, days);
+
+        }
+
+        function fillDateSelects() {
+
+            const yearSel = document.getElementById('precision-year');
+
+            const monthSel = document.getElementById('precision-month');
+
+            const daySel = document.getElementById('precision-day');
+
+            const curYear = new Date().getFullYear();
+
+            yearSel.innerHTML = '';
+
+            monthSel.innerHTML = '';
+
+            daySel.innerHTML = '';
+
+            for (let i = curYear; i >= 1900; i--) {
+
+                yearSel.add(new Option(i + '년', i));
+
+            }
+
+            for (let i = 1; i <= 12; i++) {
+
+                monthSel.add(new Option(i + '월', i));
+
+            }
+
+            yearSel.value = 1995;
+
+            monthSel.value = 1;
+
+            updateDayOptions();
+
+            daySel.value = 1;
+
+            yearSel.addEventListener('change', updateDayOptions);
+
+            monthSel.addEventListener('change', updateDayOptions);
+
+        }
+
+        window.addEventListener('load',()=>{
+
+            fillDateSelects();
+
+            document.querySelectorAll('input[name="precision-calendar"]').forEach(radio=>radio.addEventListener('change',updateDayOptions));
+
+            document.getElementById('precision-form').addEventListener('submit',event=>event.preventDefault());
+
+            document.getElementById('precision-test-note').hidden=!TEST_MODE;
+
+            document.getElementById('precision-time').addEventListener('change',syncClockFields);
+
+
+            syncClockFields();
+
+            if(TEST_MODE) document.getElementById('precision-submit').textContent='입력한 사주 테스트하기';
+
+        });
+
+    </script>
+
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+
+        import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyAZxy9VsEgOZ-e0FApXqHUT5cTxG3_g8o0",
+
+            authDomain: "sajupig.firebaseapp.com",
+
+            projectId: "sajupig",
+
+            storageBucket: "sajupig.firebasestorage.app",
+
+            messagingSenderId: "589751416400",
+
+            appId: "1:589751416400:web:c7ed36efc6d5f23e020355",
+
+            measurementId: "G-HGW4HHQ3WR"
+
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        const auth = getAuth(app);
+
+        const db = getFirestore(app);
+
+        const googleProvider = new GoogleAuthProvider();
+
+        let lastAutoFilledName='';
+
+        function forceFill(y,m,d,time,gender,calendar) {
+
+            const yearSel=document.getElementById('precision-year');
+
+            const monthSel=document.getElementById('precision-month');
+
+            const daySel=document.getElementById('precision-day');
+
+            const timeSel=document.getElementById('precision-time');
+
+            document.querySelectorAll('input[name="precision-calendar"]').forEach(radio=>{radio.checked=radio.value===calendar;});
+
+            yearSel.value=parseInt(y,10);monthSel.value=parseInt(m,10);
+
+            updateDayOptions();daySel.value=parseInt(d,10);
+
+            const clock=/^(\d{1,2}):(\d{2})$/.exec(String(time||''));
+
+            if(clock && Number(clock[1])<24 && Number(clock[2])<60) {
+
+                timeSel.value='exact';
+
+                document.getElementById('precision-hour').value=Number(clock[1]);
+
+                document.getElementById('precision-minute').value=Number(clock[2]);
+
+            } else timeSel.value=[...timeSel.options].some(o=>o.value===time && time!=='exact')?time:'unknown';
+
+            document.querySelectorAll('input[name="precision-gender"]').forEach(radio=>{radio.checked=radio.value===gender;});
+
+            syncClockFields();
+
+        }
+
+        onAuthStateChanged(auth, async (user) => {
+
+            if(document.readyState!=='complete') await new Promise(resolve=>window.addEventListener('load',resolve,{once:true}));
+
+            if(auth.currentUser?.uid!==user?.uid) return;
+
+            const headerBtn = document.getElementById('header-user-btn');
+
+            const nameInput=document.getElementById('precision-name');
+
+            if(nameInput && (!nameInput.value.trim() || nameInput.value===lastAutoFilledName)) {
+
+                lastAutoFilledName=user?.displayName || '';
+
+                nameInput.value=lastAutoFilledName;
+
+            }
+
+            if (user) {
+
+                if (headerBtn) {
+
+                    headerBtn.innerText = "내정보";
+
+                    headerBtn.onclick = function() {
+
+                        location.href = 'index.html?tab=myinfo';
+
+                    };
+
+                }
+
+                try {
+
+                    const docSnap = await getDoc(doc(db, "users", user.uid));
+
+                    if (docSnap.exists()) {
+
+                        const data = docSnap.data();
+
+                        if(auth.currentUser?.uid!==user.uid) return;
+
+                        if (data.birthDate) {
+
+                            const birth = data.birthDate.split('-');
+
+                            forceFill(
+
+                                parseInt(birth[0], 10),
+
+                                parseInt(birth[1], 10),
+
+                                parseInt(birth[2], 10),
+
+                                data.birthTime || 'unknown',
+
+                                data.gender || 'M',
+
+                                data.calendar || 'solar'
+
+                            );
+
+                        }
+
+                    }
+
+                } catch (e) {
+
+                    console.error(e);
+
+                }
+
+            } else {
+
+                if (headerBtn) {
+
+                    headerBtn.innerText = "로그인 / 가입";
+
+                    headerBtn.onclick = openLogin;
+
+                }
+
+            }
+
+        });
+
+        window.realGoogleLogin = function() {
+
+            signInWithPopup(auth, googleProvider)
+
+                .then(() => {
+
+                    closeLogin();
+
+                })
+
+                .catch(console.error);
+
+        };
+
+        window.realKakaoLogin = function() {
+
+            const kakaoProvider = new OAuthProvider('oidc.kakao');
+
+            signInWithPopup(auth, kakaoProvider)
+
+                .then(() => {
+
+                    closeLogin();
+
+                })
+
+                .catch(console.error);
+
+        };
+
+        const clientKey = 'live_ck_eqRGgYO1r54nbMjBNQXbVQnN2Eya';
+
+        const tossPayments = TossPayments(clientKey);
+
+        window.requestPay = async function() {
+
+            if (!TEST_MODE && !auth.currentUser) {
+
+                alert('결제 내역을 안전하게 보관하기 위해 먼저 로그인이 필요합니다.');
+
+                openLogin();
+
+                return;
+
+            }
+
+            const name=document.getElementById('precision-name').value.trim();
+
+            if(!name || name.length>50 || /[\u0000-\u001f\u007f]/.test(name)) {
+
+                alert('풀이할 이름을 입력해 주세요.');
+
+                document.getElementById('precision-name').focus();
+
+                return;
+
+            }
+
+            const gender=document.querySelector('input[name="precision-gender"]:checked').value;
+
+            const selectedCalendar=document.querySelector('input[name="precision-calendar"]:checked').value;
+
+            const calendar=selectedCalendar==='solar'?'solar':'lunar';
+
+            const isLeap=selectedCalendar==='lunar-leap';
+
+            const year=Number(document.getElementById('precision-year').value);
+
+            const month=Number(document.getElementById('precision-month').value);
+
+            const day=Number(document.getElementById('precision-day').value);
+
+            const time=document.getElementById('precision-time').value;
+
+            const timeKnown=time!=='unknown';
+
+            if(time==='exact' && !['precision-hour','precision-minute'].every(id=>/^\d+$/.test(document.getElementById(id).value))) {alert('시와 분을 모두 입력해 주세요.');return;}
+
+            const hour=time==='exact'?Number(document.getElementById('precision-hour').value):timeKnown?window.TIME_BRANCH_TO_HOUR[time]:12;
+
+            const minute=time==='exact'?Number(document.getElementById('precision-minute').value):0;
+
+
+            if(![year,month,day,hour,minute].every(Number.isInteger) || year<1900 || month<1 || month>12 || day<1 || hour<0 || hour>23 || minute<0 || minute>59) {
+
+                alert('태어난 날짜와 시간을 확인해 주세요.');return;
+
+            }
+
+            try {
+
+                if(calendar==='solar') {
+
+                    const date=new Date(Date.UTC(year,month-1,day));
+
+                    if(date.getUTCFullYear()!==year || date.getUTCMonth()+1!==month || date.getUTCDate()!==day) throw new Error('존재하지 않는 양력 날짜입니다.');
+
+                } else {
+
+                    if(typeof Lunar==='undefined') throw new Error('음력 계산 파일을 불러오지 못했습니다. 새로고침해 주세요.');
+
+                    const lunarMonth=isLeap?-month:month;
+
+                    const check=Lunar.fromYmd(year,lunarMonth,day).getSolar().getLunar();
+
+                    if(check.getYear()!==year || check.getMonth()!==lunarMonth || check.getDay()!==day) throw new Error('존재하지 않는 음력 날짜 또는 윤달입니다.');
+
+                }
+
+                // 회원 자동 입력 후 수정한 최종 값을 결과 페이지에 전달합니다.
+
+                const values={saju_product:'saju9900',saju_name:name,saju_gender:gender,saju_calendar:calendar,
+
+                    saju_is_leap:String(isLeap),saju_year:String(year),saju_month:String(month),saju_day:String(day),
+
+                    saju_time:time,saju_time_known:String(timeKnown),saju_minute:String(minute),saju_day_boundary:'midnight',
+
+                    saju_utc_offset:'9',saju_time_offset:'0',saju_result_test:String(TEST_MODE)};
+
+                for(const [key,value] of Object.entries(values)) sessionStorage.setItem(key,value);
+
+                if(timeKnown) sessionStorage.setItem('saju_hour',String(hour));
+
+                else sessionStorage.removeItem('saju_hour');
+
+            } catch(error) {alert(error.message || '입력 정보를 확인해 주세요.');return;}
+
+            if(TEST_MODE) { window.location.href='saju9900_result.html';return; }
+
+            try {
+
+                await tossPayments.requestPayment('카드', {
+
+                    amount:9900,
+
+                    orderId:'saju9900_order_'+Date.now(),
+
+                    orderName:'사주돼지 나를 꿰뚫는 정밀사주',
+
+                    customerName:name,
+
+                    successUrl:window.location.origin+'/saju9900_result.html',
+
+                    failUrl:window.location.origin+'/fail.html'
+
+                });
+
+            } catch(error) {
+
+                if(error.code==='USER_CANCEL') alert('결제를 취소하셨습니다.');
+
+                else alert(error.message || '결제를 시작하지 못했습니다.');
+
+            }
+
+        };
+
+    </script>
+
+    <script>
+
+        document.addEventListener('contextmenu', function(e) {
+
+            e.preventDefault();
+
+        });
+
+        document.addEventListener('keydown', function(e) {
+
+            if((e.target instanceof Element?e.target:e.target.parentElement)?.closest('input,textarea,select')) return;
+
+            if (e.keyCode === 123) {
+
+                e.preventDefault();
+
+                return false;
+
+            }
+
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+
+                e.preventDefault();
+
+                return false;
+
+            }
+
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+
+                e.preventDefault();
+
+                return false;
+
+            }
+
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+
+                e.preventDefault();
+
+                return false;
+
+            }
+
+            if (e.ctrlKey && e.keyCode === 85) {
+
+                e.preventDefault();
+
+                return false;
+
+            }
+
+        });
+
+        document.addEventListener('selectstart', function(e) {
+
+            if((e.target instanceof Element?e.target:e.target.parentElement)?.closest('input,textarea,select')) return;
+
+            e.preventDefault();
+
+        });
+
+    </script>
+
+</body>
+
+</html>

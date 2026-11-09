@@ -159,7 +159,61 @@
         .saju770-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 22px rgba(255, 182, 193, 0.18); }
         .saju770-title { font-size: 1.35rem; font-weight: 900; margin-bottom: 8px; }
         .saju770-price { font-size: 1.05rem; color: #5a464c; font-weight: 800; }
+.saju9900-card {
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px dashed #ffd4df;
+}
 
+.saju9900-heading {
+    margin: 0 0 15px;
+    color: #b47b00;
+    font-size: 1.35rem;
+    font-weight: 900;
+}
+
+.saju9900-btn {
+    width: 100%;
+    background: linear-gradient(180deg, #ffffff 0%, #fff9e8 100%);
+    border: 1px solid #f1c86a;
+    color: #b47b00;
+    padding: 25px;
+    border-radius: 18px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 10px 18px rgba(212, 175, 55, 0.15);
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.saju9900-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 22px rgba(212, 175, 55, 0.2);
+}
+
+.saju9900-badge {
+    display: inline-block;
+    margin-bottom: 9px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #fff0bd;
+    border: 1px solid #f1c86a;
+    color: #9d6b00;
+    font-size: 0.78rem;
+    font-weight: 900;
+}
+
+.saju9900-title {
+    font-size: 1.35rem;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.saju9900-price {
+    font-size: 1.05rem;
+    color: #7a4f00;
+    font-weight: 900;
+}
         .login-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(40, 20, 25, 0.5); z-index: 1000; justify-content: center; align-items: center; animation: fadeIn 0.2s; backdrop-filter: blur(4px); }
         .login-box { background-color: rgba(255,255,255,0.96); width: 85%; max-width: 360px; border-radius: 24px; padding: 40px 25px; text-align: center; position: relative; border: 1px solid #ffdbe5; box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
         .close-login { position: absolute; top: 14px; right: 18px; background: none; border: none; font-size: 1.8rem; color: #333; cursor: pointer; }
@@ -355,22 +409,33 @@
         </div>
     </div>
     
-    <div id="saju770" class="section">
-        <div class="card">
-            <h2>🪙 770사주</h2>
-          
-            <div class="saju770-menu">
-                <button class="saju770-btn" onclick="location.href='pig2026.html'">
-                    <div class="saju770-title">🧧 돼지 신년 사주</div>
-                    <div class="saju770-price">770원</div>
-                </button>
-                <button class="saju770-btn" onclick="location.href='pigsaju.html'">
-                    <div class="saju770-title">📜 돼지 정통 사주</div>
-                    <div class="saju770-price">770원</div>
-                </button>
-            </div>
+  <div id="saju770" class="section">
+    <div class="card">
+        <h2>🪙 770사주</h2>
+      
+        <div class="saju770-menu">
+            <button class="saju770-btn" onclick="location.href='pig2026.html'">
+                <div class="saju770-title">🧧 돼지 신년 사주</div>
+                <div class="saju770-price">770원</div>
+            </button>
+
+            <button class="saju770-btn" onclick="location.href='pigsaju.html'">
+                <div class="saju770-title">📜 돼지 정통 사주</div>
+                <div class="saju770-price">770원</div>
+            </button>
+        </div>
+
+        <div class="saju9900-card">
+            <h2 class="saju9900-heading">💎 9900사주</h2>
+
+            <button class="saju9900-btn" onclick="location.href='saju9900.html'">
+                <div class="saju9900-badge">정밀 장문 리포트</div>
+                <div class="saju9900-title">나를 꿰뚫는 사주</div>
+                <div class="saju9900-price">9900원</div>
+            </button>
         </div>
     </div>
+</div>
 
     <div id="love" class="section">
         <div class="card">
