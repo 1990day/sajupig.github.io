@@ -998,6 +998,18 @@ function toggleMyInfo(contentId, arrowId) {
       sessionStorage.setItem('saju_gender', data.sajuInfo.gender);
       sessionStorage.setItem('saju_calendar', data.sajuInfo.calendar);
 
+      if (data.itemType === 'saju9900') {
+          const info = data.sajuInfo;
+          const fields = {name:'saju_name',hour:'saju_hour',minute:'saju_minute',timeKnown:'saju_time_known',isLeapMonth:'saju_is_leap',dayBoundary:'saju_day_boundary',utcOffset:'saju_utc_offset'};
+          for (const [field,key] of Object.entries(fields)) {
+              if (info[field] !== undefined && info[field] !== null) sessionStorage.setItem(key,String(info[field]));
+              else sessionStorage.removeItem(key);
+          }
+          sessionStorage.setItem('saju_product','saju9900');
+          sessionStorage.setItem('saju_time_offset','0');
+          sessionStorage.setItem('saju_result_test','false');
+      }
+
       if (data.itemType === 'lovepig' || data.itemType === 'friendspig' || data.itemType === 'familypig' || data.itemType === 'reunionpig' || data.itemType === 'petpig') {
           sessionStorage.setItem('me_year', data.sajuInfo.year);
           sessionStorage.setItem('me_month', data.sajuInfo.month);
@@ -1014,7 +1026,7 @@ function toggleMyInfo(contentId, arrowId) {
           sessionStorage.setItem('you_calendar', data.sajuInfo.youCalendar);
       }
 
-      location.href = `${data.itemType}_result.html?orderId=${orderId}&paymentKey=revisit`;
+      location.href = `${data.itemType}_result.html?orderId=${encodeURIComponent(orderId)}&paymentKey=revisit`;
   }
 
   window.realGoogleLogin = function() {
