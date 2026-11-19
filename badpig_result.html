@@ -87,11 +87,6 @@
 
         .warn-box { margin-top: 12px; padding: 14px; background: #ffffff; border-radius: 14px; border: 2px dashed #ef9a9a; color: #b71c1c; font-size: 0.92rem; line-height: 1.7; }
         .info-box { margin-top: 12px; padding: 14px; background: #fff8e1; border-radius: 14px; border: 2px solid #ffe082; color: #4e342e; font-size: 0.92rem; line-height: 1.7; }
-        .dayun-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 10px; text-align: center; }
-        .dayun-cell { background: #ffffff; border: 1px solid #ffcdd2; border-radius: 12px; padding: 8px 4px; font-size: 0.76rem; }
-        .dayun-cell.current { background: #ffcdd2; border: 2px solid #c62828; font-weight: 900; }
-        .dayun-age { font-size: 0.68rem; color: #888; margin-bottom: 2px; }
-        .dayun-gz { font-size: 1.02rem; font-weight: 900; color: #2c1a1a; }
 
         .go-home-btn { width: 100%; background: #d32f2f; color: white; border: none; padding: 20px; border-radius: 20px; font-size: 1.15rem; font-weight: 900; cursor: pointer; margin-top: 10px; box-shadow: 0 8px 20px rgba(211, 47, 47, 0.3); }
         .payment-info { font-size: 0.8rem; color: #999; margin-bottom: 10px; text-align: center; font-weight: bold; }
@@ -800,7 +795,7 @@
         // ==========================================================
         // 5. 핵심 초정밀 명리 분석 엔진 (10개 섹션 풀패키지)
         // ==========================================================
-        function generateLifetimeFortune(bazi, gender, timeStr, birthYear, curYearGZ) {
+        function generateLifetimeFortune(bazi, gender, timeStr, curYearGZ) {
             const yGan = bazi.getYear().charAt(0), yZhi = bazi.getYear().charAt(1);
             const mGan = bazi.getMonth().charAt(0), mZhi = bazi.getMonth().charAt(1);
             const dGan = bazi.getDay().charAt(0), dZhi = bazi.getDay().charAt(1);
@@ -1172,10 +1167,9 @@
             html += "</p></div></div>";
 
             // ==========================================================
-            // 섹션 8. 인생 시기별 흐름 + 실제 10년 대운표 + 올해 세운 & 삼재!
+            // 섹션 8. 인생 시기별 흐름 + 올해 세운 & 삼재!
             // ==========================================================
             const curYear = new Date().getFullYear();
-            const curAge = curYear - birthYear + 1;
             let seunHtml = "";
             if (curYearGZ && curYearGZ.length === 2) {
                 const syGan = curYearGZ.charAt(0), syZhi = curYearGZ.charAt(1);
@@ -1197,30 +1191,6 @@
                     `</div>`;
             }
 
-            let dayunHtml = "";
-            try {
-                const yun = bazi.getYun(gender === 'M' ? 1 : 0);
-                const daYunArr = yun.getDaYun();
-                if (daYunArr && daYunArr.length > 1) {
-                    let cells = "", curDyText = "";
-                    for (let i = 1; i < Math.min(daYunArr.length, 9); i++) {
-                        const dy = daYunArr[i], gz = dy.getGanZhi(), sAge = dy.getStartAge(), eAge = sAge + 9;
-                        const isCur = (curAge >= sAge && curAge <= eAge);
-                        const dyGan = gz.charAt(0), dyZhi = gz.charAt(1), dyTG = getTenGod10(dGan, dyGan) || '';
-                        cells += `<div class='dayun-cell ${isCur ? 'current' : ''}'><div class='dayun-age'>${sAge}세~${isCur?'(현재)':''}</div><div class='dayun-gz'>${gz}</div><div style='font-size:0.66rem; color:#c62828;'>${dyTG}</div></div>`;
-                        if (isCur && charData[dyGan] && charData[dyZhi]) {
-                            const hitsBad = (charData[dyGan].el === badElement || charData[dyZhi].el === badElement);
-                            curDyText = `<div class='info-box'><b>📌 현재 대운(${sAge}~${eAge}세 · ${gz} 대운) 판독:</b><br>` +
-                                (hitsBad
-                                    ? `지금 지나가는 <span class='hl'>${gz} 대운</span>에 악운 기운(${EL_KR[badElement]})이 깔려 있습니다. 10년 단위의 수비 구간이니 허세와 무리수를 꺾고 내실을 다지지 않으면 크게 무너집니다.`
-                                    : `현재 <span class='hl'>${gz}(${dyTG}) 대운</span> 구간입니다. ${tenGod10Profile[dyTG] ? tenGod10Profile[dyTG].core : ''} 이 시기의 습관이 향후 10년 성패를 가릅니다.`) +
-                                `</div>`;
-                        }
-                    }
-                    dayunHtml = `<span class='sub-title'>📅 실제 10년 대운(大運) 흐름표 (현재 만/한국나이 ${curAge}세 기준)</span><div class='dayun-grid'>${cells}</div>${curDyText}`;
-                }
-            } catch (e) { console.warn("대운 계산 건너뜀:", e); }
-
             html += "<div class='fortune-section-card'>";
             html += "<div class='fortune-section-title'>⏳ 8. 인생 시기별 흐름 & 올해 세운</div>";
             html += "<div class='fortune-content-text'><p>";
@@ -1232,7 +1202,7 @@
             } else {
                 html += `<span class='hl'>🍂 말년기 (시주 ${tGan}${tZhi} · ${tGanTG}/${tZhiTG} · ${tUn}운)</span><br>${stemPeriodPrefix[tGanTG]||''}${timelineT[tZhi]}`;
             }
-            html += dayunHtml + seunHtml;
+            html += seunHtml;
             html += "</p></div></div>";
 
             // ==========================================================
@@ -1315,7 +1285,7 @@
                         curYearGZ = Solar.fromYmd(new Date().getFullYear(), 6, 1).getLunar().getYearInGanZhi();
                     } catch (e) {}
 
-                    const fortuneHtml = generateLifetimeFortune(bazi, gender, timeStr, year, curYearGZ);
+                    const fortuneHtml = generateLifetimeFortune(bazi, gender, timeStr, curYearGZ);
 
                     document.getElementById('result-loading').style.display = 'none';
                     document.getElementById('dynamic-fortune-content').innerHTML = fortuneHtml;
