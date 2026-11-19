@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사주돼지 - 나쁜말 가득 사주 결과</title>
-<meta name="keywords" content="사주돼지, 770사주, 무료사주, 유료사주, 사주궁합, 평생사주, 신년운세, 신년사주, 만세력, 무료만세력, 사주풀이, 좋은말사주, 나쁜말사주">
-    <meta property="og:type" content="website"> 
-   <meta property="og:title" content="사주돼지 - 나쁜말만 가득 사주">
-   <meta property="og:description" content="사주돼지에서 확인하는 솔직하고 강한 사주 풀이">
-        <meta property="og:image" content="og_img.png">
+    <title>사주돼지 - 나쁜말 가득 정밀 사주 결과</title>
+    <meta name="keywords" content="사주돼지, 770사주, 무료사주, 유료사주, 사주궁합, 평생사주, 신년운세, 신년사주, 만세력, 무료만세력, 사주풀이, 좋은말사주, 나쁜말사주">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="사주돼지 - 나쁜말만 가득 사주">
+    <meta property="og:description" content="사주돼지에서 확인하는 솔직하고 강한 사주 풀이">
+    <meta property="og:image" content="og_img.png">
     <meta property="og:url" content="https://sajupig.co.kr/badpig">
     <script src="https://unpkg.com/lunar-javascript/lunar.js"></script>
     <link rel="icon" type="image/png" href="/favicon.png">
     <style>
         html { background-color: #fce4ec; }
-        body { 
+        body {
             margin: 0 auto; max-width: 480px; min-height: 100vh;
-            font-family: 'Pretendard', -apple-system, sans-serif; 
+            font-family: 'Pretendard', -apple-system, sans-serif;
             background-color: #fff9fa; color: #2c1a1a;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.1); position: relative; padding: 20px; box-sizing: border-box;
         }
-        
-        header { 
-            background-color: #d32f2f; position: sticky; top: 0; z-index: 100; 
-            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3); 
+
+        header {
+            background-color: #d32f2f; position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
             border-bottom: 4px solid #b71c1c; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
             margin: -20px -20px 20px -20px;
         }
@@ -35,65 +35,80 @@
             padding: 8px 18px; border-radius: 25px; font-size: 0.9rem; font-weight: 900; cursor: pointer;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.2s;
         }
-        
+
         nav { display: flex; justify-content: space-between; padding: 10px 15px 20px 15px; gap: 10px; overflow-x: auto; white-space: nowrap; }
-        nav button { 
-            flex: 1; background-color: #ffffff; border: 3px solid #ffcdd2; font-size: 0.85rem; color: #c62828; 
-            cursor: pointer; font-weight: 900; transition: all 0.2s; border-radius: 20px; aspect-ratio: 1 / 1; 
+        nav button {
+            flex: 1; background-color: #ffffff; border: 3px solid #ffcdd2; font-size: 0.85rem; color: #c62828;
+            cursor: pointer; font-weight: 900; transition: all 0.2s; border-radius: 20px; aspect-ratio: 1 / 1;
             display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 8px rgba(211, 47, 47, 0.15);
         }
         nav button.active { color: #ffffff; background-color: #b71c1c; border-color: #b71c1c; transform: translateY(-4px); box-shadow: 0 8px 15px rgba(183, 28, 28, 0.3); }
         nav button span.icon { font-size: 1.6rem; }
         nav::-webkit-scrollbar { display: none; }
-        
+
         main { padding: 10px 0; text-align: center; }
 
         .fortune-result-box { background: transparent; margin-top: 10px; text-align: left; animation: fadeIn 0.8s ease-in-out; }
-        .fortune-result-title { font-size: 1.6rem; color: #c62828; font-weight: 900; margin-bottom: 20px; text-align: center; background: #ffffff; padding: 20px; border-radius: 25px; border: 4px dashed #ef9a9a; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.15); }
-        
-        .dashboard-card { background: #ffffff; padding: 25px 20px; border-radius: 25px; margin-bottom: 30px; border: 4px solid #ef9a9a; box-shadow: 0 6px 15px rgba(211, 47, 47, 0.15); }
-        .dashboard-header { font-size: 1.2rem; font-weight: 900; color: #c62828; margin-bottom: 15px; border-bottom: 2px dashed #ffcdd2; padding-bottom: 10px; text-align: center;}
-        
-        .bazi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; margin-bottom: 20px; }
-        .bazi-col { background: #fff0f2; padding: 12px 5px; border-radius: 15px; border: 1px solid #ffcdd2; }
-        .bazi-label { font-size: 0.8rem; color: #c62828; font-weight: bold; margin-bottom: 8px; }
-        .char-box { font-size: 1.5rem; font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
-        .char-hg { font-size: 0.75rem; color: #888; margin-left: 2px; }
-        .me-badge { display: block; font-size: 0.7rem; background: #c62828; color: white; border-radius: 10px; padding: 2px 0; margin-top: 4px; }
-        
-        .stat-row { display: flex; align-items: center; margin-bottom: 12px; font-size: 0.95rem; font-weight: bold; }
-        .stat-label { width: 60px; color: #2c1a1a; }
-        .stat-bar-wrap { flex: 1; background: #ffcdd2; height: 14px; border-radius: 10px; overflow: hidden; position: relative; margin: 0 10px; }
+        .fortune-result-title { font-size: 1.55rem; color: #c62828; font-weight: 900; margin-bottom: 20px; text-align: center; background: #ffffff; padding: 20px; border-radius: 25px; border: 4px dashed #ef9a9a; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.15); }
+
+        .dashboard-card { background: #ffffff; padding: 24px 18px; border-radius: 25px; margin-bottom: 30px; border: 4px solid #ef9a9a; box-shadow: 0 6px 15px rgba(211, 47, 47, 0.15); }
+        .dashboard-header { font-size: 1.12rem; font-weight: 900; color: #c62828; margin-bottom: 14px; border-bottom: 2px dashed #ffcdd2; padding-bottom: 9px; text-align: center; }
+
+        .bazi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; text-align: center; margin-bottom: 16px; }
+        .bazi-col { background: #fff0f2; padding: 10px 3px; border-radius: 15px; border: 1px solid #ffcdd2; }
+        .bazi-label { font-size: 0.74rem; color: #c62828; font-weight: 900; margin-bottom: 5px; }
+        .char-box { font-size: 1.4rem; font-weight: 900; line-height: 1.25; margin: 3px 0; }
+        .char-hg { font-size: 0.68rem; color: #888; margin-left: 1px; }
+        .tg-tag { display: inline-block; font-size: 0.66rem; font-weight: 800; color: #b71c1c; background: #ffe4e6; border-radius: 8px; padding: 1px 5px; margin: 2px 0; }
+        .un-tag { display: block; font-size: 0.65rem; font-weight: 800; color: #5d4037; background: #fff8e1; border: 1px solid #ffe082; border-radius: 7px; padding: 1px 3px; margin: 4px 3px 2px 3px; }
+        .jjg-tag { display: block; font-size: 0.62rem; color: #777; margin-top: 2px; letter-spacing: -0.3px; }
+        .me-badge { display: inline-block; font-size: 0.66rem; background: #c62828; color: white; border-radius: 8px; padding: 1px 6px; margin: 2px 0; font-weight: 800; }
+
+        .summary-badges { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 12px; }
+        .badge-pill { font-size: 0.75rem; font-weight: 800; padding: 4px 9px; border-radius: 14px; background: #ffebee; color: #b71c1c; border: 1px solid #ef9a9a; }
+        .badge-pill.dark { background: #c62828; color: #ffffff; border-color: #b71c1c; }
+
+        .stat-row { display: flex; align-items: center; margin-bottom: 9px; font-size: 0.88rem; font-weight: bold; }
+        .stat-label { width: 82px; color: #2c1a1a; font-size: 0.82rem; }
+        .stat-bar-wrap { flex: 1; background: #ffcdd2; height: 13px; border-radius: 10px; overflow: hidden; position: relative; margin: 0 8px; }
         .stat-bar-fill { height: 100%; border-radius: 10px; transition: width 1s ease-in-out; }
-        .stat-num { width: 35px; text-align: right; color: #c62828; }
-        
-        .bg-wood { background-color: #4CAF50; } .bg-fire { background-color: #F44336; } .bg-earth { background-color: #FF9800; } .bg-metal { background-color: #9E9E9E; } .bg-water { background-color: #2196F3; } .bg-ten { background-color: #d32f2f; }
+        .stat-num { width: 52px; text-align: right; color: #c62828; font-size: 0.8rem; }
+
+        .bg-wood { background-color: #4CAF50; } .bg-fire { background-color: #F44336; } .bg-earth { background-color: #FF9800; } .bg-metal { background-color: #9E9E9E; } .bg-water { background-color: #2196F3; } .bg-ten { background-color: #d32f2f; } .bg-risk { background: linear-gradient(90deg, #ff7043, #b71c1c); }
         .c-wood { color: #388E3C; } .c-fire { color: #D32F2F; } .c-earth { color: #F57C00; } .c-metal { color: #616161; } .c-water { color: #1976D2; } .c-unknown { color: #ccc; }
 
-        .fortune-section-card { background: #ffffff; border: 4px solid #ffcdd2; border-radius: 30px; padding: 30px 20px 20px 20px; margin-bottom: 35px; box-shadow: 0 8px 20px rgba(211, 47, 47, 0.1); position: relative; }
-        .fortune-section-title { color: #ffffff; background: #d32f2f; padding: 12px 25px; border-radius: 30px; font-size: 1.25rem; font-weight: 900; display: inline-block; box-shadow: 0 6px 12px rgba(211, 47, 47, 0.3); margin-bottom: 20px; transform: translateY(-50px); margin-top: 10px; border: 3px solid #ffffff; }
-        .fortune-content-text { color: #2c1a1a; font-size: 1.05rem; line-height: 1.9; text-align: justify; margin-top: -30px; letter-spacing: -0.3px; }
-        
-        .fortune-content-text p { margin-bottom: 20px; padding: 22px; background: #fff0f2; border-radius: 20px; font-weight: 500; border: 1px solid #ffcdd2;}
-        
-        .sub-title { display: block; font-weight: 900; color: #c62828; font-size: 1.15rem; margin-bottom: 10px; border-bottom: 2px dashed #ef9a9a; padding-bottom: 5px; margin-top: 15px; }
+        .fortune-section-card { background: #ffffff; border: 4px solid #ffcdd2; border-radius: 30px; padding: 30px 18px 20px 18px; margin-bottom: 35px; box-shadow: 0 8px 20px rgba(211, 47, 47, 0.1); position: relative; }
+        .fortune-section-title { color: #ffffff; background: #d32f2f; padding: 11px 20px; border-radius: 30px; font-size: 1.15rem; font-weight: 900; display: inline-block; box-shadow: 0 6px 12px rgba(211, 47, 47, 0.3); margin-bottom: 20px; transform: translateY(-50px); margin-top: 10px; border: 3px solid #ffffff; }
+        .fortune-content-text { color: #2c1a1a; font-size: 0.99rem; line-height: 1.85; text-align: justify; margin-top: -30px; letter-spacing: -0.3px; }
+        .fortune-content-text p { margin-bottom: 16px; padding: 19px; background: #fff0f2; border-radius: 20px; font-weight: 500; border: 1px solid #ffcdd2; }
+
+        .sub-title { display: block; font-weight: 900; color: #c62828; font-size: 1.07rem; margin-bottom: 8px; border-bottom: 2px dashed #ef9a9a; padding-bottom: 5px; margin-top: 16px; }
+        .sub-title:first-child { margin-top: 0; }
+
+        .warn-box { margin-top: 12px; padding: 14px; background: #ffffff; border-radius: 14px; border: 2px dashed #ef9a9a; color: #b71c1c; font-size: 0.92rem; line-height: 1.7; }
+        .info-box { margin-top: 12px; padding: 14px; background: #fff8e1; border-radius: 14px; border: 2px solid #ffe082; color: #4e342e; font-size: 0.92rem; line-height: 1.7; }
+        .dayun-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 10px; text-align: center; }
+        .dayun-cell { background: #ffffff; border: 1px solid #ffcdd2; border-radius: 12px; padding: 8px 4px; font-size: 0.76rem; }
+        .dayun-cell.current { background: #ffcdd2; border: 2px solid #c62828; font-weight: 900; }
+        .dayun-age { font-size: 0.68rem; color: #888; margin-bottom: 2px; }
+        .dayun-gz { font-size: 1.02rem; font-weight: 900; color: #2c1a1a; }
 
         .go-home-btn { width: 100%; background: #d32f2f; color: white; border: none; padding: 20px; border-radius: 20px; font-size: 1.15rem; font-weight: 900; cursor: pointer; margin-top: 10px; box-shadow: 0 8px 20px rgba(211, 47, 47, 0.3); }
-        .payment-info { font-size: 0.8rem; color: #999; margin-bottom: 15px; text-align: center; font-weight: bold; }
-        .result-highlight { background: #ffffff; padding: 30px 20px; border-radius: 25px; margin-bottom: 30px; color: #2c1a1a; text-align: center; border: 4px solid #b71c1c; box-shadow: 0 6px 15px rgba(211, 47, 47, 0.2); }
-        .bazi-display { font-size: 1.8rem; font-weight: 900; letter-spacing: 2px; margin-bottom: 15px; color: #c62828; }
-        .bazi-detail { font-size: 1rem; color: #2c1a1a; font-weight: bold; line-height: 1.6; background: #fff0f2; padding: 15px; border-radius: 15px; display: inline-block; }
+        .payment-info { font-size: 0.8rem; color: #999; margin-bottom: 10px; text-align: center; font-weight: bold; }
+        .result-highlight { background: #ffffff; padding: 24px 16px; border-radius: 25px; margin-bottom: 30px; color: #2c1a1a; text-align: center; border: 4px solid #b71c1c; box-shadow: 0 6px 15px rgba(211, 47, 47, 0.2); }
+        .bazi-display { font-size: 1.6rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 10px; color: #c62828; }
+        .bazi-detail { font-size: 0.9rem; color: #2c1a1a; font-weight: bold; line-height: 1.6; background: #fff0f2; padding: 12px 14px; border-radius: 15px; display: inline-block; }
 
         .login-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(44, 26, 26, 0.8); z-index: 1000; justify-content: center; align-items: center; animation: fadeIn 0.2s; }
         .login-box { background-color: #ffffff; width: 85%; max-width: 360px; border-radius: 30px; padding: 40px 25px; text-align: center; position: relative; border: 5px solid #ef9a9a; }
-        .close-login { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 2.2rem; color: #d32f2f; cursor: pointer; font-weight: bold;}
+        .close-login { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 2.2rem; color: #d32f2f; cursor: pointer; font-weight: bold; }
         .login-box h2 { margin-top: 0; color: #d32f2f; margin-bottom: 15px; font-weight: 900; }
-        .social-btn { display: block; width: 100%; padding: 18px; margin-bottom: 12px; border-radius: 20px; font-size: 1.1rem; font-weight: 900; text-align: center; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+        .social-btn { display: block; width: 100%; padding: 18px; margin-bottom: 12px; border-radius: 20px; font-size: 1.1rem; font-weight: 900; text-align: center; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .btn-kakao { background-color: #FEE500; color: #2c1a1a; }
-        .btn-google { background-color: #f1f1f1; color: #2c1a1a; border: 2px solid #ffcdd2;}
+        .btn-google { background-color: #f1f1f1; color: #2c1a1a; border: 2px solid #ffcdd2; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .hl { background-color: #ffcdd2; padding: 2px 6px; border-radius: 4px; font-weight: 900; color: #c62828;}
+        .hl { background-color: #ffcdd2; padding: 2px 5px; border-radius: 4px; font-weight: 900; color: #c62828; }
     </style>
 </head>
 <body>
@@ -125,7 +140,7 @@
 
     <main>
         <div id="result-loading" style="text-align: center; padding: 100px 0; font-weight: bold; color: #c62828; font-size: 1.2rem;">
-            🐷 결제 확인 완료! 잠시만 기다려주세요!
+            🐷 결제 확인 완료! 지장간·12운성·신살까지 초정밀 팩폭 해부 중...
         </div>
 
         <div id="dynamic-fortune-content" class="fortune-result-box" style="display: none;"></div>
@@ -140,55 +155,328 @@
         // ==========================================================
         // 🚨 [필수] 전역 변수로 빼서 레퍼런스 에러 완벽 차단!
         // ==========================================================
-        
         const urlParams = new URLSearchParams(window.location.search);
-        const paymentKey = urlParams.get('paymentKey'); 
-        const sajuYear = sessionStorage.getItem('saju_year'); 
+        const paymentKey = urlParams.get('paymentKey');
+        const sajuYear = sessionStorage.getItem('saju_year');
         const orderId = urlParams.get('orderId') || '현장결제';
-        const amount = urlParams.get('amount') || 770; //
-        window.globalOrderId = orderId; 
+        const amount = urlParams.get('amount') || 770;
+        window.globalOrderId = orderId;
         window.globalPaymentKey = paymentKey;
 
         if (!paymentKey || paymentKey === '') {
             alert("정상적인 결제 내역이 확인되지 않았습니다! 결제 페이지로 이동합니다.");
-            document.body.style.display = "none"; 
+            document.body.style.display = "none";
             window.location.replace("badpig.html");
-            throw new Error("결제 미확인 차단"); 
+            throw new Error("결제 미확인 차단");
         } else if (!sajuYear) {
             alert("사주 정보가 만료되었습니다. 결제 페이지에서 다시 입력해주세요!");
             document.body.style.display = "none";
             window.location.replace("badpig.html");
             throw new Error("정보 만료 차단");
         }
-        // ==========================================================
 
-        const fullNames = {
-            '甲':'갑목', '乙':'을목', '丙':'병화', '丁':'정화', '戊':'무토', '己':'기토', '庚':'경금', '辛':'신금', '壬':'임수', '癸':'계수',
-            '子':'자수', '丑':'축토', '寅':'인목', '卯':'묘목', '辰':'진토', '巳':'사화', '午':'오화', '未':'미토', '申':'신금', '酉':'유금', '戌':'술토', '亥':'해수'
-        };
-        
-        function transFull(char) { return fullNames[char] || char; }
+        // ==========================================================
+        // 1. 초정밀 명리학 기초 데이터 (천간·지지·지장간·12운성)
+        // ==========================================================
+        const STEMS = ['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
+        const BRANCHES = ['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
 
         const charData = {
-            '甲': { hg: '갑', el: '木', cls: 'c-wood' }, '乙': { hg: '을', el: '木', cls: 'c-wood' },
-            '丙': { hg: '병', el: '火', cls: 'c-fire' }, '丁': { hg: '정', el: '火', cls: 'c-fire' },
-            '戊': { hg: '무', el: '土', cls: 'c-earth' }, '己': { hg: '기', el: '土', cls: 'c-earth' },
-            '庚': { hg: '경', el: '金', cls: 'c-metal' }, '辛': { hg: '신', el: '金', cls: 'c-metal' },
-            '壬': { hg: '임', el: '水', cls: 'c-water' }, '癸': { hg: '계', el: '水', cls: 'c-water' },
-            '子': { hg: '자', el: '水', cls: 'c-water' }, '丑': { hg: '축', el: '土', cls: 'c-earth' },
-            '寅': { hg: '인', el: '木', cls: 'c-wood' }, '卯': { hg: '묘', el: '木', cls: 'c-wood' },
-            '辰': { hg: '진', el: '土', cls: 'c-earth' }, '巳': { hg: '사', el: '火', cls: 'c-fire' },
-            '午': { hg: '오', el: '火', cls: 'c-fire' }, '未': { hg: '미', el: '土', cls: 'c-earth' },
-            '申': { hg: '신', el: '金', cls: 'c-metal' }, '酉': { hg: '유', el: '金', cls: 'c-metal' },
-            '戌': { hg: '술', el: '土', cls: 'c-earth' }, '亥': { hg: '해', el: '水', cls: 'c-water' }
+            '甲': { hg: '갑', full: '갑목', el: '木', yy: 1, cls: 'c-wood' },
+            '乙': { hg: '을', full: '을목', el: '木', yy: 0, cls: 'c-wood' },
+            '丙': { hg: '병', full: '병화', el: '火', yy: 1, cls: 'c-fire' },
+            '丁': { hg: '정', full: '정화', el: '火', yy: 0, cls: 'c-fire' },
+            '戊': { hg: '무', full: '무토', el: '土', yy: 1, cls: 'c-earth' },
+            '己': { hg: '기', full: '기토', el: '土', yy: 0, cls: 'c-earth' },
+            '庚': { hg: '경', full: '경금', el: '金', yy: 1, cls: 'c-metal' },
+            '辛': { hg: '신', full: '신금', el: '金', yy: 0, cls: 'c-metal' },
+            '壬': { hg: '임', full: '임수', el: '水', yy: 1, cls: 'c-water' },
+            '癸': { hg: '계', full: '계수', el: '水', yy: 0, cls: 'c-water' },
+            // 지지 (명리학 표준 지장간 본기 음양 적용)
+            '子': { hg: '자', full: '자수', el: '水', yy: 0, cls: 'c-water', jjg: ['壬','癸'] },
+            '丑': { hg: '축', full: '축토', el: '土', yy: 0, cls: 'c-earth', jjg: ['癸','辛','己'] },
+            '寅': { hg: '인', full: '인목', el: '木', yy: 1, cls: 'c-wood',  jjg: ['戊','丙','甲'] },
+            '卯': { hg: '묘', full: '묘목', el: '木', yy: 0, cls: 'c-wood',  jjg: ['甲','乙'] },
+            '辰': { hg: '진', full: '진토', el: '土', yy: 1, cls: 'c-earth', jjg: ['乙','癸','戊'] },
+            '巳': { hg: '사', full: '사화', el: '火', yy: 1, cls: 'c-fire',  jjg: ['戊','庚','丙'] },
+            '午': { hg: '오', full: '오화', el: '火', yy: 0, cls: 'c-fire',  jjg: ['丙','己','丁'] },
+            '未': { hg: '미', full: '미토', el: '土', yy: 0, cls: 'c-earth', jjg: ['丁','乙','己'] },
+            '申': { hg: '신', full: '신금', el: '金', yy: 1, cls: 'c-metal', jjg: ['戊','壬','庚'] },
+            '酉': { hg: '유', full: '유금', el: '金', yy: 0, cls: 'c-metal', jjg: ['庚','辛'] },
+            '戌': { hg: '술', full: '술토', el: '土', yy: 1, cls: 'c-earth', jjg: ['辛','丁','戊'] },
+            '亥': { hg: '해', full: '해수', el: '水', yy: 1, cls: 'c-water', jjg: ['戊','甲','壬'] }
         };
 
+        const EL_KR = { '木': '목(木)', '火': '화(火)', '土': '토(土)', '金': '금(金)', '水': '수(水)' };
+        const EL_GEN = { '木': '火', '火': '土', '土': '金', '金': '水', '水': '木' };
+        const EL_CTRL = { '木': '土', '火': '金', '土': '水', '金': '木', '水': '火' };
+        const EL_CTRL_BY = { '木': '金', '火': '水', '土': '木', '金': '火', '水': '土' };
+        const EL_GEN_BY = { '木': '水', '火': '木', '土': '火', '金': '土', '水': '金' };
+
+        const TEN_TO_GROUP = {
+            '비견': '비겁', '겁재': '비겁', '식신': '식상', '상관': '식상',
+            '편재': '재성', '정재': '재성', '편관': '관성', '정관': '관성',
+            '편인': '인성', '정인': '인성'
+        };
+
+        // 12운성(포태법) 정확 계산 (양간 순행, 음간 역행)
+        const UNSEONG_NAMES = ['장생','목욕','관대','건록','제왕','쇠','병','사','묘','절','태','양'];
+        const UNSEONG_START = {
+            '甲': 11, '乙': 6, '丙': 2, '丁': 9, '戊': 2,
+            '己': 9, '庚': 5, '辛': 0, '壬': 8, '癸': 3
+        };
+        function get12Unseong(dGan, zhi) {
+            if (!zhi || zhi === '?' || !charData[dGan] || !BRANCHES.includes(zhi)) return null;
+            const startIdx = UNSEONG_START[dGan];
+            const zIdx = BRANCHES.indexOf(zhi);
+            const isYang = charData[dGan].yy === 1;
+            const diff = isYang ? (zIdx - startIdx + 12) % 12 : (startIdx - zIdx + 12) % 12;
+            return UNSEONG_NAMES[diff];
+        }
+
         function getHtmlChar(char) {
-            if (!char || char === 'unknown') return "<span class='c-unknown'>?</span><span class='char-hg'>(모름)</span>";
+            if (!char || char === '?' || char === 'unknown') {
+                return "<span class='c-unknown'>?</span><span class='char-hg'>(모름)</span>";
+            }
             const data = charData[char];
             if (!data) return char;
             return `<span class='${data.cls}'>${char}</span><span class='char-hg'>(${data.hg})</span>`;
         }
+
+        function getTenGod10(dGan, targetChar) {
+            if (!targetChar || targetChar === '?' || !charData[dGan] || !charData[targetChar]) return null;
+            const dm = charData[dGan];
+            const tg = charData[targetChar];
+            const sameYY = (dm.yy === tg.yy);
+            if (dm.el === tg.el) return sameYY ? '비견' : '겁재';
+            if (EL_GEN[dm.el] === tg.el) return sameYY ? '식신' : '상관';
+            if (EL_CTRL[dm.el] === tg.el) return sameYY ? '편재' : '정재';
+            if (EL_CTRL_BY[dm.el] === tg.el) return sameYY ? '편관' : '정관';
+            if (EL_GEN_BY[dm.el] === tg.el) return sameYY ? '편인' : '정인';
+            return null;
+        }
+
+        function getGongmang(dGan, dZhi) {
+            const sIdx = STEMS.indexOf(dGan);
+            const bIdx = BRANCHES.indexOf(dZhi);
+            if (sIdx < 0 || bIdx < 0) return [];
+            const startBranch = (bIdx - sIdx + 12) % 12;
+            return [BRANCHES[(startBranch + 10) % 12], BRANCHES[(startBranch + 11) % 12]];
+        }
+
+        // ==========================================================
+        // 2. 천간·지지 합/충/형/파/해 + 15종 신살 초정밀 감식기
+        // ==========================================================
+        function analyzeDeepRelations(pillars, dGan, dZhi, yZhi) {
+            const items = [];
+            const gans = pillars.map(p => ({ pos: p.name, c: p.gan })).filter(x => x.c && x.c !== '?');
+            const zhis = pillars.map(p => ({ pos: p.name, c: p.zhi })).filter(x => x.c && x.c !== '?');
+            const zList = zhis.map(x => x.c);
+            const allChars = [...gans.map(x => x.c), ...zList];
+
+            const findPairs = (pairDefs, list) => {
+                const hits = [];
+                for (let i = 0; i < list.length; i++) {
+                    for (let j = i + 1; j < list.length; j++) {
+                        for (const [a, b, label] of pairDefs) {
+                            if ((list[i].c === a && list[j].c === b) || (list[i].c === b && list[j].c === a)) {
+                                hits.push({ p1: list[i].pos, p2: list[j].pos, c1: list[i].c, c2: list[j].c, label });
+                            }
+                        }
+                    }
+                }
+                return hits;
+            };
+
+            // 1) 천간합 & 천간충
+            const ganHaps = findPairs([
+                ['甲','己','갑기합'],['乙','庚','을경합'],['丙','辛','병신합'],['丁','壬','정임합'],['戊','癸','무계합']
+            ], gans);
+            if (ganHaps.length > 0) {
+                const dmBound = ganHaps.some(h => h.p1 === '일주' || h.p2 === '일주');
+                items.push({
+                    tag: `🧲 천간합(${ganHaps.map(x=>x.label).join('·')})`,
+                    cat: '합',
+                    text: dmBound
+                        ? `나 자신(일간)이 <span class='hl'>${ganHaps[0].label}</span>에 묶여 있습니다. 줏대 있게 밀고 나가지 못하고 사람이나 상황에 쉽게 얽매여 질질 끌려다니는 '발목 잡힘' 구조입니다.`
+                        : `원국 천간에 <span class='hl'>${ganHaps.map(x=>x.label).join(', ')}</span>이 걸려 있어, 겉으론 원만한 척하지만 속으론 딴생각과 사적인 이해관계가 얽혀 집중력이 분산됩니다.`
+                });
+            }
+
+            const ganChungs = findPairs([
+                ['甲','庚','갑경충'],['乙','辛','을신충'],['丙','壬','병임충'],['丁','癸','정계충']
+            ], gans);
+            if (ganChungs.length > 0) {
+                items.push({
+                    tag: `💥 천간충(${ganChungs[0].label})`,
+                    cat: '충',
+                    text: `하늘의 기운이 정면 충돌하는 <span class='hl'>${ganChungs.map(x=>`${x.p1}-${x.p2} ${x.label}`).join(', ')}</span>이 있습니다. 대외적인 말실수, 직장 내 공개 갈등, 예기치 못한 구설수로 체면이 깎이기 쉬운 위험 구조입니다.`
+                });
+            }
+
+            // 2) 지지 6충 (위치별 정밀 해석!)
+            const zhiChungs = findPairs([
+                ['子','午','자오충'],['丑','未','축미충'],['寅','申','인신충'],
+                ['卯','酉','묘유충'],['辰','戌','진술충'],['巳','亥','사해충']
+            ], zhis);
+            if (zhiChungs.length > 0) {
+                const posNotes = zhiChungs.map(h => {
+                    const pairKey = `${h.p1}-${h.p2}`;
+                    if (pairKey.includes('년주') && pairKey.includes('월주')) return `<b>년월충(${h.label})</b>: 초년·집안 환경과 사회생활이 부딪혀 일찍 독립하거나 가족과 갈등이 잦습니다.`;
+                    if (pairKey.includes('월주') && pairKey.includes('일주')) return `<b>월일충(${h.label})</b>: 내 본성과 직장·사회 환경이 매번 정면 충돌해 조직 적응이 어렵고 이직·변동이 심합니다.`;
+                    if (pairKey.includes('일주') && pairKey.includes('시주')) return `<b>일시충(${h.label})</b>: 배우자궁과 말년궁이 흔들려 가까운 관계에서 뒤끝과 풍파가 끊이지 않습니다.`;
+                    return `<b>${pairKey} ${h.label}</b>: 내면의 변덕과 충돌로 평온한 일상을 스스로 뒤엎기 쉽습니다.`;
+                });
+                items.push({
+                    tag: `⚡ ${zhiChungs.map(x=>x.label).join('·')}`,
+                    cat: '충',
+                    text: posNotes.join('<br>')
+                });
+            }
+
+            // 3) 형살 (삼형/자형)
+            const hasP = (a, b) => zList.includes(a) && zList.includes(b);
+            const cnt = (c) => zList.filter(z => z === c).length;
+            const hyungNames = [];
+            if (hasP('寅','巳') || hasP('巳','申') || hasP('寅','申')) hyungNames.push('인사신 삼형(은혜를 원수로 갚는 마찰)');
+            if (hasP('丑','戌') || hasP('戌','未') || hasP('丑','未')) hyungNames.push('축술미 삼형(고집·시비·관재)');
+            if (hasP('子','卯')) hyungNames.push('자묘 무례지형(선 넘는 말과 태도)');
+            if (cnt('辰') >= 2 || cnt('午') >= 2 || cnt('酉') >= 2 || cnt('亥') >= 2) hyungNames.push('자형(스스로 자기 발등 찍는 자학 패턴)');
+            if (hyungNames.length > 0) {
+                items.push({
+                    tag: `🔪 형살`,
+                    cat: '형',
+                    text: `<span class='hl'>${hyungNames.join(' / ')}</span>이 원국에 박혀 있습니다. 남 탓할 게 아니라 본인의 조급함·의심·과격한 반응 때문에 멀쩡한 판을 스스로 깨부수는 자폭 기질이 강합니다.`
+                });
+            }
+
+            // 4) 파살 & 해살 (미세한 균열·배신)
+            const zhiPas = findPairs([['子','酉','자유파'],['午','卯','오묘파'],['寅','亥','인해파'],['申','巳','신사파'],['辰','丑','진축파'],['戌','未','술미파']], zhis);
+            const zhiHaes = findPairs([['子','未','자미해'],['丑','午','축오해'],['寅','巳','인사해'],['卯','辰','묘진해'],['申','亥','신해해'],['酉','戌','유술해']], zhis);
+            if (zhiPas.length > 0 || zhiHaes.length > 0) {
+                const phList = [...zhiPas.map(x=>x.label), ...zhiHaes.map(x=>x.label)];
+                items.push({
+                    tag: `🕳️ 파·해살(${phList[0]})`,
+                    cat: '파해',
+                    text: `<span class='hl'>${phList.join(', ')}</span>이 숨어 있어, 겉으로는 큰 싸움이 안 나도 속으로 서서히 금이 가고 믿었던 사람에게 뒤통수 맞거나 말실수로 관계가 삐걱거리는 '잔잔한 균열'이 반복됩니다.`
+                });
+            }
+
+            // 5) 원진살 & 귀문관살
+            const wonjins = findPairs([['子','未','자미'],['丑','午','축오'],['寅','酉','인유'],['卯','申','묘신'],['辰','亥','진해'],['巳','戌','사술']], zhis);
+            const gwimuns = findPairs([['子','酉','자유'],['丑','午','축오'],['寅','未','인미'],['卯','申','묘신'],['辰','亥','진해'],['巳','戌','사술']], zhis);
+            if (wonjins.length > 0) {
+                items.push({
+                    tag: `🩸 원진살`,
+                    cat: '원진',
+                    text: `<span class='hl'>${wonjins.map(x=>x.label+'원진').join(', ')}</span>이 작동해, 가까워질수록 이유 없이 상대가 미워지고 꼬아서 듣는 삐딱한 애증 패턴이 폭발합니다. 곁에 있는 사람을 정서적으로 말려 죽이는 주범입니다.`
+                });
+            }
+            if (gwimuns.length > 0) {
+                items.push({
+                    tag: `👁️ 귀문관살`,
+                    cat: '귀문',
+                    text: `<span class='hl'>${gwimuns.map(x=>x.label+'귀문').join(', ')}</span>이 깔려 있습니다. 예민함이 집착과 의심으로 변질되기 쉽고, 사소한 일에도 혼자 최악의 망상을 돌려 밤잠 설치는 신경과민 성향이 치명적입니다.`
+                });
+            }
+
+            // 6) 괴강 / 백호 / 양인 / 홍염 / 고란
+            const ilju = dGan + dZhi;
+            if (['庚辰','庚戌','壬辰','壬戌'].includes(ilju)) {
+                items.push({ tag: '👹 괴강살', cat: '살', text: `극단적인 <span class='hl'>괴강살 일주</span>입니다. 모 아니면 도 식의 독재적 기질과 타협 없는 성질머리가 뼛속까지 박혀 있어, 주변을 숨 막히게 통제하거나 스스로 극단적 굴곡을 자초합니다.` });
+            }
+            if (['甲辰','乙未','丙戌','丁丑','戊辰','壬戌','癸丑'].includes(ilju)) {
+                items.push({ tag: '🐯 백호대살', cat: '살', text: `<span class='hl'>백호대살</span>이 박혀 있어 평소엔 참다가 한 번 뚜껑이 열리면 앞뒤 안 가리고 판을 엎어버리는 폭주 기질이 위험합니다. 감정 폭발 한 번에 큰 대가를 치를 수 있습니다.` });
+            }
+            const yanginMap = { '甲':'卯', '丙':'午', '戊':'午', '庚':'酉', '壬':'子' };
+            if (yanginMap[dGan] && zList.includes(yanginMap[dGan])) {
+                items.push({ tag: '⚔️ 양인살', cat: '살', text: `칼날 같은 <span class='hl'>양인살</span>이 들어와 남에게 지는 꼴을 못 보는 지독한 오기가 독이 됩니다. 굽히면 살 길도 끝까지 버티다 부러지는 미련한 자존심의 노예입니다.` });
+            }
+            const hongyeomMap = { '甲':'午', '乙':'午', '丙':'寅', '丁':'未', '戊':'辰', '己':'辰', '庚':'戌', '辛':'酉', '壬':'子', '癸':'申' };
+            const hasHongyeom = hongyeomMap[dGan] && zList.includes(hongyeomMap[dGan]);
+            if (hasHongyeom) {
+                items.push({ tag: '💋 홍염살', cat: '연애', text: `<span class='hl'>홍염살</span>이 있어 본인이 치명적 매력의 소유자라 착각하거나, 불같은 애정 결핍으로 이성 문제에 쉽게 흔들리고 집착하는 도화 이상의 위험한 감성 기질이 있습니다.` });
+            }
+            const hasGoran = ['乙巳','丁巳','辛亥','戊申','壬寅'].includes(ilju);
+            if (hasGoran) {
+                items.push({ tag: '🥀 고란살', cat: '연애', text: `배우자궁에 외로움이 서린 <span class='hl'>고란살 일주</span>입니다. 결혼을 해도 정서적 고독을 느끼기 쉽고, 상대에 대한 기대치가 비현실적으로 높아 스스로 관계를 차갑게 식히기 쉽습니다.` });
+            }
+
+            // 7) 도화 / 역마 / 화개 / 현침 / 공망 / 천을귀인(역설 팩폭)
+            const getSamhap = (b) => {
+                if (['寅','午','戌'].includes(b)) return { dohwa:'卯', yeokma:'申', hwagae:'戌' };
+                if (['申','子','辰'].includes(b)) return { dohwa:'酉', yeokma:'寅', hwagae:'辰' };
+                if (['巳','酉','丑'].includes(b)) return { dohwa:'午', yeokma:'亥', hwagae:'丑' };
+                if (['亥','卯','未'].includes(b)) return { dohwa:'子', yeokma:'巳', hwagae:'未' };
+                return {};
+            };
+            const s1 = getSamhap(dZhi), s2 = getSamhap(yZhi);
+            const hasDohwa = zList.includes(s1.dohwa) || zList.includes(s2.dohwa);
+            const hasYeokma = zList.includes(s1.yeokma) || zList.includes(s2.yeokma);
+            const hasHwagae = zList.includes(s1.hwagae) || zList.includes(s2.hwagae);
+
+            if (hasDohwa) items.push({ tag: '🌸 도화살', cat: '연애', text: `<span class='hl'>도화살</span>로 인해 타인의 시선과 관심에 목마른 관종 기질이 숨어 있습니다. 겉치레와 가벼운 인기에 취해 정작 진중한 인연과 실속을 놓치기 쉽습니다.` });
+            if (hasYeokma) items.push({ tag: '🐎 역마살', cat: '이동', text: `<span class='hl'>역마살</span> 탓에 한곳에 진득하게 뿌리내리지 못하고 늘 엉덩이가 들썩입니다. 조금만 힘들면 도망치듯 환경만 바꾸다 전문성 없이 표류할 위험이 큽니다.` });
+            if (hasHwagae) items.push({ tag: '🕯️ 화개살', cat: '고독', text: `<span class='hl'>화개살</span>이 강해 과거의 미련을 곱씹으며 혼자만의 동굴로 숨어듭니다. 고상한 척하지만 실상은 현실 도피와 자의식 과잉으로 주변과 벽을 쌓는 편입니다.` });
+
+            const hcCnt = allChars.filter(c => ['甲','辛','卯','午','申'].includes(c)).length;
+            if (hcCnt >= 3) {
+                items.push({ tag: `🪡 현침살(${hcCnt}개)`, cat: '독설', text: `바늘처럼 뾰족한 글자가 ${hcCnt}개 모인 <span class='hl'>현침살</span>입니다. 말 한마디로 사람 심장에 비수를 꽂는 독설과 트집 잡기가 특기라 주변의 피로도가 극심합니다.` });
+            }
+
+            const gm = getGongmang(dGan, dZhi);
+            const gmPos = [];
+            if (gm.includes(pillars[0].zhi)) gmPos.push('년지(초년·부모)');
+            if (gm.includes(pillars[1].zhi)) gmPos.push('월지(청년·직장)');
+            if (pillars[3].zhi !== '?' && gm.includes(pillars[3].zhi)) gmPos.push('시지(말년·결실)');
+            if (gmPos.length > 0) {
+                items.push({ tag: `🕳️ 공망(${gm.join('')})`, cat: '공망', text: `<span class='hl'>${gmPos.join(', ')}</span>에 공망(空亡)이 걸려 있습니다. 겉은 멀쩡해 보여도 결정적인 순간에 힘이 빠지거나 노력의 실속이 허무하게 증발하는 '속 빈 강정' 패턴을 경계해야 합니다.` });
+            }
+
+            const gwiinMap = {
+                '甲':['丑','未'],'戊':['丑','未'],'庚':['丑','未'],
+                '乙':['子','申'],'己':['子','申'],
+                '丙':['亥','酉'],'丁':['亥','酉'],
+                '辛':['寅','午'],'壬':['卯','巳'],'癸':['卯','巳']
+            };
+            const hasGwiin = gwiinMap[dGan] && zList.some(z => gwiinMap[dGan].includes(z));
+            if (hasGwiin) {
+                items.push({ tag: '👑 천을귀인(역설)', cat: '귀인', text: `타고난 <span class='hl'>천을귀인</span> 복이 있어 위기 때마다 주변에서 도와주는데, 정작 본인이 그걸 자기 실력으로 착각하고 고마운 줄 몰라 귀인을 발로 차버리는 배은망덕함을 경계하십시오.` });
+            }
+
+            return { items, zhiChungs, wonjins, gwimuns, hasDohwa, hasHongyeom, hasGoran, hasYeokma, gm, gmPos };
+        }
+
+        // ==========================================================
+        // 3. 10천간(일간) 본질 + 12운성 팩폭 + 60갑자 완전체
+        // ==========================================================
+        const dmCoreFact = {
+            '甲': "큰 나무(갑목) 일간답게 꺾일지언정 굽히지 않는 뻣뻣한 자존심이 문제입니다. 남 밑에 있길 죽도록 싫어하면서 정작 책임질 땐 고집만 부려 주변을 갑갑하게 만듭니다.",
+            '乙': "덩굴(을목) 일간답게 겉으론 유순하고 착한 척하지만, 속으론 생존 본능과 계산기가 쉴 새 없이 돌아갑니다. 불리하면 슬쩍 갈아타는 기회주의와 끈질긴 뒤끝이 숨어 있습니다.",
+            '丙': "태양(병화) 일간답게 남들 시선과 관심 없이는 못 사는 지독한 관종 기질과 급발진 성향이 치명적입니다. 시작만 거창하고 식을 땐 누구보다 무책임하게 등을 돌립니다.",
+            '丁': "촛불(정화) 일간답게 겉은 차분한 척하지만 속은 질투와 예민함으로 부글부글 끓고 있습니다. 한 번 삐지면 은근슬쩍 상대의 아픈 곳을 찌르는 서늘한 뒤끝의 소유자입니다.",
+            '戊': "큰 산(무토) 일간답게 '내가 곧 법'이라는 답답한 꼰대 기질과 융통성 제로의 고집이 뼈에 박혀 있습니다. 변화를 극도로 거부해 스스로 시대에 도태되기 쉽습니다.",
+            '己': "논밭(기토) 일간답게 속마음을 절대 다 보여주지 않고 실속만 챙기는 의심 많은 현실주의자입니다. 겉으론 다 받아주는 척하지만 속으론 깐깐하게 등급을 매기고 있습니다.",
+            '庚': "무쇠(경금) 일간답게 공감 능력은 제로에 가깝고, 내 기준에 안 맞으면 가차 없이 베어버리는 냉혹한 독불장군입니다. 솔직함을 빙자한 무례함으로 적을 양산합니다.",
+            '辛': "보석(신금) 일간답게 병적인 완벽주의와 선민의식으로 똘똘 뭉쳐 있습니다. 남의 흠집은 기가 막히게 찾아내면서 정작 자기 비판엔 유리 멘탈로 돌변하는 내로남불입니다.",
+            '壬': "큰 바다(임수) 일간답게 겉으론 쿨하고 호탕한 척하지만 속내를 알 수 없는 음습한 계산과 변덕이 도사립니다. 스케일만 크고 마무리가 허술해 뒷수습을 남에게 떠넘깁니다.",
+            '癸': "빗물(계수) 일간답게 눈치와 잔머리는 비상하지만 정면 승부는 피하는 회피형 전략가입니다. 피해의식과 우울감에 쉽게 빠져 주변 에너지까지 축축하게 끌어내립니다."
+        };
+
+        const unseongFact = {
+            '장생': "초반 기세와 낙관주의는 넘치지만, 세상 물정 모르는 순진함과 의존성 때문에 큰 위기 앞에서 쉽게 무너지는 철부지 에너지입니다.",
+            '목욕': "변덕과 호기심, 도화 기운이 끓어올라 한 가지에 진득하게 집중 못 하고 겉치레와 자극만 좇다 실속을 다 까먹는 불안정한 에너지입니다.",
+            '관대': "자기 과시욕과 허세가 하늘을 찌릅니다. 실력보다 폼을 중시하고 남에게 가르치려 드는 꼰대 기질이 일찍부터 튀어나오는 에너지입니다.",
+            '건록': "자기 힘만 믿고 남의 도움을 무시하는 뻣뻣한 고집과 워커홀릭 강박이 강합니다. 융통성 없이 정면 돌파만 고집하다 스스로 골병드는 에너지입니다.",
+            '제왕': "하늘 아래 내가 최고라는 폭군·독재자 에너지입니다. 굽힐 줄 모르는 오만함 때문에 정점에 올라도 결국 주변의 배신과 고립을 자초하기 쉽습니다.",
+            '쇠': "도전 정신은 일찌감치 식고 안전제일주의와 늙은이 같은 보수성에 갇혀 있습니다. 해보기도 전에 안 될 이유부터 찾는 소극적 방어 에너지입니다.",
+            '병': "생각과 걱정이 병적으로 많아 사서 스트레스를 키우고, 현실의 행동보다 망상과 자기 연민에 빠져 에너지를 탕진하는 예민한 상태입니다.",
+            '사': "감정이 메마르고 의심이 깊어 타인과 벽을 높이 쌓습니다. 고집스럽게 과거와 원한을 곱씹으며 스스로 어두운 동굴로 파고드는 차가운 에너지입니다.",
+            '묘': "속마음을 무덤처럼 꽁꽁 숨기고 집착과 소유욕을 키우는 음습한 에너지입니다. 돈이든 사람이든 쥐고 안 놓으려는 쪼잔함과 폐쇄성이 치명적입니다.",
+            '절': "끈기와 지속력이 바닥이라 조금만 힘들면 모든 걸 끊어버리고 도망치는 극단적 리셋 증후군이 있습니다. 변덕이 심해 신뢰를 쌓기 어렵습니다.",
+            '태': "이상과 계획만 거창하게 잉태해 놓고 정작 현실에서 낳아 기를 실행력이 턱없이 부족합니다. 남의 말에 쉽게 흔들리는 팔랑귀 에너지입니다.",
+            '양': "남에게 기대고 보호받으려는 의존 심리가 깔려 있어, 스스로 책임지고 개척하기보다 안전한 울타리 안에서 안주하려는 나태한 에너지입니다."
+        };
 
         const iljuPersonality = {
             '甲子': "겉으로는 지적이고 고상해 보이지만, 결정적인 순간에는 타인보다 본인의 안위를 가장 먼저 챙기는 차가운 이기주의가 숨어 있습니다. 타인의 조언에 고개를 끄덕이면서도 속으로는 절대 자신의 뜻을 굽히지 않는 굳건한 고집이 있습니다. 머리로만 완벽한 상황을 통제하려다 막상 진흙탕에 뛰어들어야 할 실천의 순간에는 주저하고 물러서는 나약함이 아쉬운 대목입니다.",
@@ -200,7 +488,7 @@
             '庚午': "원칙과 도덕, 반듯함을 내세우지만 그 엄격한 잣대는 철저히 타인에게만 향해 있는 이중적인 면모를 지녔습니다. 타인의 작은 실수조차 너그럽게 안아주지 못하는 냉혹함 때문에 주변 사람들은 늘 긴장하고 눈치를 봅니다. 반면 본인의 자존심이 조금이라도 상하면 불같이 화를 내며 관계 단절을 해버리는 미성숙한 대처 방식을 보입니다.",
             '辛未': "모든 일에 현미경을 들이대고 작은 흠집이라도 찾아내야 직성이 풀리는 피곤하고 예민한 완벽주의를 가졌습니다. 타인이 본인보다 앞서가거나 주목받는 것을 견디지 못하는 은근한 자격지심이 있어, 겉으로는 축하하면서도 속으로는 상대를 깎아내리는 서늘함이 있습니다. 한 번 받은 상처나 서운함은 절대 잊지 않는 긴 뒤끝을 자랑합니다.",
             '壬申': "뛰어난 순발력과 임기응변으로 상황을 모면하는 데는 탁월하지만, 진정성 있게 문제를 정면 돌파하기보다는 말장난으로 요리조리 빠져나가려는 가벼움이 단점입니다. 다방면에 호기심이 많아 이것저것 시도하지만 한 분야에 진득하게 뿌리내리는 끈기가 부족해, 결국 얕은 지식만 넓게 가진 채 '전문성 없는 다재다능'으로 끝날 위험이 큽니다.",
-            '癸酉': "극도의 예민함과 까칠함으로 타인과 마음의 벽을 두껍게 치고 방어적으로 살아가는 개인주의자입니다. 자신의 고요한 영역을 침범당하는 것을 극도로 혐오하며, 선 단계를 넘었다 판단되면 매섭게 잘라내는 차가움이 있습니다. 상처받는 것이 두려워 먼저 남을 밀어내고 팩트라는 명분으로 비수를 꽂는 방어기제가 스스로를 철저히 외롭게 만듭니다.",
+            '癸酉': "극도의 예민함과 까칠함으로 타인과 마음의 벽을 두껍게 치고 방어적으로 살아가는 개인주의자입니다. 자신의 고요한 영역을 침범당하는 것을 극도로 혐오하며, 선을 넘었다 판단되면 매섭게 잘라내는 차가움이 있습니다. 상처받는 것이 두려워 먼저 남을 밀어내고 팩트라는 명분으로 비수를 꽂는 방어기제가 스스로를 철저히 외롭게 만듭니다.",
             '甲戌': "자신이 속한 무리에서 주도권을 쥐고 대장 노릇을 해야만 직성이 풀리는 오만함과 독선이 깊게 박혀 있습니다. 타인의 조언을 듣는 시늉은 하지만 결국 본인의 굳건한 고집대로 밀어붙여 조직이나 관계를 위태롭게 하기도 합니다. 겉으로는 의리와 명분을 중시하는 듯해도, 결정적인 이익 앞에서는 냉정하게 돌아설 수 있는 차가움을 숨기고 있습니다.",
             '乙亥': "환경에 잘 순응하고 부드러운 듯 보이지만, 정작 갈등에 정면으로 부딪혀 책임져야 할 상황이 오면 회피하려는 수동적인 성향이 짙습니다. 스트레스를 받으면 깊은 우울감과 자기 연민에 빠져 주변의 에너지까지 무겁게 소진시킵니다. 구체적인 실행 계획 없이 머릿속으로만 이상을 그리며 고민하다가 중요한 타이밍을 번번이 놓치곤 합니다.",
             '丙子': "밝고 원만해 보이는 겉모습 뒤에 철저하게 계산된 사회적 가면과 이중성이 숨어 있습니다. 자신에게 이득이 되는 사람에게는 한없이 다정하고 헌신적이다가도, 쓸모가 없어지면 언제 그랬냐는 듯 냉정하게 선을 긋습니다. 평소엔 젠틀하게 행동하다가도 예상치 못한 스트레스 앞에서는 이성을 잃고 히스테릭하게 반응하여 주변을 당혹스럽게 합니다.",
@@ -240,7 +528,133 @@
             '庚戌': "무식하게 힘으로만 밀어붙이는 뻣뻣한 고집을 리더십과 카리스마로 착각하며 세상을 살아가는 독불장군입니다. 상황에 맞게 유연하게 대처할 줄 모르고 한 번 물면 절대 놓지 않는 아집 탓에, 말로 부드럽게 풀 수 있는 일도 굳이 싸움으로 몰고 갑니다. 내 편이 아니면 모두 적이라는 편협한 흑백논리에 갇혀 끊임없이 대립과 분란을 조장합니다.",
             '辛亥': "고상하고 세련된 척 포장하지만 실상은 삐딱한 시선으로 타인을 조롱하고 비꼬는 데 천재적인 재능을 가진 차가운 독설가입니다. 자존심만 하늘을 찔러 조금이라도 본인에게 불리한 상황에 처하면 교묘한 말장난과 궤변으로 책임을 회피합니다. 남의 고통에 깊이 공감하는 능력은 결여되어 있고 철저히 자신의 안위만을 좇는 개인주의적 성향이 강합니다.",
             '壬子': "허허실실 미소 지으며 사람 좋은 척 하지만 그 깊고 속을 알 수 없는 내면에는 타인을 조종하려는 치밀한 계산이 깔려 있습니다. 한 번 꽂힌 목적에는 앞뒤 상황을 살피지 않고 무모하게 뛰어들어 스스로를 위기로 몰아넣는 고집을 부립니다. 속마음을 절대 투명하게 드러내지 않아 곁에 있는 가장 가까운 사람조차 100% 믿지 못하게 만드는 비밀주의의 끝판왕입니다.",
-            '癸丑': "피해망상과 억울한 감정이 내면에 가득 차 있어 매사에 부정적이고 우울한 에너지를 뿜어내며 주변 분위기를 가라앉힙니다. 타인의 애정 어린 조언조차 본인을 공격하는 것으로 받아들이며 꽁하게 방어벽을 치고 숨어버리는 답답한 성격입니다. 한 번 서운함을 느끼면 평생 곱씹고 원망하는 집착을 안고 살아가 스스로를 어둡고 고독한 동굴로 몰아넣습니다."
+            '癸丑': "피해망상과 억울한 감정이 내면에 가득 차 있어 매사에 부정적이고 우울한 에너지를 뿜어내며 주변 분위기를 가라앉힙니다. 타인의 애정 어린 조언조차 본인을 공격하는 것으로 받아들이며 꽁하게 방어벽을 치고 숨어버리는 답답한 성격입니다. 한 번 서운함을 느끼면 평생 곱씹고 원망하는 집착을 안고 살아가 스스로를 어둡고 고독한 동굴로 몰아넣습니다.",
+            '甲寅': "위아래도 없이 본인이 세상의 중심이라 착각하는 독불장군형 오만함이 뼈 깊숙이 박혀 있습니다. 남의 밑에서 고개 숙이는 꼴을 죽어도 못 보며, 조언을 건네는 사람마저 내 앞길을 막는 적으로 몰아세우는 뻣뻣한 아집 탓에 매번 스스로 고립을 자초합니다. 추진력은 좋으나 브레이크가 없어 주변 사람들까지 자기 폭주에 끌어들이는 피곤한 성향입니다.",
+            '乙卯': "겉으로는 부드럽고 예의 바른 척 연기하지만, 속에는 바위보다 단단한 고집과 지독한 자기중심주의가 똬리를 틀고 있습니다. 남과 타협하는 법이 없어 겉으로만 '알겠다'고 대답해 놓고 결국 자기 마음대로 행동해 주변을 허탈하게 만듭니다. 질투심과 경쟁심이 은근히 강해 가까운 사람이 잘되는 꼴을 진심으로 축하하지 못하는 옹졸함이 있습니다.",
+            '丙辰': "스스로를 대단한 인물이라 과대평가하며 거창한 말만 앞세우는 허세와 과시욕이 심각합니다. 겉으로는 호탕하고 너그러운 대인배 코스프레를 하지만, 정작 자기 자존심을 조금이라도 건드리면 치졸하게 화를 내며 본색을 드러냅니다. 현실적인 디테일은 무시하고 큰소리만 치다 결국 실속 없이 체면만 구기기 쉬운 전형적인 속 빈 강정입니다.",
+            '丁巳': "평소에는 우아하고 차분한 척 가면을 쓰고 있지만, 내면에는 남에게 지기 싫어하는 지독한 집착과 불같은 다혈질이 끓고 있습니다. 겉과 속이 너무 달라 기분이 조금만 틀어져도 싸늘하게 돌변해 상대방의 아픈 곳을 정확히 후벼 파는 잔인함이 있습니다. 본인의 욕심을 채우기 위해서라면 은근슬쩍 주변을 이용하는 계산적인 면모가 강합니다.",
+            '戊午': "세상 모든 일이 내 뜻대로 굴러가야 직성이 풀리는 폭군 기질과 통제 불능의 황소고집을 지녔습니다. 감정이 한 번 폭발하면 주변의 만류 따위는 귓등으로도 안 듣고 그동안 쌓아온 관계를 한방에 박살 내는 파괴적 성향이 치명적입니다. 타인의 연약함을 이해하지 못하고 자기 기준으로만 몰아붙여 결국 곁에 아무도 남지 않게 만드는 외로운 독재자입니다.",
+            '己未': "겉으로는 묵묵하고 순박해 보여 사람들을 방심시키지만, 실상은 누구보다 의심이 많고 속으로 끝없이 계산기를 두드리는 꽉 막힌 고집쟁이입니다. 한 번 마음의 문을 닫으면 절대 열지 않으며, 과거의 사소한 서운함을 몇 년이고 곱씹으며 꽁하게 원망을 쌓아두는 음습한 뒤끝이 있습니다. 변화를 극도로 거부해 스스로 우물 안 개구리로 도태되기 쉽습니다.",
+            '庚申': "자신만 옳고 남들은 다 한심해 보이는 극단적인 선민의식과 자비 없는 독단성이 몸에 배어 있습니다. 타인의 감정에 공감하는 회로가 고장 난 듯 차갑고 거친 말로 상처를 주면서도 '난 원래 솔직한 성격'이라며 뻔뻔하게 합리화합니다. 굽힐 줄 모르는 쇳덩이 같은 성격 탓에 부러질지언정 타협하지 않아 늘 적을 만들고 피곤한 싸움을 자처합니다.",
+            '辛酉': "예민함과 결벽 수준의 까탈스러움이 극에 달해, 곁에 있는 사람의 숨소리까지 통제하려 드는 피곤한 완벽주의자입니다. 남의 작은 실수는 현미경처럼 확대해 난도질하면서, 정작 본인을 향한 사소한 비판에는 극도로 날을 세우며 상대를 잘라내는 차가운 내로남불을 보입니다. 스스로를 고립시켜 놓고 외롭다고 한탄하는 모순된 멘탈의 소유자입니다.",
+            '壬戌': "겉으로는 쿨하고 스케일 큰 척하지만 속내는 한없이 복잡하고 의심으로 가득 차 있어 누구도 진심으로 믿지 못합니다. 자존심과 권력욕이 강해 남의 아래에 있기를 극도로 싫어하며, 일이 뜻대로 안 풀리면 극단적으로 판을 엎어버리는 파괴적 충동이 도사리고 있습니다. 본인의 실수를 인정하기보다 교묘한 논리로 남 탓을 시전하는 차가운 현실주의자입니다.",
+            '癸亥': "겉으론 순응하고 착해 보이지만 속을 도무지 알 수 없는 깊고 음습한 비밀주의와 끝없는 의심을 품고 있습니다. 현실의 압박을 정면으로 돌파할 의지는 부족하면서 머릿속으로만 온갖 부정적 시나리오를 돌리며 자기 연민에 빠지기 쉽습니다. 책임져야 할 순간엔 물처럼 미끄러지듯 빠져나가 주변 사람들에게 허탈감과 불신만 남기는 회피의 달인입니다."
+        };
+
+        // ==========================================================
+        // 4. 10신(十神) 세분화 팩폭 데이터베이스
+        // ==========================================================
+        const tenGod10Profile = {
+            '비견': {
+                core: "타협을 모르는 뻣뻣한 마이웨이와 '내가 무조건 맞다'는 황소고집이 가장 큰 결함입니다. 협업을 가장한 독단으로 주변을 지치게 만듭니다.",
+                moneyLeak: "남의 조언은 귓등으로도 안 듣고 본인 직감만 믿고 밀어붙이다 돈을 날리는 독단적 투자·사업 패턴이 치명적입니다.",
+                moneyTip: "당신의 직감은 시장 앞에서 아무 쓸모가 없습니다. <u>고집을 접고 자동 적립식·시스템 자산에 돈을 강제 동결</u>하는 것만이 파산을 막는 길입니다.",
+                careerWeapon: "남들이 지쳐 떨어질 때까지 버티는 미련한 뚝심과, 틀린 줄 알면서도 끝까지 우겨서 관철시키는 뻣뻣한 고집이 유일한 무기입니다.",
+                careerStage: "상사의 지시를 순순히 따를 위인이 못 되어 일반 조직에선 트러블메이커가 됩니다. <u>간섭이 적은 전문직, 1인 기업, 독립 프리랜서</u>가 유일한 생존지입니다.",
+                loveStyle: "연애에서도 상대를 배려하기보다 내 스케줄과 감정선을 최우선으로 강요합니다. 사소한 자존심 싸움에서 절대 먼저 숙이지 않아 멀쩡한 인연도 기싸움으로 끝장냅니다.",
+                loveTip: "<span class='hl'>연애는 기싸움이 아닙니다.</span> 이기려 들면 사랑은 지게 되어 있습니다. 쓸데없는 자존심을 꺾지 못하면 평생 혼자 잘난 맛에 외롭게 늙어갑니다.",
+                healthHabit: "스스로를 과신해 몸이 보내는 경고 신호를 무시하고 무리하게 버티다가 한꺼번에 무너지는 미련한 생활 습관이 병을 키웁니다.",
+                gossip: "뒤에서 '말이 안 통하는 꽉 막힌 독불장군', '자기 고집밖에 모르는 이기적인 사람'이라는 소리를 가장 많이 듣습니다."
+            },
+            '겁재': {
+                core: "남이 가진 것을 보면 배가 아프고, 수단 방법을 가리지 않고 이겨야 직성이 풀리는 지독한 승부욕과 허세가 문제입니다.",
+                moneyLeak: "허세와 체면 때문에 분수에 넘치는 지출을 일삼고, 일확천금의 한탕주의에 혹해 모은 돈을 한방에 털어먹는 '군겁쟁재'형 밑 빠진 독입니다.",
+                moneyTip: "주변에 잘 보이려 지갑 여는 허세와 도박 심리를 당장 끊으십시오. <u>남과 돈거래·동업·보증은 절대 금물</u>이며 내 돈은 내 이름 아래 숨겨야 합니다.",
+                careerWeapon: "강한 승부욕으로 남의 밥그릇을 빼앗는 공격성과 뻔뻔한 배짱이 무기지만, 동료들에겐 가장 경계해야 할 적군으로 찍힙니다.",
+                careerStage: "평화로운 팀워크는 당신과 안 맞습니다. <u>치열한 실적 경쟁판, 영업, 투자, 승부처가 명확한 야생 필드</u>에서 독기를 품고 뛰어야 합니다.",
+                loveStyle: "소유욕과 질투심이 병적으로 강해 상대를 손아귀에 쥐려 들면서도, 정작 본인은 쉽게 질려 다른 자극을 기웃거리는 이기적인 연애를 합니다.",
+                loveTip: "<span class='hl'>상대를 내 트로피나 소유물로 취급하는 오만을 버리십시오.</span> 경쟁심과 통제욕으로 상대를 숨 막히게 만들면 가장 비참한 배신으로 돌아옵니다.",
+                healthHabit: "과도한 경쟁 스트레스와 야식·음주·자극적인 보상 심리로 몸을 혹사시키는 패턴이 반복됩니다.",
+                gossip: "뒤에서 '속을 알 수 없는 욕심쟁이', '남 잘되는 꼴 못 보는 허세꾼'이라는 뒷담화의 주인공이 되기 쉽습니다."
+            },
+            '식신': {
+                core: "입맛과 편안함만 좇는 지독한 게으름과 현실 안주가 치명적입니다. 하기 싫은 일은 끝까지 미루고 듣기 좋은 소리만 골라 듣습니다.",
+                moneyLeak: "눈앞의 소확행(먹방, 취미, 편안함)에 돈을 아끼지 않으면서 정작 큰돈을 불릴 치열한 노력은 귀찮아해 통장이 늘 제자리걸음입니다.",
+                moneyTip: "편안함만 좇다간 노후가 처참해집니다. <u>소비 습관에 강제 상한선</u>을 걸고, 내 취미나 특기를 반드시 수익화하는 강제 장치를 걸어두십시오.",
+                careerWeapon: "겉으론 무던하고 사람 좋아 보이지만, 힘든 일과 압박이 오면 은근슬쩍 발을 빼고 편한 자리만 찾아가는 생존형 귀차니즘이 특기입니다.",
+                careerStage: "빡센 야근과 무한 경쟁 조직에선 금방 퍼져버립니다. <u>자기 페이스를 유지할 수 있는 기술직, 콘텐츠·요식·연구 분야</u>가 아니면 금세 탈주합니다.",
+                loveStyle: "연애 초반엔 다정하지만 익숙해지면 금세 나태해져 상대의 헌신을 당연하게 여깁니다. 갈등이 생겨도 귀찮아서 회피하는 무성의함이 상대를 지치게 만듭니다.",
+                loveTip: "<span class='hl'>사랑도 노력 없이는 식습니다.</span> 편하다는 핑계로 상대를 방치하고 받기만 하는 게으른 연애를 계속하면 상대가 조용히 떠날 것입니다.",
+                healthHabit: "스트레스를 먹는 것으로 풀고 움직이기는 죽도록 싫어하는 대사 증후군 예약 습관입니다. '내일부터 운동'을 평생 반복 중입니다.",
+                gossip: "뒤에서 '편한 것만 찾는 게으름뱅이', '책임질 일 생기면 쏙 빠지는 무사안일주의자'로 평가받기 쉽습니다."
+            },
+            '상관': {
+                core: "필터링 없는 직설 화법과 '난 틀린 말 안 해'라는 오만한 반항심이 최대 결함입니다. 눈치 없이 팩폭을 날려놓고 남 탓하는 갈등 제조기입니다.",
+                moneyLeak: "충동적인 기분파 소비와, 끝까지 버티지 못하고 홧김에 퇴사·이직·사업 변경을 반복하는 변덕 때문에 돈이 모일 틈 없이 줄줄 샙니다.",
+                moneyTip: "욱해서 판을 엎는 감정적 결정을 멈추십시오. <u>감정이 격해진 날엔 결제·투자·계약 절대 금지</u> 원칙을 세워야 생존합니다.",
+                careerWeapon: "남의 약점과 조직의 허점을 귀신같이 찔러대는 날 선 언변이 무기지만, 윗사람에겐 '다루기 껄끄러운 폭탄'으로 찍혀 승진에서 밀립니다.",
+                careerStage: "권위적인 수직 조직에선 100% 상사와 대판 싸우고 나옵니다. <u>말발과 개성이 돈이 되는 기획, 마케팅, 방송, 강사, 자유 영업직</u>이 탈출구입니다.",
+                loveStyle: "상대의 작은 단점도 못 참고 날카롭게 지적하며 자존감을 갉아먹습니다. 화나면 씻을 수 없는 막말을 쏟아내고 뒤늦게 후회하는 파괴적 패턴입니다.",
+                loveTip: "<span class='hl'>솔직함과 무례함을 구분하십시오.</span> 당신의 혀끝이 사랑하는 사람의 심장을 난도질하고 있습니다. 한 템포 참고 말하는 훈련이 필수입니다.",
+                healthHabit: "신경이 늘 곤두서 있어 불면증과 신경성 질환을 달고 살면서도, 카페인·야행성 패턴으로 신경계를 더 갉아먹는 자해적 습관이 문제입니다.",
+                gossip: "뒤에서 '말이 너무 세고 재수 없다', '분위기 파악 못 하고 초 치는 프로 불편러'라는 말이 꼬리표처럼 따라다닙니다."
+            },
+            '편재': {
+                core: "한탕주의와 현실 감각 없는 과대망상이 결합해 실속보다 겉치레·스케일에 집착합니다. 맺고 끊음이 가볍고 벌려놓기만 해서 주변을 불안하게 합니다.",
+                moneyLeak: "착실하게 모으는 건 지루해하고 변동성 큰 판에만 눈이 돌아가, 벌 때는 크게 벌어도 나갈 때 한방에 날려먹는 롤러코스터 재정입니다.",
+                moneyTip: "당신에게 가장 위험한 건 '확실한 대박 정보'입니다. <u>자산의 최소 70%는 손대지 못할 안전자산에 격리</u>하고 투기 판에서 손을 떼십시오.",
+                careerWeapon: "상황 판단과 눈치, 인맥 굴리는 처세술은 최강이지만, 깊이와 진정성이 부족해 결정적인 순간에 '가벼운 기회주의자'로 신뢰를 잃습니다.",
+                careerStage: "반복되는 단순 사무직에 가두면 숨 막혀 죽습니다. <u>유통, 무역, 영업, 프로젝트성 사업, 투자·중개</u>처럼 회전이 빠른 무대가 맞습니다.",
+                loveStyle: "새로운 자극과 화려함에 쉽게 흔들리며, 한 사람에게 진득하게 정착하기보다 어장 관리나 가벼운 만남으로 상대를 불안하게 만듭니다.",
+                loveTip: "<span class='hl'>화려한 껍데기와 자극만 좇다간 진짜 보석을 놓칩니다.</span> 가벼운 처세와 변덕으로 사람의 진심을 시험하다간 텅 빈 노후를 맞습니다.",
+                healthHabit: "잦은 술자리, 불규칙한 외식, 과도한 스케줄로 몸을 소모품처럼 굴리면서 '아직 젊다'고 착각하는 무절제한 패턴이 시한폭탄입니다.",
+                gossip: "뒤에서 '입만 산 허풍쟁이', '이득 되는 사람한테만 붙는 가벼운 기회주의자'라는 평판을 얻기 쉽습니다."
+            },
+            '정재': {
+                core: "쪼잔한 계산기와 극단적인 손해 회피 성향이 인간관계마저 메마르게 만듭니다. 작은 푼돈 아끼려다 큰 기회와 사람 마음을 다 잃는 소탐대실형입니다.",
+                moneyLeak: "지나친 인색함 때문에 인간관계와 자기 투자에 돈을 아끼다 성장 기회를 스스로 막고 결국 작은 그릇에 갇혀 버립니다.",
+                moneyTip: "100원 아끼느라 100만 원짜리 기회와 신뢰를 날리는 쪼잔함을 버리십시오. <u>쓸 곳에 시원하게 쓰고 복리로 크는 장기 자산</u>에 집중하십시오.",
+                careerWeapon: "꼼꼼한 실무와 계산 능력은 뛰어나지만, 융통성 제로에 '내 몫 챙기기'에만 급급해 팀 내에서 정 없고 얄미운 깍쟁이로 찍힙니다.",
+                careerStage: "불확실한 모험이나 스타트업은 심장이 떨려 못 버팁니다. <u>회계, 재무, 공무원, 대기업 관리직</u>처럼 월급날이 보장되는 조직이 한계치입니다.",
+                loveStyle: "사랑마저 손익계산서로 따지며 조건·가성비를 저울질합니다. 상대가 조금이라도 손해를 끼치면 정이 뚝 떨어지는 서늘한 현실주의입니다.",
+                loveTip: "<span class='hl'>연인은 거래처가 아닙니다.</span> 매 순간 득실을 재고 쪼잔하게 굴다가는 상대가 질려서 떠나고 삭막한 사람만 남게 됩니다.",
+                healthHabit: "병원비나 운동비 아까워하며 몸의 작은 이상을 방치하다가 나중에 몇 배의 치료비로 돌려받는 미련한 절약 습관이 문제입니다.",
+                gossip: "뒤에서 '피도 눈물도 없는 짠돌이·깍쟁이', '자기 손해는 1원도 안 보려는 쪼잔한 사람'이라는 소리를 듣습니다."
+            },
+            '편관': {
+                core: "스스로를 극한으로 몰아붙이는 강박과, 타인에게도 똑같은 엄격함을 강요하는 차가운 압박감이 치명적입니다. 속으론 불안하면서 겉으론 센 척합니다.",
+                moneyLeak: "과도한 책임감이나 체면, 벼랑 끝 승부수에 무리하게 베팅하다가 한 번 삐끗하면 감당 못 할 빚과 압박에 짓눌리는 극단적 리스크가 큽니다.",
+                moneyTip: "무리한 레버리지와 영웅심리를 버리십시오. <u>비상금과 방어적 현금 흐름부터 확보</u>하지 않으면 위기 한 방에 멘탈과 자산이 동시에 무너집니다.",
+                careerWeapon: "위기 돌파력과 카리스마는 강하지만, 아랫사람을 숨 막히게 몰아붙이고 본인도 번아웃으로 자폭하는 '독재형 워커홀릭'으로 공포 분위기를 만듭니다.",
+                careerStage: "느슨하고 애매한 환경에선 답답해서 미칩니다. <u>위계와 권한이 확실한 전문직, 법조·보안·의료·위기관리·독립 리더</u> 포지션이 맞습니다.",
+                loveStyle: "연애를 감옥처럼 통제하거나, 반대로 독한 상대에게 끌려가며 스스로 고통을 자초하는 가학·피학적 연애 패턴에 빠지기 쉽습니다.",
+                loveTip: "<span class='hl'>긴장을 풀고 상대를 통제하려는 손을 놓으십시오.</span> 사랑까지 전쟁터처럼 치열하게 굴면 상대도 지치고 당신도 병듭니다.",
+                healthHabit: "만성적인 긴장과 화병, 과로로 교감신경이 과열되어 있습니다. 쉬는 것조차 죄책감을 느끼며 몸을 갉아먹다 돌발 질환으로 쓰러질 위험이 큽니다.",
+                gossip: "뒤에서 '숨 막히고 무서운 독재자', '늘 날이 서 있어서 같이 있기 불편한 사람'으로 기피당하기 쉽습니다."
+            },
+            '정관': {
+                core: "남의 시선과 체면, 원칙에 목매는 답답한 융통성 제로 꼰대 기질이 문제입니다. 겉으론 반듯한 척하지만 속으론 타인을 깐깐하게 재단합니다.",
+                moneyLeak: "남들 시선 의식하느라 쓸데없는 품위 유지비, 경조사비, 체면 치레에 돈이 줄줄 새면서 정작 내실 있는 자산 증식엔 소심해 기회를 놓칩니다.",
+                moneyTip: "남들이 어떻게 볼까 신경 쓰느라 내 통장 구멍 내는 짓을 멈추십시오. <u>체면 소비를 잘라내고 철저한 예산표와 우량 자산</u>으로 실속을 챙기십시오.",
+                careerWeapon: "규정과 매뉴얼을 무기로 삼아 아랫사람을 지적질하고, 책임질 일은 '원칙상 안 된다'며 피하는 보수적 관료주의가 특기입니다.",
+                careerStage: "변수가 많고 자유분방한 판에선 멘탈이 털립니다. <u>공공기관, 대기업, 행정·인사·법무·관리직</u>처럼 룰과 직급이 명확한 울타리가 최선입니다.",
+                loveStyle: "연애마저 '정상적인 기준'과 '체면'에 끼워 맞추려 들며 상대를 가르치고 교정하려 듭니다. 숨 막히는 잣대 때문에 연인이 도망치게 만듭니다.",
+                loveTip: "<span class='hl'>연인은 당신의 부하직원이나 학생이 아닙니다.</span> 옳고 그름만 따지며 훈계하는 버릇을 고치지 않으면 곁에 남을 사람은 없습니다.",
+                healthHabit: "남 눈치 보느라 스트레스를 속으로만 꾹꾹 눌러 담아 위장병과 만성 두통, 불면증을 키우는 '참다 병나는' 습관이 치명적입니다.",
+                gossip: "뒤에서 '융통성 1도 없는 답답한 꼰대', '겉과 속이 다른 위선적인 모범생'이라는 평가를 받기 쉽습니다."
+            },
+            '편인': {
+                core: "끝없는 의심과 삐딱한 피해의식, 현실성 없는 망상에 빠져 혼자 소설을 쓰는 피곤한 괴짜 기질입니다. 순수한 호의조차 꼬아 듣습니다.",
+                moneyLeak: "현실적인 노동은 우습게 보면서 어설픈 특수 정보나 허황된 아이디어, 뜬구름 잡는 재테크에 꽂혀 돈을 날리는 비현실적 패턴이 위험합니다.",
+                moneyTip: "혼자만의 착각과 음모론 같은 투자 감각을 믿지 마십시오. <u>눈에 보이는 현실적인 현금 흐름과 단순한 저축</u>으로 발을 땅에 붙여야 합니다.",
+                careerWeapon: "남들과 다른 삐딱한 시각은 있지만, 협업을 거부하고 혼자 겉돌며 비관적인 초를 쳐서 팀 사기를 떨어뜨리는 아웃사이더 기질이 강합니다.",
+                careerStage: "평범한 조직 생활과 인간관계에 얽매이면 우울증이 옵니다. <u>혼자 깊게 파고드는 IT, 연구, 디자인, 철학·기획, 특수 전문 분야</u>가 맞습니다.",
+                loveStyle: "상대의 말 한마디, 답장 속도 하나에도 혼자 최악의 시나리오를 쓰며 의심하고 시험합니다. 정작 본인은 속마음을 닫아걸어 상대를 미치게 만듭니다.",
+                loveTip: "<span class='hl'>머릿속 망상 소설 집필을 당장 중단하십시오.</span> 일어나지도 않은 배신을 미리 의심하며 상대를 몰아세우다 스스로 이별을 만들고 있습니다.",
+                healthHabit: "밤낮이 바뀐 불규칙한 수면, 극심한 생각 과부하, 방구석 고립 패턴이 면역력과 정신 건강을 동시에 갉아먹고 있습니다.",
+                gossip: "뒤에서 '뭘 생각하는지 모를 음침한 괴짜', '피해의식 심해서 다루기 피곤한 사람'이라는 말을 듣기 쉽습니다."
+            },
+            '정인': {
+                core: "생각만 산더미처럼 쌓아놓고 정작 행동은 1도 안 하는 게으른 탁상공론과 의존성이 최악의 결함입니다. 힘든 일은 누가 해결해 주길 바라는 어른아이입니다.",
+                moneyLeak: "땀 흘려 돈 버는 건 싫어하고 부모나 배우자에게 기대려 하며, '준비 중'이라는 핑계로 시간과 돈을 허비하다 자립 시기를 놓칩니다.",
+                moneyTip: "누군가 당신을 평생 먹여 살려줄 거라는 환상을 깨십시오. <u>계획만 세우지 말고 당장 오늘부터 작더라도 직접 돈을 버는 실행</u>에 옮기십시오.",
+                careerWeapon: "책임져야 할 실무에선 쏙 빠지면서도, 그럴듯한 명분과 핑계로 자신을 합리화하고 순진한 표정으로 동정심을 유발하는 수동적 처세술이 특기입니다.",
+                careerStage: "야생 같은 실적 압박 환경에선 며칠 못 버티고 도망칩니다. <u>교육, 연구, 문서·행정, 자격증 기반의 정적이고 보호받는 직군</u>이 한계입니다.",
+                loveStyle: "연인을 파트너가 아니라 나를 보살펴줄 부모처럼 대하며 정서적으로 매달립니다. 결정 장애가 심해 사소한 선택까지 떠넘겨 상대를 지치게 만듭니다.",
+                loveTip: "<span class='hl'>사랑은 일방적인 돌봄 서비스가 아닙니다.</span> 징징거리며 기대기만 하는 의존성을 끊어내지 못하면 아무리 착한 연인도 결국 떠납니다.",
+                healthHabit: "움직이기 싫어 침대와 한 몸이 되어 지내는 만성 운동 부족과 무기력증이 근력 저하와 순환 장애를 부르고 있습니다.",
+                gossip: "뒤에서 '말만 번지르르하고 손가락 하나 안 까딱하는 의존적인 사람', '철없는 어른아이'로 찍히기 쉽습니다."
+            }
         };
 
         const iljiPsychology = {
@@ -258,512 +672,663 @@
             '亥': "부담스러운 일이나 책임이 따르는 상황을 모조리 회피하려 드는 만성적인 무기력과 현실 도피 성향이 무의식을 차지합니다. 겉으론 수긍하는 척하지만 실제 행동으로는 옮기지 않는 방관자 마인드입니다."
         };
 
-        function getTenGodsCombo(dom1, dom2) {
-            let combo = dom1 + "+" + dom2;
-            if (dom1 === dom2) {
-                if (dom1 === '비겁') return "타인의 조언은 수용하지 않고 본인의 생각만이 옳다고 강력하게 주장하는 아집의 결정체입니다. 타인과의 타협을 거부하며 스스로 고립을 자초하면서도 자존심 하나로 버티다 도태되기 쉬운 꽉 막힌 성향입니다.";
-                if (dom1 === '식상') return "감정 통제 능력이 미숙하여 순간적인 감정을 여과 없이 표출하고 상황을 그르치기 쉬운 유형입니다. 거창한 시작에 비해 끈기가 부족하여 마무리가 빈약한 전형적인 용두사미의 모습을 보여줍니다.";
-                if (dom1 === '재성') return "인간관계를 철저히 이득과 손실의 잣대로만 평가하는 극단적인 현실주의자입니다. 당장의 작은 이익에 연연하다 사람의 신뢰를 잃고, 설익은 요령을 부리다 오히려 더 큰 손실을 입기 쉬운 성향입니다.";
-                if (dom1 === '관성') return "보수적인 잣대와 융통성 없는 마인드로 본인뿐 아니라 주변 사람들까지 엄격하게 통제하려는 피곤한 완벽주의자입니다. 체면과 대외적 이미지에 과도하게 집착하여 정작 내실을 다지지 못하는 위선적인 면이 있습니다.";
-                if (dom1 === '인성') return "생각과 계획은 많으나 정작 행동으로 옮기는 것은 극도로 꺼리는 실천력 부족의 전형입니다. 타인이 알아서 해결해 주길 바라는 의존성이 강하며, 문제가 생기면 현실을 회피하고 책임을 전가하는 성향이 다분합니다.";
-            }
-
-            const combos = {
-                '비겁+식상': "타협을 모르는 고집(비겁)과 여과 없는 직설적 화법(식상)이 결합해, 솔직함을 빙자하여 타인에게 상처 주는 말을 쏟아내는 피곤한 성향입니다. 섣불리 행동하여 상황을 꼬이게 만들고 주변에 부담을 주기 쉽습니다.",
-                '식상+비겁': "타인의 이목을 끌려는 욕망(식상)과 꺾이지 않는 아집(비겁)이 뭉쳐, 언쟁을 피하지 않는 갈등 유발자입니다. 본인의 잘못을 인정하지 않고 궤변으로 합리화하여 주변 사람들을 심리적으로 지치게 만듭니다.",
-                '비겁+재성': "독단적인 성향(비겁)이 물질적 욕망(재성)과 엮여, 타인의 객관적인 조언을 무시하고 무모한 결정에 몰두하여 큰 손실을 입기 쉽습니다. 욕심에 비해 현실 감각이 부족하여 스스로 자충수를 두는 경우가 많습니다.",
-                '재성+비겁': "이해타산적 성향(재성)에 쓸데없는 자존심(비겁)이 더해져, 겉모습만 화려하고 실속은 빈약한 허세꾼이 되기 십상입니다. 대외적으로는 여유로운 척하지만 이면에서는 경제적, 심리적 압박에 시달릴 위험이 큽니다.",
-                '비겁+관성': "아집(비겁)과 권위의식(관성)이 뒤섞여, 자신이 정한 규칙을 타인에게 강압적으로 들이미는 독단적인 태도를 보입니다. 본인보다 강한 자에게는 순응하면서 약자에게는 엄격하게 구는 이중성이 강합니다.",
-                '관성+비겁': "엄격한 규율(관성)을 타인에게 강요하며 자기 우월감(비겁)에 빠져 사는 피곤한 비판가입니다. 타인의 사소한 실수도 유연하게 넘기지 못하고 예민하게 반응하여 스스로 주변에 적을 만드는 스타일입니다.",
-                '비겁+인성': "강한 아집(비겁)에 피해의식(인성)이 결합되어, 타인의 순수한 호의마저 왜곡하여 받아들이는 피곤한 성격입니다. 스스로 고립을 자처하며 자기 연민에 빠져 곁에 있는 사람의 감정적 에너지를 심하게 소모시킵니다.",
-                '인성+비겁': "실천력이 결여된 나태함(인성)과 아집(비겁)이 만나, 실제 행동 없이 머릿속으로만 이상을 좇는 몽상가입니다. 실패가 두려워 시도하지 않으면서 세상이 자신의 진가를 알아주지 않는다고 불평하는 습관이 있습니다.",
-                '식상+재성': "가벼운 임기응변(식상)으로 이득(재성)을 취하려는 기회주의적 성향이 강합니다. 끈기 있게 헌신하기보다는 즉각적인 쾌락과 쉬운 길을 좇으려 하며, 일관성 없는 처세로 인해 결국 타인의 굳건한 신뢰를 얻지 못합니다.",
-                '재성+식상': "목적 달성(재성)을 위해 상황에 따라 말을 가볍게 바꾸는(식상) 계산적인 태도를 띱니다. 눈앞의 이익을 우선시하여 오랜 의리나 원칙을 쉽게 저버리는 철저한 개인주의적 면모가 두드러집니다.",
-                '식상+관성': "직설적인 화법(식상)으로 조직의 체계(관성)에 불만을 표하며 갈등을 주도하는 불평 제조기입니다. 명분을 내세우지만 실상은 본인의 뜻대로 되지 않는 상황에 감정을 앞세우는 경우가 많아 아웃사이더로 남기 쉽습니다.",
-                '관성+식상': "권위주의적 태도(관성)를 지닌 채 언변(식상)을 타인을 통제하고 지적하는 데 사용하여 주변을 지치게 만드는 상사 유형입니다. 타인에게는 엄격하고 자신에게는 관대한 내로남불의 잣대를 적용하기 쉽습니다.",
-                '식상+인성': "얕게 습득한 지식(인성)으로 자신을 과시(식상)하느라 실속을 챙기지 못하는 헛똑똑이입니다. 언변은 전문가 수준이나 정작 그것을 구체적인 행동과 결과로 증명하는 능력은 턱없이 부족하여 인정받기 어렵습니다.",
-                '인성+식상': "현실성 없는 구상(인성)에 빠져 지켜지지 않을 말(식상)만 앞세우는 실천력 부족 유형입니다. 거창한 계획을 늘어놓지만 실행으로 옮기는 추진력이 바닥이라 중요한 기회와 타이밍을 매번 놓치곤 합니다.",
-                '재성+관성': "물질적 욕망(재성)과 지위욕(관성)에 매몰되어 본인의 신념을 쉽게 저버리는 현실주의자입니다. 대외적으로는 원리원칙을 지키는 척하지만 이면에서는 본인의 이득만을 계산하는 이중성 탓에 구설에 휘말릴 소지가 다분합니다.",
-                '관성+재성': "체면과 직위(관성)를 지키면서도 음성적으로는 자신의 이익(재성)을 철저히 챙기는 위선적인 성향입니다. 지위를 활용해 사적인 이득을 취하려는 위험성을 내포하고 있어, 한순간의 실수로 모든 명예를 잃을 수 있습니다.",
-                '재성+인성': "이익을 추구하는 욕구(재성)는 강하나 지나친 신중함과 결정 장애(인성)로 인해 행동하지 못하는 멘탈입니다. 돌다리를 너무 두드리다 타이밍을 놓치고, 타인의 성취를 보며 뒤늦은 후회와 질투만 반복하기 쉽습니다.",
-                '인성+재성': "자기 계발이나 막연한 준비(인성)를 핑계로 현실적인 경제 활동(재성)을 미루는 실용성 부족의 이상주의자입니다. 현실 감각이 떨어져 뜬구름 잡는 정보에 현혹되기 쉬우며, 이로 인해 재정적 기반을 무너뜨릴 위험이 큽니다.",
-                '관성+인성': "타인의 시선(관성)을 지나치게 의식하고 수동적인 태도(인성)로 일관하는 의존적인 성향입니다. 스스로 주도적인 결정을 내리지 못해 타인이 지시하는 틀 안에서만 움직이다가 결국 경쟁력을 잃고 도태되기 쉽습니다.",
-                '인성+관성': "체면과 자존심(관성)은 매우 강하지만 정작 그것을 뒷받침할 행동력과 실무 능력(인성)은 빈약한 탁상공론형 멘탈입니다. 스스로를 뛰어난 인재라 착각하지만, 타인의 시선에는 현실 감각이 떨어지는 답답한 사람으로 평가받기 십상입니다."
-            };
-            return combos[combo] || "단점들이 복잡하게 얽혀 있어 일관된 장점을 발휘하기 힘든, 심리적 불안정성이 높은 총체적 난국의 멘탈입니다.";
-        }
-
         const monthMasks = {
-            '子': "사회생활에서는 본심을 감추고 상황을 유리하게 끌고 가려는 '계산적인 관찰자' 가면을 씁니다. 본인의 손실을 극도로 꺼리며, 표면에 나서기보다 뒤에서 은밀하게 여론을 주도하려는 사내 정치의 달인입니다.",
-            '丑': "직장에서는 융통성을 발휘하기보다 옛 방식만을 고집하는 '고집불통' 가면을 씁니다. 시대와 상황이 변해도 타인의 새로운 의견을 배척하려는 꽉 막힌 태도 탓에 동료들을 답답하게 만드는 피곤한 유형입니다.",
-            '寅': "자신의 한계를 명확히 파악하지 못한 채 무모하게 직진하는 '통제 불능 불도저' 가면을 씁니다. 의욕만 앞서 일을 벌여놓고, 정작 뒷수습은 동료들에게 부담으로 떠넘겨 조직 내의 불안 요소로 작용합니다.",
-            '卯': "강자 앞에서는 한없이 자세를 낮추고, 만만한 사람 앞에서는 교묘하게 권위를 내세우는 '강약약강' 가면을 씁니다. 실력으로 정면 승부하기보다 얕은 처세술과 눈치로 연명하려는 태도가 몸에 배어 있습니다.",
-            '辰': "능력보다 과시욕이 앞서, 마치 본인이 무리의 리더인 양 행동하는 '허세 가득한 꼰대' 가면을 씁니다. 입으로는 원대한 비전을 읊어대지만 정작 실무 능력은 그에 미치지 못해 주변의 신뢰를 온전히 얻지 못합니다.",
-            '巳': "앞에서는 누구보다 다정하게 굴지만, 상황이 불리해지면 언제든 동료를 외면할 수 있는 차가운 '개인주의자' 가면을 씁니다. 이익을 위해서라면 타인의 약점도 조용히 무기로 삼을 수 있는 냉혹함이 있습니다.",
-            '午': "조직의 룰보다는 본인의 감정과 기분을 앞세우는 '기분파' 가면을 씁니다. 대중의 시선을 받아야 직성이 풀리는 인정 욕구 때문에 종종 분위기를 파악하지 못하고 나서다가 회의 분위기를 얼어붙게 만듭니다.",
-            '未': "겉으로는 묵묵히 일하는 척하지만, 속으로는 불평불만과 피해의식을 쌓아두는 '소극적 불만 제조기' 가면을 씁니다. 직접 부딪혀 해결하려 하지 않고 뒤에서 부정적인 에너지를 쏟아내어 팀의 사기를 갉아먹습니다.",
-            '申': "어떻게 하면 힘든 일을 피하고 요령껏 빠져나갈까 잔머리를 굴리는 '얄팍한 기회주의자' 가면을 씁니다. 상사 앞에서는 성실한 척 연기하면서 궂은일은 동료에게 은근슬쩍 미루는 태도 탓에 분노를 유발합니다.",
-            '酉': "본인의 기준과 완벽주의를 타인에게 강요하며 숨통을 조이는 '자비 없는 비판가' 가면을 씁니다. 타인의 작은 실수 하나도 유연하게 넘기지 못하고 날 선 잣대를 들이대는 탓에 직장 내에서 겉돌기 쉽습니다.",
-            '戌': "누가 시키지도 않은 일에 무리해서 오지랖을 부리다 혼자 지쳐 남들에게 부담감을 주는 '순교자 코스프레' 가면을 씁니다. 거절하지 못하고 일을 다 떠안은 뒤 속으로만 억울해하며 주변을 갑갑하게 만듭니다.",
-            '亥': "어떤 의욕이나 주도성 없이 수동적으로 머무르는 '무기력한 방관자' 가면을 씁니다. 어려운 일이 닥치면 깊게 생각하기를 포기하고 책임을 회피하려는 태도 때문에 중요한 프로젝트에서 배제되기 십상입니다."
+            '子': "사회생활에서는 본심을 감추고 상황을 유리하게 끌고 가려는 '계산적인 관찰자' 가면을 씁니다. 본인의 손실을 극도로 꺼리며 뒤에서 은밀하게 여론을 주도하려는 사내 정치의 달인입니다.",
+            '丑': "직장에서는 융통성을 발휘하기보다 옛 방식만을 고집하는 '고집불통' 가면을 씁니다. 시대가 변해도 타인의 새로운 의견을 배척하는 꽉 막힌 태도로 동료들을 답답하게 만듭니다.",
+            '寅': "자신의 한계를 파악하지 못한 채 무모하게 직진하는 '통제 불능 불도저' 가면을 씁니다. 의욕만 앞서 일을 벌여놓고 뒷수습은 동료에게 떠넘기는 불안 요소입니다.",
+            '卯': "강자 앞에서는 한없이 자세를 낮추고, 만만한 사람 앞에서는 교묘하게 권위를 내세우는 '강약약강' 가면을 씁니다. 실력보다 얕은 처세술과 눈치로 연명하려는 태도가 배어 있습니다.",
+            '辰': "능력보다 과시욕이 앞서 본인이 리더인 양 행동하는 '허세 가득한 꼰대' 가면을 씁니다. 입으로는 원대한 비전을 읊지만 실무 능력은 그에 미치지 못해 신뢰를 잃기 쉽습니다.",
+            '巳': "앞에서는 다정하게 굴지만 상황이 불리해지면 언제든 동료를 외면할 수 있는 차가운 '개인주의자' 가면을 씁니다. 이익을 위해서라면 타인의 약점도 무기로 삼는 냉혹함이 있습니다.",
+            '午': "조직의 룰보다 본인의 감정과 기분을 앞세우는 '기분파' 가면을 씁니다. 인정 욕구 때문에 분위기 파악 못 하고 나서다가 회의 분위기를 얼어붙게 만듭니다.",
+            '未': "겉으로는 묵묵히 일하는 척하지만 속으로는 불평불만과 피해의식을 쌓아두는 '소극적 불만 제조기' 가면을 씁니다. 뒤에서 부정적인 에너지를 쏟아내어 팀 사기를 갉아먹습니다.",
+            '申': "어떻게 하면 힘든 일을 피하고 요령껏 빠져나갈까 잔머리를 굴리는 '얄팍한 기회주의자' 가면을 씁니다. 상사 앞에선 성실한 척하면서 궂은일은 동료에게 미룹니다.",
+            '酉': "본인의 기준과 완벽주의를 타인에게 강요하며 숨통을 조이는 '자비 없는 비판가' 가면을 씁니다. 타인의 작은 실수도 넘기지 못하고 날 선 잣대를 들이대 겉돌기 쉽습니다.",
+            '戌': "누가 시키지도 않은 일에 오지랖을 부리다 혼자 지쳐 부담을 주는 '순교자 코스프레' 가면을 씁니다. 거절 못 하고 떠안은 뒤 속으로만 억울해하며 주변을 갑갑하게 합니다.",
+            '亥': "의욕이나 주도성 없이 수동적으로 머무르는 '무기력한 방관자' 가면을 씁니다. 어려운 일이 닥치면 책임을 회피하려는 태도 때문에 중요한 프로젝트에서 배제되기 십상입니다."
+        };
+
+        const excessiveElFact = {
+            '木': "목(木) 기운이 지나치게 강해 타협을 모르고 본인의 주장을 끝까지 꺾지 않습니다. 부러질지언정 굽히지 않으려는 뻣뻣함 때문에 사서 갈등을 자처합니다.",
+            '火': "화(火) 기운이 과열되어 감정 기복이 롤러코스터 같고 충동을 억제하지 못합니다. 욱하는 성질 한 번에 그동안 쌓아온 공든 탑을 불태워버리는 패턴이 치명적입니다.",
+            '土': "토(土) 기운이 정체되어 융통성이 제로에 가깝고, 생각만 굴리다 실천은 안 하는 답답한 고집불통입니다. 묵은 원한을 꽁하게 쌓아두는 뒤끝이 주변을 질리게 만듭니다.",
+            '金': "금(金) 기운이 과도해 타인에게 얼음장처럼 차갑고 날 선 잣대를 들이댑니다. 팩트 폭격이란 이름으로 상대 자존감을 난도질하다 결국 완벽한 고립을 맞습니다.",
+            '水': "수(水) 기운이 넘쳐 속마음을 알 수 없는 음습함과 현실 도피 성향이 강합니다. 정면 돌파 대신 핑계와 회피, 우울감으로 빠져들어 중심을 잃기 쉽습니다."
+        };
+
+        const missingElFact = {
+            '木': "목(木)이 결핍되어 새로운 일을 밀어붙이는 추진력과 유연한 성장 의지가 바닥입니다. 시작을 두려워하고 제자리걸음만 치는 답답함이 있습니다.",
+            '火': "화(火)가 결핍되어 열정과 표현력이 메말라 있습니다. 속마음을 제대로 전하지 못해 오해를 사고, 차갑고 생기 없는 태도로 주변을 얼어붙게 만듭니다.",
+            '土': "토(土)가 결핍되어 중심을 잡아주는 신뢰감과 끈기가 턱없이 부족합니다. 이리저리 휩쓸리며 한곳에 정착하지 못하는 가벼움이 치명적입니다.",
+            '金': "금(金)이 결핍되어 맺고 끊는 결단력과 냉정한 자기 통제력이 없습니다. 안 되는 관계나 손해 보는 일도 질질 끌다가 더 큰 화를 부릅니다.",
+            '水': "수(水)가 결핍되어 융통성과 상황 판단의 지혜가 막혀 있습니다. 빡빡하고 건조한 태도로 주변과 마찰을 빚으며 감정적 여유가 전혀 없습니다."
+        };
+
+        const stemPeriodPrefix = {
+            '비견': "독선과 자존심 싸움에 휘말리며 ", '겁재': "치열한 경쟁과 손재수·배신 기운 속에서 ",
+            '식신': "나태함과 안일한 낙관에 취해 ", '상관': "입방정과 잦은 충돌·구설수를 달고 다니며 ",
+            '편재': "허황된 한탕과 과시욕에 흔들리며 ", '정재': "쪼잔한 계산과 소심한 집착에 갇혀 ",
+            '편관': "극심한 압박감과 스트레스에 짓눌리며 ", '정관': "남의 시선과 체면 치레에 억눌린 채 ",
+            '편인': "끝없는 의심과 외로운 망상 속에서 ", '정인': "의존적인 태도와 실천력 부족으로 "
         };
 
         const timelineY = {
-            '子': "내성적인 성격 탓에 남들과 활발하게 어울리지 못하고 방구석에서 피해망상에 빠져 지내기 쉬웠던 소심한 초년기입니다. 머리로는 온갖 계산을 다 하면서도 정작 입 밖으로는 당당하게 나서지 못해 억눌려 지냈습니다.",
-            '丑': "융통성 없는 고집으로 어른들 말씀은 듣지 않고 스스로 사서 고생을 자처했던 미련한 초년기입니다. 타인보다 상황 판단이 다소 느려 잔소리를 들으며 내면에 열등감을 겹겹이 쌓아 올렸던 꽉 막힌 시기입니다.",
-            '寅': "참을성이 부족하고 감정 통제가 안 되어 수시로 사고를 치고 주변을 피곤하게 만들었던 무모한 초년기입니다. 끈기가 없어 한곳에 진득하게 있지 못하고 욱하는 성질에 숱하게 부딪히고 상처받았던 질풍노도의 시절입니다.",
-            '卯': "타인의 시선과 평가에 지나치게 얽매여 본인의 의견 한 번 제대로 내세우지 못했던 유약한 초년기입니다. 작은 일에도 깊은 상처를 받아 눈물을 흘리며 주변 사람들의 감정까지 함께 소진시켰던 예민했던 시절입니다.",
-            '辰': "특별한 실력도 없으면서 불필요한 허세와 대장 놀이에 빠져 타인을 무시하다 스스로 고립을 자초했던 오만한 초년기입니다. 현실을 직시하지 못하고 자신이 뭐라도 된 양 헛된 과시욕 속에 살았던 시기입니다.",
-            '巳': "어른들 앞에서는 바른 척하지만 뒤로는 친구들을 교묘하게 이간질하며 자신의 이익만 챙기려 했던 영악한 초년기입니다. 얄팍하고 계산적인 행동들이 결국 들통나 스스로 주변의 신뢰를 갉아먹었던 이중적인 시절입니다.",
-            '午': "감정 조절이 서툴러 본인 뜻대로 되지 않으면 바닥에 드러눕거나 크게 떼를 쓰며 어른들 속을 태웠던 초년기입니다. 주체할 수 없는 과시욕으로 나서다가 나중에 떠올리면 후회할 만한 부끄러운 기억을 숱하게 남겼습니다.",
-            '未': "또래답지 않게 애늙은이처럼 굴며 속으로 불평만 가득 품고 살았던 염세적인 초년기입니다. 세상에서 본인이 제일 불쌍하다는 자기 연민에 푹 빠져 주변의 긍정적인 분위기마저 무겁게 짓눌렀던 우울한 시절입니다.",
-            '申': "진득하게 한 가지를 끝내지 못하고 이리저리 산만하게 호기심만 보이다 결국 아무런 실속도 챙기지 못한 헛똑똑이 초년기입니다. 얕은 요령으로 위기만 모면하려다 기초를 다지지 못해 평생의 발목을 잡게 만든 가벼운 시기입니다.",
-            '酉': "지나친 까탈스러움으로 부모님 속을 태우고, 친구들의 단점만 예리하게 지적하다 겉돌게 된 피곤한 초년기입니다. 자신만 완벽하고 깨끗하다는 오만한 선민의식이 일찌감치 자리 잡아 곁을 내주지 않았던 차가운 시절입니다.",
-            '戌': "오지랖이 넓어 굳이 나서지 않아도 될 남의 일에 참견하다 억울하게 책임을 덮어썼던 답답한 초년기입니다. 고집은 또 쇠심줄 같아서 본인이 틀린 줄도 모르고 끝까지 씩씩대며 억지를 부렸던 융통성 제로의 시절입니다.",
-            '亥': "만성적인 무기력증에 빠져 의욕 없이 허송세월만 보내며 나태함이 두드러지던 초년기입니다. 현실의 어려움을 마주하기보다 망상 속으로 도피하며 남들 다 앞으로 나아갈 때 혼자 제자리걸음만 쳤던 정체된 시기입니다."
+            '子': "내성적인 성격 탓에 방구석에서 피해망상에 빠져 지내기 쉬웠던 소심한 초년기입니다.",
+            '丑': "융통성 없는 고집으로 어른들 말씀은 안 듣고 사서 고생을 자처했던 미련한 초년기입니다.",
+            '寅': "참을성이 부족하고 감정 통제가 안 되어 수시로 사고를 치던 무모한 초년기입니다.",
+            '卯': "타인의 시선에 지나치게 얽매여 본인 의견 한 번 제대로 못 내세웠던 유약한 초년기입니다.",
+            '辰': "실력도 없으면서 불필요한 허세와 대장 놀이에 빠져 고립을 자초했던 오만한 초년기입니다.",
+            '巳': "어른 앞에선 바른 척하지만 뒤론 친구 사이를 계산적으로 저울질하던 영악한 초년기입니다.",
+            '午': "감정 조절이 서툴러 뜻대로 안 되면 크게 떼를 쓰며 주변 속을 태웠던 다혈질 초년기입니다.",
+            '未': "또래답지 않게 애늙은이처럼 굴며 속으로 불평과 자기 연민만 쌓던 염세적인 초년기입니다.",
+            '申': "진득하게 한 가지를 끝내지 못하고 산만하게 호기심만 보이다 기초를 놓친 초년기입니다.",
+            '酉': "지나친 까탈스러움으로 친구 단점만 예리하게 지적하다 겉돌게 된 차가운 초년기입니다.",
+            '戌': "오지랖이 넓어 남의 일에 참견하다 책임을 덮어쓰고도 끝까지 억지 부리던 초년기입니다.",
+            '亥': "만성적인 무기력증에 빠져 현실을 마주하기보다 망상 속으로 도피하던 정체된 초년기입니다."
         };
 
         const timelineM = {
-            '子': "냉혹한 사회에 나와서도 정면 승부는 회피하고 요리조리 계산기만 튕기며 간만 보다가 청춘의 황금기를 허비하기 쉬운 2030입니다. 행동력 없이 잔머리만 굴리다 결국 뚜렷하게 이룬 것 하나 없는 실속 없는 상태로 전락할 우려가 큽니다.",
-            '丑': "효율성은 무시한 채 묵묵히 몸만 갈아 넣다 남들에게 궂은일만 다 떠맡기 쉬운 희생을 강요받는 2030입니다. 융통성 없는 아집 때문에 변화하는 세상의 흐름에 도태되어 골병만 들고 통장은 비어있는 안타까운 시기입니다.",
-            '寅': "혈기왕성하게 무모한 도전을 일삼다 현실의 높은 벽에 부딪혀 처참하게 상처받기 쉬운 2030입니다. 욱하는 성질을 못 이겨 조직 생활에 적응하지 못하고 잦은 퇴사와 이직을 반복하다 경력 관리에 어려움을 겪을 수 있습니다.",
-            '卯': "남의 시선과 평가에 얽매여 진짜 본인의 인생은 단 한순간도 주도적으로 살아보지 못하는 수동적인 2030입니다. 주관 없이 주변에 휩쓸리며 결정 장애로 소중한 세월을 다 보내고 우울감에 빠질 위험이 매우 높습니다.",
-            '辰': "능력은 부족하면서 스케일 큰 척, 잘나가는 척 허세를 부리다 교묘한 덫에 걸려 큰 손실을 입기 쉬운 2030입니다. 겉으론 화려하게 치장하지만 실상은 언제 무너질지 모르는 불안정한 기반 위에서 줄타기하는 꼴입니다.",
-            '巳': "이익을 좇아 이리저리 노선을 갈아타며 기회주의적으로 대처하다 결국 양쪽 모두에게 본색을 들켜 신뢰를 철저히 잃게 되는 2030입니다. 얕은 처세술과 변명이 쌓여 어느 순간 주변에 의지할 사람 하나 없는 고립무원에 빠집니다.",
-            '午': "순간의 감정과 자극에 취해 충동적인 결정을 내리다가 인생의 난이도를 스스로 높여버리기 쉬운 무모한 2030입니다. 젊은 날의 귀한 에너지를 무절제하게 낭비하고 나중에 뼈저린 후회와 경제적 압박만 남게 됩니다.",
-            '未': "스스로 개선할 노력은 하지 않으면서 세상이 내 가치를 몰라준다고 불평만 늘어놓는 2030입니다. 끝없는 자기합리화와 남 탓으로 점철되어 사회적인 성취를 이루지 못한 채 점차 고립되어 가는 우울한 시기입니다.",
-            '申': "얕은 호기심으로 이것저것 찔러만 보고 진득하게 하나를 파고들지 못해 결국 이도 저도 아닌 상태로 머무는 2030입니다. 요행을 바라며 가벼운 지식으로 섣부른 판단을 내리다 뼈아픈 후회를 남길 수 있습니다.",
-            '酉': "지나친 완벽주의와 까칠함으로 연애도, 인간관계도, 직장 생활도 삐걱거리게 만들고 혼자만의 견고한 성에 갇혀버린 2030입니다. 팩폭이랍시고 남에게 상처 주는 것을 즐기다 결국 곁에 아무도 남지 않게 되는 외로운 시기입니다.",
-            '戌': "거절에 취약한 성격 탓에 타인의 무리한 부탁이나 책임을 떠안고 청춘 내내 타인을 위해 에너지를 낭비하기 쉬운 2030입니다. 억울하다고 한탄해 봤자 본인의 끊어내지 못한 맹목적 오지랖이 만든 결과일 뿐입니다.",
-            '亥': "책임감을 회피하며 힘든 일이 주어지면 망상이나 무의미한 활동으로 도망치는 무기력함에 빠지기 쉬운 2030입니다. 스스로 독립할 생각 없이 타인이나 환경에 의존하여 살아가려는 나태함의 한계를 보여주는 시기입니다."
+            '子': "사회에 나와서도 정면 승부는 피하고 계산기만 튕기다 청춘의 황금기를 허비하기 쉬운 2030입니다.",
+            '丑': "효율성 없이 몸만 갈아 넣다 남들에게 궂은일만 떠맡고 골병들기 쉬운 희생의 2030입니다.",
+            '寅': "혈기왕성하게 무모한 도전을 일삼다 욱하는 성질로 조직 적응에 실패하기 쉬운 2030입니다.",
+            '卯': "남의 시선에 얽매여 주관 없이 휩쓸리다 결정 장애로 세월을 다 보내기 쉬운 수동적 2030입니다.",
+            '辰': "능력보다 스케일 큰 척 허세를 부리다 교묘한 덫에 걸려 큰 손실을 입기 쉬운 2030입니다.",
+            '巳': "이익을 좇아 노선을 갈아타다 양쪽 모두에게 본색을 들켜 신뢰를 잃기 쉬운 기회주의적 2030입니다.",
+            '午': "순간의 감정과 자극에 취해 충동적 결정을 내리다 인생 난이도를 스스로 높이는 2030입니다.",
+            '未': "스스로 개선할 노력은 안 하면서 세상이 내 가치를 몰라준다고 남 탓만 늘어놓는 2030입니다.",
+            '申': "얕은 호기심으로 이것저것 찔러만 보다 전문성 없이 표류하기 쉬운 헛똑똑이 2030입니다.",
+            '酉': "지나친 완벽주의와 까칠함으로 연애도 직장도 삐걱거리며 혼자만의 성에 갇히는 2030입니다.",
+            '戌': "거절에 취약해 타인의 무리한 부탁을 다 떠안고 남 좋은 일만 하다 억울해할 2030입니다.",
+            '亥': "책임감을 회피하며 힘든 일이 오면 무기력하게 도망치고 누군가에게 기대려는 2030입니다."
         };
 
         const timelineD = {
-            '子': "그동안 본인의 이익만 좇으며 계산적으로 살아온 태도 탓에 진심을 나눌 사람이 곁에 남지 않는 고독한 중년입니다. 경제적인 여유를 쥐고 있을진 몰라도 정작 마음을 기댈 곳이 없어 차갑게 식어버리는 쓸쓸한 시기입니다.",
-            '丑': "시대는 빠르게 변하는데 혼자 과거의 방식에 갇혀 옴짝달싹 못 하는 꽉 막힌 고집불통으로 도태되는 중년입니다. 요령 없이 몸만 혹사하다 관절이 삭아 건강마저 상하기 쉽고 억울한 감정만 쌓이는 처지입니다.",
-            '寅': "나이가 들어서도 욱하는 성질을 고치지 못해 순간적인 분노로 공든 탑을 무너뜨리고 가족과 재산을 잃기 쉬운 불안정한 중년입니다. 타인의 조언을 듣지 않는 무모한 판단의 결과로 스스로를 외로운 섬으로 만들 수 있습니다.",
-            '卯': "평생 남 눈치만 보고 타인의 기준에 맞춰 살다 뒤돌아보니 '나'라는 주체성은 흔적도 없이 사라져 버린 허무한 중년입니다. 여전히 멘탈은 연약해 작은 위기에도 크게 흔들리며 정신적인 나약함을 극복하지 못합니다.",
-            '辰': "아직도 자신이 잘나가던 옛날인 줄 착각하고 무리하게 판을 벌리다가 경제적 타격을 입을 수 있는 허세의 중년입니다. 현실을 직시하지 못하고 과거의 영광만 곱씹는 초라한 처지로 전락할 위험이 큽니다.",
-            '巳': "얕은 처세술과 이기적인 태도로 연명하던 모습이 결국 탄로 나 사회적으로 신뢰를 잃고 고립되는 인과응보의 중년입니다. 아무도 당신의 미소를 진심으로 믿어주지 않아 사방이 꽉 막힌 듯한 외로움을 겪게 됩니다.",
-            '午': "젊을 때 건강을 돌보지 않고 자극만을 좇아 살아온 대가로 급격한 체력 저하와 병원 신세를 면치 못하는 고단한 중년입니다. 한때의 화려함은 연기처럼 사라지고, 오직 짙은 후회만이 곁을 지키는 초라한 시기입니다.",
-            '未': "옹졸한 고집과 끝없는 불평불만 때문에 배우자도 지치고 자식들도 거리를 두게 되는 외로운 독거 중년입니다. 매일 방구석에서 과거에 겪은 사소한 손해나 곱씹으며 소극적인 원망 속에 스스로를 가두어 둡니다.",
-            '申': "나이가 들어서도 일확천금을 노리며 무리한 투자를 감행하다 재산을 잃고 온 가족을 힘들게 할 수 있는 위기의 중년입니다. 진득하게 익혀둔 기술 하나 없어 뒤늦은 고생을 하며 뼈 시린 신세를 한탄하게 됩니다.",
-            '酉': "까탈스럽고 예민한 성질머리로 주변 사람을 쉴 새 없이 밀어내다 결국 세상에서 가장 완벽하게 혼자가 되어버린 고립의 중년입니다. 힘든 상황이 닥쳐도 선뜻 손 내밀어 줄 사람 하나 없는 깊은 외로움이 드리워집니다.",
-            '戌': "주제넘게 남의 일에 참견하다 타인의 문제를 떠안아 스트레스로 심신이 부서지기 쉬운 미련한 중년입니다. 평생 남 좋은 일만 실컷 하고 정작 본인의 몫은 챙기지 못한 채 뒤로 밀려나 억울함을 곱씹을 시기입니다.",
-            '亥': "게으름과 무기력으로 뚜렷하게 이룬 것 하나 없이 나이를 먹고도 누군가에게 의존하려는 무기력한 중년입니다. 상황을 반전시킬 기력조차 상실해 그저 시간만 허비하는 답답하고 정체된 삶이 이어집니다."
+            '子': "이익만 좇으며 계산적으로 살아온 대가로 마음을 기댈 진심 어린 사람이 남지 않는 고독한 중년입니다.",
+            '丑': "시대는 변하는데 혼자 과거의 방식에 갇혀 옴짝달싹 못 하는 고집불통으로 도태되는 중년입니다.",
+            '寅': "나이가 들어서도 욱하는 성질을 못 고쳐 순간의 분노로 공든 탑과 가족 신뢰를 깨기 쉬운 중년입니다.",
+            '卯': "평생 남 눈치만 보고 살다 뒤돌아보니 '나'라는 주체성은 사라져 버린 허무하고 유약한 중년입니다.",
+            '辰': "아직도 잘나가던 옛날인 줄 착각하고 무리하게 판을 벌이다 경제적 타격을 입기 쉬운 중년입니다.",
+            '巳': "얕은 처세술과 이기적인 태도가 결국 탄로 나 아무도 당신의 미소를 믿지 않는 인과응보의 중년입니다.",
+            '午': "젊을 때 건강을 돌보지 않고 자극만 좇아온 대가로 급격한 체력 저하와 후회만 남는 중년입니다.",
+            '未': "옹졸한 고집과 끝없는 불평불만 때문에 배우자도 자식도 거리를 두게 되는 독거 위기의 중년입니다.",
+            '申': "나이가 들어서도 일확천금을 노리며 무리한 투자를 감행하다 재산을 날릴 위기의 중년입니다.",
+            '酉': "까탈스럽고 예민한 성질머리로 주변을 밀어내다 세상에서 가장 완벽하게 혼자가 되는 중년입니다.",
+            '戌': "주제넘게 남의 일에 참견하다 타인의 문제를 떠안고 본인의 몫은 챙기지 못한 채 억울해하는 중년입니다.",
+            '亥': "게으름과 무기력으로 뚜렷하게 이룬 것 없이 나이를 먹고도 누군가에게 기대려는 정체된 중년입니다."
         };
 
         const timelineT = {
-            '子': "평생 타인에 대한 배려 없이 이익만 좇아온 대가로, 물질은 남았을지언정 온기를 나눌 사람 없이 늙어갈 고독한 말년입니다. 인색하게 군 탓에 자식들마저 의무감으로만 안부를 묻는 차가운 노후가 예상됩니다.",
-            '丑': "융통성 없이 몸만 혹사시킨 결과, 온몸의 관절이 닳아 건강 악화로 고생하며 고통스럽게 연명하는 고단한 말년입니다. 나이가 들어도 굽히지 않는 고집 때문에 돌봐주는 이들마저 지치게 만드는 피곤한 존재가 될 수 있습니다.",
-            '寅': "나이가 들어서도 불같은 성질을 버리지 못해 주변과 마찰을 빚으며 스스로 평판을 깎아내리는 처량한 말년입니다. 가족들마저 당신의 막무가내 태도에 지쳐 외면당한 채 갈등 속에 늙어갈 운명입니다.",
-            '卯': "평생 멘탈 관리를 하지 못하고 작은 일에도 과민하게 반응한 탓에 온갖 잔병치레를 달고 사는 피곤한 말년입니다. 주변에 끊임없이 불만을 하소연하다 고립되어 우울감 속에서 생의 끝을 맺기 쉽습니다.",
-            '辰': "끝까지 본인의 현실을 파악하지 못하고 허세를 부리다가 경제적 어려움을 겪고 빈털터리로 전락할 수 있는 말년입니다. 실속 없이 과거에만 얽매여 남들이 귀 기울여주지 않는 초라한 모습을 면하기 어렵습니다.",
-            '巳': "자신의 이익을 위해 타인을 배척해 온 업보로, 노년의 공동체에서조차 주변의 냉대를 받으며 고립되는 말년입니다. 당신의 곁을 진심으로 지켜줄 사람이 없어 씁쓸한 결말을 맞이하게 될 위험이 큽니다.",
-            '午': "무절제한 생활의 대가로 노년에 심각한 건강 악화를 겪어 스스로를 온전히 통제하지 못하게 될 우려가 큰 말년입니다. 본인은 물론 가족들에게도 무거운 짐을 지우며 고통스럽게 생을 마무리할 시한폭탄입니다.",
-            '未': "평생 속으로만 삭여온 억울함이 지독한 화병이 되어 병상에서 주변을 원망하며 외롭게 늙어갈 말년입니다. 타인의 작은 호의조차 날 선 시선으로 왜곡하여 스스로 삭막한 감옥을 만들어내는 안타까운 노인입니다.",
-            '申': "잔머리만 굴리고 착실하게 모은 자산이 없어 노후에 경제적 압박에 시달리며 매 순간 지출을 덜덜 떨어야 하는 말년입니다. 젊은 날의 충동적 소비가 궁핍한 노후라는 뼈아픈 결과로 되돌아올 것입니다.",
-            '酉': "끝없는 결벽과 남의 약점을 후벼 파는 비판 습관 탓에 타인을 밀어낸 결과 철저한 외로움을 겪게 될 말년입니다. 당신의 까다로운 기준을 맞춰줄 사람은 아무도 남아있지 않은 차가운 고립 속에 갇히게 됩니다.",
-            '戌': "지나친 오지랖으로 타인의 짐을 대신 지느라 늙어서도 고단함을 벗지 못하고 궂은 수고를 이어가야 하는 말년입니다. 본인의 삶을 희생하며 남을 도왔지만 정작 돌려받는 것 없이 짙은 후회가 남는 시기가 될 것입니다.",
-            '亥': "스스로 삶을 가꾸려는 의지조차 상실한 채, 무기력증에 빠져 방구석에서 고립된 채 조용히 잊혀지는 쓸쓸한 말년입니다. 먼저 손 내밀어 주는 이 하나 없는 철저한 무관심 속에서 무의미하게 남은 시간을 흘려보냅니다."
+            '子': "평생 인색하고 계산적으로 군 탓에 자식들마저 의무감으로만 안부를 묻는 차가운 말년입니다.",
+            '丑': "융통성 없이 몸만 혹사시키고 고집을 부린 탓에 돌봐주는 이들마저 지치게 만드는 고단한 말년입니다.",
+            '寅': "나이가 들어서도 불같은 성질을 버리지 못해 가족들마저 외면하게 만드는 갈등 속의 말년입니다.",
+            '卯': "평생 멘탈 관리를 못 해 잔병치레를 달고 살며 주변에 불만만 하소연하다 고립되는 말년입니다.",
+            '辰': "끝까지 현실을 파악 못 하고 과거의 영광만 곱씹으며 허세를 부리다 궁핍해질 수 있는 말년입니다.",
+            '巳': "자신의 이익을 위해 타인을 배척해 온 업보로 노년의 공동체에서조차 냉대받는 씁쓸한 말년입니다.",
+            '午': "무절제한 생활의 대가로 노년에 심각한 건강 악화를 겪어 가족에게 무거운 짐을 지울 말년입니다.",
+            '未': "평생 속으로만 삭여온 억울함이 화병이 되어 주변을 원망하며 외롭게 늙어갈 안타까운 말년입니다.",
+            '申': "잔머리만 굴리고 착실하게 모은 자산이 없어 노후 매 순간 지출을 떨며 버텨야 하는 말년입니다.",
+            '酉': "끝없는 결벽과 남의 약점을 후벼 파는 비판 습관 탓에 곁에 아무도 남아있지 않은 고립의 말년입니다.",
+            '戌': "지나친 오지랖으로 늙어서도 남의 짐을 대신 지느라 정작 자기 삶은 희생하고 후회할 말년입니다.",
+            '亥': "스스로 삶을 가꾸려는 의지조차 상실한 채 방구석에서 무관심 속에 조용히 잊혀지는 말년입니다."
         };
 
-        function generateLifetimeFortune(bazi, gender, timeStr) {
-            const dGan = bazi.getDay().charAt(0); const dZhi = bazi.getDay().charAt(1);
-            const yGan = bazi.getYear().charAt(0); const yZhi = bazi.getYear().charAt(1);
-            const mGan = bazi.getMonth().charAt(0); const mZhi = bazi.getMonth().charAt(1);
-            const tGan = timeStr === 'unknown' ? '?' : bazi.getTime().charAt(0); 
-            const tZhi = timeStr === 'unknown' ? '?' : bazi.getTime().charAt(1);
-            
-            const iljuText = transFull(dGan) + transFull(dZhi);
-            const key = dGan + dZhi;
+        function getSeasonJohuFact(mZhi) {
+            if (['寅','卯','辰'].includes(mZhi)) return "봄철(寅卯辰) 기운을 타고나 시작할 때 의욕만 하늘을 찌르고 뒤로 갈수록 흐지부지되는 조급함과 미숙함이 짙습니다.";
+            if (['巳','午','未'].includes(mZhi)) return "여름철(巳午未) 뜨거운 화기 속에 태어나 성질이 급하고 감정 과열이 잦습니다. 이성보다 감정이 먼저 폭발해 관계를 망치는 건조함이 강합니다.";
+            if (['申','酉','戌'].includes(mZhi)) return "가을철(申酉戌) 서늘한 금기 속에 태어나 정이 메마르고 계산이 차갑습니다. 선 긋는 데는 도가 텄지만 포용력이 부족해 고독을 부릅니다.";
+            return "겨울철(亥子丑) 얼어붙은 수기 속에 태어나 속내를 꽁꽁 감추고 우울·의심에 빠지기 쉽습니다. 행동력은 굼뜨고 생각만 꼬아대 기회를 놓치기 십상입니다.";
+        }
 
-            let elements = { '木':0, '火':0, '土':0, '金':0, '水':0 };
-            let charsToCount = [yGan, yZhi, mGan, mZhi, dGan, dZhi];
-            
-            if (timeStr !== 'unknown') {
-                charsToCount.push(tGan, tZhi);
-            }
-            let totalChars = timeStr === 'unknown' ? 6 : 8;
-
-            charsToCount.forEach(char => {
-                if(['甲','乙','寅','卯'].includes(char)) elements['木']++;
-                if(['丙','丁','巳','午'].includes(char)) elements['火']++;
-                if(['戊','己','辰','戌','丑','未'].includes(char)) elements['土']++;
-                if(['庚','辛','申','酉'].includes(char)) elements['金']++;
-                if(['壬','癸','亥','子'].includes(char)) elements['水']++;
-            });
-
-            let missingEls = Object.keys(elements).filter(e => elements[e] === 0);
-            let excessiveEls = Object.keys(elements).filter(e => elements[e] >= 3);
-
-            let dmElement = '';
-            if(['甲','乙'].includes(dGan)) dmElement = '木';
-            else if(['丙','丁'].includes(dGan)) dmElement = '火';
-            else if(['戊','己'].includes(dGan)) dmElement = '土';
-            else if(['庚','辛'].includes(dGan)) dmElement = '金';
-            else if(['壬','癸'].includes(dGan)) dmElement = '水';
-
-            let tenGodsCount = { '비겁':0, '식상':0, '재성':0, '관성':0, '인성':0 };
-            const tenGodsLogicMap = {
-                '木': { '木':'비겁', '火':'식상', '土':'재성', '金':'관성', '水':'인성' },
-                '火': { '火':'비겁', '土':'식상', '金':'재성', '水':'관성', '木':'인성' },
-                '土': { '土':'비겁', '金':'식상', '水':'재성', '木':'관성', '火':'인성' },
-                '金': { '金':'비겁', '水':'식상', '木':'재성', '火':'관성', '土':'인성' },
-                '水': { '水':'비겁', '木':'식상', '火':'재성', '土':'관성', '金':'인성' }
-            };
-
-            const logicMap = tenGodsLogicMap[dmElement];
-            Object.keys(elements).forEach(el => {
-                const count = elements[el];
-                if (count > 0) tenGodsCount[logicMap[el]] += count;
-            });
-
-            let sortedTenGods = Object.keys(tenGodsCount).sort((a, b) => tenGodsCount[b] - tenGodsCount[a]);
-            let dom1 = sortedTenGods[0];
-            let dom2 = sortedTenGods[1];
-            if (tenGodsCount[dom1] === 0) dom1 = '비겁';
-            if (tenGodsCount[dom2] === 0) dom2 = '식상';
-
-            let tieExplanation = "";
-            let maxCount1 = tenGodsCount[sortedTenGods[0]];
-            let maxCount2 = tenGodsCount[sortedTenGods[1]];
-            
-            if (maxCount1 === maxCount2 && maxCount1 > 0) {
-                let tiedGods = sortedTenGods.filter(tg => tenGodsCount[tg] === maxCount1);
-                tieExplanation = "<div style='margin-top: 15px; padding: 15px; background: #fff0f2; border-radius: 15px; border: 2px dashed #ef9a9a; color: #c62828;'><span class='hl'>💣 답 없는 단점 콤보</span><br>현재 <span class='hl'>" + tiedGods.join(', ') + "</span> 기운이 팽팽하게 충돌하고 있어, 두 가지 치명적인 성향이 번갈아 터져 나오는 심각한 감정 기복 상태입니다. 스스로는 합리적이라 변명하지만 타인에게는 종잡을 수 없는 피곤한 멘탈입니다.</div>";
-            } else if (maxCount2 === tenGodsCount[sortedTenGods[2]] && maxCount2 > 0) {
-                let tiedGods2 = sortedTenGods.filter(tg => tenGodsCount[tg] === maxCount2);
-                tieExplanation = "<div style='margin-top: 15px; padding: 15px; background: #fff0f2; border-radius: 15px; border: 2px dashed #ef9a9a; color: #c62828;'><span class='hl'>💣 서브 결함들</span><br>주된 악질 특성인 <span class='hl'>" + dom1 + "</span>에 <span class='hl'>" + tiedGods2.join(', ') + "</span> 기운들까지 복잡하게 섞여 있어 어딜 가나 트러블을 달고 다닐 총체적 난국입니다. 쉽게 고쳐지지 않는 타고난 결함입니다.</div>";
-            }
-
-            let html = "";
-            html += "<div class='fortune-result-title'>나쁜 말만 가득 사주 결과</div>";
-            html += "<div class='result-highlight'>";
-            html += "<div class='payment-info'>결제 번호: " + orderId + "</div>";
-            html += "<div class='bazi-display'>당신의 명식: " + iljuText + " 일주</div>";
-            html += "<div class='bazi-detail'>[ 60갑자 본성, 십성 구조, 오행 조후 정밀 팩폭 완료! ]</div>";
-            html += "</div>";
-            
-            html += "<div class='dashboard-card'>";
-            html += "<div class='dashboard-header'><span class='section-icon'>📊</span>나의 사주 4기둥 (노답 명식)</div>";
-            html += "<div class='bazi-grid'>";
-            html += "<div class='bazi-col'><div class='bazi-label'>시주(말년)</div><div class='char-box'>" + getHtmlChar(tGan) + "<br>" + getHtmlChar(tZhi) + "</div></div>";
-            html += "<div class='bazi-col'><div class='bazi-label'>일주(나)</div><div class='char-box' style='background:#ffcdd2; border-radius:10px; padding:5px 0;'>" + getHtmlChar(dGan) + "<br>" + getHtmlChar(dZhi) + "<span class='me-badge'>기본 결함</span></div></div>";
-            html += "<div class='bazi-col'><div class='bazi-label'>월주(청년)</div><div class='char-box'>" + getHtmlChar(mGan) + "<br>" + getHtmlChar(mZhi) + "</div></div>";
-            html += "<div class='bazi-col'><div class='bazi-label'>년주(초년)</div><div class='char-box'>" + getHtmlChar(yGan) + "<br>" + getHtmlChar(yZhi) + "</div></div>";
-            html += "</div>";
-
-            html += "<div class='dashboard-header' style='margin-top:20px;'><span class='section-icon'>💀</span>오행(五行) 밸런스 붕괴도</div>";
-            const elColors = {'木':'bg-wood', '火':'bg-fire', '土':'bg-earth', '金':'bg-metal', '水':'bg-water'};
-            Object.keys(elements).forEach(el => {
-                let pct = (elements[el] / totalChars) * 100;
-                html += `<div class='stat-row'>
-                            <div class='stat-label'>${el} (${elements[el]}개)</div>
-                            <div class='stat-bar-wrap'><div class='stat-bar-fill ${elColors[el]}' style='width:${pct}%;'></div></div>
-                            <div class='stat-num'>${Math.round(pct)}%</div>
-                         </div>`;
-            });
-
-            html += "<div class='dashboard-header' style='margin-top:25px;'><span class='section-icon'>💣</span>십성(十星) 성질머리 분포도</div>";
-            Object.keys(tenGodsCount).forEach(tg => {
-                let pct = (tenGodsCount[tg] / totalChars) * 100;
-                html += `<div class='stat-row'>
-                            <div class='stat-label'>${tg}</div>
-                            <div class='stat-bar-wrap'><div class='stat-bar-fill bg-ten' style='width:${pct}%;'></div></div>
-                            <div class='stat-num'>${tenGodsCount[tg]}개</div>
-                         </div>`;
-            });
-            html += "</div>";
-
-            let maxElementCount = Math.max(...Object.values(elements));
-            let maxElements = Object.keys(elements).filter(e => elements[e] === maxElementCount);
-            let shadowText = "";
-
-            if (maxElementCount >= 3) {
-                if (maxElements.length > 1) {
-                    shadowText = `사주에 <span class='hl'>${maxElements.join('와(과) ')}</span> 기운이 쏠려 있어 두 가지 극단적인 성향이 내면에서 팽팽하게 충돌하는 불안정한 상태입니다. 본인은 합리적이라 생각할지 몰라도, 타인에게는 종잡을 수 없는 변덕으로 비춰져 주변 사람들의 에너지를 심하게 소모시킬 수 있습니다.`;
-                } else {
-                    let ex = maxElements[0];
-                    if (ex === '木') shadowText = "목(木) 기운이 지나치게 강해 타협을 어려워하고 본인의 주장을 꺾지 않는 경향이 짙습니다. 부러질지언정 굽히지 않으려는 태도 때문에 굳이 겪지 않아도 될 험난한 갈등을 자처하며, 결국 스스로를 고단하게 만드는 답답한 면모가 있습니다.";
-                    else if (ex === '火') shadowText = "화(火) 기운이 과도해 감정의 기복이 크고 순간적인 충동을 억누르기 힘들어합니다. 애써 공들여 쌓아온 성과나 인간관계를 욱하는 감정으로 한순간에 그르치고, 뒤늦게 자책하고 후회하는 패턴을 반복하기 쉽습니다.";
-                    else if (ex === '土') shadowText = "토(土) 기운이 과다해 생각은 많지만 정작 행동으로 옮기는 실천력은 턱없이 부족합니다. 지난 일을 꽁하게 담아두는 경향이 있으며, 변화를 두려워하는 융통성 부족 탓에 스스로 발전할 기회를 놓치고 제자리에 머물기 쉽습니다.";
-                    else if (ex === '金') shadowText = "금(金) 기운이 지나치게 강해 타인에게 무척 엄격하고 날 선 잣대를 들이대는 경향이 있습니다. 조언을 빙자해 상대의 약점을 예리하게 찌르는 습관 탓에 본의 아니게 상처를 주고 스스로를 차가운 고립 속으로 몰아넣을 수 있습니다.";
-                    else if (ex === '水') shadowText = "수(水) 기운이 너무 짙어 속마음을 과도하게 감추고 문제를 직면하기보다 회피하려는 방어적인 태도가 강합니다. 부정적인 감정이나 우울감에 쉽게 빠지며, 현실의 어려움을 이겨내기보다 유혹에 흔들려 중심을 잃을 우려가 있습니다.";
+        // 삼재(三災) 자동 판독 (띠 기준)
+        function getSamjaeStatus(yZhi, curYearZhi) {
+            const groups = [
+                { zhis: ['申','子','辰'], samjae: ['寅','卯','辰'] },
+                { zhis: ['寅','午','戌'], samjae: ['申','酉','戌'] },
+                { zhis: ['巳','酉','丑'], samjae: ['亥','子','丑'] },
+                { zhis: ['亥','卯','未'], samjae: ['巳','午','未'] }
+            ];
+            for (const g of groups) {
+                if (g.zhis.includes(yZhi)) {
+                    const idx = g.samjae.indexOf(curYearZhi);
+                    if (idx === 0) return '들삼재(재난 진입기)';
+                    if (idx === 1) return '눌삼재(가장 묵직한 정체기)';
+                    if (idx === 2) return '날삼재(마지막 뒤통수 주의기)';
                 }
-            } else if (missingEls.length > 0) {
-                shadowText = `사주에 <span class='hl'>${missingEls.join(', ')}</span> 기운이 비어 있어, 특정 상황에 유연하게 대처하는 능력이 유독 취약합니다. 이 채워지지 않는 결핍에 집착하다 보니 무리한 결정을 내리거나 불필요한 열등감에 사로잡혀 귀한 에너지를 낭비하기 쉽습니다.`;
+            }
+            return null;
+        }
+
+        // ==========================================================
+        // 5. 핵심 초정밀 명리 분석 엔진 (10개 섹션 풀패키지)
+        // ==========================================================
+        function generateLifetimeFortune(bazi, gender, timeStr, birthYear, curYearGZ) {
+            const yGan = bazi.getYear().charAt(0), yZhi = bazi.getYear().charAt(1);
+            const mGan = bazi.getMonth().charAt(0), mZhi = bazi.getMonth().charAt(1);
+            const dGan = bazi.getDay().charAt(0), dZhi = bazi.getDay().charAt(1);
+            const tGan = timeStr === 'unknown' ? '?' : bazi.getTime().charAt(0);
+            const tZhi = timeStr === 'unknown' ? '?' : bazi.getTime().charAt(1);
+
+            const pillars = [
+                { name: '년주', gan: yGan, zhi: yZhi },
+                { name: '월주', gan: mGan, zhi: mZhi },
+                { name: '일주', gan: dGan, zhi: dZhi },
+                { name: '시주', gan: tGan, zhi: tZhi }
+            ];
+
+            const iljuKey = dGan + dZhi;
+            const iljuHg = charData[dGan].hg + charData[dZhi].hg;
+            const dmElement = charData[dGan].el;
+
+            // 1) 오행 개수 & 가중치
+            const elCount = { '木':0, '火':0, '土':0, '金':0, '水':0 };
+            const elWeight = { '木':0, '火':0, '土':0, '金':0, '水':0 };
+            const allCharsForEl = [
+                { c: yGan, w: 1.0 }, { c: yZhi, w: 1.0 },
+                { c: mGan, w: 1.2 }, { c: mZhi, w: 2.5 },
+                { c: dGan, w: 1.0 }, { c: dZhi, w: 1.5 }
+            ];
+            if (timeStr !== 'unknown') allCharsForEl.push({ c: tGan, w: 1.2 }, { c: tZhi, w: 1.0 });
+            const totalChars = allCharsForEl.length;
+            allCharsForEl.forEach(({ c, w }) => {
+                if (charData[c]) { elCount[charData[c].el]++; elWeight[charData[c].el] += w; }
+            });
+
+            // 2) 정확한 10신 & 5그룹 계산 (일간 제외!)
+            const tg10Score = { '비견':0,'겁재':0,'식신':0,'상관':0,'편재':0,'정재':0,'편관':0,'정관':0,'편인':0,'정인':0 };
+            const tg10Count = { '비견':0,'겁재':0,'식신':0,'상관':0,'편재':0,'정재':0,'편관':0,'정관':0,'편인':0,'정인':0 };
+            const tgGroupCount = { '비겁':0,'식상':0,'재성':0,'관성':0,'인성':0 };
+            const tgGroupScore = { '비겁':0,'식상':0,'재성':0,'관성':0,'인성':0 };
+
+            const otherChars = [
+                { c: yGan, w: 1.0 }, { c: yZhi, w: 1.0 },
+                { c: mGan, w: 1.2 }, { c: mZhi, w: 2.5 },
+                { c: dZhi, w: 1.5 }
+            ];
+            if (timeStr !== 'unknown') otherChars.push({ c: tGan, w: 1.2 }, { c: tZhi, w: 1.0 });
+            const totalOtherChars = otherChars.length;
+            let totalOtherWeight = 0;
+
+            otherChars.forEach(({ c, w }) => {
+                const tg = getTenGod10(dGan, c);
+                if (tg) {
+                    tg10Count[tg]++; tg10Score[tg] += w;
+                    const grp = TEN_TO_GROUP[tg];
+                    tgGroupCount[grp]++; tgGroupScore[grp] += w;
+                    totalOtherWeight += w;
+                }
+            });
+
+            const yGanTG = getTenGod10(dGan, yGan), yZhiTG = getTenGod10(dGan, yZhi);
+            const mGanTG = getTenGod10(dGan, mGan), mZhiTG = getTenGod10(dGan, mZhi);
+            const dZhiTG = getTenGod10(dGan, dZhi);
+            const tGanTG = getTenGod10(dGan, tGan), tZhiTG = getTenGod10(dGan, tZhi);
+
+            // 월지 지장간 투간(透干) 여부로 진정한 격국 판별
+            const visibleGans = [yGan, mGan, tGan].filter(g => g && g !== '?');
+            const mJJG = charData[mZhi].jjg;
+            let tuganStem = null;
+            for (let i = mJJG.length - 1; i >= 0; i--) {
+                if (visibleGans.includes(mJJG[i])) { tuganStem = mJJG[i]; break; }
+            }
+            const gyeokgukTG = (tuganStem ? getTenGod10(dGan, tuganStem) : mZhiTG) || mZhiTG;
+            const gyeokLabel = tuganStem ? `${gyeokgukTG}격 (월지 지장간 ${tuganStem} 투간)` : `${gyeokgukTG}격 (월지 본기)`;
+
+            // 12운성 4자리
+            const yUn = get12Unseong(dGan, yZhi), mUn = get12Unseong(dGan, mZhi);
+            const dUn = get12Unseong(dGan, dZhi), tUn = get12Unseong(dGan, tZhi);
+
+            // 최다 10신 1, 2순위
+            const sortedTG10 = Object.keys(tg10Score).sort((a, b) => tg10Score[b] - tg10Score[a]);
+            const domTG1 = tg10Score[sortedTG10[0]] > 0 ? sortedTG10[0] : mZhiTG;
+            const domTG2 = tg10Score[sortedTG10[1]] > 0 ? sortedTG10[1] : dZhiTG;
+
+            // 3) 신강/신약 5단계
+            const mySideWeight = tgGroupScore['비겁'] + tgGroupScore['인성'];
+            const myRatio = totalOtherWeight > 0 ? (mySideWeight / totalOtherWeight) * 100 : 50;
+            let strengthLevel = '중화', strengthDesc = '';
+            if (myRatio >= 68) {
+                strengthLevel = '극신강';
+                strengthDesc = `내 편 기운이 ${Math.round(myRatio)}%로 폭주하는 극신강 사주입니다. 자기 확신이 오만으로 변질되어 남의 말은 절대 안 듣고 밀어붙이다 부러지는 독불장군 구조입니다.`;
+            } else if (myRatio >= 54) {
+                strengthLevel = '신강';
+                strengthDesc = `주체성이 강한 신강 사주(${Math.round(myRatio)}%)입니다. 버티는 힘은 좋으나 고집과 아집이 세서 타협을 모르고 주변을 자기 기준대로 휘두르려 듭니다.`;
+            } else if (myRatio >= 42) {
+                strengthLevel = '중화';
+                strengthDesc = `기운이 한쪽으로 크게 쏠리지 않은 중화 사주(${Math.round(myRatio)}%)입니다. 무난해 보이지만 결정적인 독기가 부족해 어정쩡한 포지션에 머물기 쉽습니다.`;
+            } else if (myRatio >= 26) {
+                strengthLevel = '신약';
+                strengthDesc = `내 기운이 ${Math.round(myRatio)}%에 불과한 신약 사주입니다. 욕심과 압박은 큰데 버틸 멘탈이 따라주지 않아 남 눈치 보며 휘둘리거나 쉽게 지쳐 도망칩니다.`;
             } else {
-                shadowText = "오행이 골고루 섞여 있다고 해서 반드시 좋은 것만은 아닙니다. 뚜렷하게 내세울 만한 강점이나 돌파력이 부족해 다소 평범하고 밋밋한 흐름에 머물기 쉽습니다. 명확한 주관 없이 이리저리 휩쓸리다 보면 타인의 기준에 맞춰 살아가는 수동적인 삶이 될 수 있습니다.";
-            }
-            
-            html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>🧠 뼈 아픈 성격 해부</div>";
-            html += "<div class='fortune-content-text'>";
-            html += `<p><span class='sub-title'>나의 치명적인 결함 (일주)</span>`;
-            html += `${iljuPersonality[key] || "도무지 구제할 길이 없는 답답하고 이기적인 본질을 지녔습니다."}<br><br>`;
-            html += `<span class='sub-title'>불편한 나의 무의식 (일지)</span>`;
-            html += `${iljiPsychology[dZhi]}<br><br>`;
-            html += `<span class='sub-title'>가장 두드러지는 악질 특성 (십성)</span>`;
-            html += `${getTenGodsCombo(dom1, dom2)}${tieExplanation}<br><br>`;
-            html += `<span class='sub-title'>사회생활의 얍삽한 가면 (월지)</span>`;
-            html += `${monthMasks[mZhi]}<br><br>`;
-            html += `<span class='sub-title'>오행 밸런스 붕괴의 팩폭</span>`;
-            html += `${shadowText}</p>`;
-            html += "</div></div>";
-
-            const wealthCapacity = {
-                '비겁': "타협과 굽힘을 모르는 쓸데없는 자존심 덕분에 안정적인 조직 생활이나 꾸준한 월급과는 거리가 먼 팔자입니다. 무리하게 일을 벌이고 자신의 직관만 고집하다가 큰 손실을 입고 경제적 위기를 겪을 확률이 매우 높습니다.",
-                '식상': "돈을 벌겠다는 말만 앞설 뿐 끈기가 부족해 돈이 모이지 않고 줄줄 새어 나가는 밑 빠진 독입니다. 푼돈이 생기면 자제력을 잃고 유흥과 과시에 탕진해 버리며 다음 날 후회하는 현실감 없는 태도가 자산을 갉아먹습니다.",
-                '재성': "눈에 불을 켜고 돈만 좇다가 오히려 달콤한 말에 속아 큰 손해를 보기 쉬운 유형입니다. 이익에만 매몰되어 사람 간의 신의를 저버리다 보니, 결정적인 경제적 위기가 닥쳤을 때 아무도 손을 내밀어 주지 않습니다.",
-                '관성': "남들 눈치 보고 체면 차리느라 뒤로 돈이 다 새는 줄도 모르고 실속을 챙기지 못하는 헛부자 팔자입니다. 대외적인 이미지를 위해 과도하게 지출하면서 정작 본인의 노후 자금은 부실하여 경제적 어려움에 직면할 위험이 큽니다.",
-                '인성': "행동은 하지 않고 머릿속으로 망상만 굴리며 땀 흘려 일하는 것을 극도로 꺼리는 나태한 성향입니다. 타인에게 의존하려는 경향이 강하며, 어설픈 잡지식만 믿고 무리한 투자를 감행했다가 뼈아픈 실패를 맛보기 쉽습니다."
-            };
-
-            const wealthStrategy = {
-                '비겁': "쓸데없는 아집을 꺾고 객관적인 조언을 귀담아들어야 그나마 재정적 안정을 지킬 수 있습니다. 고집을 버리지 못하겠다면 차라리 <u>차근차근 단계를 밟아가는 정직한 노동</u>을 통해 빚을 지지 않는 것이 최선입니다.",
-                '식상': "말로만 거창한 계획을 떠벌리는 것을 멈추고 <u>단기적인 유혹에 흔들리지 말고 수익을 즉각 묶어두는 통제력</u>이 필요합니다. 돈이 들어오자마자 예적금으로 강제 이체하지 않으면 평생 재정적 어려움에 시달립니다.",
-                '재성': "얄팍한 투자나 요행을 바라는 마음을 당장 거두십시오. 당신은 <u>안정적인 근로 소득에만 집중하고 일확천금의 유혹을 철저히 차단하는 것</u>만이 파산을 막고 밥그릇을 지킬 수 있는 유일한 생존 비법입니다.",
-                '관성': "남들에게 잘 보이고 싶은 허세 섞인 지출을 완전히 통제하십시오. <u>타인의 시선을 의식한 과시성 지출을 완전히 끊어내야</u> 하며, 10원 단위까지 깐깐하게 관리해야 노후의 빈곤이라는 끔찍한 결말을 피할 수 있습니다.",
-                '인성': "방구석에서 일확천금을 꿈꾸며 차트만 들여다보는 행위를 당장 멈추십시오. <u>뜬구름 잡는 계획을 멈추고 당장 작고 현실적인 경제 활동부터 시작해야</u> 현실의 무게를 깨닫고 진정한 자산을 쌓아갈 수 있습니다."
-            };
-
-            const wealthAdvice = {
-                '비겁': "타인의 조언을 무시하고 본인의 직감만 과신하다가는 자산이 수차례 반토막 나는 독단적인 투자로 큰 타격을 입기 쉽습니다. 제발 <span class='hl'>전문가나 시장의 흐름을 인정하고 수용하는 겸손함</span>을 갖추고 방어적으로 자산을 지키십시오.",
-                '식상': "돈 냄새를 맡았다고 구체적인 계획 없이 무작정 판을 벌이지 마십시오. <span class='hl'>구체적인 마무리 계획 없이 의욕만 앞서 벌인 일들이 오히려 감당할 수 없는 빚이 되어 돌아올 수 있습니다.</span> 수습할 자신이 없다면 아예 쳐다보지도 마십시오.",
-                '재성': "귀가 얇아 남의 달콤한 고급 정보에 혹하는 순간 통장이 텅 비어버리는 마법을 겪게 됩니다. <span class='hl'>세상에 대가 없는 정보는 없으며, 당신을 유혹하는 말들은 막대한 손실로 이어지는 미끼임을</span> 뼛속 깊이 명심하십시오.",
-                '관성': "대외적인 체면과 체통을 지키느라 실속 없는 지출이 큽니다. 남 좋은 일만 하다 정작 당신의 주머니는 텅 빌 것입니다. <span class='hl'>때로는 타인의 평가를 무시하더라도 본인의 실질적 자산을 지키는 냉정함</span>을 발휘해야만 살아남을 수 있습니다.",
-                '인성': "허황된 재테크 공부와 망상을 멈추고 당장 밖으로 나가 행동으로 옮기십시오. <span class='hl'>구체적인 실행이 따르지 않는 계획은 현실에서 단 한 푼의 가치도 없는 몽상</span>에 불과합니다. 땀방울이 곧 자산임을 뼈저리게 느껴야 합니다."
-            };
-
-            html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>💸 밑 빠진 독 재물운</div>";
-            html += "<div class='fortune-content-text'>";
-            html += `<p><span class='sub-title'>1. 얄팍한 재물 그릇</span>`;
-            html += `${wealthCapacity[dom1] || wealthCapacity['비겁']}<br><br>`;
-            html += `<span class='sub-title'>2. 가난에서 벗어나지 못하는 이유</span>`;
-            html += `${wealthStrategy[dom1] || wealthStrategy['비겁']}<br><br>`;
-            html += `<span class='sub-title'>3. 뼈 때리는 가난 탈출 충고</span>`;
-            html += `${wealthAdvice[dom1] || wealthAdvice['비겁']}</p>`;
-            html += "</div></div>";
-
-            const careerStage = {
-                '비겁': "타협을 모르는 뻣뻣한 성향 탓에 조직 내 마찰이 불가피하여 일반적인 회사 생활은 오래 버티기 힘듭니다. 간섭이 적은 <u>독립적인 업무나 프리랜서, 1인 기업</u> 환경이 그나마 당신이 생존할 수 있는 유일한 대안입니다.",
-                '식상': "언행이 가벼워 입조심을 하지 못하면 사내 정치의 희생양이 되거나 신뢰를 잃기 쉽습니다. 그나마 언변을 활용하되 책임을 덜 지는 <u>자유로운 영업직이나 유동적인 서비스 직군</u>에서 능력을 펴는 것이 유리합니다.",
-                '재성': "철저히 이익 중심으로 움직이다 보니 진정한 팀워크나 신의를 기대하기 어렵습니다. 동료애보다는 <u>결과로만 승부하는 철저한 실적 위주의 무한 경쟁 영업판</u>에서 멘탈을 굳게 먹고 버티는 것이 가장 잘 맞습니다.",
-                '관성': "융통성이 부족하고 룰에 얽매여 스스로 피로를 누적시키는 탓에 창의적인 직무는 쥐약입니다. 변수가 적고 매뉴얼이 확고한 <u>체계적인 관리직이나 보수적인 반복 사무직</u>에서 안정을 찾는 것이 현실적인 한계치입니다.",
-                '인성': "압박감이 큰 실무나 능동적인 문제 해결을 극도로 견디지 못하고 책임 회피를 일삼는 유형입니다. <u>경쟁이 적고 정적인 연구/기획 직군이나 단순 보조 업무</u>에 머무르며 눈에 띄지 않게 연명하는 것이 현실적입니다."
-            };
-
-            const careerWeapon = {
-                '비겁': "당신의 씁쓸한 무기는 남들이 지쳐서 포기할 때까지 물러서지 않는 <u>타협을 모르는 뚝심과 끝까지 밀어붙이는 고집</u>입니다. 주변을 피곤하게 만들면서라도 기어이 본인의 주장을 관철시키는 맹목적인 태도가 유일한 생존 방식입니다.",
-                '식상': "업무 능력보다는 불리한 상황을 <u>순간적인 언변과 핑계로 매끄럽게 넘기는 얄팍한 순발력</u> 하나는 기가 막힙니다. 본인의 잘못을 교묘하게 희석시키고 미꾸라지처럼 책임을 회피하는 언어적 마술이 주특기입니다.",
-                '재성': "조직 내에서 <u>이해관계를 귀신같이 파악하고 유리한 쪽에 서는 동물적인 기회주의적 감각</u>이 우주 최강입니다. 강자에게는 한없이 굽히고 약자에게는 철저히 매정해지는 차가운 처세술이 주력 무기입니다.",
-                '관성': "실질적인 성과보다는 <u>규정과 체면을 무기 삼아 조직의 위계를 철저히 활용하는 정치력</u>이 돋보입니다. 꼰대 같은 지적질로 아랫사람을 억누르며 무능함을 감추고 조직에 기생하는 생명력을 지녔습니다.",
-                '인성': "책임을 요리조리 회피하면서도 <u>스스로 상처받지 않게 방어막을 치는 고도의 자기합리화와 뻔뻔함</u>이 국보급입니다. 주변에서 아무리 답답해 미쳐도 혼자만 온화한 표정을 짓는 끔찍한 둔감함을 가졌습니다."
-            };
-
-            const careerAdvice = {
-                '비겁': "조직에서 살아남고 싶다면 <span class='hl'>내 방식이 틀릴 수 있음을 인정하고 타인의 방식을 수용하는 법을 배워야</span> 합니다. 굽힐 줄 모르는 고집만으로는 결코 조직의 중심에 설 수 없으며, 결국 골칫거리로 낙인찍힐 뿐입니다.",
-                '식상': "불리할 때마다 내뱉는 변명과 말장난을 멈추고 <span class='hl'>묵묵히 결과물로 실력을 증명하는 훈련을 하십시오.</span> 가벼운 언행과 남 탓하는 습관은 결국 당신의 커리어에 씻을 수 없는 치명적인 오점으로 남게 됩니다.",
-                '재성': "당장의 작은 실적이나 이익에 눈이 멀어 동료와의 신뢰를 저버리는 이기적인 행동을 멈추십시오. <span class='hl'>사람을 수단으로만 대하다가는 결정적인 위기가 닥쳤을 때 손 내밀어 줄 사람이 아무도 없게 될 것</span>입니다.",
-                '관성': "본인의 기준과 방식만이 무조건 정답이라는 권위적인 태도를 당장 버리십시오. <span class='hl'>융통성 없는 잣대로 타인을 통제하려 들면 후배들은 곁을 떠나고 당신은 낡은 사람으로 도태되어</span> 결국 책상이 치워질 것입니다.",
-                '인성': "망상과 책임 회피를 멈추고 <span class='hl'>현실의 압박에 정면으로 부딪혀 주어진 책임을 다하십시오.</span> 실무는 하지 않고 뒤로 숨어 자리만 지키려는 수동적인 태도는 구조조정 1순위로 배제되는 지름길입니다."
-            };
-
-            html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>📉 삐걱거리는 직장/사업운</div>";
-            html += "<div class='fortune-content-text'>";
-            html += `<p><span class='sub-title'>1. 당신이 버틸 수 있는 한계 무대</span>`;
-            html += `${careerStage[dom1] || careerStage['비겁']}<br><br>`;
-            html += `<span class='sub-title'>2. 조직에 민폐 끼치는 얄팍한 무기</span>`;
-            html += `${careerWeapon[dom1] || careerWeapon['비겁']}<br><br>`;
-            html += `<span class='sub-title'>3. 도태되기 싫으면 들어야 할 팩폭</span>`;
-            html += `${careerAdvice[dom1] || careerAdvice['비겁']}</p>`;
-            html += "</div></div>";
-
-            const romanceStyle = {
-                '비겁': "타인에 대한 배려 없이 본인의 감정과 페이스만 상대에게 강요하는 통제적인 연애를 합니다. 본인 뜻대로 되지 않으면 차갑게 돌아서거나 억지를 부려 상대를 지치게 만들고, 결국 상대방에게 씻을 수 없는 상처를 남겨 이별을 초래하는 피곤한 스타일입니다.",
-                '식상': "감정에 쉽게 불타오르지만 그만큼 빛의 속도로 식어버리는 무책임한 연애의 표본입니다. 한 사람에게 진득하게 헌신하기보다 새로움과 자극만 좇아 이리저리 마음을 흘리고 다녀, 파트너에게 깊은 공허함과 불신만을 안겨주는 가벼운 멘탈입니다.",
-                '재성': "연애조차도 철저하게 득실을 따지며 계산기를 두드리는 이성적이고 차가운 성향입니다. 상대의 조건이 자신에게 유리할 때는 다정하지만, 경제적 실속이 없거나 단물이 빠졌다고 판단되면 언제든 매정하게 돌아설 수 있는 기회주의적인 태도를 지녔습니다.",
-                '관성': "가부장적이거나 권위적인 마인드로 연인의 사소한 일상까지 통제하려 드는 숨 막히는 억압형입니다. 본인이 정한 룰을 강요하여 상대를 답답하게 만들고, 결국 그 억압을 견디지 못한 연인이 우울감에 빠져 도망치게 만드는 감옥 같은 연애를 조장합니다.",
-                '인성': "상대에게 무한한 이해와 보살핌만을 바라는 지독한 의존성과 이기심을 띱니다. 본인의 불안감을 채우기 위해 연인을 감정 쓰레기통으로 삼거나 과도하게 집착하여, 결국 상대방의 심리적 에너지를 완전히 방전시켜 버리는 피곤한 올가미입니다."
-            };
-
-            const partnerMale = {
-                '비겁': "당신의 강한 아집을 힘으로 찍어 누르려는 권위적인 여성을 만나 매일같이 주도권 다툼을 벌이거나, 완전히 기가 눌려 끌려다니는 피곤한 관계를 맺기 쉽습니다. 굽히지 않으면 가정 내내 평화가 없는 답답한 팔자입니다.",
-                '식상': "당신과 마찬가지로 책임감이 부족하고 변덕이 심한 상대를 만나 서로 상처를 주고받으며 극심한 감정 소모 끝에 파국을 맞이할 확률이 높습니다. 의심과 불안 속에서 끝없는 소모전을 벌일 불안정한 궁합입니다.",
-                '재성': "외적인 조건과 허영심으로 뭉친 사람을 만나 경제적으로 심한 압박을 받게 됩니다. 당신의 지갑이 얇아지거나 능력이 꺾이는 순간 상대 역시 차갑게 뒤돌아설 수 있는, 철저히 조건부로 묶인 서늘한 관계입니다.",
-                '관성': "겉으로는 당신의 통제에 순응하는 척하지만, 뒤로는 철저하게 자신의 실속만 차리는 계산적인 상대를 만날 위험이 큽니다. 정서적 교류 없이 그저 경제적 도구로 취급받으며 겉도는 결혼 생활을 이어갈 우려가 있습니다.",
-                '인성': "당신의 수동성을 악용하여 사사건건 가르치려 들고 통제하려는 상대를 만나, 자존감을 서서히 잃어가며 무기력한 동거를 이어가게 될 수 있습니다. 평생 주도권을 빼앗긴 채 답답한 잔소리 폭격을 맞을 운명입니다."
-            };
-
-            const partnerFemale = {
-                '비겁': "당신의 뻣뻣한 성질을 부드럽게 안아줄 듬직한 남자는 버티지 못하고 떠나며, 결국 당신의 기에 눌려 기대려 하는 무책임하고 무능한 남자를 만날 확률이 높습니다. 평생 당신이 경제적, 정신적 짐을 온전히 홀로 짊어지며 희생해야 할 수 있습니다.",
-                '식상': "겉모습만 화려하고 실속은 없는 불안정한 상대를 만나, 상대가 벌여놓은 사고를 수습하느라 소중한 젊음과 감정을 낭비하기 쉽습니다. 책임감 제로인 남자를 만나 평생 마음고생을 안고 살게 될 피곤한 연애운입니다.",
-                '재성': "남자의 배경과 재력에 과도하게 눈이 멀어 오히려 과대 포장된 허세남에게 속아 넘어가 큰 재무적 손실을 겪을 위험이 다분합니다. 껍데기에 속아 스스로 험난한 고생길에 뛰어들어 뒤늦게 후회하는 뼈아픈 실수를 범할 수 있습니다.",
-                '관성': "번듯한 스펙 뒤에 숨겨진 강압적이고 가부장적인 면모를 보지 못해, 연애와 결혼 내내 자아를 잃고 상대방의 억압된 기준에 억지로 맞춰 살아야 하는 감옥 같은 관계에 묶일 우려가 매우 큽니다.",
-                '인성': "스스로 결정 내리기를 두려워하고 누군가에게 의지하려는 틈을 파고들어, 당신을 심리적으로 완벽히 지배하고 고립시키려는 통제광을 만나 헤어 나오지 못할 수 있습니다. 자아를 뺏긴 채 사랑이라 착각하는 파멸적 관계를 조심해야 합니다."
-            };
-
-            const romanceAdvice = {
-                '비겁': "<span class='hl'>내 방식대로 상대를 개조하려는 이기적인 통제욕을 버리십시오. 상대를 있는 그대로 존중하지 않으면 결국 모두가 곁을 떠나 철저히 외로워질 것입니다.</span> 혼자만의 잣대를 사랑으로 포장하는 우를 범하지 마십시오.",
-                '식상': "<span class='hl'>가벼운 호기심으로 사람의 마음을 찔러보는 무책임한 행동을 멈추십시오. 진지한 관계를 구축하지 못하면 결국 그 어떤 진심도 돌려받지 못하는 공허함에 빠집니다.</span> 자극만 좇다간 평생 정착하지 못합니다.",
-                '재성': "<span class='hl'>사랑마저 이해타산으로 저울질하는 차가운 습관을 고치십시오. 상대의 껍데기만 좇다가는 화려함 뒤에 숨은 최악의 함정에 빠져 모든 것을 잃게 됩니다.</span> 진실한 교감을 나누지 않으면 결국 계산서만 남는 연애가 됩니다.",
-                '관성': "<span class='hl'>본인의 완고한 잣대로 연인을 통제하고 가르치려는 억압적인 태도를 당장 멈추십시오. 숨통을 조이는 구속 속에서 유지될 수 있는 튼튼한 관계는 세상에 없습니다.</span> 상대를 깎아내리려는 권위의식을 버려야 합니다.",
-                '인성': "<span class='hl'>상대에게 무조건적인 기대와 위로만 바라는 과도한 의존성을 끊어내십시오. 받기만 하려는 이기적인 태도는 결국 상대의 에너지를 고갈시켜 관계를 파괴합니다.</span> 스스로 자립하지 않으면 짐만 될 뿐입니다."
-            };
-
-            const healthAdvice = {
-                '木': "목(木) 기운이 지나치게 쏠려 <u>잦은 스트레스와 욱하는 성질이 간과 담낭의 기능을 심각하게 해칠 우려</u>가 있습니다. 감정을 통제하지 못하고 속으로 화를 삭이거나 폭발시키는 패턴을 반복하면 만성 피로와 혈압 문제로 훗날 큰 고생을 치르게 되니 감정 관리가 곧 수명 관리입니다.",
-                '火': "화(火) 기운이 극단적으로 치우쳐 <u>심혈관계와 신경계가 매우 예민하고 취약한 상태</u>입니다. 감정 기복으로 인한 잦은 불면증과 심한 두통에 시달리기 쉬우며, 심장에 무리가 가는 자극적인 생활 습관을 방치하면 돌이킬 수 없는 건강의 적신호를 맞이할 수 있으니 철저히 주의하십시오.",
-                '土': "토(土) 기운이 정체되어 <u>위장과 소화기 계통의 기능이 만성적으로 떨어져 있는 체질</u>입니다. 생각만 많고 활동량은 절대적으로 부족한 생활 패턴 탓에 대사 증후군이나 체중 증가로 인한 만성 합병증의 위험이 타인보다 압도적으로 높으니 규칙적인 육체적 활동이 절실합니다.",
-                '金': "금(金) 기운이 예민하게 작용하여 <u>폐와 호흡기, 대장 기능이 쉽게 손상받는 멘탈 취약 체질</u>입니다. 매사 까탈스럽고 긴장 상태를 유지하는 성향 탓에 면역력이 급격히 떨어지며, 알레르기 질환이나 호흡기 문제로 환절기마다 남들보다 깊은 고생을 치를 수 있습니다.",
-                '水': "수(水) 기운의 불균형으로 <u>신장, 방광, 그리고 생식기 계통의 건강이 유독 취약</u>합니다. 신체 내부에 냉기가 잘 쌓여 수족냉증이나 관절 문제에 노출되기 쉬우며, 불규칙한 수면과 피로 누적을 방치할 경우 노년에 골병으로 남들보다 배로 고단한 삶을 살게 될 수 있습니다."
-            };
-
-            html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>💔 파국을 맞는 연애/결혼운</div>";
-            html += "<div class='fortune-content-text'>";
-            html += `<p><span class='sub-title'>1. 상대를 질리게 하는 당신의 연애질</span>`;
-            html += `${romanceStyle[dom1] || romanceStyle['비겁']}<br><br>`;
-            html += `<span class='sub-title'>2. 유유상종으로 만날 최악의 파트너</span>`;
-            html += `${gender === "M" ? partnerMale[dom1] : partnerFemale[dom1]}<br><br>`;
-            html += `<span class='sub-title'>3. 비참한 끝을 막기 위한 냉정한 충고</span>`;
-            html += `${romanceAdvice[dom1] || romanceAdvice['비겁']}</p>`;
-            html += "</div></div>";
-
-            let hAdvice = maxElements.length > 0 ? healthAdvice[maxElements[0]] : "건강 관리에 지나치게 안일하여 남들보다 일찍 병원 문턱을 넘나들기 쉬운 불안정한 상태입니다.";
-            if (maxElements.length > 1) {
-                hAdvice = `사주에 특정 기운이 과도하게 몰려 있어 신체 밸런스가 쉽게 무너질 수 있는 취약한 상태입니다. <u>${maxElements[0]}과 ${maxElements[1]}의 단점이 겹쳐 면역력 저하와 만성 피로에 시달리기 쉬운 체질</u>입니다. 스스로 철저히 관리하지 않으면 잦은 병원 신세로 인해 삶의 질이 크게 떨어질 우려가 있습니다.`;
+                strengthLevel = '극신약';
+                strengthDesc = `내 세력이 ${Math.round(myRatio)}%로 극도로 취약한 극신약 사주입니다. 스스로 중심을 못 잡아 환경과 타인에게 끌려다니며 스트레스에 멘탈이 유리처럼 깨지기 쉽습니다.`;
             }
 
-            html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>🩺 주의가 필요한 건강운</div>";
-            html += "<div class='fortune-content-text'>";
-            html += `<p><span class='sub-title'>1. 타고난 신체적 취약점</span>`;
-            html += `${hAdvice}<br><br>`;
-            html += `<span class='sub-title'>2. 건강을 해치는 안일한 습관</span>`;
-            html += `스트레스를 핑계로 자극적인 음식을 찾고 신체 활동은 극도로 꺼리는 나태한 패턴이 반복되고 있습니다. 자기합리화로 건강 관리를 미루면서도, 막상 컨디션이 저하되면 과도하게 예민해져 주변 사람들의 걱정을 유발하는 등 자기 관리가 현저히 부족한 상태입니다.<br><br>`;
-            html += `<span class='sub-title'>3. 활력을 되찾기 위한 팩폭</span>`;
-            html += `당장의 편안함만 좇는 식습관과 무기력한 일상에서 벗어나 가벼운 운동이라도 당장 시작해야 합니다. 현재의 체력 저하는 그동안 스스로를 방치한 결과물입니다. <span class='hl'>나이가 들어서 주변 사람들에게 무거운 짐을 지우고 싶지 않다면 지금 당장 생활 습관을 뜯어고치십시오.</span> 미루면 미룰수록 되돌리기 힘들어집니다.</p>`;
+            // 4) 기신 & 용신
+            const sortedElsByWeight = Object.keys(elWeight).sort((a, b) => elWeight[b] - elWeight[a]);
+            const missingEls = Object.keys(elCount).filter(e => elCount[e] === 0);
+            const excessiveEls = Object.keys(elCount).filter(e => elCount[e] >= 3);
+            let badElement = sortedElsByWeight[0], goodElement = sortedElsByWeight[4], badReason = '';
+
+            if (strengthLevel === '극신강' || strengthLevel === '신강') {
+                const myEl = dmElement, inEl = EL_GEN_BY[dmElement];
+                badElement = elWeight[myEl] >= elWeight[inEl] ? myEl : inEl;
+                goodElement = [EL_GEN[dmElement], EL_CTRL[dmElement], EL_CTRL_BY[dmElement]].sort((a, b) => elWeight[a] - elWeight[b])[0];
+                badReason = `이미 자기 기운이 넘치는 <span class='hl'>${strengthLevel}</span> 명식이라 나를 더 부추기는 <span class='hl'>${EL_KR[badElement]}</span> 기운이 들어오면 고집과 독선이 폭주해 사람과 돈을 다 잃는 악운이 터집니다.`;
+            } else if (strengthLevel === '극신약' || strengthLevel === '신약') {
+                badElement = [EL_GEN[dmElement], EL_CTRL[dmElement], EL_CTRL_BY[dmElement]].sort((a, b) => elWeight[b] - elWeight[a])[0];
+                goodElement = [EL_GEN_BY[dmElement], dmElement].sort((a, b) => elWeight[a] - elWeight[b])[0];
+                badReason = `버틸 힘이 부족한 <span class='hl'>${strengthLevel}</span> 명식에서 나를 짓누르고 기운을 빼앗는 <span class='hl'>${EL_KR[badElement]}</span> 기운이 과도하게 작용해 멘탈 붕괴와 손실을 부르는 최악의 악운이 됩니다.`;
+            } else {
+                badElement = sortedElsByWeight[0];
+                goodElement = missingEls.length > 0 ? missingEls[0] : sortedElsByWeight[4];
+                badReason = `균형이 깨지기 쉬운 중화 명식에서 가장 쏠려 있는 <span class='hl'>${EL_KR[badElement]}</span> 기운이 한 번 더 들어오면 숨겨둔 단점이 한꺼번에 터져 나옵니다.`;
+            }
+
+            // 5) 형충파해 & 신살 15종
+            const rel = analyzeDeepRelations(pillars, dGan, dZhi, yZhi);
+
+            // 6) 5대 팩폭 위험도 지수 (사주 데이터 기반 실제 계산: 25~99%)
+            const clamp = (v) => Math.max(25, Math.min(99, Math.round(v)));
+            const riskStubborn = clamp(35 + tgGroupScore['비겁'] * 12 + (['제왕','건록','묘'].includes(dUn) ? 15 : 0) + (elCount['土'] >= 3 || elCount['金'] >= 3 ? 12 : 0));
+            const riskEmotion  = clamp(30 + tg10Score['상관'] * 15 + tg10Score['편관'] * 10 + rel.zhiChungs.length * 16 + rel.gwimuns.length * 14 + (elCount['火'] >= 3 ? 15 : 0));
+            const riskMoney    = clamp(30 + tg10Score['겁재'] * 16 + tg10Score['편재'] * 10 + (tgGroupCount['재성'] === 0 ? 22 : 0) + (myRatio < 40 && tgGroupCount['재성'] >= 2 ? 24 : 0));
+            const riskLove     = clamp(30 + rel.wonjins.length * 18 + (rel.hasDohwa ? 12 : 0) + (rel.hasHongyeom ? 14 : 0) + (rel.hasGoran ? 18 : 0) + (rel.zhiChungs.some(c => c.p1==='일주'||c.p2==='일주') ? 20 : 0));
+            const riskMental   = clamp(30 + tg10Score['편인'] * 15 + (100 - myRatio) * 0.4 + rel.gwimuns.length * 15 + (['병','사','절'].includes(dUn) ? 15 : 0));
+
+            // 7) 일지 지장간(속마음 겉과 속 모순) 분석
+            const dJJG = charData[dZhi].jjg;
+            const hiddenFirst = dJJG[0];
+            const hiddenMain = dJJG[dJJG.length - 1];
+            const hiddenFirstTG = getTenGod10(dGan, hiddenFirst);
+            const hiddenMainTG = getTenGod10(dGan, hiddenMain);
+            const jjgContradiction = (hiddenFirstTG && hiddenMainTG && hiddenFirstTG !== hiddenMainTG)
+                ? `당신의 일지(${dZhi}) 지장간 속에는 <span class='hl'>${dJJG.join('·')}</span>이 숨어 있습니다. 겉으로 드러나는 본심은 <span class='hl'>${hiddenMainTG}</span>인 척 포장하지만, 그 밑바닥 초기 기운에는 <span class='hl'>${hiddenFirstTG}</span>의 욕망이 도사리고 있어 결정적인 순간에 겉과 속이 180도 다른 이중성을 드러냅니다.`
+                : `당신의 일지(${dZhi}) 지장간은 <span class='hl'>${dJJG.join('·')}</span>으로 기운이 한쪽으로 순수하게 뭉쳐 있습니다. 앞뒤가 다른 건 아니지만 그만큼 <span class='hl'>${hiddenMainTG}</span>의 단점이 여과 없이 날것 그대로 튀어나와 주변을 피곤하게 만듭니다.`;
+
+            // ==========================================================
+            // HTML 렌더링 시작
+            // ==========================================================
+            let html = "";
+            html += "<div class='fortune-result-title'>👊 초정밀 뼈때리는 사주 해부</div>";
+            html += "<div class='result-highlight'>";
+            html += `<div class='payment-info'>결제 번호: ${orderId}</div>`;
+            html += `<div class='bazi-display'>${iljuHg}(${iljuKey}) 일주</div>`;
+            html += `<div class='bazi-detail'>일간: ${charData[dGan].full} · 격국: ${gyeokLabel}<br>세력: ${strengthLevel}(${Math.round(myRatio)}%) · 자좌 12운성: ${dUn}</div>`;
+            html += "<div class='summary-badges'>";
+            html += `<span class='badge-pill dark'>${domTG1} + ${domTG2}</span>`;
+            html += `<span class='badge-pill'>기신: ${EL_KR[badElement]}</span>`;
+            html += `<span class='badge-pill'>용신: ${EL_KR[goodElement]}</span>`;
+            if (missingEls.length > 0) html += `<span class='badge-pill'>결핍: ${missingEls.join('·')}</span>`;
+            rel.items.slice(0, 4).forEach(s => { html += `<span class='badge-pill'>${s.tag}</span>`; });
             html += "</div></div>";
 
-            html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>📉 처참한 인생의 하락세 (대운)</div>";
-            html += "<div class='fortune-content-text'>";
-            html += `<p><span class='hl'>🌱 초년기 (년주: ${getHtmlChar(yGan)}${getHtmlChar(yZhi)})</span><br>${timelineY[yZhi]}<br><br>`;
-            html += `<span class='hl'>🌿 청년기 (월주: ${getHtmlChar(mGan)}${getHtmlChar(mZhi)})</span><br>${timelineM[mZhi]}<br><br>`;
-            html += `<span class='hl'>🔥 중년기 (일주: ${getHtmlChar(dGan)}${getHtmlChar(dZhi)})</span><br>${timelineD[dZhi]}<br><br>`;
+            // 대시보드 (4기둥 + 10신 + 12운성 + 지장간 + 오행 + 십성 + 5대 위험도)
+            html += "<div class='dashboard-card'>";
+            html += "<div class='dashboard-header'>📊 초정밀 만세력 4기둥 (10신·12운성·지장간)</div>";
+            html += "<div class='bazi-grid'>";
+            html += `<div class='bazi-col'><div class='bazi-label'>시주(말년)</div><div class='tg-tag'>${tGanTG||'모름'}</div><div class='char-box'>${getHtmlChar(tGan)}<br>${getHtmlChar(tZhi)}</div><div class='tg-tag'>${tZhiTG||'모름'}</div><span class='un-tag'>${tUn||'미상'}</span><span class='jjg-tag'>${tZhi!=='?'?charData[tZhi].jjg.join(' '):'-'}</span></div>`;
+            html += `<div class='bazi-col' style='background:#ffe4e6; border:2px solid #ef9a9a;'><div class='bazi-label'>일주(나)</div><div class='me-badge'>나(일간)</div><div class='char-box'>${getHtmlChar(dGan)}<br>${getHtmlChar(dZhi)}</div><div class='tg-tag'>${dZhiTG}</div><span class='un-tag'>${dUn}</span><span class='jjg-tag'>${charData[dZhi].jjg.join(' ')}</span></div>`;
+            html += `<div class='bazi-col'><div class='bazi-label'>월주(청년)</div><div class='tg-tag'>${mGanTG}</div><div class='char-box'>${getHtmlChar(mGan)}<br>${getHtmlChar(mZhi)}</div><div class='tg-tag'>${mZhiTG}</div><span class='un-tag'>${mUn}</span><span class='jjg-tag'>${charData[mZhi].jjg.join(' ')}</span></div>`;
+            html += `<div class='bazi-col'><div class='bazi-label'>년주(초년)</div><div class='tg-tag'>${yGanTG}</div><div class='char-box'>${getHtmlChar(yGan)}<br>${getHtmlChar(yZhi)}</div><div class='tg-tag'>${yZhiTG}</div><span class='un-tag'>${yUn}</span><span class='jjg-tag'>${charData[yZhi].jjg.join(' ')}</span></div>`;
+            html += "</div>";
 
+            html += "<div class='dashboard-header' style='margin-top:18px;'>🚨 5대 팩폭 위험도 지수</div>";
+            const risks = [
+                { label: '고집·독선도', val: riskStubborn },
+                { label: '감정 기복도', val: riskEmotion },
+                { label: '재물 누수도', val: riskMoney },
+                { label: '연애 파국도', val: riskLove },
+                { label: '유리 멘탈도', val: riskMental }
+            ];
+            risks.forEach(r => {
+                html += `<div class='stat-row'><div class='stat-label'>${r.label}</div><div class='stat-bar-wrap'><div class='stat-bar-fill bg-risk' style='width:${r.val}%;'></div></div><div class='stat-num'>${r.val}%</div></div>`;
+            });
+
+            html += "<div class='dashboard-header' style='margin-top:20px;'>💀 오행 밸런스 & 십성 분포 <span style='font-size:0.72rem; color:#888;'>(일간 제외)</span></div>";
+            const elColors = {'木':'bg-wood','火':'bg-fire','土':'bg-earth','金':'bg-metal','水':'bg-water'};
+            Object.keys(elCount).forEach(el => {
+                const pct = (elCount[el] / totalChars) * 100;
+                html += `<div class='stat-row'><div class='stat-label'>${EL_KR[el]}</div><div class='stat-bar-wrap'><div class='stat-bar-fill ${elColors[el]}' style='width:${pct}%;'></div></div><div class='stat-num'>${elCount[el]}개(${Math.round(pct)}%)</div></div>`;
+            });
+            Object.keys(tgGroupCount).forEach(grp => {
+                const pct = totalOtherChars > 0 ? (tgGroupCount[grp] / totalOtherChars) * 100 : 0;
+                html += `<div class='stat-row'><div class='stat-label'>${grp}</div><div class='stat-bar-wrap'><div class='stat-bar-fill bg-ten' style='width:${pct}%;'></div></div><div class='stat-num'>${tgGroupCount[grp]}개</div></div>`;
+            });
+            html += "</div>";
+
+            // ==========================================================
+            // 섹션 1. 뼈 아픈 성격 해부
+            // ==========================================================
+            let elementBalanceHtml = "";
+            if (excessiveEls.length > 0) elementBalanceHtml += excessiveEls.map(e => excessiveElFact[e]).join(" ");
+            if (missingEls.length > 0) elementBalanceHtml += (elementBalanceHtml ? "<br><br>" : "") + missingEls.map(e => missingElFact[e]).join(" ");
+            if (!elementBalanceHtml) elementBalanceHtml = "오행이 골고루 섞여 있다고 좋아할 일이 아닙니다. 뚜렷하게 치고 나가는 독기가 없어 평범하고 밋밋한 흐름에 갇혀 남 눈치 보며 살기 쉬운 수동적 구조입니다.";
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>🧠 1. 뼈 아픈 성격 해부</div>";
+            html += "<div class='fortune-content-text'><p>";
+            html += `<span class='sub-title'>① 타고난 일주 본성 (${iljuHg} 일주 · ${charData[dGan].full})</span>${iljuPersonality[iljuKey]}<br><br>${dmCoreFact[dGan]}`;
+            html += `<span class='sub-title'>② 일지 무의식 & 지장간 겉과 속 모순 (${dZhi} · ${dZhiTG})</span>${iljiPsychology[dZhi]}<br><br>${jjgContradiction}`;
+            html += `<span class='sub-title'>③ 자좌 12운성 에너지 (${dUn}운) & 신강약 (${strengthLevel})</span><b>[${dUn}운 팩폭]</b> ${unseongFact[dUn]}<br><br>${strengthDesc}`;
+            html += `<span class='sub-title'>④ 주도 10신 이중 결함 (${domTG1} + ${domTG2})</span><b>[메인 결함: ${domTG1}]</b> ${tenGod10Profile[domTG1].core}<br><br><b>[서브 결함: ${domTG2}]</b> ${tenGod10Profile[domTG2].core}`;
+            html += `<span class='sub-title'>⑤ 사회생활의 얍삽한 가면 (월지 ${charData[mZhi].full} · 계절 조후)</span>${monthMasks[mZhi]}<br><br>${getSeasonJohuFact(mZhi)}`;
+            html += `<span class='sub-title'>⑥ 오행 쏠림 & 결핍 팩폭</span>${elementBalanceHtml}`;
+            html += "</p></div></div>";
+
+            // ==========================================================
+            // 섹션 2. 원국에 박힌 치명적 살(煞)·합·형충파해 정밀 감식
+            // ==========================================================
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>🚨 2. 형충파해 & 15종 신살 감식</div>";
+            html += "<div class='fortune-content-text'><p>";
+            if (rel.items.length > 0) {
+                rel.items.forEach((item, idx) => {
+                    html += `<span class='sub-title'>${idx + 1}. ${item.tag}</span>${item.text}`;
+                });
+            } else {
+                html += `<span class='sub-title'>특수 살·충 없음 (무난함의 함정)</span>원국에 대형 충이나 극단적인 살이 없어 보이지만, 오히려 그게 치명적 함정입니다. 위기감과 반전 동력이 전혀 없어 스스로 나태함과 현실 안주에 빠져 평범 이하로 도태되기 쉬운 심심한 구조입니다.`;
+            }
+            html += "</p></div></div>";
+
+            // ==========================================================
+            // 섹션 3. 밑 빠진 독 재물운
+            // ==========================================================
+            const jaeCount = tgGroupCount['재성'], bigyeopCount = tgGroupCount['비겁'], siksangCount = tgGroupCount['식상'];
+            let wealthVessel = "";
+            if (jaeCount === 0) {
+                wealthVessel = siksangCount >= 2
+                    ? "사주에 재성(돈) 글자가 아예 없는 <span class='hl'>무재(無財) 사주</span>입니다. 식상(능력)으로 벌 재주는 있으나 돈을 관리·저장하는 개념 자체가 희박해 버는 족족 허공으로 증발시킵니다."
+                    : "원국에 재성(돈)이 텅 비어 있는 <span class='hl'>무재(無財) 사주</span>입니다. 돈의 흐름을 읽는 현실 감각과 집착이 떨어져 남들 돈 벌 때 뜬구름 잡다 주머니가 텅 비기 십상입니다.";
+            } else if ((strengthLevel === '신약' || strengthLevel === '극신약') && jaeCount >= 2) {
+                wealthVessel = `돈(재성)은 ${jaeCount}개나 깔려 있는데 본인이 감당할 힘이 없는 <span class='hl'>재다신약(財多身弱)</span>입니다. 눈앞에 돈이 굴러다녀도 내 그릇이 작아 쥐지 못하고, 욕심만 부리다 건강과 멘탈만 박살 나는 가장 억울한 팔자입니다.`;
+            } else if ((strengthLevel === '신강' || strengthLevel === '극신강') && bigyeopCount >= 3) {
+                wealthVessel = `경쟁자(비겁)가 ${bigyeopCount}개나 우글거리는 <span class='hl'>군겁쟁재(群劫爭財)</span> 구조입니다. 힘들게 모아놔도 형제·지인·동업자·허세 지출로 사방에서 뜯어갈 구멍만 생기는 밑 빠진 독입니다.`;
+            } else if (tg10Count['편재'] > tg10Count['정재']) {
+                wealthVessel = `큰돈을 노리는 <span class='hl'>편재 중심</span> 그릇입니다. 푼돈 모으는 걸 하찮게 여기고 한방 승부에 목매다 보니 돈의 체류 시간이 짧고 변동성 큰 판에서 크게 잃을 위험이 늘 도사립니다.`;
+            } else if (tg10Count['정재'] > tg10Count['편재']) {
+                wealthVessel = `안정적인 <span class='hl'>정재 중심</span> 그릇입니다. 망하진 않겠지만 쪼잔하고 소심한 계산 탓에 큰 판을 못 읽고, 평생 아끼기만 하다 큰 부를 일구지 못하는 좁은 그릇에 갇히기 쉽습니다.`;
+            } else {
+                wealthVessel = `정재와 편재가 뒤섞인 <span class='hl'>재성 혼잡</span> 구조입니다. 안정적인 월급도 원하면서 동시에 일확천금도 노리는 이도 저도 아닌 욕심 탓에 재정 전략이 매번 꼬입니다.`;
+            }
+
+            const siksangWealthNote = siksangCount === 0
+                ? "게다가 돈을 만들어내는 원천인 <span class='hl'>식상(생산력)이 0개</span>입니다. 스스로 새 파이프라인을 뚫는 능력이 약해, 기존 월급이나 남의 시스템에 얹혀가지 않으면 수입이 뚝 끊길 위험이 큽니다."
+                : `돈을 만드는 <span class='hl'>식상 기운이 ${siksangCount}개</span> 있어 재주는 있으나, ${siksangCount >= 3 ? '식상이 너무 과다해 입만 살아있고 마무리가 안 되어 실속이 다 샙니다.' : '꾸준히 밀고 나가는 지구력이 부족해 중도 포기하기 쉽습니다.'}`;
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>💸 3. 밑 빠진 독 재물운</div>";
+            html += "<div class='fortune-content-text'><p>";
+            html += `<span class='sub-title'>① 타고난 재물 그릇 (${strengthLevel} · 재성 ${jaeCount}개)</span>${wealthVessel}<br><br>${siksangWealthNote}`;
+            html += `<span class='sub-title'>② 돈이 줄줄 새는 치명적 패턴 (${domTG1} 기질)</span>${tenGod10Profile[domTG1].moneyLeak}`;
+            html += `<span class='sub-title'>③ 뼈 때리는 가난 탈출 충고</span>${tenGod10Profile[domTG1].moneyTip}`;
+            html += "</p></div></div>";
+
+            // ==========================================================
+            // 섹션 4. 삐걱거리는 직장/사업운
+            // ==========================================================
+            const gwanCount = tgGroupCount['관성'];
+            let careerSpecial = "";
+            if (tg10Count['상관'] >= 1 && tg10Count['정관'] >= 1) {
+                careerSpecial = "<div class='warn-box'><b>💥 상관견관(傷官見官) 경보:</b> 조직의 룰(정관)을 내 입방정과 반항심(상관)으로 정면 충돌시키는 구조입니다. 윗사람과 부딪혀 스스로 승진길과 밥줄을 차버리는 패턴을 조심하십시오.</div>";
+            } else if (tg10Count['정관'] >= 1 && tg10Count['편관'] >= 1) {
+                careerSpecial = "<div class='warn-box'><b>💥 관살혼잡(官殺混雜) 경보:</b> 직업 기준이 흔들려 이직과 방황이 잦아지기 쉽습니다. 이것저것 기웃거리다 경력이 누더기가 되는 시나리오를 경계하십시오.</div>";
+            } else if (gwanCount === 0) {
+                careerSpecial = "<div class='warn-box'><b>💥 무관(無官) 구조 경보:</b> 조직의 통제와 규칙을 본능적으로 거부하는 야생마 기질입니다. 남의 밑에서 오래 버티기 힘드니 전문 기술이나 1인 영역을 파야 도태를 면합니다.</div>";
+            }
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>📉 4. 삐걱거리는 직장/사업운</div>";
+            html += "<div class='fortune-content-text'><p>";
+            html += `<span class='sub-title'>① 당신이 버틸 수 있는 한계 무대 (${gyeokLabel})</span>${tenGod10Profile[gyeokgukTG].careerStage}`;
+            html += `<span class='sub-title'>② 조직에 민폐 끼치는 얄팍한 무기 (${domTG1} · 월지 ${mUn}운)</span>${tenGod10Profile[domTG1].careerWeapon}<br><br>사회궁(월지)에 <span class='hl'>${mUn}운</span>이 놓여 있어 ${unseongFact[mUn]}`;
+            html += careerSpecial;
+            html += `<span class='sub-title'>③ 도태되기 싫으면 들어야 할 팩폭</span><span class='hl'>${strengthLevel}</span> 성향과 <span class='hl'>${domTG1}</span>의 단점이 겹치면 조직에서 가장 먼저 정리 대상이 됩니다. ${tenGod10Profile[gyeokgukTG].core}`;
+            html += "</p></div></div>";
+
+            // ==========================================================
+            // 섹션 5. 파국을 맞는 연애/결혼운
+            // ==========================================================
+            let spouseAnalysis = "";
+            if (gender === 'M') {
+                if (jaeCount === 0) spouseAnalysis = "사주에 여자 글자(재성)가 없는 <span class='hl'>무재남</span>입니다. 여자의 마음을 읽는 센스가 처참하게 부족해 눈치 없는 말로 차이기 쉽고, 어렵게 만나도 무심하게 방치해 상대를 지치게 만듭니다.";
+                else if (tg10Count['정재'] >= 1 && tg10Count['편재'] >= 1) spouseAnalysis = "정재와 편재가 섞인 <span class='hl'>재성 혼잡</span>입니다. 곁에 있는 연인에게 만족하지 못하고 자꾸 밖으로 눈을 돌리다 양쪽 모두에게 버림받기 쉬운 위험한 팔자입니다.";
+                else if (jaeCount >= 3) spouseAnalysis = "사주에 재성이 넘치는 <span class='hl'>재다(財多)</span> 구조입니다. 조건·외모만 따지다 허영심 강한 상대에게 등골이 휘도록 이용당하고 뒤늦게 후회하기 쉽습니다.";
+                else if (tg10Count['편재'] > 0) spouseAnalysis = "화려하고 자기주장 강한 <span class='hl'>편재형</span> 상대를 만나기 쉽습니다. 통제 안 되는 상대의 소비와 변덕을 감당 못 해 경제적·정신적 소모전을 치르게 됩니다.";
+                else spouseAnalysis = "현실적이고 깐깐한 <span class='hl'>정재형</span> 상대를 만납니다. 사소한 지출과 습관까지 잔소리와 계산으로 숨통을 조여와 사랑보다 의무감만 남는 삭막한 관계가 되기 쉽습니다.";
+            } else {
+                if (gwanCount === 0) spouseAnalysis = "사주에 남자 글자(관성)가 없는 <span class='hl'>무관녀</span>입니다. 기준이 비현실적이거나 남자를 내 아래로 두고 휘두르려 들어, 멀쩡한 남자는 도망가고 의존적이고 무능한 남자만 꼬이기 쉽습니다.";
+                else if (tg10Count['정관'] >= 1 && tg10Count['편관'] >= 1) spouseAnalysis = "정관과 편관이 섞인 <span class='hl'>관살 혼잡</span>입니다. 안정적인 남자와 나쁜 남자 사이에서 갈팡질팡하며 스스로 연애 난이도를 지옥으로 만들고 감정 소모가 끝없이 반복됩니다.";
+                else if (gwanCount >= 3) spouseAnalysis = "관성이 너무 많은 <span class='hl'>관다(官多)</span> 구조입니다. 연애만 하면 남자 눈치를 보며 자존감을 다 바치거나, 강압적이고 통제욕 강한 남자에게 걸려들어 마음고생을 자초합니다.";
+                else if (tg10Count['편관'] > 0) spouseAnalysis = "거칠고 자기중심적인 <span class='hl'>편관(나쁜 남자)형</span> 상대에게 끌리기 쉽습니다. 상처받을 걸 알면서도 자극에 매달리다 감정 쓰레기통 취급을 당하는 파멸적 연애를 조심하십시오.";
+                else spouseAnalysis = "고지식하고 융통성 없는 <span class='hl'>정관형</span> 상대를 만납니다. 겉으론 번듯하지만 가부장적이고 꽉 막힌 기준을 강요해 연애와 결혼 내내 숨 막히는 갑갑함 속에 갇히기 쉽습니다.";
+            }
+
+            let loveWarns = [];
+            if (rel.zhiChungs.some(c => c.p1 === '일주' || c.p2 === '일주')) loveWarns.push("<b>💔 배우자궁 충(沖):</b> 연애가 안정될 만하면 사소한 계기로 크게 부딪히고 깨지는 '풍파형 연애운'입니다.");
+            if (rel.wonjins.length > 0) loveWarns.push("<b>🩸 원진살 애증:</b> 좋아서 붙어있다가도 사소한 버릇 하나에 정이 뚝 떨어져 상대를 갉아먹는 애증의 늪을 팝니다.");
+            if (rel.hasHongyeom || rel.hasDohwa) loveWarns.push("<b>🌸 도화·홍염 경보:</b> 겉치레와 가벼운 인기·자극에 취해 진심인 사람을 놓치고 껍데기만 번지르르한 인연에 휘둘립니다.");
+            if (rel.hasGoran) loveWarns.push("<b>🥀 고란살 고독:</b> 연애를 해도 마음 한편이 늘 허전하고, 상대에게 과한 완벽을 요구하다 스스로 관계를 얼려버립니다.");
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>💔 5. 파국을 맞는 연애/결혼운</div>";
+            html += "<div class='fortune-content-text'><p>";
+            html += `<span class='sub-title'>① 상대를 질리게 하는 연애질 (배우자궁 ${dZhiTG} · ${dUn}운)</span>${tenGod10Profile[dZhiTG].loveStyle}`;
+            html += `<span class='sub-title'>② 유유상종으로 꼬일 최악의 파트너 (${gender==='M'?'남성 재성':'여성 관성'} 분석)</span>${spouseAnalysis}`;
+            if (loveWarns.length > 0) html += `<div class='warn-box'>${loveWarns.join('<br>')}</div>`;
+            html += `<span class='sub-title'>③ 비참한 끝을 막기 위한 냉정한 충고</span>${tenGod10Profile[dZhiTG].loveTip}`;
+            html += "</p></div></div>";
+
+            // ==========================================================
+            // 섹션 6. [신설] 인간관계 & 손절당하는 패턴
+            // ==========================================================
+            const parentRel = tgGroupCount['인성'] === 0
+                ? "원국에 <span class='hl'>인성(윗사람·부모덕)이 0개</span>라 어른·상사에게 예쁨받는 애교나 요령이 바닥입니다. 혼자 다 해결하려다 윗사람 눈밖에 나기 쉽습니다."
+                : (tgGroupCount['인성'] >= 3 ? "인성이 과다해 윗사람·부모의 간섭에 질려 하면서도 정작 경제적·정신적 탯줄을 못 끊는 모순된 의존 관계에 갇혀 있습니다." : `년주(${yGanTG}/${yZhiTG}) 구조상 윗사람과 겉으론 예의를 지키지만 속으론 강한 거부감과 거리감을 두고 있습니다.`);
+            const peerRel = bigyeopCount >= 3
+                ? `비겁이 ${bigyeopCount}개로 넘쳐 친구·동료가 많아 보여도 실상은 <span class='hl'>시기·질투·돈 문제로 등 돌릴 가짜 인맥</span>이 태반입니다. 동업과 보증은 절대 금물입니다.`
+                : (bigyeopCount === 0 ? "비겁(동료)이 없어 속마음을 털어놓을 동년배 친구가 귀하고, 모임에 나가도 겉돌며 혼자 지치는 외톨이 패턴이 강합니다." : `월주(${mGanTG}/${mZhiTG}) 기준, 이해관계가 맞을 때만 친하고 실속이 떨어지면 칼같이 멀어지는 비즈니스형 인맥이 대부분입니다.`);
+            const juniorRel = siksangCount === 0
+                ? "식상(아랫사람·표현력)이 비어 있어 후배나 아랫사람을 부드럽게 챙기지 못하고, 딱딱하고 정 없는 선배로 찍혀 외면받기 쉽습니다."
+                : `아랫사람에게는 겉으론 잘해주는 척하지만, 내 기분이 틀어지면 <span class='hl'>${domTG1}</span> 성향이 튀어나와 은근히 무시하거나 가르치려 들어 존경을 잃기 쉽습니다.`;
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>🗣️ 6. 인간관계 & 손절당하는 이유</div>";
+            html += "<div class='fortune-content-text'><p>";
+            html += `<span class='sub-title'>① 남들이 뒤에서 당신을 씹는 진짜 이유</span>${tenGod10Profile[domTG1].gossip}`;
+            html += `<span class='sub-title'>② 윗사람·부모와의 관계</span>${parentRel}`;
+            html += `<span class='sub-title'>③ 친구·동료·인맥의 민낯</span>${peerRel}`;
+            html += `<span class='sub-title'>④ 아랫사람·후배에게 찍히는 포인트</span>${juniorRel}`;
+            html += "</p></div></div>";
+
+            // ==========================================================
+            // 섹션 7. 주의가 필요한 건강운
+            // ==========================================================
+            const healthOrgan = {
+                '木': "목(木) 기운 불균형으로 <u>간, 담낭, 신경계, 근육·관절</u>이 취약합니다. 화를 삭이거나 폭발시키는 패턴이 간 수치와 혈압을 망가뜨립니다.",
+                '火': "화(火) 기운 불균형으로 <u>심혈관계, 혈압, 시력, 자율신경</u>이 예민합니다. 감정 기복과 불면증을 방치하면 심장에 큰 무리가 옵니다.",
+                '土': "토(土) 기운 불균형으로 <u>위장, 소화기, 췌장, 대사 기능</u>이 만성적으로 약합니다. 스트레스성 위염과 체중 증가·당뇨 리스크가 높습니다.",
+                '金': "금(金) 기운 불균형으로 <u>폐, 기관지, 호흡기, 대장, 피부</u>가 예민합니다. 잦은 긴장과 알레르기·호흡기 질환으로 환절기마다 고생하기 쉽습니다.",
+                '水': "수(水) 기운 불균형으로 <u>신장, 방광, 생식기, 혈액순환, 허리</u>가 취약합니다. 냉기가 쌓이고 피로가 누적되면 노년에 골병으로 돌아옵니다."
+            };
+            const healthRx = {
+                '木': "부족한 <span class='hl'>목(木)</span> 기운을 채우려면 방구석에서 썩지 말고 아침 산책, 스트레칭, 푸른 채소 섭취로 정체된 몸을 강제로 움직여야 합니다.",
+                '火': "부족한 <span class='hl'>화(火)</span> 기운을 채우려면 햇빛을 쬐는 유산소 운동과 체온 유지가 필수입니다. 어둡고 축축한 생활 패턴을 당장 뜯어고치십시오.",
+                '土': "부족한 <span class='hl'>토(土)</span> 기운을 채우려면 불규칙한 폭식·야식을 끊고 정해진 시간에 밥 먹고 걷는 기본 루틴부터 지켜야 위장이 살아납니다.",
+                '金': "부족한 <span class='hl'>금(金)</span> 기운을 채우려면 깊은 호흡 운동, 금연·금주, 단호한 수면 시간 통제로 흐트러진 리듬을 칼같이 잘라내야 합니다.",
+                '水': "부족한 <span class='hl'>수(水)</span> 기운을 채우려면 카페인 대신 충분한 수분 섭취, 반신욕, 밤 12시 이전 숙면으로 과열된 몸과 신경을 식혀주어야 합니다."
+            };
+
+            const topEl = sortedElsByWeight[0];
+            let healthWeakText = healthOrgan[topEl];
+            if (missingEls.length > 0 && missingEls[0] !== topEl) {
+                healthWeakText += `<br><br>게다가 <span class='hl'>${EL_KR[missingEls[0]]}</span> 기운이 완전히 비어 있어 ${healthOrgan[missingEls[0]]}`;
+            }
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>🩺 7. 주의가 필요한 건강운</div>";
+            html += "<div class='fortune-content-text'><p>";
+            html += `<span class='sub-title'>① 타고난 신체적 취약점 (${EL_KR[topEl]} 과다${missingEls.length>0?' · '+EL_KR[missingEls[0]]+' 결핍':''})</span>${healthWeakText}`;
+            html += `<span class='sub-title'>② 건강을 망치는 안일한 습관 (${domTG1} 패턴)</span>${tenGod10Profile[domTG1].healthHabit}`;
+            html += `<span class='sub-title'>③ 활력을 되찾기 위한 팩폭 처방 (${EL_KR[goodElement]} 보완)</span>${healthRx[goodElement]}`;
+            html += "</p></div></div>";
+
+            // ==========================================================
+            // 섹션 8. 인생 시기별 흐름 + 실제 10년 대운표 + 올해 세운 & 삼재!
+            // ==========================================================
+            const curYear = new Date().getFullYear();
+            const curAge = curYear - birthYear + 1;
+            let seunHtml = "";
+            if (curYearGZ && curYearGZ.length === 2) {
+                const syGan = curYearGZ.charAt(0), syZhi = curYearGZ.charAt(1);
+                const syGanTG = getTenGod10(dGan, syGan), syZhiTG = getTenGod10(dGan, syZhi);
+                const syHitsBad = (charData[syGan].el === badElement || charData[syZhi].el === badElement);
+                const chungMap = { '子':'午','午':'子','丑':'未','未':'丑','寅':'申','申':'寅','卯':'酉','酉':'卯','辰':'戌','戌':'辰','巳':'亥','亥':'巳' };
+                const syChungsDay = (chungMap[syZhi] === dZhi);
+                const syChungsMonth = (chungMap[syZhi] === mZhi);
+                const samjae = getSamjaeStatus(yZhi, syZhi);
+
+                seunHtml = `<div class='warn-box'><b>🧨 ${curYear}년(${curYearGZ}년) 올해의 지뢰밭 정밀 경보</b><br>` +
+                    `올해 들어오는 기운은 <span class='hl'>${syGanTG}(천간) / ${syZhiTG}(지지)</span>입니다. ` +
+                    (syHitsBad
+                        ? `하필 당신의 악운 오행인 <span class='hl'>${EL_KR[badElement]}</span>이 직격으로 들어와 있어, 무리한 투자·이직·감정 폭발 한 번에 1년 농사를 통째로 날릴 위험이 매우 큽니다.`
+                        : `큰 흉운은 비켜갔으나 <span class='hl'>${syGanTG}</span>의 단점(${tenGod10Profile[syGanTG].core})이 유독 도드라져 사소한 방심이 구설로 번지기 쉽습니다.`) +
+                    (syChungsDay ? `<br>⚡ <b>일지 충(沖) 직격:</b> 올해 배우자·연인·가까운 관계가 크게 흔들리거나 이별·이사가 터질 수 있는 변동수입니다.` : '') +
+                    (syChungsMonth ? `<br>⚡ <b>월지 충(沖) 직격:</b> 올해 직장 변동, 상사 충돌, 갑작스러운 퇴사 충동이 강하게 몰려옵니다.` : '') +
+                    (samjae ? `<br>🔥 <b>삼재 경보(${samjae}):</b> 올해는 ${charData[yZhi].hg}띠 기준 <b>${samjae}</b> 구간입니다. 새로운 보증·무리한 확장은 무조건 피하고 수비에 올인하십시오.` : '') +
+                    `</div>`;
+            }
+
+            let dayunHtml = "";
+            try {
+                const yun = bazi.getYun(gender === 'M' ? 1 : 0);
+                const daYunArr = yun.getDaYun();
+                if (daYunArr && daYunArr.length > 1) {
+                    let cells = "", curDyText = "";
+                    for (let i = 1; i < Math.min(daYunArr.length, 9); i++) {
+                        const dy = daYunArr[i], gz = dy.getGanZhi(), sAge = dy.getStartAge(), eAge = sAge + 9;
+                        const isCur = (curAge >= sAge && curAge <= eAge);
+                        const dyGan = gz.charAt(0), dyZhi = gz.charAt(1), dyTG = getTenGod10(dGan, dyGan) || '';
+                        cells += `<div class='dayun-cell ${isCur ? 'current' : ''}'><div class='dayun-age'>${sAge}세~${isCur?'(현재)':''}</div><div class='dayun-gz'>${gz}</div><div style='font-size:0.66rem; color:#c62828;'>${dyTG}</div></div>`;
+                        if (isCur && charData[dyGan] && charData[dyZhi]) {
+                            const hitsBad = (charData[dyGan].el === badElement || charData[dyZhi].el === badElement);
+                            curDyText = `<div class='info-box'><b>📌 현재 대운(${sAge}~${eAge}세 · ${gz} 대운) 판독:</b><br>` +
+                                (hitsBad
+                                    ? `지금 지나가는 <span class='hl'>${gz} 대운</span>에 악운 기운(${EL_KR[badElement]})이 깔려 있습니다. 10년 단위의 수비 구간이니 허세와 무리수를 꺾고 내실을 다지지 않으면 크게 무너집니다.`
+                                    : `현재 <span class='hl'>${gz}(${dyTG}) 대운</span> 구간입니다. ${tenGod10Profile[dyTG] ? tenGod10Profile[dyTG].core : ''} 이 시기의 습관이 향후 10년 성패를 가릅니다.`) +
+                                `</div>`;
+                        }
+                    }
+                    dayunHtml = `<span class='sub-title'>📅 실제 10년 대운(大運) 흐름표 (현재 만/한국나이 ${curAge}세 기준)</span><div class='dayun-grid'>${cells}</div>${curDyText}`;
+                }
+            } catch (e) { console.warn("대운 계산 건너뜀:", e); }
+
+            html += "<div class='fortune-section-card'>";
+            html += "<div class='fortune-section-title'>⏳ 8. 인생 시기별 흐름 & 올해 세운</div>";
+            html += "<div class='fortune-content-text'><p>";
+            html += `<span class='hl'>🌱 초년기 (년주 ${yGan}${yZhi} · ${yGanTG}/${yZhiTG} · ${yUn}운)</span><br>${stemPeriodPrefix[yGanTG]||''}${timelineY[yZhi]}<br><br>`;
+            html += `<span class='hl'>🌿 청년기 (월주 ${mGan}${mZhi} · ${mGanTG}/${mZhiTG} · ${mUn}운)</span><br>${stemPeriodPrefix[mGanTG]||''}${timelineM[mZhi]}<br><br>`;
+            html += `<span class='hl'>🔥 중년기 (일주 ${dGan}${dZhi} · 본인/${dZhiTG} · ${dUn}운)</span><br>${timelineD[dZhi]}<br><br>`;
             if (timeStr === 'unknown') {
-                html += `<span class='hl'>🍂 말년기 (시주: 모름)</span><br>태어난 시간조차 모를 정도로 근본 없는 사주라 말년운을 깊게 볼 가치도 부족합니다. 젊은 시절의 무책임한 행동들을 뒤늦게 수습하느라 늙어서도 고단하게 고생하며 외롭게 보낼 씁쓸한 노후가 엿보입니다.</p>`;
+                html += `<span class='hl'>🍂 말년기 (시주: 모름)</span><br>태어난 시간 정보가 없어 말년 기둥 판독이 제한됩니다. 다만 원국의 <span class='hl'>${domTG1}</span> 결함을 중년까지 고치지 못하면 젊은 시절의 선택을 뒤늦게 수습하느라 고단한 노후를 맞기 쉽습니다.`;
             } else {
-                html += `<span class='hl'>🍂 말년기 (시주: ${getHtmlChar(tGan)}${getHtmlChar(tZhi)})</span><br>${timelineT[tZhi]}</p>`;
+                html += `<span class='hl'>🍂 말년기 (시주 ${tGan}${tZhi} · ${tGanTG}/${tZhiTG} · ${tUn}운)</span><br>${stemPeriodPrefix[tGanTG]||''}${timelineT[tZhi]}`;
             }
-            html += "</div></div>";
+            html += dayunHtml + seunHtml;
+            html += "</p></div></div>";
+
+            // ==========================================================
+            // 섹션 9. 기신(악운) vs 용신(생존 오행) & 최악의 계절
+            // ==========================================================
+            const elMeta = {
+                '木': { color: '초록색, 연두색, 청색', num: '3, 8', dir: '동쪽', season: '봄(2~4월)' },
+                '火': { color: '빨간색, 핑크색, 자주색', num: '2, 7', dir: '남쪽', season: '여름(5~7월)' },
+                '土': { color: '노란색, 베이지, 브라운', num: '5, 0', dir: '중앙(남서·북동)', season: '환절기(1·4·7·10월)' },
+                '金': { color: '흰색, 은색, 메탈릭', num: '4, 9', dir: '서쪽', season: '가을(8~10월)' },
+                '水': { color: '검은색, 네이비, 짙은 회색', num: '1, 6', dir: '북쪽', season: '겨울(11~1월)' }
+            };
+            const badMeta = elMeta[badElement], goodMeta = elMeta[goodElement];
 
             html += "<div class='fortune-section-card'>";
-            html += "<div class='fortune-section-title'>💀 나를 벼랑 끝으로 미는 악운의 기운</div>";
-            html += "<div class='fortune-content-text'>";
-            
-            let badElement = maxElements.length > 0 ? maxElements[0] : (dmElement === '木' ? '金' : dmElement === '火' ? '水' : dmElement === '土' ? '木' : dmElement === '金' ? '火' : '土');
-            let badColor = "", badNum = "", badDir = "";
-            if (badElement === '木') { badColor = "푸른색, 초록색"; badNum = "3, 8"; badDir = "동쪽"; }
-            else if (badElement === '火') { badColor = "붉은색, 핑크색"; badNum = "2, 7"; badDir = "남쪽"; }
-            else if (badElement === '土') { badColor = "노란색, 브라운계열"; badNum = "5, 0"; badDir = "중앙"; }
-            else if (badElement === '金') { badColor = "흰색, 은색"; badNum = "4, 9"; badDir = "서쪽"; }
-            else if (badElement === '水') { badColor = "검은색, 네이비"; badNum = "1, 6"; badDir = "북쪽"; }
-            
-            html += `<p><span class='sub-title'>1. 흐름을 방해하는 경계해야 할 오행</span>`;
-            html += `당신의 일상을 자꾸 어긋나게 만들고 정체시키는 주의 깊은 기운은 바로 <span class='hl'>${badElement}</span>입니다. 이 기운이 과도해지면 평소 숨겨둔 단점들이 두드러져 진행하던 일이 틀어지거나, 타인과의 관계에서 예기치 못한 손실을 입기 쉬운 불리한 흐름이 형성됩니다.<br><br>`;
-            html += `<span class='sub-title'>2. 피해야 할 색상과 숫자</span>`;
-            html += `중요한 자리에서 <span class='hl'>${badColor}</span> 계열의 옷차림이나 아이템은 가급적 피하시는 것이 좋습니다. 주변의 에너지를 무겁게 만들고 본인의 운기를 탁하게 흐릴 수 있습니다. 또한 <span class='hl'>${badNum}</span>이라는 숫자는 스트레스와 불필요한 지출을 늘릴 수 있는 숫자이니 일상에서 멀리하는 편이 유리합니다.<br><br>`;
-            html += `<span class='sub-title'>3. 에너지가 탁해지는 방향</span>`;
-            html += `<span class='hl'>${badDir}</span> 방향으로 침대 머리를 두거나 중요한 일정을 위해 무리하게 이동하는 것은 삼가십시오. 잡생각이 많아져 깊은 휴식을 취하기 어렵고, 다음 날의 컨디션 저하로 이어지기 쉽습니다. 굳이 이 방향을 고집한다면 예상치 못한 장애물을 만날 확률이 높습니다.</p>`;
-            html += "</div></div>";
+            html += "<div class='fortune-section-title'>💀 9. 기신(악운) vs 용신(생존 처방)</div>";
+            html += "<div class='fortune-content-text'><p>";
+            html += `<span class='sub-title'>① 절대 경계해야 할 악운 오행: ${EL_KR[badElement]}</span>${badReason}`;
+            html += `<span class='sub-title'>② 피해야 할 색상·숫자·방향·시기</span>중요한 계약·면접·소개팅 자리에서 <span class='hl'>${badMeta.color}</span> 계열과 숫자 <span class='hl'>${badMeta.num}</span>, <span class='hl'>${badMeta.dir}</span> 방향을 피하십시오. 특히 매년 <span class='hl'>${badMeta.season}</span>에는 판단력이 흐려지고 사건·사고가 터지기 쉬우니 큰 결정을 미루는 편이 안전합니다.`;
+            html += `<span class='sub-title'>③ 그나마 숨통을 틔워줄 생존 오행(용신): ${EL_KR[goodElement]}</span>무너진 밸런스를 잡으려면 <span class='hl'>${EL_KR[goodElement]}</span> 기운을 보완해야 합니다. 일상에서 <span class='hl'>${goodMeta.color}</span> 포인트, 숫자 <span class='hl'>${goodMeta.num}</span>, <span class='hl'>${goodMeta.dir}</span> 방향을 활용하고, 중요한 승부수는 <span class='hl'>${goodMeta.season}</span>에 걸어보십시오.`;
+            html += "</p></div></div>";
 
             return html;
         }
 
- window.onload = async function() {
-    // 1. revisit(다시 보기)가 아닐 때만 결제 승인 로직 실행!
-    if (paymentKey !== 'revisit') {
-        try {
-            console.log("결제 승인 요청 시작..."); 
-            
-            const response = await fetch("https://confirmtosspayment-reeglhkbha-du.a.run.app", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    paymentKey: paymentKey,
-                    orderId: orderId,
-                    amount: Number(amount)
-                })
-            });
-
-            if (!response.ok) {
-                const errorText = await response.text(); 
-                console.error("토스 결제 거절 사유:", errorText);
-                throw new Error("서버에서 결제 승인을 거절했습니다.");
+        window.onload = async function() {
+            if (paymentKey !== 'revisit') {
+                try {
+                    const response = await fetch("https://confirmtosspayment-reeglhkbha-du.a.run.app", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ paymentKey, orderId, amount: Number(amount) })
+                    });
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error("토스 결제 거절 사유:", errorText);
+                        throw new Error("서버에서 결제 승인을 거절했습니다.");
+                    }
+                } catch (error) {
+                    console.error("결제 오류:", error);
+                    alert("결제 처리 중 문제가 발생했습니다. 결제창으로 이동합니다.");
+                    window.location.replace("badpig.html");
+                    return;
+                }
             }
-            
-            console.log("토스 최종 출금 승인 완료!");
-        } catch (error) {
-            console.error("진짜 에러 상세 정보:", error);
-            // 에러 메시지 손님용으로 깔끔하게 변경
-            alert("결제 처리 중 문제가 발생했습니다. 결제창으로 이동합니다."); 
-            // 주석 풀고 다시 badpig.html 로 돌아가게 세팅!
-            window.location.replace("badpig.html"); 
-            return; 
-        }
-    } else {
-        // 2. revisit 이면 토스 결제 무시하고 통과!
-        console.log("내 정보에서 다시 보기로 접속했습니다. 결제 승인을 패스합니다.");
-    }
 
-    // 이 아래부터는 원래 있던 setTimeout 사주 결과 보여주는 코드가 쭉 이어지면 끝이야!
+            setTimeout(() => {
+                try {
+                    const gender = sessionStorage.getItem('saju_gender') || 'M';
+                    const calendarType = sessionStorage.getItem('saju_calendar') || 'solar';
+                    const year = parseInt(sessionStorage.getItem('saju_year'), 10);
+                    const month = parseInt(sessionStorage.getItem('saju_month'), 10);
+                    const day = parseInt(sessionStorage.getItem('saju_day'), 10);
+                    const timeStr = sessionStorage.getItem('saju_time') || 'unknown';
 
-    // 승인 성공 시 아래 사주 결과 코드 실행
-    setTimeout(() => {
-        const gender = sessionStorage.getItem('saju_gender');
-        const calendarType = sessionStorage.getItem('saju_calendar');
-        const yearStr = sessionStorage.getItem('saju_year');
-        const monthStr = sessionStorage.getItem('saju_month');
-        const dayStr = sessionStorage.getItem('saju_day');
-        const timeStr = sessionStorage.getItem('saju_time');
+                    const timeMap = {
+                        'unknown': 12, '자시': 0, '축시': 2, '인시': 4, '묘시': 6,
+                        '진시': 8, '사시': 10, '오시': 12, '미시': 14, '신시': 16,
+                        '유시': 18, '술시': 20, '해시': 22
+                    };
+                    const hour = timeMap[timeStr] !== undefined ? timeMap[timeStr] : 12;
 
-        const year = parseInt(yearStr);
-        const month = parseInt(monthStr);
-        const day = parseInt(dayStr);
-        
-        const timeMap = { 'unknown': 12, '자시': 0, '축시': 2, '인시': 4, '묘시': 6, '진시': 8, '사시': 10, '오시': 12, '미시': 14, '신시': 16, '유시': 18, '술시': 20, '해시': 22 };
-        const hour = timeMap[timeStr] !== undefined ? timeMap[timeStr] : 12;
+                    let lunarObj;
+                    if (calendarType === 'solar') {
+                        lunarObj = Solar.fromYmdHms(year, month, day, hour, 0, 0).getLunar();
+                    } else if (calendarType === 'lunar') {
+                        lunarObj = Lunar.fromYmdHms(year, month, day, hour, 0, 0);
+                    } else {
+                        try {
+                            lunarObj = Lunar.fromYmdHms(year, -Math.abs(month), day, hour, 0, 0);
+                        } catch (leapErr) {
+                            lunarObj = Lunar.fromYmdHms(year, Math.abs(month), day, hour, 0, 0);
+                        }
+                    }
 
-        let lunarObj;
-        if (calendarType === 'solar') {
-            lunarObj = Solar.fromYmdHms(year, month, day, hour, 0, 0).getLunar();
-        } else if (calendarType === 'lunar') {
-            lunarObj = Lunar.fromYmdHms(year, month, day, hour, 0, 0);
-        } else {
-            lunarObj = Lunar.fromYmdHms(year, -month, day, hour, 0, 0);
-        }
+                    const bazi = lunarObj.getEightChar();
+                    // 올해 세운 간지 자동 계산 (입춘 지난 6월 1일 기준)
+                    let curYearGZ = '';
+                    try {
+                        curYearGZ = Solar.fromYmd(new Date().getFullYear(), 6, 1).getLunar().getYearInGanZhi();
+                    } catch (e) {}
 
-        const bazi = lunarObj.getEightChar();
-        
-        const fortuneHtml = generateLifetimeFortune(bazi, gender, timeStr);
+                    const fortuneHtml = generateLifetimeFortune(bazi, gender, timeStr, year, curYearGZ);
 
-        document.getElementById('result-loading').style.display = 'none';
-        document.getElementById('dynamic-fortune-content').innerHTML = fortuneHtml; 
-        document.getElementById('dynamic-fortune-content').style.display = 'block';
-        document.getElementById('go-home-btn').style.display = 'block';
-
-    }, 1500); 
-};
+                    document.getElementById('result-loading').style.display = 'none';
+                    document.getElementById('dynamic-fortune-content').innerHTML = fortuneHtml;
+                    document.getElementById('dynamic-fortune-content').style.display = 'block';
+                    document.getElementById('go-home-btn').style.display = 'block';
+                } catch (err) {
+                    console.error("사주 계산 오류:", err);
+                    document.getElementById('result-loading').innerText = "사주 정보를 불러오는 중 오류가 발생했습니다. 생년월일을 다시 확인해주세요.";
+                }
+            }, 1500);
+        };
     </script>
-    
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider, OAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
@@ -788,11 +1353,8 @@
             const headerBtn = document.getElementById('header-user-btn');
             if (user) {
                 if(headerBtn) { headerBtn.innerText = "내정보"; headerBtn.onclick = function() { location.href = 'index.html?tab=myinfo'; }; }
-                
-                // 모듈 내에서도 전역 윈도우 변수로 접근하여 ReferenceError 완벽 차단!
                 const safeOrderId = window.globalOrderId;
                 const safePaymentKey = window.globalPaymentKey;
-
                 if (safeOrderId && safePaymentKey && safePaymentKey !== 'revisit') {
                     try {
                         const purchaseRef = doc(db, "users", user.uid, "purchases", safeOrderId);
@@ -810,7 +1372,6 @@
                                 calendar: sessionStorage.getItem('saju_calendar')
                             }
                         }, { merge: true });
-                        console.log("결제 내역(팩폭 사주) 저장 완료");
                     } catch (e) { console.error("영수증 저장 실패:", e); }
                 }
             } else {
@@ -822,44 +1383,15 @@
         window.realKakaoLogin = function() { const kakaoProvider = new OAuthProvider('oidc.kakao'); signInWithPopup(auth, kakaoProvider).then(() => { closeLogin(); }).catch(console.error); }
     </script>
     <script>
-    // 1. 마우스 우클릭 금지
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    });
-
-    // 2. F12 및 개발자 도구 단축키 금지
-    document.addEventListener('keydown', function(e) {
-        // F12 키 막기
-        if (e.keyCode === 123) {
-            e.preventDefault();
-            return false;
-        }
-        // Ctrl + Shift + I (개발자 도구 여는 단축키) 막기
-        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
-            e.preventDefault();
-            return false;
-        }
-        // Ctrl + Shift + J (개발자 도구 콘솔 여는 단축키) 막기
-        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
-            e.preventDefault();
-            return false;
-        }
-        // Ctrl + Shift + C (개발자 도구 요소 검사 단축키) 막기
-        if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
-            e.preventDefault();
-            return false;
-        }
-        // Ctrl + U (페이지 소스 보기 단축키) 막기
-        if (e.ctrlKey && e.keyCode === 85) {
-            e.preventDefault();
-            return false;
-        }
-    });
-
-    // 3. 마우스 드래그 금지 (텍스트 복사 방지)
-    document.addEventListener('selectstart', function(e) {
-        e.preventDefault();
-    });
-</script>
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode === 123) { e.preventDefault(); return false; }
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) { e.preventDefault(); return false; }
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) { e.preventDefault(); return false; }
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 67) { e.preventDefault(); return false; }
+            if (e.ctrlKey && e.keyCode === 85) { e.preventDefault(); return false; }
+        });
+        document.addEventListener('selectstart', function(e) { e.preventDefault(); });
+    </script>
 </body>
 </html>
