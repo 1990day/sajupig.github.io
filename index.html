@@ -4,28 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="naver-site-verification" content="5483298295bcedbc3650151e3308917c2423a59e" />
-
- <title>사주돼지</title>
-<meta name="keywords" content="사주돼지, 770사주, 무료사주, 유료사주, 사주궁합, 평생사주, 신년운세, 신년사주, 만세력, 무료만세력, 사주풀이, 좋은말사주, 나쁜말사주">
-    <meta property="og:type" content="website"> 
-   <meta property="og:title" content="사주돼지">
-   <meta property="og:description" content="사주돼지에서 확인하는 솔직하고 강한 사주 풀이">
-        <meta property="og:image" content="og_img.png">
+    <title>사주돼지</title>
+    <meta name="keywords" content="사주돼지, 770사주, 무료사주, 유료사주, 사주궁합, 평생사주, 신년운세, 신년사주, 만세력, 무료만세력, 사주풀이, 좋은말사주, 나쁜말사주">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="사주돼지">
+    <meta property="og:description" content="사주돼지에서 확인하는 솔직하고 강한 사주 풀이">
+    <meta property="og:image" content="og_img.png">
     <meta property="og:url" content="https://sajupig.co.kr">
     <script src="https://unpkg.com/lunar-javascript/lunar.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5522499110435321" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="/favicon.png">
-     
+
     <style>
         html { background: #f7dfe6; }
-        body { 
+        body {
             margin: 0 auto; max-width: 480px; min-height: 100vh;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; 
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(180deg, #fff4f7 0%, #ffeef3 100%);
             color: #222; box-shadow: 0 0 25px rgba(0, 0, 0, 0.08); position: relative;
         }
-        
+
         header { background-color: #ffc4d0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.08); backdrop-filter: blur(8px); }
         .header-top { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
         .main-link { text-decoration: none; color: inherit; }
@@ -37,30 +36,30 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.08); transition: all 0.2s;
         }
         .login-btn-header:hover { transform: translateY(-1px); }
-        
+
         nav { display: flex; justify-content: space-between; padding: 10px 15px 15px 15px; gap: 8px; overflow-x: auto; white-space: nowrap; }
-        nav button { 
-            flex: 1; background: rgba(255,255,255,0.92); border: 1px solid #ffe3ea; font-size: 0.82rem; color: #ff6f94; cursor: pointer; 
-            font-weight: 900; transition: all 0.2s; border-radius: 16px; aspect-ratio: 1 / 1; 
+        nav button {
+            flex: 1; background: rgba(255,255,255,0.92); border: 1px solid #ffe3ea; font-size: 0.82rem; color: #ff6f94; cursor: pointer;
+            font-weight: 900; transition: all 0.2s; border-radius: 16px; aspect-ratio: 1 / 1;
             display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
             box-shadow: 0 4px 10px rgba(255,255,255,0.45), 0 6px 14px rgba(209, 21, 52, 0.05);
         }
-        nav button.active { 
+        nav button.active {
             color: #ffffff; background: linear-gradient(180deg, #ff7da0 0%, #d11534 100%); border-color: #d11534;
             transform: translateY(-2px); box-shadow: 0 8px 16px rgba(209, 21, 52, 0.22);
         }
         nav button span.icon { font-size: 1.25rem; }
         nav::-webkit-scrollbar { display: none; }
-        
+
         main { padding: 15px; text-align: center; }
         .header-logo { display: block; height: 30px; width: auto; }
         .section { display: none; min-height: 60vh; }
         .section.active { display: block; animation: fadeIn 0.28s ease-in-out; }
-        
+
         .main-image { max-width: 100%; height: auto; margin-bottom: 20px; border-radius: 4px; border: 1px solid #ddd; display: block; }
 
-        .card { 
-            background: rgba(255,255,255,0.9); padding: 30px 15px; border-radius: 22px; 
+        .card {
+            background: rgba(255,255,255,0.9); padding: 30px 15px; border-radius: 22px;
             box-shadow: 0 10px 24px rgba(255, 171, 192, 0.14); margin-top: 10px;
             border: 1px solid rgba(255,255,255,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
         }
@@ -101,21 +100,21 @@
         .form-group label { display: block; font-size: 0.95rem; color: #d11534; margin-bottom: 8px; font-weight: 800; }
         .date-select-group { display: flex; gap: 6px; }
         .date-select-group select { flex: 1; padding: 12px 5px; font-size: 1rem; color: #333; outline: none; }
-        .form-group input[type="text"], .form-group input[type="date"], select { 
-            width: 100%; padding: 14px; border: 1.5px solid #ffd4df; border-radius: 14px; box-sizing: border-box; 
+        .form-group input[type="text"], .form-group input[type="date"], select {
+            width: 100%; padding: 14px; border: 1.5px solid #ffd4df; border-radius: 14px; box-sizing: border-box;
             font-size: 1rem; color: #333; outline: none; background-color: rgba(255,255,255,0.95); transition: all 0.2s;
         }
         .form-group input:focus, select:focus { border-color: #ff7b9b; background-color: #fff7fa; box-shadow: 0 0 0 4px rgba(255, 182, 193, 0.14); }
-        
+
         .radio-group { display: flex; gap: 6px; margin-bottom: 10px; }
-        .radio-group label { 
-            flex: 1; background-color: rgba(255,255,255,0.92); padding: 12px 5px; text-align: center; 
+        .radio-group label {
+            flex: 1; background-color: rgba(255,255,255,0.92); padding: 12px 5px; text-align: center;
             border-radius: 14px; cursor: pointer; margin-bottom: 0; border: 1.5px solid #ffd4df; font-size: 0.9rem; color: #666; transition: all 0.2s;
         }
         .radio-group input[type="radio"] { display: none; }
         .radio-group input[type="radio"]:checked + span { color: #d11534; font-weight: 900; }
         .radio-group input[type="radio"]:checked ~ label, .radio-group label:has(input[type="radio"]:checked) { background-color: #fff1f5; border-color: #ff7b9b; box-shadow: 0 4px 10px rgba(255, 182, 193, 0.12); }
-        
+
         .submit-btn { width: 100%; background: linear-gradient(180deg, #ff7da0 0%, #d11534 100%); color: white; border: none; padding: 18px; border-radius: 16px; font-size: 1.05rem; font-weight: 900; cursor: pointer; box-shadow: 0 10px 18px rgba(209, 21, 52, 0.22); transition: transform 0.1s; }
         .submit-btn:active { transform: scale(0.98); }
         .reset-btn { width: 100%; background-color: rgba(255,255,255,0.92); color: #333; border: 1px solid #e0d5d9; padding: 18px; border-radius: 16px; font-size: 1.05rem; font-weight: 800; cursor: pointer; }
@@ -226,6 +225,34 @@
 
         @media (max-width: 420px) { .folder-main-title { font-size: 1.46rem; } .folder-grid-shortcut { grid-template-columns: 1fr; } .folder-shortcut { min-height: auto; } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .man-save-dialog {
+            width: min(320px, calc(100% - 24px));
+            max-width: none;
+            box-sizing: border-box;
+            padding: 16px;
+            color: #5a3a41;
+            background: #fff7fa;
+            border: 1px solid #ffd1dc;
+            border-radius: 18px;
+            text-align: center;
+        }
+        .man-save-dialog::backdrop { background: rgba(40, 20, 25, 0.55); }
+        .man-save-dialog h2 { margin: 0; font-size: 1.05rem; }
+        .man-save-dialog p { margin: 8px 0 12px; font-size: 0.85rem; }
+        .man-save-image {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: min(55vh, calc(100vh - 165px));
+            max-height: min(55dvh, calc(100dvh - 165px));
+            margin: 0 auto 12px;
+            border-radius: 10px;
+            -webkit-touch-callout: default;
+        }
+        .man-save-dialog form { margin: 0; }
+        .man-save-dialog .reset-btn { padding: 10px; font-size: 0.9rem; }
+
     </style>
 </head>
 <body>
@@ -281,7 +308,6 @@
 
                     <div class="folder-content-box">
                         <div class="folder-label">TODAY FORTUNE FILE</div>
-                     
 
                         <div class="folder-chip-list">
                             <div class="folder-chip">만세력</div>
@@ -332,10 +358,10 @@
     <div id="manseryeok" class="section">
         <div class="card">
             <h2 id="manseryeok-title">🐷 돼지 만세력</h2>
-            
+
             <form id="man-form" class="saju-form">
                 <p style="color: #666; font-size: 0.95rem; margin-top: 0; font-weight: bold;">생년월일을 입력하고 나의 사주팔자를 확인해 보세요.</p>
-                
+
                 <div class="form-group">
                     <label>성별</label>
                     <div class="radio-group">
@@ -402,45 +428,45 @@
                 </div>
 
                 <div class="action-btns">
-                    <button class="submit-btn" onclick="saveManseryeok()">내 만세력 저장하기</button>
+                    <button id="man-save-button" type="button" class="submit-btn" onclick="saveManseryeok()">내 만세력 저장하기</button>
                     <button class="reset-btn" onclick="resetForm()">다시 입력하기</button>
                 </div>
             </div>
         </div>
     </div>
-    
-  <div id="saju770" class="section">
-    <div class="card">
-        <h2>🪙 770사주</h2>
-      
-        <div class="saju770-menu">
-            <button class="saju770-btn" onclick="location.href='pig2027.html'">
-                <div class="saju770-title">🧧 돼지 신년 사주</div>
-                <div class="saju770-price">770원</div>
-            </button>
 
-            <button class="saju770-btn" onclick="location.href='pigsaju.html'">
-                <div class="saju770-title">📜 돼지 정통 사주</div>
-                <div class="saju770-price">770원</div>
-            </button>
-        </div>
+    <div id="saju770" class="section">
+        <div class="card">
+            <h2>🪙 770사주</h2>
 
-        <div class="saju9900-card">
-            <h2 class="saju9900-heading">💎 9900사주</h2>
+            <div class="saju770-menu">
+                <button class="saju770-btn" onclick="location.href='pig2027.html'">
+                    <div class="saju770-title">🧧 돼지 신년 사주</div>
+                    <div class="saju770-price">770원</div>
+                </button>
 
-            <button class="saju9900-btn" onclick="location.href='saju9900.html'">
-                <div class="saju9900-badge">정밀 장문 리포트</div>
-                <div class="saju9900-title">나를 꿰뚫는 사주</div>
-                <div class="saju9900-price">9900원</div>
-            </button>
+                <button class="saju770-btn" onclick="location.href='pigsaju.html'">
+                    <div class="saju770-title">📜 돼지 정통 사주</div>
+                    <div class="saju770-price">770원</div>
+                </button>
+            </div>
+
+            <div class="saju9900-card">
+                <h2 class="saju9900-heading">💎 9900사주</h2>
+
+                <button class="saju9900-btn" onclick="location.href='saju9900.html'">
+                    <div class="saju9900-badge">정밀 장문 리포트</div>
+                    <div class="saju9900-title">나를 꿰뚫는 사주</div>
+                    <div class="saju9900-price">9900원</div>
+                </button>
+            </div>
         </div>
     </div>
-</div>
 
     <div id="love" class="section">
         <div class="card">
             <h2>💕 돼지연애</h2>
-           
+
             <div class="saju770-menu">
                 <button class="saju770-btn" onclick="location.href='lovepig.html'">
                     <div class="saju770-title">💑 돼지 연애 궁합</div>
@@ -451,13 +477,13 @@
                 <button class="saju770-btn" onclick="location.href='familypig.html'">
                     <div class="saju770-title">👨‍👩‍👧‍👦 돼지 가족 궁합</div>
                 </button>
-                      <button class="saju770-btn" onclick="location.href='petpig.html'">
+                <button class="saju770-btn" onclick="location.href='petpig.html'">
                     <div class="saju770-title">🐾 돼지 반려동물 궁합</div>
                 </button>
                 <button class="saju770-btn" onclick="location.href='reunionpig.html'">
                     <div class="saju770-title">💔 돼지 재회 사주</div>
                 </button>
-          
+
             </div>
         </div>
     </div>
@@ -465,7 +491,7 @@
     <div id="fact" class="section">
         <div class="card">
             <h2>👊 돼지팩폭</h2>
-        
+
             <div class="saju770-menu">
                 <button class="saju770-btn" onclick="location.href='goodpig.html'">
                     <div class="saju770-title">👼 좋은말만 가득 사주</div>
@@ -481,7 +507,7 @@
         <div class="card">
             <h2>👤 내 정보</h2>
             <p id="user-name-display" style="color: #d11534; font-weight: bold; margin-bottom: 20px;">로그인이 필요합니다.</p>
-            
+
             <div class="saju-form" style="margin-bottom: 20px; border-color: #ffd4df; background-color: #fffafb;">
                 <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;" onclick="toggleMyInfo('purchase-content', 'purchase-arrow')">
                     <div>
@@ -490,7 +516,7 @@
                     </div>
                     <div id="purchase-arrow" style="font-size: 1.2rem; color: #d11534; transition: transform 0.3s ease;">▼</div>
                 </div>
-                
+
                 <div id="purchase-content" style="display: none; border-top: 1px dashed #ffd4df; padding-top: 15px; margin-top: 15px;">
                     <div id="purchase-list-container" style="display: flex; flex-direction: column; gap: 10px;"></div>
                 </div>
@@ -504,10 +530,10 @@
                     </div>
                     <div id="setting-arrow" style="font-size: 1.2rem; color: #5a3a41; transition: transform 0.3s ease;">▼</div>
                 </div>
-                
+
                 <div id="setting-content" style="display: none; border-top: 1px dashed #ffe2ea; padding-top: 15px; margin-top: 15px;">
                     <div style="display:flex; flex-direction:column; gap: 10px; margin-bottom: 15px;">
-                        
+
                         <div class="form-group" style="margin-bottom: 10px;">
                             <label style="font-size: 0.85rem;">닉네임</label>
                             <input type="text" id="my-saved-nickname" placeholder="사주돼지 회원">
@@ -536,7 +562,7 @@
                             <select id="my-saved-month" style="padding: 12px 5px; border: 1.5px solid #ffd4df; border-radius: 12px;"></select>
                             <select id="my-saved-day" style="padding: 12px 5px; border: 1.5px solid #ffd4df; border-radius: 12px;"></select>
                         </div>
-                        
+
                         <label style="font-size: 0.85rem; color: #d11534; font-weight: 800;">태어난 시간</label>
                         <select id="my-saved-time" style="padding: 12px; border: 1.5px solid #ffd4df; border-radius: 12px;">
                             <option value="unknown">태어난 시간 모름</option>
@@ -577,13 +603,12 @@
         <span style="color: #ddd;">|</span>
         <a href="refund.html" style="color: #d11534; text-decoration: none;">환불규정</a>
     </div>
-    
+
     <button onclick="toggleBusinessInfo()" style="background: none; border: none; color: #888; font-size: 0.8rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0 auto; padding: 5px;">
         <span>사업자 정보 보기</span>
         <span id="biz-arrow" style="font-size: 0.6rem;">▼</span>
     </button>
 
-    
     <div id="business-info" style="display: none; margin-top: 15px; line-height: 1.6; text-align: center; color: #a0a0a0;">
         <p style="margin: 0;">상호명: 테스트잇 | 대표자: 송다혜</p>
         <p style="margin: 0;">사업자등록번호: 662-54-00892</p>
@@ -594,17 +619,28 @@
     </div>
 </footer>
 
+<dialog id="man-save-dialog" class="man-save-dialog" aria-labelledby="man-save-title" aria-describedby="man-save-hint">
+    <h2 id="man-save-title">만세력 이미지</h2>
+    <p id="man-save-hint">이미지를 꾹 눌러 저장해 주세요.</p>
+    <img id="man-save-image" class="man-save-image" alt="돼지 만세력 결과">
+    <form method="dialog">
+        <button type="submit" class="reset-btn" autofocus>닫기</button>
+    </form>
+</dialog>
+
 <script>
-    window.onload = function() {
+    function initDateSelects() {
         const yearSel = document.getElementById('man-year');
         const monthSel = document.getElementById('man-month');
         const daySel = document.getElementById('man-day');
         const myYearSel = document.getElementById('my-saved-year');
         const myMonthSel = document.getElementById('my-saved-month');
         const myDaySel = document.getElementById('my-saved-day');
-        
+
+        if (yearSel && yearSel.options.length > 0) return;
+
         const curYear = new Date().getFullYear();
-        
+
         for (let i = curYear; i >= 1900; i--) {
             if(yearSel) yearSel.add(new Option(i + "년", i));
             if(myYearSel) myYearSel.add(new Option(i + "년", i));
@@ -617,27 +653,34 @@
             if(daySel) daySel.add(new Option(i + "일", i));
             if(myDaySel) myDaySel.add(new Option(i + "일", i));
         }
-        
+
         if(yearSel) yearSel.value = 1990;
         if(myYearSel) myYearSel.value = 1990;
 
+    }
+
+    initDateSelects();
+
+    window.onload = function() {
+        initDateSelects();
+
         const urlParams = new URLSearchParams(window.location.search);
         let tab = urlParams.get('tab');
-        
+
         if (!tab) {
             document.getElementById('main-screen').classList.add('active');
             return;
         }
-        
+
         const targetSection = document.getElementById(tab);
         const buttons = document.querySelectorAll('#menu-bar button');
         let targetBtn = null;
-        
+
         if (tab === 'manseryeok') targetBtn = buttons[0];
         if (tab === 'saju770') targetBtn = buttons[1];
         if (tab === 'love') targetBtn = buttons[2];
         if (tab === 'fact') targetBtn = buttons[3];
-        
+
         if (targetSection) {
             document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
             buttons.forEach(btn => btn.classList.remove('active'));
@@ -654,12 +697,32 @@
     };
 
     function transFull(char) { return fullNames[char] || char; }
-    
-    function transSib(char) {
-        if (!char) return '-';
-        if (Array.isArray(char)) char = char[0];
-        const map = { '比肩':'비견', '劫财':'겁재', '劫財':'겁재', '食神':'식신', '伤官':'상관', '傷官':'상관', '偏财':'편재', '偏財':'편재', '正财':'정재', '正財':'정재', '七杀':'편관', '七殺':'편관', '正官':'정관', '偏印':'편인', '正印':'정인', '日主':'일간' };
-        return map[char] || String(char).replace(/[\u4e00-\u9fa5]/g, '').trim() || '-';
+
+    // 일간 기준 천간·지지(지장간 본기) 십성 직접 계산
+    const GAN_LIST = ['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'];
+    const ZHI_LIST = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
+    const ZHI_MAIN_GAN = {
+        '子':'癸', '丑':'己', '寅':'甲', '卯':'乙', '辰':'戊', '巳':'丙',
+        '午':'丁', '未':'己', '申':'庚', '酉':'辛', '戌':'戊', '亥':'壬'
+    };
+
+    function calcSibseong(dayGan, targetChar) {
+        const targetGan = ZHI_MAIN_GAN[targetChar] || targetChar;
+        const dIdx = GAN_LIST.indexOf(dayGan);
+        const tIdx = GAN_LIST.indexOf(targetGan);
+        if (dIdx === -1 || tIdx === -1) return '-';
+
+        const dEl = Math.floor(dIdx / 2);
+        const tEl = Math.floor(tIdx / 2);
+        const sameYinYang = (dIdx % 2) === (tIdx % 2);
+        const diff = (tEl - dEl + 5) % 5;
+
+        if (diff === 0) return sameYinYang ? '비견' : '겁재';
+        if (diff === 1) return sameYinYang ? '식신' : '상관';
+        if (diff === 2) return sameYinYang ? '편재' : '정재';
+        if (diff === 3) return sameYinYang ? '편관' : '정관';
+        if (diff === 4) return sameYinYang ? '편인' : '정인';
+        return '-';
     }
 
     function getElementClass(char) {
@@ -671,8 +734,14 @@
         return 'color-unknown';
     }
 
-    function getShinsalPerfect(title, gan, zhi, yGan, yZhi, mGan, mZhi, dGan, dZhi) {
-        let list = []; const pillar = gan + zhi;
+    function getShinsalPerfect(title, gan, zhi, yGan, yZhi, mGan, mZhi, dGan, dZhi, allZhis = []) {
+        let list = [];
+        const pillar = gan + zhi;
+        const dGanIdx = GAN_LIST.indexOf(dGan);
+        const dZhiIdx = ZHI_LIST.indexOf(dZhi);
+        const yZhiIdx = ZHI_LIST.indexOf(yZhi);
+
+        // 1. 주요 귀인 (길신)
         if (['甲','戊','庚'].includes(dGan) && ['丑','未'].includes(zhi)) list.push('천을귀인');
         if (['乙','己'].includes(dGan) && ['子','申'].includes(zhi)) list.push('천을귀인');
         if (['丙','丁'].includes(dGan) && ['亥','酉'].includes(zhi)) list.push('천을귀인');
@@ -684,87 +753,242 @@
         if (['巳','酉','丑'].includes(mZhi) && gan === '庚') list.push('월덕귀인');
         if (['申','子','辰'].includes(mZhi) && gan === '壬') list.push('월덕귀인');
 
+        if (['亥','卯','未'].includes(mZhi) && gan === '己') list.push('월덕합');
+        if (['寅','午','戌'].includes(mZhi) && gan === '辛') list.push('월덕합');
+        if (['巳','酉','丑'].includes(mZhi) && gan === '乙') list.push('월덕합');
+        if (['申','子','辰'].includes(mZhi) && gan === '丁') list.push('월덕합');
+
         const cheondeok = {'子':'巳', '丑':'庚', '寅':'丁', '卯':'申', '辰':'壬', '巳':'辛', '午':'亥', '未':'甲', '申':'癸', '酉':'寅', '戌':'丙', '亥':'乙'};
         if (cheondeok[mZhi] === gan || cheondeok[mZhi] === zhi) list.push('천덕귀인');
 
-        const munchang = {'甲':'巳', '乙':'午', '丙':'申', '戊':'申', '丁':'酉', '己':'酉', '庚':'亥', '辛':'子', '壬':'寅', '癸':'卯'};
-        const hakdang = {'甲':'亥', '乙':'午', '丙':'寅', '丁':'酉', '戊':'寅', '己':'酉', '庚':'巳', '辛':'子', '壬':'申', '癸':'卯'};
-        const hongyeom = {'甲':'午', '乙':'午', '丙':'寅', '丁':'미', '戊':'辰', '己':'辰', '庚':'戌', '辛':'酉', '壬':'子', '癸':'申'};
-        const geumyeo = {'甲':'辰', '乙':'巳', '丙':'未', '丁':'申', '戊':'未', '己':'申', '庚':'戌', '辛':'亥', '壬':'丑', '癸':'寅'};
-        if (munchang[dGan] === zhi) list.push('문창성');
-        if (hakdang[dGan] === zhi) list.push('학당귀인');
-        if (hongyeom[dGan] === zhi || (dGan === '壬' && zhi === '申')) list.push('홍염살');
-        if (geumyeo[dGan] === zhi) list.push('금여성');
+        const cheondeokHap = {'子':'申', '丑':'乙', '寅':'壬', '卯':'巳', '辰':'丁', '巳':'丙', '午':'寅', '未':'己', '申':'戊', '酉':'亥', '戌':'辛', '亥':'庚'};
+        if (cheondeokHap[mZhi] === gan || cheondeokHap[mZhi] === zhi) list.push('천덕합');
 
-        if (title === '일주') { if (['甲寅', '乙巳', '丁巳', '戊申', '辛亥'].includes(pillar)) list.push('고란살'); }
+        const taegeuk = {
+            '甲':['子','午'], '乙':['子','午'], '丙':['卯','酉'], '丁':['卯','酉'],
+            '戊':['辰','戌','丑','未'], '己':['辰','戌','丑','未'],
+            '庚':['寅','亥'], '辛':['寅','亥'], '壬':['巳','申'], '癸':['巳','申']
+        };
+        if ((taegeuk[dGan] || []).includes(zhi)) list.push('태극귀인');
+
+        const munchang = {'甲':'巳', '乙':'午', '丙':'申', '戊':'申', '丁':'酉', '己':'酉', '庚':'亥', '辛':'子', '壬':'寅', '癸':'卯'};
+        const mungok = {'甲':'亥', '乙':'子', '丙':'寅', '丁':'卯', '戊':'寅', '己':'卯', '庚':'巳', '辛':'午', '壬':'申', '癸':'酉'};
+        const hakdang = {'甲':'亥', '乙':'午', '丙':'寅', '丁':'酉', '戊':'寅', '己':'酉', '庚':'巳', '辛':'子', '壬':'申', '癸':'卯'};
+        const gwangwi = {'甲':'巳', '乙':'巳', '丙':'申', '丁':'申', '戊':'亥', '己':'亥', '庚':'寅', '辛':'寅', '壬':'申', '癸':'申'};
+        const cheonju = {'甲':'巳', '乙':'午', '丙':'巳', '丁':'午', '戊':'申', '己':'酉', '庚':'亥', '辛':'子', '壬':'寅', '癸':'卯'};
+        const bokseong = {'甲':'寅', '乙':'丑', '丙':'子', '丁':'酉', '戊':'申', '己':'未', '庚':'午', '辛':'巳', '壬':'辰', '癸':'卯'};
+        const cheongwan = {'甲':'未', '乙':'辰', '丙':'巳', '丁':'寅', '戊':'卯', '己':'酉', '庚':'亥', '辛':'申', '壬':'酉', '癸':'午'};
+        const amrok = {'甲':'亥', '乙':'戌', '丙':'申', '丁':'未', '戊':'申', '己':'未', '庚':'巳', '辛':'辰', '壬':'寅', '癸':'丑'};
+        const geonrok = {'甲':'寅', '乙':'卯', '丙':'巳', '丁':'午', '戊':'巳', '己':'午', '庚':'申', '辛':'酉', '壬':'亥', '癸':'子'};
+        const geumyeo = {'甲':'辰', '乙':'巳', '丙':'未', '丁':'申', '戊':'未', '己':'申', '庚':'戌', '辛':'亥', '壬':'丑', '癸':'寅'};
+        const cheonui = {'寅':'丑', '卯':'寅', '辰':'卯', '巳':'辰', '午':'巳', '未':'午', '申':'未', '酉':'申', '戌':'酉', '亥':'戌', '子':'亥', '丑':'子'};
+        const hwangeun = {'子':'申', '丑':'未', '寅':'戌', '卯':'丑', '辰':'寅', '巳':'巳', '午':'酉', '未':'卯', '申':'子', '酉':'午', '戌':'亥', '亥':'辰'};
+
+        if (munchang[dGan] === zhi) list.push('문창귀인');
+        if (mungok[dGan] === zhi) list.push('문곡귀인');
+        if (hakdang[dGan] === zhi) list.push('학당귀인');
+        if (gwangwi[dGan] === zhi) list.push('관귀학관');
+        if (cheonju[dGan] === zhi) list.push('천주귀인');
+        if (bokseong[dGan] === zhi) list.push('복성귀인');
+        if (cheongwan[dGan] === zhi) list.push('천관귀인');
+        if (amrok[dGan] === zhi) list.push('암록');
+        if (geonrok[dGan] === zhi) list.push('건록');
+        if (geumyeo[dGan] === zhi) list.push('금여성');
+        if (cheonui[mZhi] === zhi) list.push('천의성');
+        if (hwangeun[mZhi] === zhi) list.push('황은대사');
+
+        if (title === '일주') {
+            if ((['寅','卯','辰'].includes(mZhi) && pillar === '戊寅') ||
+                (['巳','午','未'].includes(mZhi) && pillar === '甲午') ||
+                (['申','酉','戌'].includes(mZhi) && pillar === '戊申') ||
+                (['亥','子','丑'].includes(mZhi) && pillar === '甲子')) {
+                list.push('천사성');
+            }
+        }
+
+        // 2. 일주·간지 특수 신살
+        const hongyeom = {'甲':'午', '乙':'午', '丙':'寅', '丁':'未', '戊':'辰', '己':'辰', '庚':'戌', '辛':'酉', '壬':'子', '癸':'申'};
+        if (hongyeom[dGan] === zhi || (dGan === '壬' && zhi === '申')) list.push('홍염살');
+
+        if (title === '일주') {
+            if (['甲寅', '乙巳', '丁巳', '戊申', '辛亥'].includes(pillar)) list.push('고란살');
+            if (['丙子', '丙午', '丁丑', '丁未', '戊寅', '戊申', '辛卯', '辛酉', '壬辰', '壬戌', '癸巳', '癸亥'].includes(pillar)) list.push('음양차착살');
+            if (['甲辰', '乙巳', '丙申', '丁亥', '戊戌', '己丑', '庚辰', '辛巳', '壬申', '癸亥'].includes(pillar)) list.push('십악대패살');
+            if (['丙寅', '丁卯', '庚辰', '庚戌', '辛丑', '辛未', '壬申', '癸酉'].includes(pillar)) list.push('효신살');
+        }
         if (['甲辰', '乙未', '丙戌', '丁丑', '戊辰', '壬戌', '癸丑'].includes(pillar)) list.push('백호대살');
         if (['庚辰', '庚戌', '壬辰', '戊戌'].includes(pillar)) list.push('괴강살');
-        
-        const yangin = {'甲':'卯', '丙':'오', '戊':'오', '庚':'酉', '壬':'자', '乙':'진', '丁':'미', '己':'미', '辛':'술', '癸':'축'};
+        if (['甲寅', '乙卯', '丙午', '丁巳', '戊辰', '戊戌', '己丑', '己未', '庚申', '辛酉', '壬子', '癸亥'].includes(pillar)) list.push('간여지동');
+
+        const yangin = {'甲':'卯', '丙':'午', '戊':'午', '庚':'酉', '壬':'子', '乙':'辰', '丁':'未', '己':'未', '辛':'戌', '癸':'丑'};
+        const biin = {'甲':'酉', '丙':'子', '戊':'子', '庚':'卯', '壬':'午'};
         if (yangin[dGan] === zhi) list.push('양인살');
+        if (biin[dGan] === zhi) list.push('비인살');
 
-        if (['甲','辛','卯','午','申'].includes(gan)) list.push('현침살');
-        if (['甲','辛','卯','午','申'].includes(zhi) && !list.includes('현침살')) list.push('현침살');
+        if (['甲','辛','卯','午','申'].includes(gan) || ['甲','辛','卯','午','申'].includes(zhi)) list.push('현침살');
+        if (['乙','己'].includes(gan) || ['巳','丑'].includes(zhi)) list.push('곡각살');
 
-        function getSamhap(z) { if (['申','子','辰'].includes(z)) return '水'; if (['寅','午','戌'].includes(z)) return '火'; if (['亥','卯','未'].includes(z)) return '木'; if (['巳','酉','丑'].includes(z)) return '金'; return ''; }
-        const dSamhap = getSamhap(dZhi); const ySamhap = getSamhap(yZhi);
+        const nakjeong = {'甲':'巳', '己':'巳', '乙':'子', '庚':'子', '丙':'申', '辛':'申', '丁':'戌', '壬':'戌', '戊':'卯', '癸':'卯'};
+        if (nakjeong[dGan] === zhi) list.push('낙정관살');
 
+        const dangyo = {'寅':'寅', '卯':'卯', '辰':'申', '巳':'丑', '午':'戌', '未':'酉', '申':'辰', '酉':'巳', '戌':'午', '亥':'未', '子':'亥', '丑':'子'};
+        if (dangyo[mZhi] === zhi) list.push('단교관살');
+
+        if ((['寅','卯','辰'].includes(mZhi) && ['亥','子'].includes(zhi)) ||
+            (['巳','午','未'].includes(mZhi) && ['卯','未'].includes(zhi)) ||
+            (['申','酉','戌'].includes(mZhi) && ['寅','戌'].includes(zhi)) ||
+            (['亥','子','丑'].includes(mZhi) && ['丑','辰'].includes(zhi))) {
+            list.push('급각살');
+        }
+
+        // 3. 12신살 전체 (삼합 기준)
+        function getSamhap(z) {
+            if (['申','子','辰'].includes(z)) return '水';
+            if (['寅','午','戌'].includes(z)) return '火';
+            if (['亥','卯','未'].includes(z)) return '木';
+            if (['巳','酉','丑'].includes(z)) return '金';
+            return '';
+        }
+        const dSamhap = getSamhap(dZhi);
+        const ySamhap = getSamhap(yZhi);
         if ((dSamhap === '水' && zhi === '寅') || (dSamhap === '火' && zhi === '申') || (dSamhap === '木' && zhi === '巳') || (dSamhap === '金' && zhi === '亥') || (ySamhap === '水' && zhi === '寅') || (ySamhap === '火' && zhi === '申') || (ySamhap === '木' && zhi === '巳') || (ySamhap === '金' && zhi === '亥')) list.push('역마살');
-        if ((dSamhap === '水' && zhi === '酉') || (dSamhap === '火' && zhi === '卯') || (dSamhap === '木' && zhi === '子') || (dSamhap === '金' && zhi === '午') || (ySamhap === '水' && zhi === '酉') || (ySamhap === '火' && zhi === '卯') || (ySamhap === '木' && zhi === '子') || (ySamhap === '금' && zhi === '오')) list.push('도화살');
-        if ((dSamhap === '水' && zhi === '辰') || (dSamhap === '火' && zhi === '戌') || (dSamhap === '목' && zhi === '미') || (dSamhap === '금' && zhi === '축') || (ySamhap === '수' && zhi === '진') || (ySamhap === '화' && zhi === '술') || (ySamhap === '목' && zhi === '미') || (ySamhap === '금' && zhi === '축')) list.push('화개살');
+        if ((dSamhap === '水' && zhi === '酉') || (dSamhap === '火' && zhi === '卯') || (dSamhap === '木' && zhi === '子') || (dSamhap === '金' && zhi === '午') || (ySamhap === '水' && zhi === '酉') || (ySamhap === '火' && zhi === '卯') || (ySamhap === '木' && zhi === '子') || (ySamhap === '金' && zhi === '午')) list.push('도화살');
+        if ((dSamhap === '水' && zhi === '辰') || (dSamhap === '火' && zhi === '戌') || (dSamhap === '木' && zhi === '未') || (dSamhap === '金' && zhi === '丑') || (ySamhap === '水' && zhi === '辰') || (ySamhap === '火' && zhi === '戌') || (ySamhap === '木' && zhi === '未') || (ySamhap === '金' && zhi === '丑')) list.push('화개살');
         if ((dSamhap === '水' && zhi === '巳') || (dSamhap === '火' && zhi === '亥') || (dSamhap === '木' && zhi === '申') || (dSamhap === '金' && zhi === '寅')) list.push('겁살');
         if ((dSamhap === '水' && zhi === '亥') || (dSamhap === '火' && zhi === '巳') || (dSamhap === '木' && zhi === '寅') || (dSamhap === '金' && zhi === '申')) list.push('망신살');
+        if ((dSamhap === '水' && zhi === '子') || (dSamhap === '火' && zhi === '午') || (dSamhap === '木' && zhi === '卯') || (dSamhap === '金' && zhi === '酉')) list.push('장성살');
+        if ((dSamhap === '水' && zhi === '丑') || (dSamhap === '火' && zhi === '未') || (dSamhap === '木' && zhi === '辰') || (dSamhap === '金' && zhi === '戌')) list.push('반안살');
+        if ((dSamhap === '水' && zhi === '申') || (dSamhap === '火' && zhi === '寅') || (dSamhap === '木' && zhi === '亥') || (dSamhap === '金' && zhi === '巳')) list.push('지살');
+        if ((dSamhap === '水' && zhi === '午') || (dSamhap === '火' && zhi === '子') || (dSamhap === '木' && zhi === '酉') || (dSamhap === '金' && zhi === '卯')) list.push('재살');
+        if ((dSamhap === '水' && zhi === '未') || (dSamhap === '火' && zhi === '丑') || (dSamhap === '木' && zhi === '戌') || (dSamhap === '金' && zhi === '辰')) list.push('천살');
+        if ((dSamhap === '水' && zhi === '戌') || (dSamhap === '火' && zhi === '辰') || (dSamhap === '木' && zhi === '丑') || (dSamhap === '金' && zhi === '未')) list.push('월살');
+        if ((dSamhap === '水' && zhi === '卯') || (dSamhap === '火' && zhi === '酉') || (dSamhap === '木' && zhi === '午') || (dSamhap === '金' && zhi === '子')) list.push('육해살');
 
-        const gwasuk = {'寅':'축','卯':'축','辰':'축', '巳':'진','午':'진','未':'진', '申':'미','酉':'미','戌':'미', '亥':'술','子':'술','丑':'술'};
-        const gosin = {'寅':'사','卯':'사','辰':'사', '巳':'신','午':'신','未':'신', '申':'해','酉':'해','戌':'해', '亥':'인','子':'인','丑':'인'};
+        // 4. 공망·천라지망·년지/일지 관계 신살
+        if (dGanIdx !== -1 && dZhiIdx !== -1 && title !== '일주') {
+            const xunStartZhi = (dZhiIdx - dGanIdx + 12) % 12;
+            const gongmang = [ZHI_LIST[(xunStartZhi + 10) % 12], ZHI_LIST[(xunStartZhi + 11) % 12]];
+            if (gongmang.includes(zhi)) list.push('공망');
+        }
+
+        if ((allZhis.includes('戌') && allZhis.includes('亥') && ['戌','亥'].includes(zhi)) ||
+            (allZhis.includes('辰') && allZhis.includes('巳') && ['辰','巳'].includes(zhi))) {
+            list.push('천라지망');
+        }
+
+        const gwasuk = {'寅':'丑','卯':'丑','辰':'丑', '巳':'辰','午':'辰','未':'辰', '申':'未','酉':'未','戌':'未', '亥':'戌','子':'戌','丑':'戌'};
+        const gosin = {'寅':'巳','卯':'巳','辰':'巳', '巳':'申','午':'申','未':'申', '申':'亥','酉':'亥','戌':'亥', '亥':'寅','子':'寅','丑':'寅'};
         if (gwasuk[yZhi] === zhi) list.push('과숙살');
         if (gosin[yZhi] === zhi) list.push('고신살');
+
+        if (yZhiIdx !== -1 && title !== '연주') {
+            if (ZHI_LIST[(yZhiIdx + 2) % 12] === zhi) list.push('상문살');
+            if (ZHI_LIST[(yZhiIdx + 10) % 12] === zhi) list.push('조객살');
+        }
 
         const wonjin = { '子':'未', '丑':'午', '寅':'酉', '卯':'申', '辰':'亥', '巳':'戌', '午':'丑', '未':'子', '申':'卯', '酉':'寅', '戌':'巳', '亥':'辰' };
         const gwimun = { '子':'酉', '丑':'午', '寅':'未', '卯':'申', '辰':'亥', '巳':'戌', '午':'丑', '未':'寅', '申':'卯', '酉':'子', '戌':'巳', '亥':'辰' };
         if (wonjin[dZhi] === zhi && title !== '일주') list.push('원진살');
         if (gwimun[dZhi] === zhi && title !== '일주') list.push('귀문관살');
 
+        const tanghwa = { '寅':['寅','巳','申'], '午':['午','辰','丑'], '丑':['午','戌','未'] };
+        if (title !== '일주' && (tanghwa[dZhi] || []).includes(zhi)) list.push('탕화살');
+
         return [...new Set(list)];
     }
 
     document.getElementById('man-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        const year = parseInt(document.getElementById('man-year').value);
-        const month = parseInt(document.getElementById('man-month').value);
-        const day = parseInt(document.getElementById('man-day').value);
+        const year = parseInt(document.getElementById('man-year').value, 10);
+        const month = parseInt(document.getElementById('man-month').value, 10);
+        const day = parseInt(document.getElementById('man-day').value, 10);
         const timeStr = document.getElementById('man-time').value;
         const calendarType = document.querySelector('input[name="man-calendar"]:checked').value;
-        
+
+        // 시주 계산용 기준 시각 (당일 시진 매핑)
         const timeMap = { 'unknown': 12, '자시': 0, '축시': 2, '인시': 4, '묘시': 6, '진시': 8, '사시': 10, '오시': 12, '미시': 14, '신시': 16, '유시': 18, '술시': 20, '해시': 22 };
+        // 절기(연주·월주) KST(UTC+9) -> CST(UTC+8) 보정용 한국 시진 중앙 시각
+        const kstMidMap = {
+            'unknown': [12, 0], '자시': [0, 30], '축시': [2, 30], '인시': [4, 30], '묘시': [6, 30],
+            '진시': [8, 30], '사시': [10, 30], '오시': [12, 30], '미시': [14, 30],
+            '신시': [16, 30], '유시': [18, 30], '술시': [20, 30], '해시': [22, 30]
+        };
         const hour = timeMap[timeStr] !== undefined ? timeMap[timeStr] : 12;
+        const [kstHour, kstMin] = kstMidMap[timeStr] || [12, 0];
 
         try {
-            let lunarObj;
-            if (calendarType === 'solar') { lunarObj = Solar.fromYmdHms(year, month, day, hour, 0, 0).getLunar(); } 
-            else if (calendarType === 'lunar') { lunarObj = Lunar.fromYmdHms(year, month, day, hour, 0, 0); } 
-            else if (calendarType === 'lunar-leap') {
-                let leapMonth = 0; try { leapMonth = LunarYear.fromYear(year).getLeapMonth(); } catch (e) { leapMonth = 0; }
-                if (leapMonth !== month) { alert(`선택한 ${year}년에는 윤${month}월이 없습니다.\n윤달이 맞는지 확인해 주세요.`); return; }
-                lunarObj = Lunar.fromYmdHms(year, -month, day, hour, 0, 0);
+            let solarObj;
+            if (calendarType === 'solar') {
+                const checkDate = new Date(year, month - 1, day);
+                if (checkDate.getFullYear() !== year || checkDate.getMonth() !== month - 1 || checkDate.getDate() !== day) {
+                    alert(`선택한 ${year}년 ${month}월 ${day}일은 존재하지 않는 양력 날짜입니다.\n생년월일을 다시 확인해 주세요.`);
+                    return;
+                }
+                solarObj = Solar.fromYmdHms(year, month, day, hour, 0, 0);
+            } else if (calendarType === 'lunar') {
+                const lunarMonthObj = LunarMonth.fromYm(year, month);
+                const maxDay = lunarMonthObj ? lunarMonthObj.getDayCount() : 30;
+                if (day > maxDay) {
+                    alert(`선택한 음력 ${year}년 ${month}월은 ${maxDay}일까지 있습니다.\n생년월일을 다시 확인해 주세요.`);
+                    return;
+                }
+                solarObj = Lunar.fromYmdHms(year, month, day, hour, 0, 0).getSolar();
+            } else if (calendarType === 'lunar-leap') {
+                let leapMonth = 0;
+                try { leapMonth = LunarYear.fromYear(year).getLeapMonth(); } catch (err) { leapMonth = 0; }
+                if (leapMonth !== month) {
+                    alert(`선택한 ${year}년에는 윤${month}월이 없습니다.\n윤달이 맞는지 확인해 주세요.`);
+                    return;
+                }
+                const leapMonthObj = LunarMonth.fromYm(year, -month);
+                const maxDay = leapMonthObj ? leapMonthObj.getDayCount() : 30;
+                if (day > maxDay) {
+                    alert(`선택한 음력 ${year}년 윤${month}월은 ${maxDay}일까지 있습니다.\n생년월일을 다시 확인해 주세요.`);
+                    return;
+                }
+                solarObj = Lunar.fromYmdHms(year, -month, day, hour, 0, 0).getSolar();
             }
 
-            const bazi = lunarObj.getEightChar();
-            const y = bazi.getYear(); const m = bazi.getMonth(); const d = bazi.getDay(); const t = bazi.getTime();
+            // 1) 일주·시주: 당일 양력 날짜 및 시진 기준 (조자시 sect=2 적용)
+            const sYear = solarObj.getYear();
+            const sMonth = solarObj.getMonth();
+            const sDay = solarObj.getDay();
+            const baziDayTime = Solar.fromYmdHms(sYear, sMonth, sDay, hour, 0, 0).getLunar().getEightChar();
+            baziDayTime.setSect(2);
+
+            // 2) 연주·월주: lunar-javascript 절기(UTC+8) 기준에 맞추어 KST(UTC+9)에서 1시간 차감 보정
+            const cstDate = new Date(Date.UTC(sYear, sMonth - 1, sDay, kstHour, kstMin, 0) - 60 * 60 * 1000);
+            const baziYearMonth = Solar.fromYmdHms(
+                cstDate.getUTCFullYear(),
+                cstDate.getUTCMonth() + 1,
+                cstDate.getUTCDate(),
+                cstDate.getUTCHours(),
+                cstDate.getUTCMinutes(),
+                0
+            ).getLunar().getEightChar();
+            baziYearMonth.setSect(2);
+
+            const y = baziYearMonth.getYear();
+            const m = baziYearMonth.getMonth();
+            const d = baziDayTime.getDay();
+            const t = baziDayTime.getTime();
+
             const yGan = y.charAt(0); const yZhi = y.charAt(1); const mGan = m.charAt(0); const mZhi = m.charAt(1);
             const dGan = d.charAt(0); const dZhi = d.charAt(1); const tGan = t.charAt(0); const tZhi = t.charAt(1);
             const isTimeUnknown = timeStr === 'unknown';
-            
-            const getSafeShiShen = (method) => { try { let raw = bazi[method](); return Array.isArray(raw) ? raw[0] : raw; } catch(e) { return '-'; } };
 
-            const renderPillar = (title, gan, zhi, sibGanMethod, sibZhiMethod, isUnknown) => {
+            const allZhis = isTimeUnknown ? [yZhi, mZhi, dZhi] : [yZhi, mZhi, dZhi, tZhi];
+
+            const renderPillar = (title, gan, zhi, isUnknown) => {
                 if (isUnknown) return `<div class="pillar"><div class="pillar-head">${title}</div><div class="sibseong">-</div><div class="bazi-box-wrap"><div class="bazi-box color-unknown">?</div></div><div class="bazi-box-wrap"><div class="bazi-box color-unknown">?</div></div><div class="sibseong">-</div><div class="shinsal-area"></div></div>`;
-                const sibGan = getSafeShiShen(sibGanMethod); const sibZhi = getSafeShiShen(sibZhiMethod); const finalShinsal = getShinsalPerfect(title, gan, zhi, yGan, yZhi, mGan, mZhi, dGan, dZhi);
+                const sibGan = title === '일주' ? '일간(나)' : calcSibseong(dGan, gan);
+                const sibZhi = calcSibseong(dGan, zhi);
+                const finalShinsal = getShinsalPerfect(title, gan, zhi, yGan, yZhi, mGan, mZhi, dGan, dZhi, allZhis);
                 let shinsalHtml = ''; finalShinsal.forEach(s => { shinsalHtml += `<div class="shinsal-tag">${s}</div>`; });
-                return `<div class="pillar"><div class="pillar-head">${title}</div><div class="sibseong">${title === '일주' ? '일간(나)' : transSib(sibGan)}</div><div class="bazi-box-wrap"><div class="bazi-box ${getElementClass(gan)}">${transFull(gan)}</div></div><div class="bazi-box-wrap"><div class="bazi-box ${getElementClass(zhi)}">${transFull(zhi)}</div></div><div class="sibseong">${transSib(sibZhi)}</div><div class="shinsal-area">${shinsalHtml}</div></div>`;
+                return `<div class="pillar"><div class="pillar-head">${title}</div><div class="sibseong">${sibGan}</div><div class="bazi-box-wrap"><div class="bazi-box ${getElementClass(gan)}">${transFull(gan)}</div></div><div class="bazi-box-wrap"><div class="bazi-box ${getElementClass(zhi)}">${transFull(zhi)}</div></div><div class="sibseong">${sibZhi}</div><div class="shinsal-area">${shinsalHtml}</div></div>`;
             };
 
-            const resultHtml = `${renderPillar('연주', yGan, yZhi, 'getYearShiShenGan', 'getYearShiShenZhi', false)}${renderPillar('월주', mGan, mZhi, 'getMonthShiShenGan', 'getMonthShiShenZhi', false)}${renderPillar('일주', dGan, dZhi, 'getDayShiShenGan', 'getDayShiShenZhi', false)}${renderPillar('시주', tGan, tZhi, 'getTimeShiShenGan', 'getTimeShiShenZhi', isTimeUnknown)}`;
+            const resultHtml = `${renderPillar('연주', yGan, yZhi, false)}${renderPillar('월주', mGan, mZhi, false)}${renderPillar('일주', dGan, dZhi, false)}${renderPillar('시주', tGan, tZhi, isTimeUnknown)}`;
             document.getElementById('man-result-grid').innerHTML = resultHtml;
 
             let wood = 0; let fire = 0; let earth = 0; let metal = 0; let water = 0;
@@ -782,11 +1006,32 @@
         } catch (error) { alert('만세력 계산 중 오류가 발생했습니다. 생년월일을 다시 확인해주세요.'); console.error(error); }
     });
 
-    function saveManseryeok() {
-        const targetElement = document.getElementById('capture-area');
-        html2canvas(targetElement, { scale: 2, backgroundColor: '#fff0f5' }).then(canvas => {
-            const link = document.createElement('a'); link.download = '돼지만세력_결과.png'; link.href = canvas.toDataURL('image/png'); link.click();
-        }).catch(err => { alert('저장 중 오류가 발생했습니다.'); console.error(err); });
+    const manSaveDialog = document.getElementById('man-save-dialog');
+    const manSaveImage = document.getElementById('man-save-image');
+
+    manSaveDialog.addEventListener('close', () => {
+        manSaveImage.removeAttribute('src');
+    });
+
+    async function saveManseryeok() {
+        const saveButton = document.getElementById('man-save-button');
+        if (saveButton.disabled || manSaveDialog.open) return;
+
+        saveButton.disabled = true;
+        try {
+            const targetElement = document.getElementById('capture-area');
+            const canvas = await html2canvas(targetElement, { scale: 2, backgroundColor: '#fff0f5' });
+            manSaveImage.src = canvas.toDataURL('image/png');
+            await manSaveImage.decode();
+            saveButton.disabled = false;
+            manSaveDialog.showModal();
+        } catch (error) {
+            manSaveImage.removeAttribute('src');
+            alert('만세력 이미지 미리보기를 열 수 없어요. 다시 시도해 주세요.');
+            console.error(error);
+        } finally {
+            saveButton.disabled = false;
+        }
     }
 
     function resetForm() { document.getElementById('man-result-area').style.display = 'none'; document.getElementById('man-form').style.display = 'block'; document.getElementById('manseryeok-title').style.display = 'block'; }
@@ -795,7 +1040,7 @@
     function toggleBusinessInfo() {
         const info = document.getElementById('business-info');
         const arrow = document.getElementById('biz-arrow');
-        if (info.style.display === 'none') { info.style.display = 'block'; arrow.innerText = '▲'; } 
+        if (info.style.display === 'none') { info.style.display = 'block'; arrow.innerText = '▲'; }
         else { info.style.display = 'none'; arrow.innerText = '▼'; }
     }
     function goToMain(event) {
@@ -804,7 +1049,7 @@
         document.querySelectorAll('#menu-bar button').forEach(btn => btn.classList.remove('active'));
         document.getElementById('main-screen').classList.add('active');
     }
-    
+
     function copyEmail() {
         const email = "pigsaju@gmail.com";
         navigator.clipboard.writeText(email).then(() => {
@@ -816,7 +1061,7 @@
 function toggleMyInfo(contentId, arrowId) {
         const content = document.getElementById(contentId);
         const arrow = document.getElementById(arrowId);
-        
+
         if (content.style.display === 'none') {
             content.style.display = 'block';
             arrow.style.transform = 'rotate(180deg)';
@@ -847,7 +1092,7 @@ function toggleMyInfo(contentId, arrowId) {
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
   const db = getFirestore(app);
-  
+
   window.myPurchaseData = {};
 
   function applySavedInfoToForm(dateStr, timeStr, gender, calendar) {
@@ -857,34 +1102,34 @@ function toggleMyInfo(contentId, arrowId) {
           const y = parseInt(parts[0], 10);
           const m = parseInt(parts[1], 10);
           const d = parseInt(parts[2], 10);
-          
+
           if(document.getElementById('my-saved-year')) document.getElementById('my-saved-year').value = y;
           if(document.getElementById('my-saved-month')) document.getElementById('my-saved-month').value = m;
           if(document.getElementById('my-saved-day')) document.getElementById('my-saved-day').value = d;
-          
+
           if(document.getElementById('man-year')) document.getElementById('man-year').value = y;
           if(document.getElementById('man-month')) document.getElementById('man-month').value = m;
           if(document.getElementById('man-day')) document.getElementById('man-day').value = d;
       }
-      
+
       if(timeStr) {
           if(document.getElementById('my-saved-time')) document.getElementById('my-saved-time').value = timeStr;
-          if(document.getElementById('man-time')) document.getElementById('man-time').value = timeStr; 
+          if(document.getElementById('man-time')) document.getElementById('man-time').value = timeStr;
       }
-      
+
       if(gender) {
           const myGenderRadio = document.querySelector(`input[name="my-saved-gender"][value="${gender}"]`);
           if(myGenderRadio) myGenderRadio.checked = true;
-          
-          const manGenderRadio = document.querySelector(`input[name="man-gender"][value="${gender}"]`); 
+
+          const manGenderRadio = document.querySelector(`input[name="man-gender"][value="${gender}"]`);
           if(manGenderRadio) manGenderRadio.checked = true;
       }
-      
+
       if(calendar) {
           const myCalRadio = document.querySelector(`input[name="my-saved-calendar"][value="${calendar}"]`);
           if(myCalRadio) myCalRadio.checked = true;
-          
-          const manCalRadio = document.querySelector(`input[name="man-calendar"][value="${calendar}"]`); 
+
+          const manCalRadio = document.querySelector(`input[name="man-calendar"][value="${calendar}"]`);
           if(manCalRadio) manCalRadio.checked = true;
       }
   }
@@ -898,12 +1143,12 @@ function toggleMyInfo(contentId, arrowId) {
       const mVal = document.getElementById('my-saved-month').value;
       const dVal = document.getElementById('my-saved-day').value;
       const timeVal = document.getElementById('my-saved-time').value;
-      
+
       const genderVal = document.querySelector('input[name="my-saved-gender"]:checked').value;
       const calendarVal = document.querySelector('input[name="my-saved-calendar"]:checked').value;
 
       if(!yVal || !mVal || !dVal) { alert("생년월일을 모두 선택해주세요."); return; }
-      
+
       const dateVal = `${yVal}-${mVal.padStart(2, '0')}-${dVal.padStart(2, '0')}`;
 
       try {
@@ -914,9 +1159,9 @@ function toggleMyInfo(contentId, arrowId) {
               gender: genderVal,
               calendar: calendarVal
           }, { merge: true });
-          
+
           alert("성공적으로 저장되었습니다! 🐷");
-          
+
           const displayNick = nicknameVal || user.displayName || "사주돼지 회원";
           document.getElementById('user-name-display').innerText = displayNick + "님, 환영합니다! 🐷";
       } catch (e) {
@@ -959,8 +1204,8 @@ function toggleMyInfo(contentId, arrowId) {
               } else {
                   querySnapshot.forEach((docItem) => {
                       const data = docItem.data();
-                      window.myPurchaseData[data.orderId] = data; 
-                      
+                      window.myPurchaseData[data.orderId] = data;
+
                       const dObj = new Date(data.purchaseDate);
                       const dateStr = `${dObj.getFullYear()}.${String(dObj.getMonth()+1).padStart(2,'0')}.${String(dObj.getDate()).padStart(2,'0')}`;
 
@@ -1050,7 +1295,7 @@ function toggleMyInfo(contentId, arrowId) {
           try {
               await deleteDoc(doc(db, "users", user.uid));
               await deleteUser(user);
-              
+
               alert("회원탈퇴가 완료되었습니다. 이용해 주셔서 감사합니다.");
               location.href = 'index.html';
           } catch (error) {
@@ -1069,6 +1314,7 @@ function toggleMyInfo(contentId, arrowId) {
 <script>
     // 1. 마우스 우클릭 금지
     document.addEventListener('contextmenu', function(e) {
+        if (e.target === manSaveImage) return;
         e.preventDefault();
     });
 
@@ -1103,6 +1349,7 @@ function toggleMyInfo(contentId, arrowId) {
 
     // 3. 마우스 드래그 금지 (텍스트 복사 방지)
     document.addEventListener('selectstart', function(e) {
+        if (e.target === manSaveImage) return;
         e.preventDefault();
     });
 </script>
